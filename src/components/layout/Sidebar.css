@@ -1,0 +1,123 @@
+/* src/components/layout/Sidebar.css */
+
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50; /* Un azul oscuro y elegante */
+  color: #ecf0f1; /* Texto claro */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-header {
+  padding: 20px;
+  text-align: center;
+  background-color: #34495e; /* Un poco más claro que el fondo */
+  border-bottom: 1px solid #4a627a;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.sidebar-nav {
+  flex-grow: 1; /* Ocupa todo el espacio disponible */
+  display: flex;
+  flex-direction: column; /* Apila el menú principal y el footer */
+  justify-content: space-between; /* Empuja el footer hacia abajo */
+  overflow-y: auto;
+}
+
+.sidebar-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  padding: 0;
+}
+
+.sidebar-nav a,
+.menu-item-parent {
+  display: block;
+  padding: 15px 20px;
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.sidebar-nav a:hover,
+.menu-item-parent:hover {
+  background-color: #3498db; /* Azul brillante al pasar el ratón */
+  color: #fff;
+}
+
+.sidebar-nav a.active {
+  background-color: #2980b9; /* Un azul más oscuro para el item activo */
+  font-weight: bold;
+}
+
+.menu-item-content {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-content svg {
+  margin-right: 15px;
+  font-size: 1.2em;
+}
+
+.menu-item-parent {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  border: solid #ecf0f1;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transition: transform 0.2s;
+}
+
+.arrow.right {
+  transform: rotate(-45deg);
+}
+
+.arrow.down {
+  transform: rotate(45deg);
+}
+
+.submenu {
+  padding-left: 20px; /* Indentación para submenús */
+  background-color: #233140; /* Fondo ligeramente más oscuro para submenús */
+}
+
+.submenu a {
+  padding-left: 35px; /* Más indentación para los items del submenú */
+}
+
+
+/* --- NUEVOS ESTILOS PARA EL FOOTER Y LOGOUT -- */
+.sidebar-footer {
+  padding: 10px 0;
+  border-top: 1px solid #4a627a;
+}
+
+.logout-item {
+  cursor: pointer;
+}
+
+.logout-item .menu-item-content {
+  padding: 15px 20px;
+}
+
+.logout-item:hover {
+  background-color: #e74c3c; /* Rojo para indicar una acción destructiva */
+}

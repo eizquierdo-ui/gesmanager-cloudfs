@@ -1,0 +1,26 @@
+[
+  {
+    "id": "refrescar-datos",
+    "label": "Refrescar Datos",
+    "padre_id": "",
+    "es_fija": true,
+    "orden": 8,
+    "icon": "FaSync"
+  },
+  {
+    "id": "salir-sistema",
+    "label": "Salir Sistema",
+    "padre_id": "",
+    "es_fija": true,
+    "orden": 9,
+    "icon": "FaSignOutAlt"
+  },
+  {
+    "id": "modelar-precio",
+    "label": "Modelar Precio",
+    "padre_id": "",
+    "es_fija": true,
+    "orden": 10,
+    "icon": "FaCalculator"
+  }
+]

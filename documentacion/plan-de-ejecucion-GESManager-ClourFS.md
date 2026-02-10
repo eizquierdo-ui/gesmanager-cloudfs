@@ -1,6 +1,6 @@
-# Plan Maestro de Ejecución: GESManager V2 (CloudFS)
+# Plan Maestro de Ejecución: GESManager-CloudFS
 
-Este documento consolida la visión técnica y la hoja de ruta para la creación de GESManager V2. Sirve como la fuente única de verdad para la arquitectura, la estructura de datos y las fases de desarrollo del proyecto.
+Este documento consolida la visión técnica y la hoja de ruta para la creación de GESManager-CloudFS. Sirve como la fuente única de verdad para la arquitectura, la estructura de datos y las fases de desarrollo del proyecto.
 
 ---
 
@@ -8,7 +8,7 @@ Este documento consolida la visión técnica y la hoja de ruta para la creación
 
 Se migra de un monolito (Laravel) a una arquitectura serverless, donde React asume la lógica de negocio, interactuando directamente con una base de datos NoSQL nativa en la nube.
 
-| Característica | GESManager Original (Laravel) | GESManager V2 (Firebase + React) |
+| Característica | GESManager Original (Laravel) | GESManager-CloudFS (Firebase + React) |
 | :--- | :--- | :--- |
 | **Naturaleza** | Monolito altamente estructurado. | Arquitectura de Documentos Atómicos. |
 | **Base de Datos** | Relacional (MySQL). | NoSQL Nativa (Cloud Firestore). |
@@ -22,13 +22,13 @@ Se migra de un monolito (Laravel) a una arquitectura serverless, donde React asu
 **Objetivo:** Preparar el entorno de desarrollo y producción.
 
 1.  **Creación del Proyecto en Firebase (Consola):**
-    *   Crear el proyecto `gesmanager-v2` (o el nombre definitivo).
+    *   Crear el proyecto `gesmanager-cloudfs` (o el nombre definitivo).
 2.  **Activación de Servicios Críticos:**
     *   **Authentication:** Habilitar el proveedor "Correo electrónico y contraseña".
     *   **Cloud Firestore:** Crear la base de datos en "Modo Producción" (se recomienda `nam5` o `us-east1` por latencia).
     *   **Hosting:** Habilitar para el futuro despliegue de la aplicación React.
 3.  **Configuración del Repositorio (Control de Versiones):**
-    *   Crear un repositorio privado en GitHub llamado `gesmanager-v2`.
+    *   Crear un repositorio privado en GitHub llamado `gesmanager-cloudfs`.
     *   Inicializar localmente un proyecto de React con Vite.
     *   Conectar el repositorio local con el `origin` de GitHub.
     *   Vincular el proyecto local a Firebase usando la Firebase CLI (`firebase init`).
@@ -203,6 +203,6 @@ Se migra de un monolito (Laravel) a una arquitectura serverless, donde React asu
 | **Mantenimientos**| Clientes | Catálogo de clientes. |
 | | Categorías | Clasificación de servicios. |
 | | Servicios | Calculadora de Precios/Costos/Historial. |
-| **Cotizaciones** | Ingreso | Generador de cotizaciones V2. |
+| **Cotizaciones** | Ingreso | Generador de cotizaciones GESManager-CloudFS. |
 | | Gestión y Reportes | Seguimiento de estados de cotizaciones. |
 | **Utilidades** | Backups | Herramientas de soporte técnico. |
