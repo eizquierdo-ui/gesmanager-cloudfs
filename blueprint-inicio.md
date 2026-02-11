@@ -11,6 +11,7 @@
     S3-resumen.md
     S4-resumen.md
     S5-resumen.md
+    S6-resumen.md
     Carpteta: documentacion
     pla-de-ejecucion-GESManager-CloudFS.md
 

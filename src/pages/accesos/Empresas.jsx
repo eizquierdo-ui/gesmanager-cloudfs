@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -6,9 +5,16 @@ import {
   Button, Table, TableBody, TableCell, TableContainer, TableHead, 
   TableRow, IconButton, Tooltip, CircularProgress, Modal, Fade, Backdrop, Chip
 } from '@mui/material';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../firebase';
 import { format } from 'date-fns';
+
+// --- Importación de Servicios ---
+import {
+  getAllEmpresas,
+  createEmpresa,
+  updateEmpresa,
+  deleteEmpresa,
+  setEmpresaStatus
+} from '../../services/firestore/empresasService'; // <-- ¡LA RUTA RELATIVA CAMBIA!
 
 // --- Importación de Íconos ---
 import SearchIcon from '@mui/icons-material/Search';
@@ -19,7 +25,7 @@ import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 
-import EmpresaForm from '../components/forms/EmpresaForm';
+import EmpresaForm from '../../components/forms/EmpresaForm'; // <-- ¡LA RUTA RELATIVA CAMBIA!
 
 // --- Estilo del Modal ---
 const style = {
@@ -62,11 +68,10 @@ const Empresas = () => {
   const fetchEmpresas = async () => {
     setLoading(true);
     try {
-      const querySnapshot = await getDocs(collection(db, 'empresas'));
-      const empresasData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const empresasData = await getAllEmpresas();
       setEmpresas(empresasData);
     } catch (error) {
-      console.error("Error al obtener las empresas:", error);
+      console.error("Error en el componente al obtener las empresas:", error);
     }
     setLoading(false);
   };
@@ -84,10 +89,10 @@ const Empresas = () => {
   const handleDelete = async (id) => {
     if (window.confirm('¿Estás seguro de que deseas eliminar esta empresa? Esta acción es irreversible.')) {
       try {
-        await deleteDoc(doc(db, 'empresas', id));
+        await deleteEmpresa(id);
         fetchEmpresas();
       } catch (error) {
-        console.error("Error al eliminar la empresa:", error);
+        console.error("Error en el componente al eliminar la empresa:", error);
       }
     }
   };
@@ -96,14 +101,10 @@ const Empresas = () => {
     const nuevoEstado = empresa.estado === 'activo' ? 'inactivo' : 'activo';
     if (window.confirm(`¿Deseas cambiar el estado a "${nuevoEstado}"?`)) {
       try {
-        const empresaRef = doc(db, 'empresas', empresa.id);
-        await updateDoc(empresaRef, {
-          estado: nuevoEstado,
-          fecha_estado: serverTimestamp()
-        });
+        await setEmpresaStatus(empresa.id, nuevoEstado);
         fetchEmpresas();
       } catch (error) {
-        console.error("Error al cambiar el estado:", error);
+        console.error("Error en el componente al cambiar el estado:", error);
       }
     }
   };
@@ -121,22 +122,14 @@ const Empresas = () => {
   const handleFormSubmit = async (values) => {
     try {
       if (currentEmpresa) {
-        const empresaRef = doc(db, 'empresas', currentEmpresa.id);
-        await updateDoc(empresaRef, {
-          ...values,
-          fecha_ultima_actualizacion: serverTimestamp(),
-        });
+        await updateEmpresa(currentEmpresa.id, values);
       } else {
-        await addDoc(collection(db, 'empresas'), {
-          ...values,
-          fecha_creacion: serverTimestamp(),
-          fecha_ultima_actualizacion: serverTimestamp(),
-        });
+        await createEmpresa(values);
       }
       fetchEmpresas();
       handleCloseModal();
     } catch (error) {
-      console.error("Error al guardar la empresa:", error);
+      console.error("Error en el componente al guardar la empresa:", error);
     }
   };
 
@@ -160,7 +153,6 @@ const Empresas = () => {
             sx={{ mr: 2, width: '350px' }}
           />
           
-          {/* --- BOTONES DE ACCIÓN CORREGIDOS --- */}
           <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenModal()} sx={{ mr: 1 }}>
             Nuevo
           </Button>

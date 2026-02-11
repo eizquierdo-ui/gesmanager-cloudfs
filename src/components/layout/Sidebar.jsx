@@ -11,12 +11,11 @@ import { IoLogOutOutline } from 'react-icons/io5';
 
 import './Sidebar.css';
 
-// --- COMPONENTE DE ICONO DINÁMICO (VERSIÓN FINAL Y ROBUSTA) ---
+// --- COMPONENTE DE ICONO DINÁMICO ---
 const DynamicIcon = ({ name }) => {
   const fallbackIcon = <FaIcons.FaQuestionCircle />;
   if (!name) return fallbackIcon;
 
-  // Si el nombre ya viene con prefijo (ej: "FaSync", "MdSettings"), úsalo directamente.
   if (name.startsWith('Fa')) {
     const IconComponent = FaIcons[name];
     return IconComponent ? <IconComponent /> : fallbackIcon;
@@ -26,8 +25,6 @@ const DynamicIcon = ({ name }) => {
     return IconComponent ? <IconComponent /> : fallbackIcon;
   }
 
-  // Para nombres sin prefijo (legado), conviértelos a PascalCase.
-  // Esto funciona para "settings", "create-menu" y "monetization_on".
   const pascalCaseName = name
     .split(/[_-]/)
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -40,7 +37,7 @@ const DynamicIcon = ({ name }) => {
 };
 
 
-// --- COMPONENTE MenuItem (SIN CAMBIOS) ---
+// --- COMPONENTE MenuItem ---
 const MenuItem = ({ item, allItems, openMenus, toggleMenu }) => {
   const children = allItems.filter(child => child.padre_id === item.id).sort((a,b) => a.orden - b.orden);
   const isMenuOpen = openMenus[item.id] || false;
@@ -78,7 +75,7 @@ const MenuItem = ({ item, allItems, openMenus, toggleMenu }) => {
   );
 };
 
-// --- COMPONENTE PRINCIPAL DEL SIDEBAR (SIN CAMBIOS LÓGICOS) ---
+// --- COMPONENTE PRINCIPAL DEL SIDEBAR ---
 const Sidebar = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -97,7 +94,10 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    if (!userData || !userData.role) {
+    // LÓGICA DE SEGURIDAD REFORZADA:
+    // Si no hay datos de usuario, no tiene un rol, O si el estado de su rol NO es 'activo',
+    // se detiene la ejecución aquí. Esto previene que se consulten los permisos en 'roles-accesos'.
+    if (!userData || !userData.role || userData.roleStatus !== 'activo') {
       setLoading(false);
       setMenuItems([]);
       return;
@@ -107,6 +107,7 @@ const Sidebar = () => {
       setLoading(true);
       setError(null);
       try {
+        // Esta consulta solo se ejecuta si el rol del usuario está activo.
         const permissionsQuery = query(
           collection(db, 'roles-accesos'), 
           where('role_id', '==', userData.role),
@@ -116,6 +117,7 @@ const Sidebar = () => {
         const allowedMenuIds = permissionsSnapshot.docs.map(doc => doc.data().menu_id);
 
         if (allowedMenuIds.length === 0) {
+          // Esto puede ocurrir si un rol activo no tiene ningún permiso asignado.
           throw new Error(`No hay accesos definidos para el rol "${userData.role}".`);
         }
 

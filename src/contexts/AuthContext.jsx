@@ -13,7 +13,7 @@ export const useAuth = () => {
 // 3. Creamos el Proveedor del Contexto
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [userData, setUserData] = useState(null); // <-- NUEVO: Estado para datos de Firestore
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const auth = getAuth();
@@ -32,17 +32,42 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
       if (user) {
-        // Si hay un usuario, buscamos sus datos en Firestore
+        // 1. Obtener datos del usuario desde la colección 'usuarios'
         const userDocRef = doc(db, 'usuarios', user.uid);
         const userDocSnap = await getDoc(userDocRef);
+
         if (userDocSnap.exists()) {
-          setUserData(userDocSnap.data()); // Guardamos los datos del documento
+          const localUserData = userDocSnap.data();
+
+          // 2. Verificar si el usuario tiene un rol asignado
+          if (localUserData.role) {
+            // 3. Obtener los datos del rol desde la colección 'roles'
+            const roleDocRef = doc(db, 'roles', localUserData.role);
+            const roleDocSnap = await getDoc(roleDocRef);
+
+            // 4. Comprobar si el rol existe y está ACTIVO
+            if (roleDocSnap.exists() && roleDocSnap.data().estado === 'activo') {
+              // 5. El rol está activo, conceder acceso y guardar datos.
+              //    Añadimos el estado del rol para futura referencia.
+              setUserData({
+                ...localUserData,
+                roleStatus: 'activo'
+              });
+            } else {
+              // 6. El rol está inactivo o no existe, DENEGAR acceso.
+              console.error(`Acceso denegado: El rol '${localUserData.role}' asignado al usuario está inactivo o no existe.`);
+              setUserData(null); // Paso crítico: Anula los permisos del usuario.
+            }
+          } else {
+            console.error("Acceso denegado: El documento del usuario no tiene un rol asignado.");
+            setUserData(null);
+          }
         } else {
-          // Manejar el caso donde el usuario existe en Auth pero no en Firestore
-          console.error("Error: No se encontró el documento del usuario en Firestore.");
+          console.error("Acceso denegado: No se encontró el documento del usuario en Firestore.");
           setUserData(null);
         }
       } else {
+        // No hay usuario autenticado
         setUserData(null);
       }
       setLoading(false);
@@ -54,7 +79,7 @@ export const AuthProvider = ({ children }) => {
   // Valores que estarán disponibles globalmente
   const value = {
     currentUser,
-    userData, // <-- NUEVO: Exponemos los datos del usuario
+    userData,
     login,
     logout,
   };
