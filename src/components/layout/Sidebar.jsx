@@ -1,39 +1,30 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { db } from '../../firebase';
 import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { useAuth } from '../../contexts/AuthContext';
-
-// Importaciones de iconos
-import * as MdIcons from 'react-icons/md';
-import * as FaIcons from 'react-icons/fa';
-import { IoLogOutOutline } from 'react-icons/io5';
+import { FaQuestionCircle } from 'react-icons/fa';
 
 import './Sidebar.css';
 
-// --- COMPONENTE DE ICONO DINÁMICO ---
-const DynamicIcon = ({ name }) => {
-  const fallbackIcon = <FaIcons.FaQuestionCircle />;
-  if (!name) return fallbackIcon;
+// --- COMPONENTE DE ICONO DINÁMICO Y EFICIENTE ---
+const IconLoader = ({ name }) => {
+  const Icon = lazy(() => {
+    if (!name) return Promise.resolve({ default: FaQuestionCircle });
 
-  if (name.startsWith('Fa')) {
-    const IconComponent = FaIcons[name];
-    return IconComponent ? <IconComponent /> : fallbackIcon;
-  }
-  if (name.startsWith('Md')) {
-    const IconComponent = MdIcons[name];
-    return IconComponent ? <IconComponent /> : fallbackIcon;
-  }
+    const lib = name.substring(0, 2).toLowerCase(); // 'fa', 'md', 'io', etc.
+    
+    return import(`react-icons/${lib}/index.js`)
+      .then(module => ({ default: module[name] || FaQuestionCircle }))
+      .catch(() => ({ default: FaQuestionCircle }));
+  });
 
-  const pascalCaseName = name
-    .split(/[_-]/)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('');
-  
-  const finalIconName = 'Md' + pascalCaseName;
-  const IconComponent = MdIcons[finalIconName];
-
-  return IconComponent ? <IconComponent /> : fallbackIcon;
+  return (
+    <Suspense fallback={<span style={{ width: '1em', height: '1em' }} />}>
+      <Icon />
+    </Suspense>
+  );
 };
 
 
@@ -44,7 +35,7 @@ const MenuItem = ({ item, allItems, openMenus, toggleMenu }) => {
 
   const content = (
     <div className="menu-item-content">
-      <DynamicIcon name={item.icon} />
+      <IconLoader name={item.icon} />
       <span className="menu-label">{item.label}</span>
     </div>
   );
@@ -94,9 +85,6 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    // LÓGICA DE SEGURIDAD REFORZADA:
-    // Si no hay datos de usuario, no tiene un rol, O si el estado de su rol NO es 'activo',
-    // se detiene la ejecución aquí. Esto previene que se consulten los permisos en 'roles-accesos'.
     if (!userData || !userData.role || userData.roleStatus !== 'activo') {
       setLoading(false);
       setMenuItems([]);
@@ -107,7 +95,6 @@ const Sidebar = () => {
       setLoading(true);
       setError(null);
       try {
-        // Esta consulta solo se ejecuta si el rol del usuario está activo.
         const permissionsQuery = query(
           collection(db, 'roles-accesos'), 
           where('role_id', '==', userData.role),
@@ -117,7 +104,6 @@ const Sidebar = () => {
         const allowedMenuIds = permissionsSnapshot.docs.map(doc => doc.data().menu_id);
 
         if (allowedMenuIds.length === 0) {
-          // Esto puede ocurrir si un rol activo no tiene ningún permiso asignado.
           throw new Error(`No hay accesos definidos para el rol "${userData.role}".`);
         }
 
@@ -195,7 +181,7 @@ const Sidebar = () => {
         <ul className="sidebar-footer">
            <li onClick={handleLogout} className="logout-item">
               <div className="menu-item-content">
-                <IoLogOutOutline />
+                <IconLoader name="IoLogOutOutline" />
                 <span className="menu-label">Cerrar Sesión</span>
               </div>
           </li>

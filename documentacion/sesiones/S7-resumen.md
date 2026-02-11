@@ -6,8 +6,8 @@ no de coloco una descripcion del porque la puntuacion
 **Duración de la Sesión:**
 
 *   **Fecha:** 10/02/2026
-*   **Inicio:** 08:00 AM - 11:00 AM
-*   **Fin:** 15:30 AM - 18:00PM
+*   **Inicio:** 15:30 PM
+*   **Fin:** 18:00PM
 *   **Total:** 02 horas y 30 minutos
 
 ## 1. Instrucciones y Contexto
