@@ -1,41 +1,60 @@
 
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { db } from '../../firebase';
 import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { useAuth } from '../../contexts/AuthContext';
-import { FaQuestionCircle } from 'react-icons/fa';
+
+// Importaciones de iconos directas y síncronas
+import * as FaIcons from 'react-icons/fa';
+import * as Io5Icons from 'react-icons/io5';
+import * as MdIcons from 'react-icons/md';
 
 import './Sidebar.css';
 
-// --- COMPONENTE DE ICONO DINÁMICO Y EFICIENTE ---
-const IconLoader = ({ name }) => {
-  const Icon = lazy(() => {
-    if (!name) return Promise.resolve({ default: FaQuestionCircle });
+// --- COMPONENTE DE ICONO INTELIGENTE Y DEFINITIVO ---
+const DynamicIcon = ({ name }) => {
+  const fallbackIcon = <FaIcons.FaQuestionCircle />;
+  if (!name) return fallbackIcon;
 
-    const lib = name.substring(0, 2).toLowerCase(); // 'fa', 'md', 'io', etc.
-    
-    return import(`react-icons/${lib}/index.js`)
-      .then(module => ({ default: module[name] || FaQuestionCircle }))
-      .catch(() => ({ default: FaQuestionCircle }));
-  });
+  // 1. Búsqueda por prefijo (para nombres como "IoLogOutOutline" o "MdManageAccounts")
+  if (name.startsWith('Fa') && name in FaIcons) {
+    const Icon = FaIcons[name];
+    return <Icon />;
+  }
+  if (name.startsWith('Io') && name in Io5Icons) {
+    const Icon = Io5Icons[name];
+    return <Icon />;
+  }
+  if (name.startsWith('Md') && name in MdIcons) {
+    const Icon = MdIcons[name];
+    return <Icon />;
+  }
 
-  return (
-    <Suspense fallback={<span style={{ width: '1em', height: '1em' }} />}>
-      <Icon />
-    </Suspense>
-  );
+  // 2. Conversión (para nombres como "manage_accounts")
+  const pascalCaseName = name
+    .split(/[_-]/)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('');
+  
+  const finalIconName = 'Md' + pascalCaseName;
+  if (finalIconName in MdIcons) {
+    const Icon = MdIcons[finalIconName];
+    return <Icon />;
+  }
+
+  return fallbackIcon;
 };
 
 
-// --- COMPONENTE MenuItem ---
+// --- COMPONENTE MenuItem (SIN CAMBIOS) ---
 const MenuItem = ({ item, allItems, openMenus, toggleMenu }) => {
-  const children = allItems.filter(child => child.padre_id === item.id).sort((a,b) => a.orden - b.orden);
+  const children = allItems.filter(child => child.padre_id === item.id).sort((a, b) => a.orden - b.orden);
   const isMenuOpen = openMenus[item.id] || false;
 
   const content = (
     <div className="menu-item-content">
-      <IconLoader name={item.icon} />
+      <DynamicIcon name={item.icon} />
       <span className="menu-label">{item.label}</span>
     </div>
   );
@@ -103,13 +122,9 @@ const Sidebar = () => {
         const permissionsSnapshot = await getDocs(permissionsQuery);
         const allowedMenuIds = permissionsSnapshot.docs.map(doc => doc.data().menu_id);
 
-        if (allowedMenuIds.length === 0) {
-          throw new Error(`No hay accesos definidos para el rol "${userData.role}".`);
-        }
+        if (allowedMenuIds.length === 0) throw new Error(`No hay accesos definidos para el rol "${userData.role}".`);
 
-        const menuCollection = collection(db, 'menu');
-        const q = query(menuCollection, orderBy('orden'));
-        const menuSnapshot = await getDocs(q);
+        const menuSnapshot = await getDocs(query(collection(db, 'menu'), orderBy('orden')));
         const fullMenuList = menuSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
         const userMenu = new Set();
@@ -119,12 +134,7 @@ const Sidebar = () => {
             let parentId = item.padre_id;
             while(parentId) {
               const parent = fullMenuList.find(p => p.id === parentId);
-              if (parent) {
-                userMenu.add(parent);
-                parentId = parent.padre_id;
-              } else {
-                break;
-              }
+              if (parent) { userMenu.add(parent); parentId = parent.padre_id; } else { break; }
             }
           }
         });
@@ -133,13 +143,13 @@ const Sidebar = () => {
         setMenuItems(finalMenu);
 
         const currentPath = location.pathname.substring(1);
-        const activeItem = finalMenu.find(item => item.ruta === currentPath || item.id === currentPath );
+        const activeItem = finalMenu.find(item => item.ruta === currentPath);
         if (activeItem && activeItem.padre_id) {
           setOpenMenus({ [activeItem.padre_id]: true });
         }
 
       } catch (e) {
-        console.error("Error al cargar menú y permisos:", e);
+        console.error("Error al cargar menú:", e);
         setError(e.message);
       } finally {
         setLoading(false);
@@ -147,16 +157,19 @@ const Sidebar = () => {
     };
 
     fetchMenuAndPermissions();
-  }, [userData, location.pathname]);
+  }, [userData]);
 
+  // FUNCIÓN DE ACORDEÓN MEJORADA
   const toggleMenu = (id) => {
     setOpenMenus(prevOpenMenus => {
       const isCurrentlyOpen = !!prevOpenMenus[id];
-      return { [id]: !isCurrentlyOpen };
+      // Si el menú clickeado ya está abierto, ciérralo (estado vacío).
+      // Si está cerrado, ciérra todos los demás y abre solo este.
+      return isCurrentlyOpen ? {} : { [id]: true };
     });
   };
 
-  const topLevelItems = menuItems.filter(item => !item.padre_id || item.padre_id === "").sort((a,b) => a.orden - b.orden);
+  const topLevelItems = menuItems.filter(item => !item.padre_id || item.padre_id === "").sort((a, b) => a.orden - b.orden);
 
   return (
     <div className="sidebar">
@@ -181,7 +194,7 @@ const Sidebar = () => {
         <ul className="sidebar-footer">
            <li onClick={handleLogout} className="logout-item">
               <div className="menu-item-content">
-                <IconLoader name="IoLogOutOutline" />
+                 <DynamicIcon name="IoLogOutOutline" />
                 <span className="menu-label">Cerrar Sesión</span>
               </div>
           </li>
