@@ -1,26 +1,29 @@
+
 [
-  {
-    "id": "refrescar-datos",
-    "label": "Refrescar Datos",
-    "padre_id": "",
-    "es_fija": true,
-    "orden": 8,
-    "icon": "FaSync"
-  },
-  {
-    "id": "salir-sistema",
-    "label": "Salir Sistema",
-    "padre_id": "",
-    "es_fija": true,
-    "orden": 9,
-    "icon": "FaSignOutAlt"
-  },
-  {
-    "id": "modelar-precio",
-    "label": "Modelar Precio",
-    "padre_id": "",
-    "es_fija": true,
-    "orden": 10,
-    "icon": "FaCalculator"
-  }
+  { "id": 1, "Label": "Inicializar", "es_padre": true, "id_padre": null, "Icon": "settings", "Ruta": "", "Orden": 10 },
+  { "id": 2, "Label": "Empresa", "es_padre": false, "id_padre": 1, "Icon": "business", "Ruta": "/inicializar/empresa", "Orden": 11 },
+  { "id": 3, "Label": "Tipo Cambio", "es_padre": false, "id_padre": 1, "Icon": "currency_exchange", "Ruta": "/inicializar/tipo-cambio", "Orden": 12 },
+  { "id": 4, "Label": "Accesos", "es_padre": true, "id_padre": null, "Icon": "settings", "Ruta": "", "Orden": 20 },
+  { "id": 5, "Label": "Empresas", "es_padre": false, "id_padre": 4, "Icon": "store", "Ruta": "/accesos/empresas", "Orden": 21 },
+  { "id": 6, "Label": "Usuarios", "es_padre": false, "id_padre": 4, "Icon": "people", "Ruta": "/accesos/usuarios", "Orden": 22 },
+  { "id": 7, "Label": "Roles", "es_padre": false, "id_padre": 4, "Icon": "MdManageAccounts", "Ruta": "/accesos/roles", "Orden": 23 },
+  { "id": 8, "Label": "Usuarios x Empresa", "es_padre": false, "id_padre": 4, "Icon": "group_add", "Ruta": "/accesos/usuarios-x-empresa", "Orden": 24 },
+  { "id": 9, "Label": "Crear Menu", "es_padre": true, "id_padre": null, "Icon": "menu_book", "Ruta": "", "Orden": 30 },
+  { "id": 10, "Label": "Menu", "es_padre": false, "id_padre": 9, "Icon": "list", "Ruta": "/crear-menu/menu", "Orden": 31 },
+  { "id": 11, "Label": "Roles/Accesos", "es_padre": false, "id_padre": 9, "Icon": "security", "Ruta": "/crear-menu/roles", "Orden": 32 },
+  { "id": 12, "Label": "Inicializar Monedas", "es_padre": false, "id_padre": 1, "Icon": "monetization_on", "Ruta": "/inicializar/monedas", "Orden": 13 },
+  { "id": 16, "Label": "Mantenimientos", "es_padre": true, "id_padre": null, "Icon": "build", "Ruta": "", "Orden": 40 },
+  { "id": 17, "Label": "Clientes", "es_padre": false, "id_padre": 16, "Icon": "", "Ruta": "/mantenimientos/clientes", "Orden": 41 },
+  { "id": 18, "Label": "Categorias", "es_padre": false, "id_padre": 16, "Icon": "category", "Ruta": "/mantenimientos/categorias", "Orden": 42 },
+  { "id": 19, "Label": "Servicios", "es_padre": false, "id_padre": 16, "Icon": "miscellaneous_services", "Ruta": "/mantenimientos/servicios", "Orden": 43 },
+  { "id": 20, "Label": "Cotizaciones", "es_padre": true, "id_padre": null, "Icon": "request_quote", "Ruta": "", "Orden": 50 },
+  { "id": 21, "Label": "Ingreso", "es_padre": false, "id_padre": 20, "Icon": "add_shopping_cart", "Ruta": "/cotizaciones/ingreso", "Orden": 51 },
+  { "id": 22, "Label": "Gestion y Reportes", "es_padre": false, "id_padre": 20, "Icon": "summarize", "Ruta": "/cotizaciones/gestion", "Orden": 52 },
+  { "id": 23, "Label": "Utilidades", "es_padre": true, "id_padre": null, "Icon": "home_repair_service", "Ruta": "", "Orden": 60 },
+  { "id": 24, "Label": "Backup/Import", "es_padre": false, "id_padre": 23, "Icon": "backup", "Ruta": "/utilidades/backup", "Orden": 61 },
+  { "id": 26, "Label": "Refrescar Datos", "es_padre": true, "id_padre": null, "Icon": "Monedas", "Ruta": "", "Orden": 70 },
+  { "id": 27, "Label": "Modelar Precios", "es_padre": true, "id_padre": null, "Icon": "", "Ruta": "", "Orden": 80 },
+  { "id": 15, "Label": "Monedas", "es_padre": true, "id_padre": null, "Icon": "", "Ruta": "", "Orden": 90 },
+  { "id": 28, "Label": "Modelar Precios", "es_padre": true, "id_padre": null, "Icon": "", "Ruta": "", "Orden": 100 },
+  { "id": 29, "Label": "Refrescar Datos", "es_padre": true, "id_padre": null, "Icon": "", "Ruta": "", "Orden": 110 }
 ]

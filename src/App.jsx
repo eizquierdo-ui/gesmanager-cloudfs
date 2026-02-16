@@ -9,9 +9,13 @@ const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Empresas = lazy(() => import('./pages/accesos/Empresas.jsx'));
-const RolesPage = lazy(() => import('./pages/accesos/RolesPage'));
-const UsuariosPage = lazy(() => import('./pages/accesos/UsuariosPage'));
+const RolesPage = lazy(() => import('./pages/accesos/RolesPage.jsx'));
+const UsuariosPage = lazy(() => import('./pages/accesos/UsuariosPage.jsx'));
 const UsuariosXEmpresaPage = lazy(() => import('./pages/accesos/UsuariosXEmpresaPage.jsx'));
+const MenuPage = lazy(() => import('./pages/crear-menu/MenuPage.jsx'));
+const RolesAccesosPage = lazy(() => import('./pages/crear-menu/RolesAccesosPage.jsx'));
+const MonedasPage = lazy(() => import('./pages/inicializar/MonedasPage.jsx')); 
+const TipoCambioPage = lazy(() => import('./pages/inicializar/TipoCambioPage.jsx')); // <-- CORREGIDO
 
 // --- Componentes de Control de Rutas ---
 
@@ -58,6 +62,10 @@ function App() {
           <Route path="accesos/roles" element={<RolesPage />} />
           <Route path="accesos/usuarios" element={<UsuariosPage />} />
           <Route path="accesos/usuarios-x-empresa" element={<UsuariosXEmpresaPage />} />
+          <Route path="crear-menu/menu" element={<MenuPage />} />
+          <Route path="crear-menu/roles" element={<RolesAccesosPage />} />
+          <Route path="inicializar/monedas" element={<MonedasPage />} />
+          <Route path="inicializar/tipo-cambio" element={<TipoCambioPage />} />
         </Route>
         
         {/* 3. Ruta de Captura: Para cualquier URL no encontrada */}

@@ -1,175 +1,161 @@
 
 import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { db } from '../../firebase';
-import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
+import { collection, doc, query, where, orderBy, onSnapshot } from 'firebase/firestore';
 import { useAuth } from '../../contexts/AuthContext';
 
-// Importaciones de iconos directas y síncronas
 import * as FaIcons from 'react-icons/fa';
 import * as Io5Icons from 'react-icons/io5';
 import * as MdIcons from 'react-icons/md';
 
 import './Sidebar.css';
 
-// --- COMPONENTE DE ICONO INTELIGENTE Y DEFINITIVO ---
 const DynamicIcon = ({ name }) => {
   const fallbackIcon = <FaIcons.FaQuestionCircle />;
   if (!name) return fallbackIcon;
-
-  // 1. Búsqueda por prefijo (para nombres como "IoLogOutOutline" o "MdManageAccounts")
-  if (name.startsWith('Fa') && name in FaIcons) {
-    const Icon = FaIcons[name];
-    return <Icon />;
-  }
-  if (name.startsWith('Io') && name in Io5Icons) {
-    const Icon = Io5Icons[name];
-    return <Icon />;
-  }
-  if (name.startsWith('Md') && name in MdIcons) {
-    const Icon = MdIcons[name];
-    return <Icon />;
-  }
-
-  // 2. Conversión (para nombres como "manage_accounts")
-  const pascalCaseName = name
-    .split(/[_-]/)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('');
-  
-  const finalIconName = 'Md' + pascalCaseName;
-  if (finalIconName in MdIcons) {
-    const Icon = MdIcons[finalIconName];
-    return <Icon />;
-  }
-
-  return fallbackIcon;
+  const iconSets = { FaIcons, Io5Icons, MdIcons };
+  const [prefix, iconName] = name.startsWith('Fa') || name.startsWith('Io') || name.startsWith('Md') 
+    ? [name.substring(0, 2) + 'Icons', name]
+    : ['MdIcons', 'Md' + name.split(/[_-]/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')];
+  const Icon = iconSets[prefix]?.[iconName];
+  return Icon ? <Icon /> : fallbackIcon;
 };
 
-
-// --- COMPONENTE MenuItem (SIN CAMBIOS) ---
 const MenuItem = ({ item, allItems, openMenus, toggleMenu }) => {
-  const children = allItems.filter(child => child.padre_id === item.id).sort((a, b) => a.orden - b.orden);
+  const children = allItems.filter(child => child.id_padre === item.id).sort((a, b) => a.Orden - b.Orden);
   const isMenuOpen = openMenus[item.id] || false;
-
   const content = (
     <div className="menu-item-content">
-      <DynamicIcon name={item.icon} />
-      <span className="menu-label">{item.label}</span>
+      <DynamicIcon name={item.Icon} />
+      <span className="menu-label">{item.Label}</span>
     </div>
   );
 
   if (children.length === 0) {
-    const path = item.ruta ? `/${item.ruta.replace(/^\//, '')}` : `/${item.id}`;
-    return (
-      <li>
-        <NavLink to={path} className={({ isActive }) => isActive ? 'active' : ''}>{content}</NavLink>
-      </li>
-    );
+    const path = item.Ruta ? `${item.Ruta.replace(/^\//, '')}` : `/#`;
+    return <li><NavLink to={path} className={({ isActive }) => isActive ? 'active' : ''}>{content}</NavLink></li>;
   }
 
   return (
     <li>
-      <div onClick={() => toggleMenu(item.id)} className="menu-item-parent">
-        {content}
-        <span className={`arrow ${isMenuOpen ? 'down' : 'right'}`}></span>
-      </div>
-      {isMenuOpen && (
-        <ul className="submenu">
-          {children.map(child => (
-            <MenuItem key={child.id} item={child} allItems={allItems} openMenus={openMenus} toggleMenu={toggleMenu} />
-          ))}
-        </ul>
-      )}
+      <div onClick={() => toggleMenu(item.id)} className="menu-item-parent">{content}<span className={`arrow ${isMenuOpen ? 'down' : 'right'}`}></span></div>
+      {isMenuOpen && <ul className="submenu">{children.map(child => <MenuItem key={child.id} item={child} allItems={allItems} openMenus={openMenus} toggleMenu={toggleMenu} />)}</ul>}
     </li>
   );
 };
 
-// --- COMPONENTE PRINCIPAL DEL SIDEBAR ---
 const Sidebar = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [openMenus, setOpenMenus] = useState({});
-  
-  const location = useLocation();
-  const { userData, logout } = useAuth(); 
+  const { userData, logout } = useAuth();
 
   const handleLogout = async () => {
-    try {
-      await logout();
-    } catch (error) {
-      console.error("Error al cerrar sesión:", error);
-    }
+    try { await logout(); } catch (error) { console.error("Error al cerrar sesión:", error); }
   };
 
   useEffect(() => {
-    if (!userData || !userData.role || userData.roleStatus !== 'activo') {
+    if (!userData || !userData.role) {
       setLoading(false);
       setMenuItems([]);
       return;
     }
 
-    const fetchMenuAndPermissions = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const permissionsQuery = query(
-          collection(db, 'roles-accesos'), 
-          where('role_id', '==', userData.role),
-          where('on_off', '==', true)
-        );
-        const permissionsSnapshot = await getDocs(permissionsQuery);
-        const allowedMenuIds = permissionsSnapshot.docs.map(doc => doc.data().menu_id);
+    setLoading(true);
 
-        if (allowedMenuIds.length === 0) throw new Error(`No hay accesos definidos para el rol "${userData.role}".`);
+    const menuQuery = query(collection(db, 'menu2'), orderBy('Orden'));
+    const roleDocRef = doc(db, 'roles', userData.role);
+    const permissionsQuery = query(collection(db, 'roles-accesos2'), where('role_id', '==', userData.role));
 
-        const menuSnapshot = await getDocs(query(collection(db, 'menu'), orderBy('orden')));
-        const fullMenuList = menuSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const unsubscribeMenu = onSnapshot(menuQuery, (menuSnapshot) => {
+      const unsubscribeRole = onSnapshot(roleDocRef, (roleDoc) => {
+        const unsubscribePermissions = onSnapshot(permissionsQuery, (permissionsSnapshot) => {
+          setError(null);
+          try {
+            const fullMenuList = menuSnapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+            const allMenusById = Object.fromEntries(fullMenuList.map(item => [item.id, item]));
 
-        const userMenu = new Set();
-        fullMenuList.forEach(item => {
-          if (allowedMenuIds.includes(item.id)) {
-            userMenu.add(item);
-            let parentId = item.padre_id;
-            while(parentId) {
-              const parent = fullMenuList.find(p => p.id === parentId);
-              if (parent) { userMenu.add(parent); parentId = parent.padre_id; } else { break; }
+            const inactiveIds = new Set();
+            const disableChildrenOf = (parentId) => {
+              fullMenuList.forEach(item => {
+                if (item.id_padre === parentId) {
+                  inactiveIds.add(item.id);
+                  disableChildrenOf(item.id);
+                }
+              });
+            };
+            fullMenuList.forEach(item => {
+              if (item.estado === 'inactivo') {
+                inactiveIds.add(item.id);
+                disableChildrenOf(item.id);
+              }
+            });
+            const activeMenuList = fullMenuList.filter(item => !inactiveIds.has(item.id));
+
+            if (!roleDoc.exists() || roleDoc.data().estado !== 'activo') {
+              throw new Error(`Tu rol "${userData.role}" está inactivo o no existe.`);
             }
+            
+            const allowedMenuIds = new Set(permissionsSnapshot.docs
+              .filter(doc => doc.data().on_off === true)
+              .map(doc => String(doc.data().menu_id))
+            );
+
+            if (allowedMenuIds.size === 0) throw new Error(`No tienes permisos de acceso definidos.`);
+
+            const userMenu = new Set();
+            activeMenuList.forEach(item => {
+              if (allowedMenuIds.has(String(item.id))) {
+                userMenu.add(item);
+                let parentId = item.id_padre;
+                while (parentId) {
+                  const parent = allMenusById[String(parentId)];
+                  if (parent && !inactiveIds.has(parent.id)) {
+                    userMenu.add(parent);
+                    parentId = parent.id_padre;
+                  } else {
+                    break;
+                  }
+                }
+              }
+            });
+            
+            setMenuItems(Array.from(userMenu));
+
+          } catch (e) {
+            setError(e.message);
+            setMenuItems([]);
+          } finally {
+            setLoading(false);
           }
-        });
+        }, (err) => { setError("Error de permisos: " + err.message); setLoading(false); });
 
-        const finalMenu = Array.from(userMenu);
-        setMenuItems(finalMenu);
+        return () => unsubscribePermissions();
+      }, (err) => { setError("Error de rol: " + err.message); setLoading(false); });
 
-        const currentPath = location.pathname.substring(1);
-        const activeItem = finalMenu.find(item => item.ruta === currentPath);
-        if (activeItem && activeItem.padre_id) {
-          setOpenMenus({ [activeItem.padre_id]: true });
-        }
+      return () => unsubscribeRole();
+    }, (err) => { setError("Error de menú: " + err.message); setLoading(false); });
 
-      } catch (e) {
-        console.error("Error al cargar menú:", e);
-        setError(e.message);
-      } finally {
-        setLoading(false);
-      }
+    return () => {
+      unsubscribeMenu();
     };
-
-    fetchMenuAndPermissions();
   }, [userData]);
 
-  // FUNCIÓN DE ACORDEÓN MEJORADA
+  // *** FUNCIÓN MODIFICADA PARA COMPORTAMIENTO DE ACORDEÓN ***
   const toggleMenu = (id) => {
     setOpenMenus(prevOpenMenus => {
-      const isCurrentlyOpen = !!prevOpenMenus[id];
-      // Si el menú clickeado ya está abierto, ciérralo (estado vacío).
-      // Si está cerrado, ciérra todos los demás y abre solo este.
+      // Comprueba si el menú que se está clickeando ya está abierto.
+      const isCurrentlyOpen = prevOpenMenus[id];
+      
+      // Devuelve un objeto vacío si ya está abierto (para cerrarlo),
+      // o un objeto con solo este ID si estaba cerrado (para abrirlo y cerrar los demás).
       return isCurrentlyOpen ? {} : { [id]: true };
     });
   };
 
-  const topLevelItems = menuItems.filter(item => !item.padre_id || item.padre_id === "").sort((a, b) => a.orden - b.orden);
+  const topLevelItems = menuItems.filter(item => !item.id_padre).sort((a, b) => a.Orden - b.Orden);
 
   return (
     <div className="sidebar">
@@ -179,25 +165,18 @@ const Sidebar = () => {
       </div>
       <nav className="sidebar-nav">
         <ul>
-          {loading ? (
-            <li className="menu-feedback">Cargando menú...</li>
-          ) : error ? (
-            <li className="menu-feedback error">{error}</li>
-          ) : topLevelItems.length > 0 ? (
-            topLevelItems.map(item => (
-              <MenuItem key={item.id} item={item} allItems={menuItems} openMenus={openMenus} toggleMenu={toggleMenu} />
-            ))
-          ) : (
-            <li className="menu-feedback">No tienes acceso a ninguna opción.</li>
-          )}
+          {loading ? <li className="menu-feedback">Cargando menú...</li>
+           : error ? <li className="menu-feedback error">{error}</li>
+           : topLevelItems.length > 0 ? topLevelItems.map(item => <MenuItem key={item.id} item={item} allItems={menuItems} openMenus={openMenus} toggleMenu={toggleMenu} />)
+           : <li className="menu-feedback">Sin opciones de menú.</li>}
         </ul>
         <ul className="sidebar-footer">
            <li onClick={handleLogout} className="logout-item">
-              <div className="menu-item-content">
-                 <DynamicIcon name="IoLogOutOutline" />
-                <span className="menu-label">Cerrar Sesión</span>
-              </div>
-          </li>
+             <div className="menu-item-content">
+               <DynamicIcon name="IoLogOutOutline" />
+               <span className="menu-label">Cerrar Sesión</span>
+             </div>
+           </li>
         </ul>
       </nav>
     </div>

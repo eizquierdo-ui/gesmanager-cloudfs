@@ -188,7 +188,7 @@ Se migra de un monolito (Laravel) a una arquitectura serverless, donde React asu
     *   **Resultado Esperado:** La cotización ya creada debe mantener los precios y descripciones originales (el `snapshot`) y no verse afectada por el cambio en el catálogo.
 
 ---
-## Anexo: Estructura de Menú Inmutable
+## Anexo: Estructura de Menú base puede sufrir modificacion en el tiempo del proyecto
 
 | Nivel Raíz | Sub-opción (Módulo) | Acción / Vista Relacionada |
 | :--- | :--- | :--- |
