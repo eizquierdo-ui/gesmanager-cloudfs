@@ -9,14 +9,9 @@ import {
 import { format } from 'date-fns';
 import es from 'date-fns/locale/es';
 
-// --- Hooks y Contextos ---
-import { useAuth } from '../../contexts/AuthContext';
-import { useAppContext } from '../../contexts/AppContext';
-
 // --- Servicios ---
 import { getAllTiposCambio, createTipoCambio, updateTipoCambio, deleteTipoCambio, setTipoCambioStatus } from '../../services/firestore/tipoCambioService';
 import { getAllMonedas } from '../../services/firestore/monedasService';
-import { updateSession } from '../../services/sessionService'; // ¡Importamos el servicio de sesión!
 
 // --- Íconos ---
 import SearchIcon from '@mui/icons-material/Search';
@@ -26,9 +21,6 @@ import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'; // Icono para no seleccionado
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // Icono para seleccionado
-
 
 // --- Componentes ---
 import TipoCambioForm from '../../components/forms/TipoCambioForm';
@@ -55,27 +47,21 @@ const TipoCambioPage = () => {
   const [currentItem, setCurrentItem] = useState(null);
   const navigate = useNavigate();
 
-  // --- Hooks para obtener el contexto ---
-  const { currentUser } = useAuth();
-  const { sessionData } = useAppContext();
-
   const monedasMap = useMemo(() => 
     monedas.reduce((acc, m) => { acc[m.id] = m; return acc; }, {}), 
   [monedas]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const [tiposCambioData, monedasData] = await Promise.all([ getAllTiposCambio(), getAllMonedas() ]);
-        setTiposCambio(tiposCambioData);
-        setMonedas(monedasData); 
-      } catch (error) { console.error("Error al cargar datos iniciales:", error); }
-      setLoading(false);
-    };
-    
-    fetchData();
-  }, []);
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const [tiposCambioData, monedasData] = await Promise.all([ getAllTiposCambio(), getAllMonedas() ]);
+      setTiposCambio(tiposCambioData);
+      setMonedas(monedasData); 
+    } catch (error) { console.error("Error al cargar datos iniciales:", error); }
+    setLoading(false);
+  };
+
+  useEffect(() => { fetchData(); }, []);
 
   const filteredData = useMemo(() => 
     tiposCambio.filter(item => {
@@ -88,57 +74,19 @@ const TipoCambioPage = () => {
     }), 
   [tiposCambio, searchTerm, monedasMap]);
 
-  // --- LÓGICA DE SELECCIÓN DE SESIÓN ---
-  const handleSelect = async (item) => {
-    if (!currentUser) return; // Guardia de seguridad
-
-    // Comprobar si el item actual ya está seleccionado
-    if (sessionData?.tipoCambioId === item.id) {
-      // Si ya está seleccionado, deseleccionar (limpiar los campos)
-      await updateSession(currentUser.uid, {
-        tipoCambioId: null,
-        infoTipoCambio: null,
-      });
-    } else {
-      // Si se selecciona un nuevo item
-      const base = monedasMap[item.moneda_base_id];
-      const dest = monedasMap[item.moneda_destino_id];
-      const infoString = `Fecha ${format(item.fecha.toDate(), 'dd/MM/yyyy')} - ${base.codigo}-${dest.codigo} Tc: ${formatNumber(item.tasa_compra)} Tv: ${formatNumber(item.tasa_venta)}`;
-      
-      await updateSession(currentUser.uid, { 
-        tipoCambioId: item.id,
-        infoTipoCambio: infoString,
-      });
-    }
-  };
-
-  const formatNumber = (value) => {
-    if (typeof value !== 'number') return '0.0000';
-    return new Intl.NumberFormat('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4, useGrouping: false }).format(value);
-  };
-
-  const refreshData = async () => {
-    setLoading(true);
-    try {
-      const tiposCambioData = await getAllTiposCambio();
-      setTiposCambio(tiposCambioData);
-    } catch (error) {
-      console.error("Error al recargar tipos de cambio:", error);
-    }
-    setLoading(false);
-  };
-
   const handleDelete = async (id) => {
     if (window.confirm('¿Seguro que deseas eliminar este tipo de cambio?')) {
       await deleteTipoCambio(id);
-      refreshData();
+      fetchData();
     }
-  }; 
+  };
+  
   const handleToggleEstado = async (item) => {
     const nuevoEstado = item.estado === 'activo' ? 'inactivo' : 'activo';
     await setTipoCambioStatus(item.id, nuevoEstado);
-    refreshData();
-  }; 
+    fetchData();
+  };
+  
   const handleOpenModal = (item = null) => { setCurrentItem(item); setOpenModal(true); };
   const handleCloseModal = () => { setOpenModal(false); setCurrentItem(null); };
 
@@ -146,11 +94,20 @@ const TipoCambioPage = () => {
     try {
       if (currentItem) { await updateTipoCambio(currentItem.id, values); }
       else { await createTipoCambio(values); }
-      refreshData();
+      fetchData();
       handleCloseModal();
     } catch (error) { console.error("Error al guardar el tipo de cambio:", error); }
-  }; 
+  };
   
+  // --- FUNCIÓN DE FORMATO CORREGIDA ---
+  const formatNumber = (value) => {
+      if (typeof value !== 'number') return '0.0000';
+      return new Intl.NumberFormat('en-US', { 
+          minimumFractionDigits: 4, 
+          maximumFractionDigits: 4, 
+          useGrouping: false 
+      }).format(value);
+  };
 
   return (
     <Box sx={{ width: '100%', p: 3 }}>
@@ -168,8 +125,6 @@ const TipoCambioPage = () => {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                {/* --- NUEVA COLUMNA DE SELECCIÓN --- */}
-                <TableCell align="center" style={{ width: '50px' }}>Seleccionar</TableCell> 
                 <TableCell>Fecha</TableCell>
                 <TableCell>Moneda Origen</TableCell>
                 <TableCell>Moneda Destino</TableCell>
@@ -180,35 +135,23 @@ const TipoCambioPage = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {loading ? <TableRow><TableCell colSpan={8} align="center"><CircularProgress /></TableCell></TableRow> :
-              filteredData.map((item) => {
-                // --- LÓGICA DE ESTILO CONDICIONAL ---
-                const isSelected = sessionData?.tipoCambioId === item.id;
-                return (
-                  <TableRow hover key={item.id} selected={isSelected}>
-                    {/* --- NUEVA CELDA CON EL BOTÓN --- */}
-                    <TableCell align="center">
-                      <Tooltip title={isSelected ? 'Deseleccionar' : 'Seleccionar'}>
-                        <IconButton size="small" onClick={() => handleSelect(item)}>
-                          {isSelected ? <CheckCircleIcon color="success" /> : <CheckCircleOutlineIcon color="action" />}
-                        </IconButton>
-                      </Tooltip>
-                    </TableCell>
-
-                    <TableCell>{item.fecha ? format(item.fecha.toDate(), 'dd/MM/yyyy', { locale: es }) : 'N/A'}</TableCell>
-                    <TableCell>{monedasMap[item.moneda_base_id]?.moneda || 'N/A'}</TableCell>
-                    <TableCell>{monedasMap[item.moneda_destino_id]?.moneda || 'N/A'}</TableCell>
-                    <TableCell align="right">{formatNumber(item.tasa_compra)}</TableCell>
-                    <TableCell align="right">{formatNumber(item.tasa_venta)}</TableCell>
-                    <TableCell><Chip label={item.estado} color={item.estado === 'activo' ? 'success' : 'error'} size="small" /></TableCell>
-                    <TableCell align="center">
-                      <Tooltip title={item.estado === 'activo' ? 'Inactivar' : 'Activar'}><IconButton size="small" onClick={() => handleToggleEstado(item)}>{item.estado === 'activo' ? <ToggleOnIcon color="success" /> : <ToggleOffIcon color="error"/>}</IconButton></Tooltip>
-                      <Tooltip title="Editar"><IconButton size="small" color="primary" onClick={() => handleOpenModal(item)}><EditTwoToneIcon /></IconButton></Tooltip>
-                      <Tooltip title="Eliminar"><IconButton size="small" color="error" onClick={() => handleDelete(item.id)}><DeleteForeverTwoToneIcon /></IconButton></Tooltip>
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
+              {loading ? <TableRow><TableCell colSpan={7} align="center"><CircularProgress /></TableCell></TableRow> :
+              filteredData.map((item) => (
+                <TableRow hover key={item.id}>
+                  <TableCell>{item.fecha ? format(item.fecha.toDate(), 'dd/MM/yyyy', { locale: es }) : 'N/A'}</TableCell>
+                  <TableCell>{monedasMap[item.moneda_base_id]?.moneda || 'N/A'}</TableCell>
+                  <TableCell>{monedasMap[item.moneda_destino_id]?.moneda || 'N/A'}</TableCell>
+                  {/* --- VALORES CON FORMATO CORREGIDO --- */}
+                  <TableCell align="right">{formatNumber(item.tasa_compra)}</TableCell>
+                  <TableCell align="right">{formatNumber(item.tasa_venta)}</TableCell>
+                  <TableCell><Chip label={item.estado} color={item.estado === 'activo' ? 'success' : 'error'} size="small" /></TableCell>
+                  <TableCell align="center">
+                    <Tooltip title={item.estado === 'activo' ? 'Inactivar' : 'Activar'}><IconButton size="small" onClick={() => handleToggleEstado(item)}>{item.estado === 'activo' ? <ToggleOnIcon color="success" /> : <ToggleOffIcon color="error"/>}</IconButton></Tooltip>
+                    <Tooltip title="Editar"><IconButton size="small" color="primary" onClick={() => handleOpenModal(item)}><EditTwoToneIcon /></IconButton></Tooltip>
+                    <Tooltip title="Eliminar"><IconButton size="small" color="error" onClick={() => handleDelete(item.id)}><DeleteForeverTwoToneIcon /></IconButton></Tooltip>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>

@@ -1,38 +1,19 @@
 # Blueprint del Proyecto: GESManager-CloudFS
 
-*Última Actualización: Inicio de la Sesión X.*
+*Última Actualización: Inicio de la Sesión 13.*
 
 ## 1. Instrucciones de que debes hacer
 
-1.1 revisar los documentos en este orde:
+1.1 Revisar los siguientes documentos en orden:
+    Carpeta raiz:  package.json
     Carpeta: documentacion: 
-    analisis-arquitectura.md
-    Carpeta: documentacion/sesiones
-    S3-resumen.md
-    S4-resumen.md
-    S5-resumen.md
-    S6-resumen.md
-    Carpteta: documentacion
-    pla-de-ejecucion-GESManager-CloudFS.md
+    informe-consolidado.md
 
-1.2 Debes recordar que ya se configuron un batch para desplegar:  desplieque.sh
+1.2 Debes recordar que ya se configuron un batch para desplegar el proyecto:  directorio raiz desplieque.sh
     
-    *Última Actualización: Inicio de la Sesión 6.*
+    *Última Actualización: Inicio de la Sesión 13 super mega desastre.*
+
+1.3 Lo que vamos a trabajar hoy esta en el documento que acabas de analizar informe-consolidado.md a partir del inciso: ## 5. Plan para la Próxima Sesión (S14) debes analizarlo y vamos a discutir el plan para ver si estamos en la misma sintonia.
 
 ---
-
-## 1. Descripción General y Arquitectura
-
-Este proyecto, **GESManager-CloudFS**, representa la evolución de un sistema monolítico (GESManager con Laravel) hacia una **arquitectura serverless moderna y desacoplada**.
-
-*   **Frontend:** React con Vite.
-*   **Backend & Base de Datos:** Cloud Firestore.
-*   **Autenticación:** Firebase Authentication.
-*   **Hosting:** Firebase Hosting.
-
----
-
-## 2. Historial de Cambios en Datos (Firestore)
-
-*Esta sección sirve como un registro cronológico de todas las operaciones de poblado inicial (seeding), migraciones y limpieza de datos realizadas en la base de datos a lo largo del proyecto, garantizando la trazabilidad de la estructura.*
 
