@@ -5,17 +5,21 @@
 ## 1. Instrucciones de que debes hacer
 
 1.1 revisar los documentos en este orde:
+    Carpeta raiz:  package.json
+
     Carpeta: documentacion: 
     analisis-arquitectura.md
+    
     Carpeta: documentacion/sesiones
-    DEL S3-resumen.md, S4-resumen.md, S5-resumen.md, S6-resumen.md, S7-resumen.md, S8-resumen.md y S9-resumen.md, S10-resumen.md, S11-resumen.md
+    DEL S3-resumen.md, S4-resumen.md, S5-resumen.md, S6-resumen.md, S7-resumen.md, S8-resumen.md, S9-resumen.md, S10-resumen.md, S11-resumen.md, S12-resumen.md, S13-resumen.md, condolidado.md
+    
     Carpeta: documentacion:
     plantilla-crud.md (debes entener correctamente la secuencia de pasos que debes seguir para crear las nuevas opciones de los cruds o seleccion de registros)
 
     
 1.2 Debes recordar que ya se configuron un batch para desplegar:  desplieque.sh
     
-    *Última Actualización: Inicio de la Sesión 8.*
+    *Última Actualización: Inicio de la Sesión 13.*
 
 ---
 
