@@ -1,0 +1,332 @@
+
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  Box, Paper, Toolbar, Typography, TextField, InputAdornment,
+  Button, Table, TableBody, TableCell, TableContainer, TableHead,
+  TableRow, IconButton, Tooltip, CircularProgress, Modal, Fade, Backdrop, Chip,
+  Container, Alert, AlertTitle, Select, MenuItem, FormControl, InputLabel
+} from '@mui/material';
+import PriceChangeIcon from '@mui/icons-material/PriceChange';
+// --- Contextos ---
+import { useAppContext } from '../../contexts/AppContext';
+import { useAuth } from '../../contexts/AuthContext';
+// --- Servicios de Firestore ---
+import { getAllCategorias } from '../../services/firestore/categoriasService';
+import { 
+  getServiciosByCategoria, 
+  createServicio,
+  updateServicio,
+  setServicioStatus, 
+  deleteServicio 
+} from '../../services/firestore/serviciosService';
+// --- Componentes y Formularios ---
+import ServicioForm from '../../components/forms/ServicioForm';
+// --- Iconos ---
+import SearchIcon from '@mui/icons-material/Search';
+import AddIcon from '@mui/icons-material/Add';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
+import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+import ToggleOffIcon from '@mui/icons-material/ToggleOff';
+
+// --- Estilo del Modal ---
+const style = {
+  modal: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '90%',
+    maxWidth: '700px',
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: 2,
+  },
+};
+
+const ServiciosPage = () => {
+  const [categorias, setCategorias] = useState([]);
+  const [selectedCategoria, setSelectedCategoria] = useState('');
+  const [servicios, setServicios] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [openModal, setOpenModal] = useState(false);
+  const [currentServicio, setCurrentServicio] = useState(null);
+  const navigate = useNavigate();
+  const { sessionData: app, loadingSession } = useAppContext();
+  const { currentUser: user } = useAuth();
+
+  const fetchCategorias = useCallback(async () => {
+    if (!app?.empresaId || !user) return;
+    try {
+      const categoriasList = await getAllCategorias(app.empresaId);
+      setCategorias(categoriasList);
+    } catch (error) {
+      console.error("Error al obtener las categorías:", error);
+    }
+  }, [app, user]);
+  
+  const fetchServicios = useCallback(async () => {
+    if (!app?.empresaId || !user || !selectedCategoria) return;
+    try {
+      setLoading(true);
+      const serviciosList = await getServiciosByCategoria(app.empresaId, selectedCategoria);
+      setServicios(serviciosList);
+    } catch (error) {
+      console.error("Error al obtener los servicios:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, [app, user, selectedCategoria]);
+
+  useEffect(() => {
+    if (!loadingSession) {
+        fetchCategorias();
+    }
+  }, [fetchCategorias, loadingSession]);
+
+  useEffect(() => {
+    if (selectedCategoria) {
+      fetchServicios();
+    } else {
+      setServicios([]); // Limpiar servicios si no hay categoría seleccionada
+    }
+  }, [selectedCategoria, fetchServicios]);
+
+  const filteredServicios = useMemo(() =>
+    servicios.filter(srv =>
+      srv.nombre_servicio.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (srv.detalle_queincluyeservicio && srv.detalle_queincluyeservicio.toLowerCase().includes(searchTerm.toLowerCase()))
+    ), [servicios, searchTerm]);
+
+  const handleSetEstado = async (servicio) => {
+    const nuevoEstado = servicio.estado === 'activo' ? 'inactivo' : 'activo';
+    if (window.confirm(`¿Deseas cambiar el estado a "${nuevoEstado}"?`)) {
+      try {
+        await setServicioStatus(servicio.id, nuevoEstado, user.uid);
+        fetchServicios();
+      } catch (error) {
+        console.error("Error al cambiar el estado del servicio:", error);
+      }
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm('¿Estás seguro de que deseas eliminar este servicio? Esta acción es irreversible.')) {
+      try {
+        await deleteServicio(id);
+        fetchServicios();
+      } catch (error) {
+        console.error("Error al eliminar el servicio:", error);
+      }
+    }
+  };
+
+  const handleOpenModal = (servicio = null) => {
+    setCurrentServicio(servicio);
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setCurrentServicio(null);
+  };
+
+  const handleFormSubmit = async (values) => {
+    if (!app?.empresaId || !user || !selectedCategoria) {
+      console.error("Faltan datos clave para guardar el servicio.");
+      return;
+    }
+    try {
+      const data = {
+        ...values,
+        empresa_id: app.empresaId,
+        categoria_id: selectedCategoria
+      };
+
+      if (currentServicio) {
+        await updateServicio(currentServicio.id, data, user.uid);
+      } else {
+        await createServicio(data, user.uid);
+      }
+      fetchServicios();
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error al guardar el servicio:", error);
+    }
+  };
+
+  if (loadingSession) {
+    return <Container sx={{ p: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}><CircularProgress /></Container>;
+  }
+
+  if (!app?.empresaId) {
+    return (
+      <Container sx={{ p: 3 }}>
+        <Alert severity="error" variant="outlined">
+          <AlertTitle sx={{ fontWeight: 'bold' }}>Acceso Bloqueado</AlertTitle>
+          Para gestionar servicios, primero debe seleccionar una empresa.
+          <br /><br />
+          <Button variant="contained" color="primary" onClick={() => navigate('/inicializar/empresa')}>Ir a Inicializar Empresa</Button>
+        </Alert>
+      </Container>
+    );
+  }
+
+  return (
+    <Box sx={{ width: '100%' }}>
+      <Paper sx={{ width: '100%', mb: 2, overflow: 'hidden' }}>
+        <Toolbar>
+            <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
+                Mantenimiento de Servicios
+            </Typography>
+
+            {selectedCategoria && (
+                 <Button 
+                    variant="contained" 
+                    startIcon={<PriceChangeIcon />} 
+                    disabled 
+                    sx={{
+                        ml: 5,
+                        whiteSpace: 'nowrap',
+                        '&.Mui-disabled': {
+                            background: '#ffc107', // amarillo
+                            color: '#d32f2f',      // rojo
+                            fontWeight: 'bold'
+                        }
+                    }}>
+                    Actualizar Precio
+                </Button>
+            )}
+
+            <Box sx={{ flexGrow: 1 }} />
+
+            <FormControl size="small" sx={{ mr: 2, minWidth: 220 }}>
+                <InputLabel id="categoria-select-label">Categoría</InputLabel>
+                <Select
+                labelId="categoria-select-label"
+                value={selectedCategoria}
+                label="Categoría"
+                onChange={(e) => setSelectedCategoria(e.target.value)}
+                >
+                <MenuItem value="">
+                    <em>-- Seleccione --</em>
+                </MenuItem>
+                {categorias.map((cat) => (
+                    <MenuItem key={cat.id} value={cat.id}>{cat.nombre_categoria}</MenuItem>
+                ))}
+                </Select>
+            </FormControl>
+
+            {selectedCategoria && (
+                <>
+                    <TextField
+                        variant="outlined"
+                        size="small"
+                        label="Servicio"
+                        placeholder="Buscar por nombre..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start"><SearchIcon /></InputAdornment>,
+                        }}
+                        sx={{ mr: 2, width: '300px' }}
+                    />
+                    <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenModal()} sx={{ mr: 2 }}>
+                        Nuevo
+                    </Button>
+                </>
+            )}
+
+            <Button variant="contained" color="error" startIcon={<ExitToAppIcon />} onClick={() => navigate('/')}>
+                Salir
+            </Button>
+        </Toolbar>
+
+        <TableContainer sx={{ maxHeight: 'calc(100vh - 200px)', overflowX: 'auto' }}>
+          <Table stickyHeader size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ fontWeight: 'bold' }}>Nombre</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Detalle Incluye</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Costo</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Precio Base</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Tasa Ganancia</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>ITP</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Estado</TableCell>
+                <TableCell align="right" sx={{ fontWeight: 'bold' }}>Acciones</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {loading ? (
+                <TableRow><TableCell colSpan={8} align="center"><CircularProgress /></TableCell></TableRow>
+              ) : filteredServicios.map((srv) => (
+                <TableRow hover key={srv.id}>
+                  <TableCell>{srv.nombre_servicio}</TableCell>
+                  <TableCell>{srv.detalle_queincluyeservicio}</TableCell>
+                  <TableCell>{srv.precios_calculados?.costo_total_base?.toFixed(2) || '0.00'}</TableCell>
+                  <TableCell>{srv.precios_calculados?.precio_venta_base?.toFixed(2) || '0.00'}</TableCell>
+                  <TableCell>{(srv.precios_calculados?.tasa_ganancia || 0).toFixed(2)}%</TableCell>
+                  <TableCell>
+                    <Chip label={srv.itp ? 'Sí' : 'No'} size="small" color={srv.itp ? 'primary' : 'default'} />
+                  </TableCell>
+                  <TableCell>
+                    <Chip
+                      label={srv.estado.charAt(0).toUpperCase() + srv.estado.slice(1)}
+                      color={srv.estado === 'activo' ? 'success' : 'error'}
+                      size="small"
+                      sx={{ fontWeight: 'bold' }}
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <Tooltip title={srv.estado === 'activo' ? 'Inactivar' : 'Activar'}>
+                      <IconButton onClick={() => handleSetEstado(srv)} size="small">
+                        {srv.estado === 'activo' ? <ToggleOnIcon color="success" /> : <ToggleOffIcon color="error" />}
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Editar">
+                      <IconButton onClick={() => handleOpenModal(srv)} size="small">
+                        <EditTwoToneIcon color="primary" />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Eliminar">
+                      <IconButton onClick={() => handleDelete(srv.id)} size="small">
+                        <DeleteForeverTwoToneIcon color="error" />
+                      </IconButton>
+                    </Tooltip>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
+
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{ backdrop: { timeout: 500 }}}
+      >
+        <Fade in={openModal}>
+          <Box sx={style.modal}>
+            <Typography variant="h5" component="h2" sx={{mb: 3, fontWeight: 'bold'}}>
+              {currentServicio ? 'Editar Servicio' : 'Crear Nuevo Servicio'}
+            </Typography>
+            <ServicioForm 
+              initialData={currentServicio}
+              onSubmit={handleFormSubmit}
+              onCancel={handleCloseModal}
+            />
+          </Box>
+        </Fade>
+      </Modal>
+    </Box>
+  );
+};
+
+export default ServiciosPage;
