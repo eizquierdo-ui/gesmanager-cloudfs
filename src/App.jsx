@@ -15,7 +15,8 @@ const UsuariosXEmpresaPage = lazy(() => import('./pages/accesos/UsuariosXEmpresa
 const MenuPage = lazy(() => import('./pages/crear-menu/MenuPage.jsx'));
 const RolesAccesosPage = lazy(() => import('./pages/crear-menu/RolesAccesosPage.jsx'));
 const MonedasPage = lazy(() => import('./pages/inicializar/MonedasPage.jsx')); 
-const TipoCambioPage = lazy(() => import('./pages/inicializar/TipoCambioPage.jsx')); // <-- CORREGIDO
+const TipoCambioPage = lazy(() => import('./pages/inicializar/TipoCambioPage.jsx')); 
+const InicializarEmpresasPage = lazy(() => import('./pages/inicializar/InicializarEmpresasPage.jsx')); // <-- NUEVA PÁGINA
 
 // --- Componentes de Control de Rutas ---
 
@@ -66,6 +67,7 @@ function App() {
           <Route path="crear-menu/roles" element={<RolesAccesosPage />} />
           <Route path="inicializar/monedas" element={<MonedasPage />} />
           <Route path="inicializar/tipo-cambio" element={<TipoCambioPage />} />
+          <Route path="inicializar/empresa" element={<InicializarEmpresasPage />} /> {/* <-- NUEVA RUTA */}
         </Route>
         
         {/* 3. Ruta de Captura: Para cualquier URL no encontrada */}

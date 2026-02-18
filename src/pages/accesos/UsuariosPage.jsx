@@ -9,7 +9,7 @@ import {
   updateUsuario,
   deleteUsuario // Importar la función para eliminar
 } from '../../services/usuariosService';
-import UsuarioForm from './UsuarioForm';
+import UsuarioForm from '../../components/forms/UsuarioForm';
 import { 
   Box, 
   Typography, 
@@ -29,7 +29,6 @@ import {
   Tooltip
 } from '@mui/material';
 import { Edit, Search, Add, ExitToApp, Delete, PowerSettingsNew } from '@mui/icons-material';
-import { useAuth } from '../../contexts/AuthContext';
 
 const UsuariosPage = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -213,6 +212,7 @@ const UsuariosPage = () => {
       )}
 
       <UsuarioForm 
+        key={currentUser ? currentUser.id : 'new-user'}
         open={isModalOpen}
         onClose={handleCloseModal}
         onSave={handleSave}

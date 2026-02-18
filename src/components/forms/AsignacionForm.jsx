@@ -1,25 +1,21 @@
 // src/components/forms/AsignacionForm.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Dialog, DialogTitle, DialogContent, DialogActions, Button, 
-  FormControl, InputLabel, Select, MenuItem, Box, Typography, Divider // Cambiado Grid por Box
+  FormControl, InputLabel, Select, MenuItem, Box, Typography, Divider
 } from '@mui/material';
 
 const AsignacionForm = ({ open, onClose, onSave, initialData, usuarios, empresas }) => {
-  const [formData, setFormData] = useState({ usuario_id: '', empresa_id: '', estado: 'activo' });
+  const [formData, setFormData] = useState(
+    initialData 
+      ? { 
+          usuario_id: initialData.usuario_id || '',
+          empresa_id: initialData.empresa_id || '',
+          estado: initialData.estado || 'activo'
+        }
+      : { usuario_id: '', empresa_id: '', estado: 'activo' }
+  );
   const isEditing = Boolean(initialData);
-
-  useEffect(() => {
-    if (isEditing && initialData) {
-      setFormData({
-        usuario_id: initialData.usuario_id || '',
-        empresa_id: initialData.empresa_id || '',
-        estado: initialData.estado || 'activo'
-      });
-    } else {
-      setFormData({ usuario_id: '', empresa_id: '', estado: 'activo' });
-    }
-  }, [initialData, isEditing, open]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,18 +27,13 @@ const AsignacionForm = ({ open, onClose, onSave, initialData, usuarios, empresas
   };
 
   return (
-    // Se mantiene la estructura del Dialog
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle>
         <Typography variant="h6" component="div">{isEditing ? 'Editar Asignación' : 'Crear Nueva Asignación'}</Typography>
       </DialogTitle>
       <Divider />
       <DialogContent>
-
-        {/* --- SE REEMPLAZA Grid POR EL PATRÓN DE Box --- */}
         <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
-
-          {/* Campo Usuario con 33.33% de ancho */}
           <Box sx={{ width: '33.33%' }}>
             <FormControl fullWidth>
               <InputLabel id="usuario-select-label">Usuario</InputLabel>
@@ -52,7 +43,6 @@ const AsignacionForm = ({ open, onClose, onSave, initialData, usuarios, empresas
                   value={formData.usuario_id}
                   label="Usuario"
                   onChange={handleChange}
-                  // Se deshabilita solo en edición para los campos clave
                   disabled={isEditing}
               >
                   <MenuItem value="" disabled><em>Seleccione</em></MenuItem>
@@ -64,8 +54,6 @@ const AsignacionForm = ({ open, onClose, onSave, initialData, usuarios, empresas
               </Select>
             </FormControl>
           </Box>
-
-          {/* Campo Empresa con 33.33% de ancho */}
           <Box sx={{ width: '33.33%' }}>
             <FormControl fullWidth>
               <InputLabel id="empresa-select-label">Empresa</InputLabel>
@@ -75,7 +63,6 @@ const AsignacionForm = ({ open, onClose, onSave, initialData, usuarios, empresas
                   value={formData.empresa_id}
                   label="Empresa"
                   onChange={handleChange}
-                  // Se deshabilita solo en edición para los campos clave
                   disabled={isEditing}
               >
                   <MenuItem value="" disabled><em>Seleccione</em></MenuItem>
@@ -85,8 +72,6 @@ const AsignacionForm = ({ open, onClose, onSave, initialData, usuarios, empresas
               </Select>
             </FormControl>
           </Box>
-
-          {/* Campo Estado con 33.33% de ancho */}
           <Box sx={{ width: '33.33%' }}>
             <FormControl fullWidth>
               <InputLabel id="estado-select-label">Estado</InputLabel>
@@ -102,10 +87,7 @@ const AsignacionForm = ({ open, onClose, onSave, initialData, usuarios, empresas
               </Select>
             </FormControl>
           </Box>
-
         </Box>
-        {/* --- FIN DEL CAMBIO --- */}
-
       </DialogContent>
       <Divider />
       <DialogActions sx={{ p: '16px 24px' }}>

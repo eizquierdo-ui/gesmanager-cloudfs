@@ -22,7 +22,6 @@ const UsuariosXEmpresaPage = () => {
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  // 1. AÑADIR ESTADO PARA EL FILTRO DE BÚSQUEDA
   const [filtro, setFiltro] = useState('');
 
   const currentUser = { uid: 'test-user-id' };
@@ -51,7 +50,6 @@ const UsuariosXEmpresaPage = () => {
     fetchData();
   }, [fetchData]);
 
-  // 3. MODIFICAR useMemo PARA INCLUIR LA LÓGICA DE FILTRADO
   const asignacionesFiltradas = useMemo(() => {
     if (loading) return [];
     
@@ -96,6 +94,7 @@ const UsuariosXEmpresaPage = () => {
       }
       fetchData();
       handleCloseModal();
+    // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setError('Error al guardar la asignación.');
     }
@@ -107,6 +106,7 @@ const UsuariosXEmpresaPage = () => {
       try {
         await updateAsignacion(id, { estado: nuevoEstado }, currentUser.uid);
         fetchData();
+      // eslint-disable-next-line no-unused-vars
       } catch (err) {
         setError('Error al actualizar el estado.');
       }
@@ -118,6 +118,7 @@ const UsuariosXEmpresaPage = () => {
       try {
         await deleteAsignacion(id);
         fetchData();
+      // eslint-disable-next-line no-unused-vars
       } catch (err) {
         setError('Error al eliminar la asignación.');
       }
@@ -132,7 +133,6 @@ const UsuariosXEmpresaPage = () => {
             Mantenimiento de Asignaciones (Usuarios x Empresa)
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            {/* 2. CONECTAR EL TEXTFIELD AL ESTADO */}
             <TextField 
               variant="outlined" 
               size="small" 
@@ -166,7 +166,6 @@ const UsuariosXEmpresaPage = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {/* USAR LA LISTA FILTRADA PARA RENDERIZAR */}
               {asignacionesFiltradas.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell>{item.nombre_usuario}</TableCell>
@@ -201,14 +200,17 @@ const UsuariosXEmpresaPage = () => {
         </TableContainer>
       )}
 
-      <AsignacionForm 
-        open={isModalOpen}
-        onClose={handleCloseModal}
-        onSave={handleSave}
-        initialData={editingItem}
-        empresas={empresas}
-        usuarios={usuarios}
-      />
+      {isModalOpen && (
+        <AsignacionForm 
+          key={editingItem ? editingItem.id : 'new'}
+          open={isModalOpen}
+          onClose={handleCloseModal}
+          onSave={handleSave}
+          initialData={editingItem}
+          empresas={empresas}
+          usuarios={usuarios}
+        />
+      )}
     </Box>
   );
 };

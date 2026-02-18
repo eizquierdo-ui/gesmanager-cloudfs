@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { 
   Box, Paper, Toolbar, Typography, TextField, InputAdornment, 
   Button, Table, TableBody, TableCell, TableContainer, TableHead, 
-  TableRow, IconButton, Tooltip, CircularProgress, Modal, Fade, Backdrop, Chip
+  TableRow, IconButton, Tooltip, CircularProgress, Modal, Fade, Chip, Alert
 } from '@mui/material';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -56,14 +56,27 @@ const RolesPage = () => {
       setRoles(rolesData);
       setError(null);
     } catch (err) {
-      console.error("Error en el componente al obtener los roles:", err);
-      setError('No se pudieron cargar los roles.');
+      console.error("Error recargando los roles:", err);
+      setError('No se pudieron recargar los roles.');
     }
     setLoading(false);
   };
 
   useEffect(() => {
-    fetchRoles();
+    const loadInitialRoles = async () => {
+      setLoading(true);
+      try {
+        const rolesData = await getAllRoles();
+        setRoles(rolesData);
+        setError(null);
+      } catch (err) {
+        console.error("Error en el componente al obtener los roles:", err);
+        setError('No se pudieron cargar los roles.');
+      }
+      setLoading(false);
+    };
+
+    loadInitialRoles();
   }, []);
 
   const filteredRoles = useMemo(() => 
@@ -76,7 +89,8 @@ const RolesPage = () => {
       try {
         await deleteRole(id);
         fetchRoles();
-      } catch (err) {
+      // eslint-disable-next-line no-unused-vars
+      } catch (_err) {
         setError("Error al eliminar el rol.");
       }
     }
@@ -88,7 +102,8 @@ const RolesPage = () => {
       try {
         await setRoleStatus(rol.id, nuevoEstado, currentUser.uid);
         fetchRoles();
-      } catch (err) {
+      // eslint-disable-next-line no-unused-vars
+      } catch (_err) {
         setError("Error al cambiar el estado del rol.");
       }
     }
@@ -107,15 +122,14 @@ const RolesPage = () => {
   const handleFormSubmit = async (values) => {
     try {
       if (currentRole) {
-        // En edición, no se cambia el id, solo otros campos si es necesario.
-        // El formulario deshabilita el campo 'id', así que usamos el de `currentRole`.
         await updateRole(currentRole.id, { estado: values.estado }, currentUser.uid);
       } else {
         await createRole(values, currentUser.uid);
       }
       fetchRoles();
       handleCloseModal();
-    } catch (err) {
+    // eslint-disable-next-line no-unused-vars
+    } catch (_err) {
       setError("Error al guardar el rol.");
     }
   };

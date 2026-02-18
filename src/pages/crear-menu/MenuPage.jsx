@@ -42,7 +42,6 @@ const MenuPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
     const unsubscribe = subscribeToMenus(data => {
       setMenus(data);
       setLoading(false);

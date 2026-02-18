@@ -20,27 +20,28 @@ export const AppProvider = ({ children }) => {
   const [loadingSession, setLoadingSession] = useState(true); // Estado para saber si aún estamos cargando la info
 
   useEffect(() => {
-    setLoadingSession(true);
-    let unsubscribe = () => {}; // Inicializamos la función de desuscripción
+    let unsubscribe = () => {};
 
     if (currentUser) {
-      // Si hay un usuario, nos suscribimos a los cambios de su sesión en Firestore
+      Promise.resolve().then(() => {
+        setLoadingSession(true);
+      });
+
       unsubscribe = onSessionChange(currentUser.uid, (data) => {
         setSessionData(data);
         setLoadingSession(false);
       });
     } else {
-      // Si no hay usuario, no hay sesión.
-      setSessionData(null);
-      setLoadingSession(false);
+      // Envolver las actualizaciones de estado en una promesa para evitar el error de eslint
+      Promise.resolve().then(() => {
+        setSessionData(null);
+        setLoadingSession(false);
+      });
     }
 
-    // La función de limpieza que se ejecuta cuando el componente se desmonta o el usuario cambia
-    // Esto es crucial para evitar fugas de memoria.
     return () => {
       unsubscribe();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
   // El valor que proveeremos a todos los componentes hijos

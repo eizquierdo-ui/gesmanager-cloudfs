@@ -50,7 +50,8 @@ const formatFirestoreTimestamp = (timestamp) => {
   if (!timestamp || !timestamp.toDate) return 'N/A';
   try {
     return format(timestamp.toDate(), 'dd/MM/yyyy HH:mm');
-  } catch (error) {
+  } catch (e) {
+    console.error("Error al formatear la fecha:", e);
     return 'Fecha inválida';
   }
 };
@@ -61,22 +62,27 @@ const MonedasPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [currentMoneda, setCurrentMoneda] = useState(null);
+  const [refetchIndex, setRefetchIndex] = useState(0);
   const navigate = useNavigate();
 
-  const fetchMonedas = async () => {
-    setLoading(true);
-    try {
-      const data = await getAllMonedas();
-      setMonedas(data);
-    } catch (error) {
-      console.error("Error al obtener monedas:", error);
-    }
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const fetchMonedas = async () => {
+      setLoading(true);
+      try {
+        const data = await getAllMonedas();
+        setMonedas(data);
+      } catch (error) {
+        console.error("Error al obtener monedas:", error);
+      }
+      setLoading(false);
+    };
+
     fetchMonedas();
-  }, []);
+  }, [refetchIndex]);
+
+  const forceRefetch = () => {
+    setRefetchIndex(prev => prev + 1);
+  }
 
   const filteredMonedas = useMemo(() => 
     monedas.filter(m => 
@@ -88,7 +94,7 @@ const MonedasPage = () => {
     if (window.confirm('¿Seguro que deseas eliminar esta moneda? Esta acción no se puede deshacer.')) {
       try {
         await deleteMoneda(id);
-        fetchMonedas();
+        forceRefetch();
       } catch (error) {
         console.error("Error al eliminar moneda:", error);
       }
@@ -100,7 +106,7 @@ const MonedasPage = () => {
     if (window.confirm(`¿Cambiar estado a "${nuevoEstado}"?`)) {
       try {
         await setMonedaStatus(item.id, nuevoEstado);
-        fetchMonedas();
+        forceRefetch();
       } catch (error) {
         console.error("Error al cambiar estado:", error);
       }
@@ -124,7 +130,7 @@ const MonedasPage = () => {
       } else {
         await createMoneda(values);
       }
-      fetchMonedas();
+      forceRefetch();
       handleCloseModal();
     } catch (error) {
       console.error("Error al guardar moneda:", error);
@@ -149,7 +155,6 @@ const MonedasPage = () => {
           <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenModal()} sx={{ mr: 1 }}>
             NUEVO
           </Button>
-          {/* --- BOTÓN SALIR CORREGIDO --- */}
           <Button variant="contained" color="error" startIcon={<ExitToAppIcon />} onClick={() => navigate('/')}>
             SALIR
           </Button>

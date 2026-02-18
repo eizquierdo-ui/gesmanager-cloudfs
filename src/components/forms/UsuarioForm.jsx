@@ -18,30 +18,18 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 const UsuarioForm = ({ open, onClose, onSave, initialData, isEditMode }) => {
   const [formData, setFormData] = useState({ 
-    nombre_usuario: '', 
-    email_usuario: '', 
+    nombre_usuario: initialData?.nombre_usuario || '', 
+    email_usuario: initialData?.email_usuario || '', 
     password: '',
-    role: '',
-    estado: 'activo' // Valor por defecto
+    role: initialData?.role || '',
+    estado: initialData?.estado || 'activo' // Valor por defecto
   });
   const [roles, setRoles] = useState([]);
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
     getRoles().then(setRoles).catch(err => console.error("Error al cargar roles: ", err));
-
-    if (isEditMode && initialData) {
-      setFormData({
-        nombre_usuario: initialData.nombre_usuario || '',
-        email_usuario: initialData.email_usuario || '',
-        role: initialData.role || '',
-        estado: initialData.estado || 'activo',
-        password: ''
-      });
-    } else {
-      setFormData({ nombre_usuario: '', email_usuario: '', password: '', role: '', estado: 'activo' });
-    }
-  }, [initialData, isEditMode, open]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

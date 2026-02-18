@@ -1,6 +1,6 @@
 # Blueprint del Proyecto: GESManager-CloudFS
 
-*Última Actualización: Inicio de la Sesión 13.*
+*Última Actualización: Inicio de la Sesión 14.*
 
 ## 1. Instrucciones de que debes hacer
 
@@ -13,7 +13,7 @@
     
     *Última Actualización: Inicio de la Sesión 13 super mega desastre.*
 
-1.3 Lo que vamos a trabajar hoy esta en el documento que acabas de analizar informe-consolidado.md a partir del inciso: ## 5. Plan para la Próxima Sesión (S14) debes analizarlo y vamos a discutir el plan para ver si estamos en la misma sintonia.
+1.3 Lo que vamos a trabajar hoy esta en el documento que acabas de analizar informe-consolidado.md a partir del inciso: ## 5. Plan para la Próxima Sesión (S15) debes analizarlo y vamos a discutir el plan para ver si estamos en la misma sintonia.
 
 ---
 

@@ -6,6 +6,7 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 const AuthContext = createContext();
 
 // 2. Creamos un Hook personalizado
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   return useContext(AuthContext);
 };

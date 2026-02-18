@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Box, Paper, Toolbar, Typography, TextField, InputAdornment, 
@@ -14,7 +14,7 @@ import {
   updateEmpresa,
   deleteEmpresa,
   setEmpresaStatus
-} from '../../services/firestore/empresasService'; // <-- ¡LA RUTA RELATIVA CAMBIA!
+} from '../../services/firestore/empresasService'; 
 
 // --- Importación de Íconos ---
 import SearchIcon from '@mui/icons-material/Search';
@@ -25,7 +25,7 @@ import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 
-import EmpresaForm from '../../components/forms/EmpresaForm'; // <-- ¡LA RUTA RELATIVA CAMBIA!
+import EmpresaForm from '../../components/forms/EmpresaForm'; 
 
 // --- Estilo del Modal ---
 const style = {
@@ -65,20 +65,21 @@ const Empresas = () => {
   const [currentEmpresa, setCurrentEmpresa] = useState(null);
   const navigate = useNavigate();
 
-  const fetchEmpresas = async () => {
-    setLoading(true);
+  const fetchEmpresas = useCallback(async () => {
     try {
+      setLoading(true);
       const empresasData = await getAllEmpresas();
       setEmpresas(empresasData);
     } catch (error) {
       console.error("Error en el componente al obtener las empresas:", error);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
-  };
+  }, []);
 
   useEffect(() => {
     fetchEmpresas();
-  }, []);
+  }, [fetchEmpresas]);
 
   const filteredEmpresas = useMemo(() => 
     empresas.filter(empresa => 
