@@ -46,7 +46,7 @@ Como IA, mi primera acción será siempre preguntarte:
 
 Una vez definidos los datos, el siguiente paso es entender CÓMO se debe construir la interfaz. **Principio fundamental: No inventamos nuevos diseños. Replicamos los patrones exitosos que ya existen.**
 
-Nuestro modelo maestro es el módulo de **Empresas** (`src/pages/accesos/Empresas.jsx` y `src/components/forms/EmpresaForm.jsx`).
+Nuestro modelo maestro es el modelol CRUD de **Clientes** (`src/pages/mantenimientos/ClientesPage.jsx` , `src/components/forms/ClienteForm.jsx` y `src/services/firestore/clienteService.js`).
 
 ### 1.1. Anatomía de la Página Principal
 

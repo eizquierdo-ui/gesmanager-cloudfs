@@ -135,7 +135,7 @@ const RolesPage = () => {
   };
 
   return (
-    <Box sx={{ width: '100%', p: 3 }}>
+    <Box sx={{ width: '100%' }}> {/* CORREGIDO: Se eliminó el padding p:3 */}
       {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
       <Paper sx={{ width: '100%', mb: 2, overflow: 'hidden' }}>
         <Toolbar>
