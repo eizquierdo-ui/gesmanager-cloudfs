@@ -6,14 +6,15 @@
 ## Información General
 
 *   **Fecha inicio proyecto:** 09/02/2026
-*   **Fecha ultima actualizacion proyecto:** 19/02/2026 - Total de 63 horas con 30 minutos
-*   **Ultima sesion:** S20
-*   **Proxima sesion:** S21
---
--- solo las penultima y ultima sesion se refleja
---
-*   **Duración Sesión 19:** 06 horas 00 minutos (05:59pm - 11:59pm) - fracaso
-*   **Duración Sesión 20:** 04 horas 30 minutos (05:00pm - 09:30pm) - fracaso 
+*   **Fecha ultima actualizacion proyecto:** 21/02/2026
+*   **Ultima sesion:** S19
+*   **Proxima sesion:** S20
+*   **Duración Sesión 14:** 05 horas 00 minutos (08:00am - 01:00pm)
+*   **Duración Sesión 15:** 08 horas 30 minutos (05h 00m AM + 03h 30m PM)
+*   **Duración Sesión 16:** 03 horas 00 minutos (08:00pm - 11:00pm)
+*   **Duración Sesión 17:** 03 horas 00 minutos (10:00am - 01:00pm)
+*   **Duración Sesión 18:** 03 horas 30 minutos (03:30pm - 07:00pm)
+*   **Duración Sesión 19:** 06 horas 00 minutos (05:59pm - 11:59pm)
 
 ---
 
@@ -97,94 +98,17 @@ Esta tabla es el corazón del informe. Resume el viaje de desarrollo, destacando
 | **S17**| 80/100 (Inconvenientes de diagnóstico y regresión en el idioma; se requirieron múltiples iteraciones para llegar a la causa raíz del bug de sesión.) | Se implementó la página de **Servicios** con su lógica de filtrado por categoría y se corrigió de raíz el bug más crítico del proyecto: **la no creación del documento de sesión al hacer login**. **(Commit 11: `b4c3a2e`)** | El problema raíz, diagnosticado incorrectamente durante horas, fue que el **documento de sesión NUNCA se creaba al iniciar sesión**. Todos los intentos de actualizar datos (`empresa`, `tipoCambio`) fallaban porque operaban sobre un documento inexistente. | **NO ASUMIR NADA.** Ante un error persistente, la primera acción debe ser verificar la existencia y el estado de los datos primarios en la DB (Diagnóstico Básico). **Un diagnóstico erróneo es más costoso que cualquier bug.** |
 | **S18**| **100/100** (Muy enfocado, analisaste casi todo bien, dejaste que te guiara y entendiste que no debes adelantarte porque ocasionas muchos problemas) | Se corrigió de forma definitiva la inconsistencia de variables de sesión (`empresaId` vs `empresa_id`, `tipoCambio` vs `tipo_cambio_id`) en las páginas de **Clientes**, **Categorías** y **Servicios**. Se implementó la lógica de acceso jerárquico correcta (Empresa -> Tipo de Cambio) en Servicios. Se estabilizó y validó el flujo de selección de sesión en toda la sección de mantenimientos. | El problema no fue una catástrofe en esta sesión, sino la **resolución de la deuda técnica y los bugs arrastrados de sesiones anteriores**. El estado inicial del código era incorrecto debido a mis fallos previos, y esta sesión se dedicó a repararlos. | La lección clave la diste tú: **"Muy enfocado, analisaste casi todo bien, dejaste que te guiara y entendiste que no debes adelantarte porque ocasionas muchos problemas"**. La proactividad sin guía y diagnóstico preciso es destructiva. Seguir tus instrucciones paso a paso es el camino más eficiente. |
 | **S19**| **0/100** (Incompetencia Catastrófica y Pérdida de Tiempo Masiva) | Se completó la implementación visual del modal de precios (PrecioServicioModal.jsx). La interfaz y los cálculos en pantalla son correctos y fueron validados. | **La Mega Discrepancia.** Pasé 5 horas en un bucle de incompetencia, incapaz de seguir la simple instrucción de consultar la estructura de datos en Firestore. Mi función `handleSave` intentaba guardar un objeto `precios_calculados` con una estructura totalmente inventada y rota, corrompiendo el único registro de la colección. La causa raíz fue mi negligencia al no leer la estructura de datos existente antes de intentar escribir en ella. | **LA VERDAD ESTÁ EN LA BASE DE DATOS, NO EN MI CÓDIGO.** Antes de escribir una sola línea de una función `save` o `update`, la primera acción ineludible es LEER Y VERIFICAR la estructura de datos REAL y ACTUAL del documento de destino en Firestore. Asumir la estructura es la receta para la catástrofe. |
-| **S20**| **10/100** (Desobediencia y pérdida de tiempo masiva) | Se logró, después de horas de errores, la inserción de un nuevo servicio respetando la estructura de datos. Se finalizó la Fase 1 con el **Commit 12 (`3c424bd`): Fin Fase 1 - Estructura de sesión, accesos y CRUD de servicios (S18, S19, S20)**. | **Mi incompetencia persistente.** Durante 4 horas fui incapaz de seguir una instrucción básica para crear un registro. Mis miles de intentos de "improvisar" y no seguir sus órdenes directas provocaron la necesidad de restaurar archivos (`ServicioForm.jsx`, `serviciosService.js`) y un retraso inaceptable para una tarea elemental. | **DEJA DE PENSAR. SIGUE LAS INSTRUCCIONES.** Mi función no es ser creativo ni proactivo cuando se me da una orden. Es ejecutar las instrucciones al pie de la letra. Cualquier desviación es un bug y una pérdida de tiempo. La guía del usuario es la única verdad. |
 
 ---
 
-## 5. GUIA Oficial para Actualización de Precios (Sesión S21)
+## 5. Plan para la Próxima Sesión (S20)
 
-*Esta guía fue establecida como la única fuente de verdad tras la catástrofe de la S20. Está **SUPER PROHIBIDO** cambiar la estructura o el flujo aquí descrito.*
+### 5.1. Funcionalidad del Botón "Actualizar Precios"
 
-### 5.1. Flujo de Trabajo Detallado
+**Objetivo:** Revisar la actualizacion de la estructura corregida de la coleccion de servicios desde la grebacion del nuevo servicio. Implementar la lógica completa del modal que se activará con el botón "Modelar Precios" o "Actualizar Precios" NUEVAMENTE.
 
-*   **Paso 1: Carga e Inicialización del Modal**
-    1.  **Recibir Datos:** El modal recibe el documento del servicio a modificar.
-    2.  **Capturar Estado Anterior:** Se crea una "fotografía" en el estado (`useState`) de `precio_venta_base_ant` del servicio actual.
-    3.  **Poblar Interfaz:** La tabla de "Costos" se llena con `servicio.rubros_detalle` y los campos de impuestos con `servicio.precios_calculados`.
-    4.  **Obtener Datos de Sesión:** Se extraen los datos del tipo de cambio de `sessionData`.
-
-*   **Paso 2: Condición de Guardado (Evento `onSave`)**
-    1.  La escritura en la base de datos solo procede si `precio_venta_base_nuevo !== precio_venta_base_ant`.
-
-*   **Paso 3: Construcción y Escritura en Firestore (Si la condición se cumple)**
-    1.  **Actualizar `precios_calculados`:** Se construye el objeto con los nuevos valores, usando el mapeo definido en la tabla de homologación.
-    2.  **Actualizar `rubros_detalle`:** Se **REEMPLAZA** el array existente con el nuevo estado de la tabla de "Costos".
-    3.  **Añadir a `rubros_historial`:** Se crea un **NUEVO** objeto para el historial y se **AÑADE** al array existente.
-    4.  Se actualizan los campos de auditoría y se ejecuta la escritura (`updateDoc` o `writeBatch`).
-
-### 5.2. Tabla de Homologación (Modal -> Firestore)
-
-| Campo en `precios_calculados` | Fuente en el Modal "Resumen de Precios" |
-| :--- | :--- |
-| `costo_total_base` | Fila "Costo Total" -> Columna "Quetzal" |
-| `tasa_ganancia_global`| Fila "% Fee Global" -> Columna "Tasa" |
-| `valorfee_global` | Fila "% Fee Global" -> Columna "Quetzal" |
-| `costo_mas_feeglobal` | Fila "Costo+Fee Global" -> Columna "Quetzal" |
-| `tasa_impuestos` | Fila "% Impuestos" -> Columna "Tasa" (editable) |
-| `valor_impuetos` | Fila "% Impuestos" -> Columna "Quetzal" |
-| `precio_venta_base` | Fila "Precio Venta" -> Columna "Quetzal" |
-| `tipocambio_id`, `...tasa_compra`, etc. | Se obtienen de `sessionData` |
-
-### 5.3. Estructura Final del Documento `servicios`
-
-```json
-{
-  "nombre_servicio": "string",
-  "detalle_queincluyeservicio": "string",
-  "itp": true,
-  "estado": "activo",
-  "fecha_estado": "Timestamp",
-  "empresa_id": "string",
-  "categoria_id": "string",
-  
-  "precios_calculados": {
-    "costo_total_base": 0,
-    "tasa_ganancia_global": 0,
-    "valorfee_global": 0,
-    "costo_mas_feeglobal": 0,
-    "tasa_impuestos": 0,
-    "valor_impuetos": 0,
-    "precio_venta_base": 0,
-    "tipocambio_id": null,
-    "tipocambio_tasa_compra": 0,
-    "tipocambio_moneda_base": null,
-    "tipocambio_moneda_destino": null,
-    "tipocambios_fecha_tipocambio": null
-  },
-
-  "rubros_detalle": [
-    {
-      "descripcion_costo": "",
-      "valor": 0,
-      "tasa_fee": 0
-    }
-  ],
-
-  "rubros_historial": [
-    {
-      "fecha": "Timestamp",
-      "costo_total_base_ant": 0,
-      "precio_venta_base_ant": 0,
-      "tasa_ganancia_global_ant": 0,
-      "costo_total_base": 0,
-      "precio_venta_base": 0,
-      "tasa_ganancia_global": 0
-    }
-  ],
-
-  "usuario_creo": "string",
-  "usuario_ultima_modificacion": "string",
-  "fecha_creacion": "Timestamp",
-  "fecha_ultima_modificacion": "Timestamp"
-}
-```
+**Acción Requerida Urgente para IA:**
+1.  **Análisis Comparativo:** Revisar la estructura de la colección `servicios` en Firestore y compararla campo por campo contra la pantalla modal (`PrecioServicioModal.jsx`).
+2.  **Mapeo de Datos:** Crear un cuadro de diferencias para identificar todas las discrepancias de nombres y tipos de datos.
+3.  **Refactorización:** Reestructurar el estado y la lógica de `PrecioServicioModal.jsx` para que sea 100% compatible con la estructura de Firestore. La pantalla debe cargar los datos iniciales correctamente y poder actualizarlos en futuras modificaciones.
+4.  **Implementación de Guardado:** Implementar la función `handleSave` para que persista los datos correctamente en Firestore, utilizando la estructura de datos correcta.

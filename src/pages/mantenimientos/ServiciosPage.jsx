@@ -1,34 +1,30 @@
-
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Box, Paper, Toolbar, Typography, TextField, InputAdornment,
   Button, Table, TableBody, TableCell, TableContainer, TableHead,
-  TableRow, IconButton, Tooltip, CircularProgress, Modal, Fade, Backdrop, Chip,
-  Container, Alert, AlertTitle, Select, MenuItem, FormControl, InputLabel, Checkbox
+  TableRow, IconButton, Tooltip, CircularProgress, Chip,
+  Container, Alert, AlertTitle, Select, MenuItem, FormControl, InputLabel, Checkbox, Modal, Fade, Backdrop
 } from '@mui/material';
 import BusinessIcon from '@mui/icons-material/Business';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
 
-// --- Contextos ---
 import { useAppContext } from '../../contexts/AppContext';
 import { useAuth } from '../../contexts/AuthContext';
 
-// --- Servicios de Firestore ---
 import { getAllCategorias } from '../../services/firestore/categoriasService';
 import { 
   getServiciosByCategoria, 
   createServicio,
   updateServicio,
   setServicioStatus, 
-  deleteServicio 
+  deleteServicio, 
+  updateServicioPrecio
 } from '../../services/firestore/serviciosService';
 
-// --- Componentes y Formularios ---
 import ServicioForm from '../../components/forms/ServicioForm';
 import PrecioServicioModal from '../../components/forms/PrecioServicioModal';
 
-// --- Iconos ---
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
@@ -37,29 +33,13 @@ import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 
-// --- Estilo del Modal ---
-const style = {
-  modal: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '90%',
-    maxWidth: '700px',
-    bgcolor: 'background.paper',
-    boxShadow: 24,
-    p: 4,
-    borderRadius: 2,
-  },
-};
-
 const ServiciosPage = () => {
   const [categorias, setCategorias] = useState([]);
   const [selectedCategoria, setSelectedCategoria] = useState('');
   const [servicios, setServicios] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [openModal, setOpenModal] = useState(false);
+  const [openFormModal, setOpenFormModal] = useState(false);
   const [isPrecioModalOpen, setIsPrecioModalOpen] = useState(false);
   const [currentServicio, setCurrentServicio] = useState(null);
   const [selectedServicioId, setSelectedServicioId] = useState(null);
@@ -139,13 +119,13 @@ const ServiciosPage = () => {
     }
   };
 
-  const handleOpenModal = (servicio = null) => {
+  const handleOpenFormModal = (servicio = null) => {
     setCurrentServicio(servicio);
-    setOpenModal(true);
+    setOpenFormModal(true);
   };
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
+  const handleCloseFormModal = () => {
+    setOpenFormModal(false);
     setCurrentServicio(null);
   };
   
@@ -177,9 +157,17 @@ const ServiciosPage = () => {
         await createServicio(data, user.uid);
       }
       fetchServicios();
-      handleCloseModal();
+      handleCloseFormModal();
     } catch (error) {
       console.error("Error al guardar el servicio:", error);
+    }
+  };
+
+  const handlePrecioSave = async (servicioId, data, newHistoryEntry) => {
+    try {
+      await updateServicioPrecio(servicioId, data, newHistoryEntry, user.uid);
+    } catch (error) {
+      console.error("Error al actualizar el precio del servicio:", error);
     }
   };
   
@@ -189,12 +177,10 @@ const ServiciosPage = () => {
   }, [selectedServicioId, servicios]);
 
 
-  // --- Guard Clauses: Renderizado de Bloqueo Jerárquico ---
   if (loadingSession) {
     return <Container sx={{ p: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}><CircularProgress /></Container>;
   }
 
-  // 1. PRIMERA PREGUNTA: ¿HAY EMPRESA?
   if (!app?.empresa_id) {
     return (
       <Container sx={{ p: 3 }}>
@@ -215,7 +201,6 @@ const ServiciosPage = () => {
     );
   } 
   
-  // 2. SEGUNDA PREGUNTA: ¿HAY TIPO DE CAMBIO?
   if (!app?.tipo_cambio_id) {
     return (
         <Container sx={{ p: 3 }}>
@@ -236,7 +221,6 @@ const ServiciosPage = () => {
       );
   }
 
-  // --- Renderizado Principal ---
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2, overflow: 'hidden' }}>
@@ -299,7 +283,7 @@ const ServiciosPage = () => {
                         }}
                         sx={{ mr: 2, width: '300px' }}
                     />
-                    <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenModal()} sx={{ mr: 2 }}>
+                    <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenFormModal()} sx={{ mr: 2 }}>
                         Nuevo
                     </Button>
                 </>
@@ -360,7 +344,7 @@ const ServiciosPage = () => {
                       </IconButton>
                     </Tooltip>
                     <Tooltip title="Editar">
-                      <IconButton onClick={() => handleOpenModal(srv)} size="small">
+                      <IconButton onClick={() => handleOpenFormModal(srv)} size="small">
                         <EditTwoToneIcon color="primary" />
                       </IconButton>
                     </Tooltip>
@@ -377,26 +361,12 @@ const ServiciosPage = () => {
         </TableContainer>
       </Paper>
 
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        closeAfterTransition
-        slots={{ backdrop: Backdrop }}
-        slotProps={{ backdrop: { timeout: 500 }}}
-      >
-        <Fade in={openModal}>
-          <Box sx={style.modal}>
-            <Typography variant="h5" component="h2" sx={{mb: 3, fontWeight: 'bold'}}>
-              {currentServicio ? 'Editar Servicio' : 'Crear Nuevo Servicio'}
-            </Typography>
-            <ServicioForm 
-              initialData={currentServicio}
-              onSubmit={handleFormSubmit}
-              onCancel={handleCloseModal}
-            />
-          </Box>
-        </Fade>
-      </Modal>
+      <ServicioForm 
+        open={openFormModal}
+        onClose={handleCloseFormModal}
+        onSave={handleFormSubmit}
+        servicio={currentServicio}
+      />
 
       {servicioSeleccionado && (
         <PrecioServicioModal
@@ -404,6 +374,7 @@ const ServiciosPage = () => {
             onClose={handleClosePrecioModal}
             servicio={servicioSeleccionado}
             onUpdate={fetchServicios} 
+            onSave={handlePrecioSave}
         />
       )}
 

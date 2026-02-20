@@ -1,10 +1,7 @@
 
-// src/services/firestore/serviciosService.js
-
 import {
   collection,
   getDocs,
-  getDoc,
   doc,
   addDoc,
   updateDoc,
@@ -12,17 +9,12 @@ import {
   where,
   serverTimestamp,
   deleteDoc,
+  arrayUnion,
 } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 const serviciosCollectionRef = collection(db, 'servicios');
 
-/**
- * Obtiene todos los servicios de una empresa y categoría específicas.
- * @param {string} empresaId - El ID de la empresa.
- * @param {string} categoriaId - El ID de la categoría.
- * @returns {Promise<Array>} Un array con los documentos de los servicios.
- */
 export const getServiciosByCategoria = async (empresaId, categoriaId) => {
   const q = query(
     serviciosCollectionRef,
@@ -33,32 +25,21 @@ export const getServiciosByCategoria = async (empresaId, categoriaId) => {
   return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
-/**
- * Crea un nuevo servicio con la estructura de datos definida.
- * @param {Object} servicioData - Datos del formulario (nombre_servicio, detalle_queincluyeservicio, itp, empresa_id, categoria_id).
- * @param {string} userId - El ID del usuario que crea el servicio.
- * @returns {Promise<DocumentReference>}
- */
 export const createServicio = (servicioData, userId) => {
   return addDoc(serviciosCollectionRef, {
-    // Datos que vienen del formulario
     ...servicioData,
-
-    // --- Campos de Estado y Auditoría ---
     estado: 'activo',
     fecha_estado: serverTimestamp(),
     usuario_creo: userId,
     fecha_creacion: serverTimestamp(),
     usuario_ultima_modificacion: userId,
     fecha_ultima_modificacion: serverTimestamp(),
-    
-    // --- Estructura de Precios ---
     precios_calculados: {
       costo_total_base: 0,
       tasa_ganancia_global: 0,
       valorfee_global: 0,
       costo_mas_feeglobal: 0,
-      tasa_impuestos: 0,
+      tasa_impuestos: 21,
       valor_impuetos: 0,
       precio_venta_base: 0,
       tipocambio_id: null,
@@ -67,8 +48,6 @@ export const createServicio = (servicioData, userId) => {
       tipocambio_moneda_destino: null,
       tipocambios_fecha_tipocambio: null
     },
-
-    // --- Rubros ---
     rubros_detalle: [
       {
         descripcion_costo: "",
@@ -76,11 +55,9 @@ export const createServicio = (servicioData, userId) => {
         tasa_fee: 0
       }
     ],
-
-    // --- Historial de Precios ---
     rubros_historial: [
       {
-        fecha: new Date(), // CORREGIDO: Usar timestamp del cliente
+        fecha: serverTimestamp(),
         costo_total_base_ant: 0,
         precio_venta_base_ant: 0,
         tasa_ganancia_global_ant: 0,
@@ -92,13 +69,6 @@ export const createServicio = (servicioData, userId) => {
   });
 };
 
-/**
- * Actualiza la información básica de un servicio existente.
- * @param {string} id - El ID del servicio a actualizar.
- * @param {Object} servicioData - Los datos a actualizar (nombre, detalle, itp).
- * @param {string} userId - El ID del usuario que realiza la operación.
- * @returns {Promise<void>}
- */
 export const updateServicio = (id, servicioData, userId) => {
   const servicioDoc = doc(db, 'servicios', id);
   const dataToUpdate = {
@@ -106,22 +76,12 @@ export const updateServicio = (id, servicioData, userId) => {
     usuario_ultima_modificacion: userId,
     fecha_ultima_modificacion: serverTimestamp(),
   };
-
-  // Si se está cambiando el estado, también actualizamos su fecha
   if (Object.prototype.hasOwnProperty.call(servicioData, 'estado')) {
     dataToUpdate.fecha_estado = serverTimestamp();
   }
-
   return updateDoc(servicioDoc, dataToUpdate);
 };
 
-/**
- * Cambia el estado de un servicio (activo/inactivo).
- * @param {string} id - El ID del servicio.
- * @param {string} nuevoEstado - El nuevo estado ('activo' o 'inactivo').
- * @param {string} userId - El ID del usuario que realiza la operación.
- * @returns {Promise<void>}
- */
 export const setServicioStatus = (id, nuevoEstado, userId) => {
   const servicioDoc = doc(db, 'servicios', id);
   return updateDoc(servicioDoc, {
@@ -132,28 +92,34 @@ export const setServicioStatus = (id, nuevoEstado, userId) => {
   });
 };
 
-/**
- * Elimina un servicio de forma física de la base de datos.
- * @param {string} id - El ID del servicio a eliminar.
- * @returns {Promise<void>}
- */
 export const deleteServicio = (id) => {
   const servicioDoc = doc(db, 'servicios', id);
   return deleteDoc(servicioDoc);
 };
 
-// --- AÚN NO IMPLEMENTADO: Función para la actualización de precios ---
 /**
  * Actualiza la estructura de precios de un servicio y guarda un registro en el historial.
- * (Esta función se implementará en la Fase 2)
  * @param {string} servicioId - El ID del servicio.
- * @param {Object} nuevosPrecios - Objeto con precios_calculados y rubros_detalle.
+ * @param {Object} data - Objeto con precios_calculados y rubros_detalle.
+ * @param {Object} newHistoryEntry - El nuevo objeto para el historial, sin la fecha.
  * @param {string} userId - El ID del usuario que realiza la operación.
  */
-export const updateServicioPrecio = async (servicioId, nuevosPrecios, userId) => {
-  // Lógica para batch write:
-  // 1. Actualizar el documento principal del servicio.
-  // 2. Crear un nuevo documento en la sub-colección 'historial_precios'.
-  console.log("Función updateServicioPrecio aún no implementada.");
-  return Promise.resolve();
+export const updateServicioPrecio = async (servicioId, data, newHistoryEntry, userId) => {
+  const servicioDoc = doc(db, 'servicios', servicioId);
+
+  // Prepara la entrada del historial con la fecha del cliente
+  const historyEntryWithTimestamp = {
+    ...newHistoryEntry,
+    fecha: new Date(),
+  };
+
+  // Prepara el payload final para la actualización
+  const dataToUpdate = {
+    ...data,
+    rubros_historial: arrayUnion(historyEntryWithTimestamp),
+    usuario_ultima_modificacion: userId,
+    fecha_ultima_modificacion: serverTimestamp(),
+  };
+
+  return updateDoc(servicioDoc, dataToUpdate);
 };
