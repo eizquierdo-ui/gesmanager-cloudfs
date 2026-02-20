@@ -1,42 +1,33 @@
 
 // src/contexts/AppContext.jsx
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { onSessionChange } from '../services/sessionService';
-import { useAuth } from './AuthContext'; // Se asume que AuthContext está en el mismo directorio
+import { useAuth } from './AuthContext';
 
-// 1. Creamos el contexto
 const AppContext = createContext();
 
-// 2. Creamos un hook personalizado para consumir el contexto fácilmente desde otros componentes
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAppContext = () => {
   return useContext(AppContext);
 };
 
-// 3. Creamos el componente Proveedor que envolverá nuestra aplicación
 export const AppProvider = ({ children }) => {
-  const { currentUser } = useAuth(); // Obtenemos el usuario del contexto de autenticación
-  const [sessionData, setSessionData] = useState(null); // Estado para guardar los datos de la sesión
-  const [loadingSession, setLoadingSession] = useState(true); // Estado para saber si aún estamos cargando la info
+  const { currentUser } = useAuth();
+  const [sessionData, setSessionData] = useState(null);
+  const [loadingSession, setLoadingSession] = useState(true);
 
   useEffect(() => {
     let unsubscribe = () => {};
 
     if (currentUser) {
-      Promise.resolve().then(() => {
-        setLoadingSession(true);
-      });
-
+      setLoadingSession(true);
       unsubscribe = onSessionChange(currentUser.uid, (data) => {
         setSessionData(data);
         setLoadingSession(false);
       });
     } else {
-      // Envolver las actualizaciones de estado en una promesa para evitar el error de eslint
-      Promise.resolve().then(() => {
-        setSessionData(null);
-        setLoadingSession(false);
-      });
+      setSessionData(null);
+      setLoadingSession(false);
     }
 
     return () => {
@@ -44,10 +35,23 @@ export const AppProvider = ({ children }) => {
     };
   }, [currentUser]);
 
-  // El valor que proveeremos a todos los componentes hijos
+  // --- ¡LA SOLUCIÓN! ---
+  // Función para permitir actualizaciones optimistas e inmediatas del estado de sesión
+  const setSession = useCallback((newData) => {
+    setSessionData(prevData => {
+      const updatedData = { ...prevData, ...newData };
+      // Si se limpia la empresa, limpiamos también el tipo de cambio
+      if (newData.empresaId === null) {
+          updatedData.tipoCambio = null;
+      }
+      return updatedData;
+    });
+  }, []);
+
   const value = {
     sessionData,
     loadingSession,
+    setSession, // Exponemos la nueva función en el contexto
   };
 
   return (

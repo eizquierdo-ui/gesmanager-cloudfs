@@ -1,12 +1,10 @@
-
 // src/services/sessionService.js
 import { doc, getDoc, setDoc, updateDoc, onSnapshot, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase'; // Se asume que la configuración de db está en src/firebase.js
 
 /**
  * Obtiene los datos de la sesión de un usuario desde Firestore.
- * Si no existe un documento para el usuario, lo crea con valores iniciales.
- * Este es el punto que CREA la colección 'sesiones' si es la primera vez que se ejecuta.
+ * Si no existe un documento para el usuario, lo crea con la estructura ESTANDARIZADA y CORREGIDA.
  * @param {string} userId - El UID del usuario autenticado.
  * @returns {Promise<object|null>} Los datos de la sesión del usuario, o null si ocurre un error.
  */
@@ -18,27 +16,36 @@ export const getSessionData = async (userId) => {
     const docSnap = await getDoc(sessionRef);
 
     if (docSnap.exists()) {
-      // El documento de sesión ya existe, lo retornamos.
       return docSnap.data();
     } else {
-      // El documento no existe, es la primera vez que este usuario interactúa.
-      // Lo creamos con la estructura base.
-      console.log(`No se encontró sesión para ${userId}. Creando documento de sesión inicial.`);
+      console.log(`No se encontró sesión para ${userId}. Creando documento de sesión con la estructura DEFINITIVA.`);
+      
       const initialData = {
-        userId: userId,
-        roleId: null,
-        empresaId: null,
-        nombreEmpresa: null,
-        monedaBaseId: null,
-        tipoCambioId: null,
-        infoTipoCambio: null,
+        // --- Identidad y Permisos ---
+        usuario_id: userId,
+        role_id: null,
+      
+        // --- Selección de Empresa ---
+        empresa_id: null,
+        empresa_nombre: null,
+        
+        // --- Selección de Tipo de Cambio (Estructura Corregida) ---
+        tipo_cambio_id: null,
+        tipo_cambio_fecha: null,
+        tipo_cambio_moneda_base: null,
+        tipo_cambio_moneda_destino: null,
+        tipo_cambio_tasa_compra: 0,
+        tipo_cambio_tasa_venta: 0,
+      
+        // --- Campos de Auditoría Estándar ---
         fecha_creacion: serverTimestamp(),
         usuario_creo: userId,
         fecha_ultima_actualizacion: serverTimestamp(),
         usuario_ultima_modificacion: userId,
       };
+
       await setDoc(sessionRef, initialData);
-      return initialData; // Retornamos los datos recién creados.
+      return initialData;
     }
   } catch (error) {
     console.error("Error crítico al obtener o crear la sesión del usuario:", error);
@@ -78,7 +85,7 @@ export const updateSession = async (userId, data) => {
  */
 export const onSessionChange = (userId, callback) => {
   if (!userId || typeof callback !== 'function') {
-    return () => {}; // Retorna una función de desuscripción vacía si los parámetros son incorrectos.
+    return () => {};
   }
 
   const sessionRef = doc(db, 'sesiones', userId);
@@ -87,8 +94,6 @@ export const onSessionChange = (userId, callback) => {
     if (docSnap.exists()) {
       callback(docSnap.data());
     } else {
-      // Si el documento es eliminado o no existe, intentamos obtener/crear uno
-      // y lo pasamos al callback.
       getSessionData(userId).then(callback);
     }
   }, (error) => {

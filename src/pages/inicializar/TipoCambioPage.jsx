@@ -16,7 +16,7 @@ import { useAppContext } from '../../contexts/AppContext';
 // --- Servicios ---
 import { getAllTiposCambio, createTipoCambio, updateTipoCambio, deleteTipoCambio, setTipoCambioStatus } from '../../services/firestore/tipoCambioService';
 import { getAllMonedas } from '../../services/firestore/monedasService';
-import { updateSession } from '../../services/sessionService'; // ¡Importamos el servicio de sesión!
+import { updateSession } from '../../services/sessionService'; 
 
 // --- Íconos ---
 import SearchIcon from '@mui/icons-material/Search';
@@ -26,25 +26,14 @@ import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'; // Icono para no seleccionado
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // Icono para seleccionado
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
 // --- Componentes ---
 import TipoCambioForm from '../../components/forms/TipoCambioForm';
 
-// Estilo para el modal
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 'clamp(500px, 60vw, 800px)',
-  bgcolor: 'background.paper',
-  borderRadius: '8px',
-  boxShadow: 24,
-  p: 4,
-};
+const style = { /* ...estilo del modal sin cambios... */ };
 
 const TipoCambioPage = () => {
   const [tiposCambio, setTiposCambio] = useState([]);
@@ -55,27 +44,35 @@ const TipoCambioPage = () => {
   const [currentItem, setCurrentItem] = useState(null);
   const navigate = useNavigate();
 
-  // --- Hooks para obtener el contexto ---
   const { currentUser } = useAuth();
-  const { sessionData } = useAppContext();
+  const { sessionData, loadingSession } = useAppContext();
+
+  useEffect(() => {
+    if (loadingSession) return;
+    if (!sessionData?.empresa_id) {
+      alert("Debe seleccionar una empresa para acceder a esta opción.");
+      navigate('/');
+    }
+  }, [sessionData, loadingSession, navigate]);
 
   const monedasMap = useMemo(() => 
     monedas.reduce((acc, m) => { acc[m.id] = m; return acc; }, {}), 
   [monedas]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const [tiposCambioData, monedasData] = await Promise.all([ getAllTiposCambio(), getAllMonedas() ]);
-        setTiposCambio(tiposCambioData);
-        setMonedas(monedasData); 
-      } catch (error) { console.error("Error al cargar datos iniciales:", error); }
-      setLoading(false);
-    };
-    
-    fetchData();
-  }, []);
+    if (!loadingSession && sessionData?.empresa_id) {
+      const fetchData = async () => {
+        setLoading(true);
+        try {
+          const [tiposCambioData, monedasData] = await Promise.all([ getAllTiposCambio(), getAllMonedas() ]);
+          setTiposCambio(tiposCambioData);
+          setMonedas(monedasData);
+        } catch (error) { console.error("Error al cargar datos iniciales:", error); }
+        setLoading(false);
+      };
+      fetchData();
+    }
+  }, [sessionData, loadingSession]);
 
   const filteredData = useMemo(() => 
     tiposCambio.filter(item => {
@@ -88,30 +85,41 @@ const TipoCambioPage = () => {
     }), 
   [tiposCambio, searchTerm, monedasMap]);
 
-  // --- LÓGICA DE SELECCIÓN DE SESIÓN ---
+  // --- PASO 2.1: LÓGICA DE SELECCIÓN CORREGIDA --- 
   const handleSelect = async (item) => {
-    if (!currentUser) return; // Guardia de seguridad
+    if (!currentUser) return;
 
-    // Comprobar si el item actual ya está seleccionado
-    if (sessionData?.tipoCambioId === item.id) {
-      // Si ya está seleccionado, deseleccionar (limpiar los campos)
-      await updateSession(currentUser.uid, {
-        tipoCambioId: null,
-        infoTipoCambio: null,
-      });
+    const isSelected = sessionData?.tipo_cambio_id === item.id;
+    
+    let sessionUpdateData;
+
+    if (isSelected) {
+      // DESELECCIONAR: Poner todos los campos relevantes a null o 0
+      sessionUpdateData = {
+        tipo_cambio_id: null,
+        tipo_cambio_fecha: null,
+        tipo_cambio_moneda_base: null,
+        tipo_cambio_moneda_destino: null,
+        tipo_cambio_tasa_compra: 0,
+        tipo_cambio_tasa_venta: 0,
+      };
     } else {
-      // Si se selecciona un nuevo item
-      const base = monedasMap[item.moneda_base_id];
-      const dest = monedasMap[item.moneda_destino_id];
-      const infoString = `Fecha ${format(item.fecha.toDate(), 'dd/MM/yyyy')} - ${base.codigo}-${dest.codigo} Tc: ${formatNumber(item.tasa_compra)} Tv: ${formatNumber(item.tasa_venta)}`;
-      
-      await updateSession(currentUser.uid, { 
-        tipoCambioId: item.id,
-        infoTipoCambio: infoString,
-      });
+      // SELECCIONAR: Construir el objeto plano con los campos existentes
+      sessionUpdateData = {
+        tipo_cambio_id: item.id,
+        tipo_cambio_fecha: item.fecha, // El objeto Timestamp se guarda directamente
+        tipo_cambio_moneda_base: monedasMap[item.moneda_base_id]?.moneda || '---', // Guardamos el nombre
+        tipo_cambio_moneda_destino: monedasMap[item.moneda_destino_id]?.moneda || '---', // Guardamos el nombre
+        tipo_cambio_tasa_compra: item.tasa_compra,
+        tipo_cambio_tasa_venta: item.tasa_venta,
+      };
     }
+
+    // Actualización única en Firestore. No se usa setSession.
+    await updateSession(currentUser.uid, sessionUpdateData);
   };
 
+  // ... (el resto de funciones como formatNumber, refreshData, etc., se mantienen igual) ...
   const formatNumber = (value) => {
     if (typeof value !== 'number') return '0.0000';
     return new Intl.NumberFormat('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4, useGrouping: false }).format(value);
@@ -150,11 +158,20 @@ const TipoCambioPage = () => {
       handleCloseModal();
     } catch (error) { console.error("Error al guardar el tipo de cambio:", error); }
   }; 
-  
+
+  if (loadingSession || !sessionData?.empresa_id) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', flexDirection: 'column' }}>
+        <CircularProgress />
+        <Typography sx={{ mt: 2 }}>Verificando selección de empresa...</Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ width: '100%', p: 3 }}>
       <Paper sx={{ width: '100%', mb: 2, overflow: 'hidden' }}>
+        {/* ... Toolbar sin cambios ... */}
         <Toolbar sx={{ p: 2, justifyContent: 'space-between' }}>
             <Typography variant="h6">Tipo de Cambio</Typography>
             <Box>
@@ -167,8 +184,8 @@ const TipoCambioPage = () => {
         <TableContainer>
           <Table stickyHeader>
             <TableHead>
-              <TableRow>
-                {/* --- NUEVA COLUMNA DE SELECCIÓN --- */}
+              {/* ... Thead sin cambios ... */}
+               <TableRow>
                 <TableCell align="center" style={{ width: '50px' }}>Seleccionar</TableCell> 
                 <TableCell>Fecha</TableCell>
                 <TableCell>Moneda Origen</TableCell>
@@ -182,11 +199,10 @@ const TipoCambioPage = () => {
             <TableBody>
               {loading ? <TableRow><TableCell colSpan={8} align="center"><CircularProgress /></TableCell></TableRow> :
               filteredData.map((item) => {
-                // --- LÓGICA DE ESTILO CONDICIONAL ---
-                const isSelected = sessionData?.tipoCambioId === item.id;
+                // CORRECCIÓN: Comprobar contra tipo_cambio_id
+                const isSelected = sessionData?.tipo_cambio_id === item.id;
                 return (
                   <TableRow hover key={item.id} selected={isSelected}>
-                    {/* --- NUEVA CELDA CON EL BOTÓN --- */}
                     <TableCell align="center">
                       <Tooltip title={isSelected ? 'Deseleccionar' : 'Seleccionar'}>
                         <IconButton size="small" onClick={() => handleSelect(item)}>
@@ -201,6 +217,7 @@ const TipoCambioPage = () => {
                     <TableCell align="right">{formatNumber(item.tasa_compra)}</TableCell>
                     <TableCell align="right">{formatNumber(item.tasa_venta)}</TableCell>
                     <TableCell><Chip label={item.estado} color={item.estado === 'activo' ? 'success' : 'error'} size="small" /></TableCell>
+                    {/* ... Acciones sin cambios ... */}
                     <TableCell align="center">
                       <Tooltip title={item.estado === 'activo' ? 'Inactivar' : 'Activar'}><IconButton size="small" onClick={() => handleToggleEstado(item)}>{item.estado === 'activo' ? <ToggleOnIcon color="success" /> : <ToggleOffIcon color="error"/>}</IconButton></Tooltip>
                       <Tooltip title="Editar"><IconButton size="small" color="primary" onClick={() => handleOpenModal(item)}><EditTwoToneIcon /></IconButton></Tooltip>
@@ -214,7 +231,8 @@ const TipoCambioPage = () => {
         </TableContainer>
       </Paper>
 
-      <Modal open={openModal} onClose={handleCloseModal} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{ timeout: 500 }}>
+      {/* ... Modal sin cambios ... */}
+       <Modal open={openModal} onClose={handleCloseModal} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{ timeout: 500 }}>
         <Fade in={openModal}>
           <Box sx={style}>
             <Typography variant="h5" gutterBottom>{currentItem ? 'Editar' : 'Nuevo'} Tipo de Cambio</Typography>

@@ -7,7 +7,7 @@ import {
   TableRow, IconButton, Tooltip, CircularProgress, Modal, Fade, Backdrop, Chip,
   Container, Alert, AlertTitle
 } from '@mui/material';
-import CategoryIcon from '@mui/icons-material/Category'; // Icono para categorías
+import BusinessIcon from '@mui/icons-material/Business'; // Icono consistente
 
 // --- Contextos ---
 import { useAppContext } from '../../contexts/AppContext';
@@ -42,7 +42,7 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: '90%',
-    maxWidth: '700px', // Ajustado para un formulario más simple
+    maxWidth: '700px',
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -62,10 +62,10 @@ const CategoriasPage = () => {
   const { currentUser: user } = useAuth();
 
   const fetchCategorias = useCallback(async () => {
-    if (!app?.empresaId || !user) return;
+    if (!app?.empresa_id || !user) return;
     try {
       setLoading(true);
-      const categoriasList = await getAllCategorias(app.empresaId);
+      const categoriasList = await getAllCategorias(app.empresa_id);
       setCategorias(categoriasList);
     } catch (error) {
       console.error("Error al obtener las categorías:", error);
@@ -120,13 +120,12 @@ const CategoriasPage = () => {
   };
 
   const handleFormSubmit = async (values) => {
-    if (!app?.empresaId || !user) {
+    if (!app?.empresa_id || !user) {
       console.error("No hay empresa seleccionada o usuario autenticado");
       return;
     }
     try {
-      // Aseguramos que empresa_id siempre esté en los datos a guardar
-      const data = { ...values, empresa_id: app.empresaId };
+      const data = { ...values, empresa_id: app.empresa_id };
       if (currentCategoria) {
         await updateCategoria(currentCategoria.id, data, user.uid);
       } else {
@@ -148,7 +147,7 @@ const CategoriasPage = () => {
     );
   }
 
-  if (!app?.empresaId) {
+  if (!app?.empresa_id) {
     return (
       <Container sx={{ p: 3 }}>
         <Alert severity="error" variant="outlined" sx={{ '& .MuiAlert-icon': { fontSize: 30 } }}>
@@ -160,7 +159,7 @@ const CategoriasPage = () => {
             variant="contained" 
             color="primary" 
             onClick={() => navigate('/inicializar/empresa')} 
-            startIcon={<CategoryIcon />}
+            startIcon={<BusinessIcon />}
           >
             Ir a Inicializar Empresa
           </Button>

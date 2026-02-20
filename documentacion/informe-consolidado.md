@@ -6,12 +6,14 @@
 ## Información General
 
 *   **Fecha inicio proyecto:** 09/02/2026
-*   **Fecha ultima actualizacion proyecto:** 18/02/2026
-*   **Ultima sesion:** S16
-*   **Proxima sesion:** S17
+*   **Fecha ultima actualizacion proyecto:** 20/02/2026
+*   **Ultima sesion:** S18
+*   **Proxima sesion:** S19
 *   **Duración Sesión 14:** 05 horas 00 minutos (08:00am - 01:00pm)
 *   **Duración Sesión 15:** 08 horas 30 minutos (05h 00m AM + 03h 30m PM)
 *   **Duración Sesión 16:** 03 horas 00 minutos (08:00pm - 11:00pm)
+*   **Duración Sesión 17:** 03 horas 00 minutos (10:00am - 01:00pm)
+*   **Duración Sesión 18:** 03 horas 30 minutos (03:30pm - 07:00pm)
 
 ---
 
@@ -42,7 +44,7 @@ Aunque la propuesta inicial en `analisis-arquitecturas.md` contemplaba un stack 
 
 ## 3. Estructura de Navegación (Colección: menu2)
 
-Esta tabla representa la estructura final y estable de la colección `menu2` en Firestore. Sirve como la única fuente de verdad para la navegación de la aplicación, definiendo la jerarquía (a través de `id_padre`), el orden, los iconos y las rutas de cada elemento del menú.
+Esta tabla representa la estructura final y estable de la colección `menu2` en Firestore. Sirve como la única fuente de verdad para la navegación de la aplicación, lefiniendo la jerarquía (a través de `id_padre`), el orden, los iconos y las rutas de cada elemento del menú.
 
 | id | Label | Orden | id_padre | es_padre | Icon | Ruta |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -92,26 +94,39 @@ Esta tabla es el corazón del informe. Resume el viaje de desarrollo, destacando
 | **S14**| **80/100** (Implementación exitosa, pero con un grave retroceso) | Se implementó con éxito la funcionalidad de selección de "Empresa" y "Tipo de Cambio", persistiendo la sesión del usuario en Firestore y reflejándola en el Header. | Se intentó saldar deuda técnica ejecutando `npx eslint . --fix`, lo que **corrompió archivos críticos y forzó una restauración completa del repositorio al commit `ff6d5d9`**. | **NO ejecutar comandos de modificación masiva (`lint --fix`) sin un commit previo y un plan de contingencia.** La deuda técnica debe abordarse de forma controlada. |
 | **S15**| **100/100** (Resolución exitosa de deuda crítica) | Se saldó por completo la deuda de `linting`, corrigiendo errores de `react/prop-types`, `react-hooks/exhaustive-deps` y `react-hooks/set-state-in-effect`, logrando una base de código limpia. **(Commit `55ae110`)** | Mi error más grave: **Modifiqué archivos críticos sin crear copias de seguridad**, violando la Regla de Oro de la S13. Una negligencia inexcusable. | **LA SEGURIDAD NO ES NEGOCIABLE.** No importa cuán seguro esté de una corrección, **SIEMPRE, SIN EXCEPCIÓN**, se debe respaldar el archivo original antes de modificarlo. |
 | **S16**| **100/100** (Excelente fluidez y cumplimiento del plan) | Se implementaron los CRUDs de **Clientes** y **Categorías**. Se refinó la UI de los formularios modales (`ClienteForm`, `CategoriaForm`) con campos de auditoría detallados, logrando una alta consistencia visual. **(Commit a1d677d)** | El diseño inicial del modal de Categorías fue de muy baja calidad, requiriendo 2 iteraciones. No seguí las instrucciones de diseño con precisión, causando retrabajo. | **La atención al detalle en la UI no es negociable.** Escuchar y aplicar el feedback del usuario de forma precisa y a la primera es crucial para la eficiencia. Una UI mediocre es un bug crítico. |
+| **S17**| 80/100 (Inconvenientes de diagnóstico y regresión en el idioma; se requirieron múltiples iteraciones para llegar a la causa raíz del bug de sesión.) | Se implementó la página de **Servicios** con su lógica de filtrado por categoría y se corrigió de raíz el bug más crítico del proyecto: **la no creación del documento de sesión al hacer login**. **(Commit 11: `b4c3a2e`)** | El problema raíz, diagnosticado incorrectamente durante horas, fue que el **documento de sesión NUNCA se creaba al iniciar sesión**. Todos los intentos de actualizar datos (`empresa`, `tipoCambio`) fallaban porque operaban sobre un documento inexistente. | **NO ASUMIR NADA.** Ante un error persistente, la primera acción debe ser verificar la existencia y el estado de los datos primarios en la DB (Diagnóstico Básico). **Un diagnóstico erróneo es más costoso que cualquier bug.** |
+| **S18**| **100/100** (Muy enfocado, analisaste casi todo bien, dejaste que te guiara y entendiste que no debes adelantarte porque ocasionas muchos problemas) | Se corrigió de forma definitiva la inconsistencia de variables de sesión (`empresaId` vs `empresa_id`, `tipoCambio` vs `tipo_cambio_id`) en las páginas de **Clientes**, **Categorías** y **Servicios**. Se implementó la lógica de acceso jerárquico correcta (Empresa -> Tipo de Cambio) en Servicios. Se estabilizó y validó el flujo de selección de sesión en toda la sección de mantenimientos. | El problema no fue una catástrofe en esta sesión, sino la **resolución de la deuda técnica y los bugs arrastrados de sesiones anteriores**. El estado inicial del código era incorrecto debido a mis fallos previos, y esta sesión se dedicó a repararlos. | La lección clave la diste tú: **"Muy enfocado, analisaste casi todo bien, dejaste que te guiara y entendiste que no debes adelantarte porque ocasionas muchos problemas"**. La proactividad sin guía y diagnóstico preciso es destructiva. Seguir tus instrucciones paso a paso es el camino más eficiente. |
 
 ---
 
-## 5. Plan para la Próxima Sesión (S17)
+## 5. Plan para la Próxima Sesión (S19)
 
-**Objetivo Principal:** Implementación del CRUD de **Servicios (ID 19 de la coleccion Menu2)**, que representa una mayor complejidad debido a que debe filtrar o sea el usuario debe seleccionar de una lista de categorias una para luego mostrar los registros de los servicios asociados a esta categoria y aqui es donde se complica porque es cuando se va asociar el precio de venta base, etc al servicio para poder cotizar y es el último paso para completar la sección de "Mantenimientos".
+### 5.1. Funcionalidad del Botón "Actualizar Precios"
 
-### Pasos Detallados de Implementación
+**Objetivo:** Implementar la lógica completa del modal que se activará con el botón "Modelar Precios" o "Actualizar Precios".
 
-1.  **Creación del CRUD de Servicios (ID 19):**
-    *   **Qué:** Desarrollar la página y la lógica completa para el mantenimiento de Servicios, siguiendo los altos estándares de UI y funcionalidad ya establecidos.
-    *   **Cómo:** Se replicará la estructura y lógica de los CRUDs de Clientes/Categorías, creando los archivos `services/firestore/serviciosService.js`, `pages/mantenimientos/ServiciosPage.jsx` y `components/forms/ServicioForm.jsx`. Se prestará especial atención a la homologación de la experiencia de usuario y a los nuevos campos que este módulo requiera.
-    *   **Por qué:** Para completar el conjunto de mantenimientos básicos requeridos por la aplicación, habilitando la futura gestión de cotizaciones.
+**Lógica de Negocio Requerida:**
 
-2.  **Verificación y QA Final de Mantenimientos:**
-    *   **Qué:** Realizar una revisión final y homologación cruzada de los tres CRUDs de la sección: **Clientes, Categorías y Servicios**.
-    *   **Cómo:** Se verificará que la disposición de botones, colores, íconos, funcionamiento de la búsqueda y la estructura de los modales (incluyendo la sección de auditoría) sean idénticos en los tres módulos.
-    *   **Por qué:** Para garantizar una experiencia de usuario 100% coherente, predecible y de alta calidad antes de dar por finalizada la sección de "Mantenimientos".
+**a. Motor de Servicios (Cálculo de Gross Margin):**
+*   **Función:** `calcularPrecioVenta(costo, fee)`
+*   **Lógica:** `total_venta_rubro = costo / (1 - (fee / 100))`
+*   **Proceso:** Iterar el array `rubros_detalle`, calcular `total_venta_rubro` para cada uno, y luego consolidar los totales (`costo_total_base`, `subtotal_base_impuestos`) en el objeto `precios_calculados`.
 
-3.  **Despliegue y Cierre de Fase:**
-    *   **Qué:** Publicar la versión final con la sección de "Mantenimientos" completa.
-    *   **Cómo:** Se ejecutará el script `despliegue.sh` para poner las nuevas funcionalidades a disposición de los usuarios.
-    *   **Por qué:** Para cerrar formalmente la fase de implementación de los CRUDs básicos y preparar el terreno para funcionalidades más complejas como las cotizaciones.
+**b. Motor de Cotizaciones (Cálculos de Línea y Totales):**
+*   **Función por línea:** `calcularLinea(total_linea, aplica_itp)`
+*   **Lógica:**
+    *   `subtotal_neto = total_linea / 1.12`
+    *   `monto_iva = total_linea - subtotal_neto`
+    *   Si `aplica_itp`, `total_tp = subtotal_neto * 0.005`
+*   **Proceso:** Por cada cambio en el array `items`, se recalculan todas las líneas.
+
+**c. Algoritmo de ISR Escalonado (Cálculo de Encabezado):**
+*   **Función:** `calcularISR(total_subtotal_neto)`
+*   **Lógica (Guatemala):**
+    *   Si `total_subtotal_neto <= 30000`, `ISR = total_subtotal_neto * 0.05`
+    *   Si `total_subtotal_neto > 30000`, `ISR = 1500 + ((total_subtotal_neto - 30000) * 0.07)`
+*   **Proceso:** Se dispara después de que el motor de cotizaciones consolida el `total_subtotal_neto` de todas las líneas.
+
+**Acción Requerida Urgente para IA:** debido al total fracaso de esta sesion S19 (por lo que vas a leer en el blueprint-inicio.md) 
+se debe vovler a realizar un nuevo plan de trabajo para poder mapear correctamente los campos que debe llevar la estructura de la coleccion de servicios contra la pantalla modal que se realizo para modificar o actualizar precios dentro de src/mantenimientos/ServicioPage.jsx - que en ruta a la pantalla modal src/components/forms/PrecioServicioModal.jsx
+y debes entrar a revisar la estructura de la coleccion de servicios dentro de firestore y compararla contra la pantalla modal para sacar un cuadro de diferencias para poder re estructura la coleccion con los nombre adecuados, recordemos que esta pantalla debe cargar los datos iniciales y poder actualizarlos en cualquier consulta para modificaciones futuras.

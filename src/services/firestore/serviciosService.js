@@ -34,28 +34,61 @@ export const getServiciosByCategoria = async (empresaId, categoriaId) => {
 };
 
 /**
- * Crea un nuevo servicio con valores iniciales y de auditoría.
- * @param {Object} servicioData - Datos básicos del servicio (nombre, detalle, itp).
+ * Crea un nuevo servicio con la estructura de datos definida.
+ * @param {Object} servicioData - Datos del formulario (nombre_servicio, detalle_queincluyeservicio, itp, empresa_id, categoria_id).
  * @param {string} userId - El ID del usuario que crea el servicio.
  * @returns {Promise<DocumentReference>}
  */
 export const createServicio = (servicioData, userId) => {
   return addDoc(serviciosCollectionRef, {
+    // Datos que vienen del formulario
     ...servicioData,
-    // --- Campos de Auditoría ---
+
+    // --- Campos de Estado y Auditoría ---
+    estado: 'activo',
+    fecha_estado: serverTimestamp(),
     usuario_creo: userId,
     fecha_creacion: serverTimestamp(),
     usuario_ultima_modificacion: userId,
     fecha_ultima_modificacion: serverTimestamp(),
-    fecha_estado: serverTimestamp(),
-    // --- Campos de Precios Inicializados ---
+    
+    // --- Estructura de Precios ---
     precios_calculados: {
       costo_total_base: 0,
-      subtotal_base_impuestos: 0,
+      tasa_ganancia_global: 0,
+      valorfee_global: 0,
+      costo_mas_feeglobal: 0,
+      tasa_impuestos: 0,
+      valor_impuetos: 0,
       precio_venta_base: 0,
-      tasa_ganancia: 0
+      tipocambio_id: null,
+      tipocambio_tasa_compra: 0,
+      tipocambio_moneda_base: null,
+      tipocambio_moneda_destino: null,
+      tipocambios_fecha_tipocambio: null
     },
-    rubros_detalle: []
+
+    // --- Rubros ---
+    rubros_detalle: [
+      {
+        descripcion_costo: "",
+        valor: 0,
+        tasa_fee: 0
+      }
+    ],
+
+    // --- Historial de Precios ---
+    rubros_historial: [
+      {
+        fecha: new Date(), // CORREGIDO: Usar timestamp del cliente
+        costo_total_base_ant: 0,
+        precio_venta_base_ant: 0,
+        tasa_ganancia_global_ant: 0,
+        costo_total_base: 0,
+        precio_venta_base: 0,
+        tasa_ganancia_global: 0
+      }
+    ]
   });
 };
 

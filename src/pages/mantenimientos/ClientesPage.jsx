@@ -60,10 +60,10 @@ const ClientesPage = () => {
   const { currentUser: user } = useAuth();
 
   const fetchClientes = useCallback(async () => {
-    if (!app?.empresaId || !user) return;
+    if (!app?.empresa_id || !user) return;
     try {
       setLoading(true);
-      const clientesSnapshot = await getClientes(app.empresaId);
+      const clientesSnapshot = await getClientes(app.empresa_id);
       const clientesList = clientesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setClientes(clientesList);
     } catch (error) {
@@ -108,12 +108,12 @@ const ClientesPage = () => {
   };
 
   const handleFormSubmit = async (values) => {
-    if (!app?.empresaId || !user) {
+    if (!app?.empresa_id || !user) {
       console.error("No hay empresa seleccionada o usuario autenticado");
       return;
     }
     try {
-      const data = { ...values, empresa_id: app.empresaId };
+      const data = { ...values, empresa_id: app.empresa_id };
       if (currentCliente) {
         await updateCliente(currentCliente.id, data, user.uid);
       } else {
@@ -135,7 +135,7 @@ const ClientesPage = () => {
     );
   }
 
-  if (!app?.empresaId) {
+  if (!app?.empresa_id) {
     return (
       <Container sx={{ p: 3 }}>
         <Alert severity="error" variant="outlined" sx={{ '& .MuiAlert-icon': { fontSize: 30 } }}>
@@ -158,7 +158,7 @@ const ClientesPage = () => {
 
   // --- Renderizado Principal ---
   return (
-    <Box sx={{ width: '100%' }}> {/* CORREGIDO: Se eliminó el padding p:3 */}
+    <Box sx={{ width: '100%' }}> 
       <Paper sx={{ width: '100%', mb: 2, overflow: 'hidden' }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flex: '1 1 100%', fontWeight: 'bold' }}>

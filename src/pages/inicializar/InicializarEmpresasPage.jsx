@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { 
   Box, Paper, Toolbar, Typography, TextField, InputAdornment, 
   Button, Table, TableBody, TableCell, TableContainer, TableHead, 
-  TableRow, IconButton, Tooltip, CircularProgress, Modal, Fade, /*Backdrop,*/ Chip
+  TableRow, IconButton, Tooltip, CircularProgress, Modal, Fade, Chip
 } from '@mui/material';
-// import { format } from 'date-fns'; // Comentado porque formatFirestoreTimestamp está comentado
 
 // --- Hooks y Contextos ---
 import { useAuth } from '../../contexts/AuthContext';
@@ -17,10 +16,8 @@ import {
   getAllEmpresas,
   createEmpresa,
   updateEmpresa,
-  // deleteEmpresa, // Comentado porque handleDelete está comentado
-  // setEmpresaStatus // Comentado porque handleToggleEstado está comentado
 } from '../../services/firestore/inicializarEmpresasService';
-import { updateSession } from '../../services/sessionService'; // ¡Importamos el servicio de sesión!
+import { updateSession } from '../../services/sessionService';
 
 // --- Importación de Íconos ---
 import SearchIcon from '@mui/icons-material/Search';
@@ -30,8 +27,8 @@ import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'; // Icono para no seleccionado
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // Icono para seleccionado
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 import InicializarEmpresaForm from '../../components/forms/InicializarEmpresaForm';
 
@@ -51,21 +48,6 @@ const style = {
   },
 };
 
-// --- FUNCIÓN UTILITARIA (COMENTADA POR NO USARSE) ---
-/*
-const formatFirestoreTimestamp = (timestamp) => {
-  if (!timestamp || !timestamp.toDate) {
-    return 'No disponible';
-  }
-  try {
-    return format(timestamp.toDate(), 'dd/MM/yyyy HH:mm:ss.SSS');
-  } catch (error) {
-    console.error("Error al formatear fecha:", error);
-    return 'Fecha inválida';
-  }
-};
-*/
-
 const InicializarEmpresasPage = () => {
   const [empresas, setEmpresas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -74,9 +56,9 @@ const InicializarEmpresasPage = () => {
   const [currentEmpresa, setCurrentEmpresa] = useState(null);
   const navigate = useNavigate();
 
-  // --- Hooks para obtener el contexto ---
+  // --- Hooks para obtener el contexto (CORREGIDO) ---
   const { currentUser } = useAuth();
-  const { sessionData, setNombreEmpresa } = useAppContext();
+  const { sessionData } = useAppContext(); // Se elimina la llamada a la función inexistente setNombreEmpresa
 
   useEffect(() => {
     const fetchEmpresas = async () => {
@@ -91,7 +73,7 @@ const InicializarEmpresasPage = () => {
     };
 
     fetchEmpresas();
-  }, []); // El array de dependencias vacío asegura que se ejecuta solo una vez
+  }, []);
 
   const filteredEmpresas = useMemo(() => 
     empresas.filter(empresa => 
@@ -99,30 +81,39 @@ const InicializarEmpresasPage = () => {
       (empresa.nit && empresa.nit.toLowerCase().includes(searchTerm.toLowerCase()))
     ), [empresas, searchTerm]);
     
-  // --- LÓGICA DE SELECCIÓN DE SESIÓN ---
+  // --- LÓGICA DE SELECCIÓN DE SESIÓN (CORREGIDA Y FINAL) ---
   const handleSelect = async (item) => {
     if (!currentUser) return; 
 
-    const isSelected = sessionData?.empresaId === item.id;
+    const TIPO_CAMBIO_RESET_TOTAL = {
+      tipo_cambio_id: null,
+      tipo_cambio_fecha: null,
+      tipo_cambio_moneda_base: null,
+      tipo_cambio_moneda_destino: null,
+      tipo_cambio_tasa_compra: 0,
+      tipo_cambio_tasa_venta: 0,
+    };
+
+    const isSelected = sessionData?.empresa_id === item.id;
 
     if (isSelected) {
-      // Deseleccionar (limpiar los campos)
       await updateSession(currentUser.uid, {
-        empresaId: null,
-        nombreEmpresa: null,
+        empresa_id: null,
+        empresa_nombre: null,
+        ...TIPO_CAMBIO_RESET_TOTAL 
       });
-      setNombreEmpresa('No seleccionada'); // Actualizamos el header
+      console.log('Empresa deseleccionada. La interfaz se actualizará automáticamente.');
+
     } else {
-      // Seleccionar un nuevo item
       await updateSession(currentUser.uid, { 
-        empresaId: item.id,
-        nombreEmpresa: item.nombre,
+        empresa_id: item.id,
+        empresa_nombre: item.nombre,
+        ...TIPO_CAMBIO_RESET_TOTAL,
       });
-      setNombreEmpresa(item.nombre); // Actualizamos el header
+      console.log(`Empresa seleccionada. La interfaz se actualizará automáticamente.`);
     }
   };
   
-  // --- Función fetch para recargar datos después de una acción ---
   const refreshData = async () => {
     setLoading(true);
     try {
@@ -134,22 +125,6 @@ const InicializarEmpresasPage = () => {
     setLoading(false);
   };
 
-
-  // --- LÓGICA CRUD COMENTADA PORQUE LOS BOTONES ESTÁN DESHABILITADOS ---
-  /*
-  const handleDelete = async (id) => {
-    if (window.confirm('¿Estás seguro de que deseas eliminar esta empresa? Esta acción es irreversible.')) {
-      try { await deleteEmpresa(id); refreshData(); } catch (error) { console.error("Error:", error); }
-    }
-  };
-  const handleToggleEstado = async (empresa) => {
-    const nuevoEstado = empresa.estado === 'activo' ? 'inactivo' : 'activo';
-    if (window.confirm(`¿Deseas cambiar el estado a "${nuevoEstado}"?`)) {
-      try { await setEmpresaStatus(empresa.id, nuevoEstado); refreshData(); } catch (error) { console.error("Error:", error); }
-    }
-  };
-  const handleOpenModal = (empresa = null) => { setCurrentEmpresa(empresa); setOpenModal(true); };
-  */
   const handleCloseModal = () => { setOpenModal(false); setCurrentEmpresa(null); };
   const handleFormSubmit = async (values) => {
     try {
@@ -178,7 +153,7 @@ const InicializarEmpresasPage = () => {
             sx={{ mr: 2, width: '350px' }}
           />
           
-          <Button variant="contained" startIcon={<AddIcon />} sx={{ mr: 1 }} disabled>  {/* BOTÓN DESHABILITADO */}
+          <Button variant="contained" startIcon={<AddIcon />} sx={{ mr: 1 }} disabled>
             Nuevo
           </Button>
           <Button variant="contained" color="error" startIcon={<ExitToAppIcon />} onClick={() => navigate('/')}>
@@ -206,7 +181,7 @@ const InicializarEmpresasPage = () => {
               {loading ? (
                 <TableRow><TableCell colSpan={10} align="center"><CircularProgress /></TableCell></TableRow>
               ) : filteredEmpresas.map((empresa) => {
-                const isSelected = sessionData?.empresaId === empresa.id;
+                const isSelected = sessionData?.empresa_id === empresa.id;
                 return (
                   <TableRow hover key={empresa.id} selected={isSelected}>
                     <TableCell align="center">
@@ -233,22 +208,22 @@ const InicializarEmpresasPage = () => {
                     </TableCell>
                     <TableCell align="right">
                       <Tooltip title="Cambiar Estado (Deshabilitado)">
-                        <span> {/* El span es necesario para que el Tooltip funcione en un botón deshabilitado */} 
-                          <IconButton size="small" disabled> {/* BOTÓN DESHABILITADO */}
+                        <span> 
+                          <IconButton size="small" disabled>
                             {empresa.estado === 'activo' ? <ToggleOnIcon /> : <ToggleOffIcon />}
                           </IconButton>
                         </span>
                       </Tooltip>
                       <Tooltip title="Editar (Deshabilitado)">
                         <span>
-                          <IconButton size="small" disabled> {/* BOTÓN DESHABILITADO */}
+                          <IconButton size="small" disabled>
                             <EditTwoToneIcon />
                           </IconButton>
                         </span>
                       </Tooltip>
                       <Tooltip title="Eliminar (Deshabilitado)">
                         <span>
-                          <IconButton size="small" disabled> {/* BOTÓN DESHABILITADO */}
+                          <IconButton size="small" disabled>
                             <DeleteForeverTwoToneIcon />
                           </IconButton>
                         </span>
@@ -262,7 +237,6 @@ const InicializarEmpresasPage = () => {
         </TableContainer>
       </Paper>
       
-      {/* El modal sigue existiendo en el código pero no es visible/alcanzable desde la UI */}
       <Modal open={openModal} onClose={handleCloseModal}>
         <Fade in={openModal}>
           <Box sx={style.modal}>

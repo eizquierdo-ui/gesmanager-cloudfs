@@ -26,7 +26,6 @@ import {
 
 // --- Componentes y Formularios ---
 import ServicioForm from '../../components/forms/ServicioForm';
-import PrecioServicioModal from '../../components/forms/PrecioServicioModal';
 
 // --- Iconos ---
 import SearchIcon from '@mui/icons-material/Search';
@@ -60,9 +59,8 @@ const ServiciosPage = () => {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [openModal, setOpenModal] = useState(false);
-  const [isPrecioModalOpen, setIsPrecioModalOpen] = useState(false);
   const [currentServicio, setCurrentServicio] = useState(null);
-  const [selectedServicioId, setSelectedServicioId] = useState(null);
+  const [selectedServicio, setSelectedServicio] = useState(null);
   const navigate = useNavigate();
   const { sessionData: app, loadingSession } = useAppContext();
   const { currentUser: user } = useAuth();
@@ -89,7 +87,7 @@ const ServiciosPage = () => {
       setLoading(true);
       const serviciosList = await getServiciosByCategoria(app.empresa_id, selectedCategoria);
       setServicios(serviciosList);
-      setSelectedServicioId(null);
+      setSelectedServicio(null);
     } catch (error) {
       console.error("Error al obtener los servicios:", error);
     } finally {
@@ -113,7 +111,7 @@ const ServiciosPage = () => {
     ), [servicios, searchTerm]);
 
   const handleSelectServicio = (servicioId) => {
-    setSelectedServicioId(prevSelected => (prevSelected === servicioId ? null : servicioId));
+    setSelectedServicio(prevSelected => (prevSelected === servicioId ? null : servicioId));
   };
 
   const handleSetEstado = async (servicio) => {
@@ -148,16 +146,6 @@ const ServiciosPage = () => {
     setOpenModal(false);
     setCurrentServicio(null);
   };
-  
-  const handleOpenPrecioModal = () => {
-    if (servicioSeleccionado) {
-      setIsPrecioModalOpen(true);
-    }
-  };
-  
-  const handleClosePrecioModal = () => {
-    setIsPrecioModalOpen(false);
-  };
 
   const handleFormSubmit = async (values) => {
     if (!app?.empresa_id || !user || !selectedCategoria) {
@@ -182,12 +170,6 @@ const ServiciosPage = () => {
       console.error("Error al guardar el servicio:", error);
     }
   };
-  
-  const servicioSeleccionado = useMemo(() => {
-    if (!selectedServicioId) return null;
-    return servicios.find(s => s.id === selectedServicioId);
-  }, [selectedServicioId, servicios]);
-
 
   // --- Guard Clauses: Renderizado de Bloqueo Jerárquico ---
   if (loadingSession) {
@@ -249,13 +231,12 @@ const ServiciosPage = () => {
                  <Button 
                     variant="contained" 
                     startIcon={<PriceChangeIcon />} 
-                    disabled={!servicioSeleccionado} 
-                    onClick={handleOpenPrecioModal}
+                    disabled={!selectedServicio} 
                     sx={{
                         ml: 5,
                         whiteSpace: 'nowrap',
-                        background: servicioSeleccionado ? '#ffc107' : '#e0e0e0',
-                        color: servicioSeleccionado ? '#d32f2f' : 'rgba(0, 0, 0, 0.26)',
+                        background: selectedServicio ? '#ffc107' : '#e0e0e0',
+                        color: selectedServicio ? '#d32f2f' : 'rgba(0, 0, 0, 0.26)',
                         fontWeight: 'bold',
                         '&.Mui-disabled': {
                             background: '#e0e0e0', 
@@ -333,7 +314,7 @@ const ServiciosPage = () => {
                    <TableCell padding="checkbox">
                         <Checkbox
                             color="primary"
-                            checked={selectedServicioId === srv.id}
+                            checked={selectedServicio === srv.id}
                             onChange={() => handleSelectServicio(srv.id)}
                         />
                     </TableCell>
@@ -397,16 +378,6 @@ const ServiciosPage = () => {
           </Box>
         </Fade>
       </Modal>
-
-      {servicioSeleccionado && (
-        <PrecioServicioModal
-            open={isPrecioModalOpen}
-            onClose={handleClosePrecioModal}
-            servicio={servicioSeleccionado}
-            onUpdate={fetchServicios} 
-        />
-      )}
-
     </Box>
   );
 };
