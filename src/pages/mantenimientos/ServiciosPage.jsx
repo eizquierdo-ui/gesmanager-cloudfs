@@ -98,7 +98,7 @@ const ServiciosPage = () => {
 
   const handleSetEstado = async (servicio) => {
     const nuevoEstado = servicio.estado === 'activo' ? 'inactivo' : 'activo';
-    if (window.confirm(`¿Deseas cambiar el estado a \"${nuevoEstado}\"?`)) {
+    if (window.confirm(`¿Deseas cambiar el estado a \\"${nuevoEstado}\\"?`)) {
       try {
         await setServicioStatus(servicio.id, nuevoEstado, user.uid);
         fetchServicios();
@@ -325,7 +325,7 @@ const ServiciosPage = () => {
                   <TableCell>{srv.detalle_queincluyeservicio}</TableCell>
                   <TableCell>{srv.precios_calculados?.costo_total_base?.toFixed(2) || '0.00'}</TableCell>
                   <TableCell>{srv.precios_calculados?.precio_venta_base?.toFixed(2) || '0.00'}</TableCell>
-                  <TableCell>{(srv.precios_calculados?.tasa_ganancia || 0).toFixed(2)}%</TableCell>
+                  <TableCell>{(srv.precios_calculados?.tasa_ganancia_global || 0).toFixed(2)}%</TableCell>
                   <TableCell>
                     <Chip label={srv.itp ? 'Sí' : 'No'} size="small" color={srv.itp ? 'primary' : 'default'} />
                   </TableCell>

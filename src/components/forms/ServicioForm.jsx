@@ -51,8 +51,10 @@ const ServicioForm = ({ open, onClose, onSave, servicio }) => {
         <Box sx={{ mt: 2 }}>
           <Typography variant="subtitle2" color="text.secondary" gutterBottom>DATOS DEL SERVICIO</Typography>
           <Divider sx={{ mb: 2 }}/>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
+          
+          {/* --- CONTENEDOR FLEXBOX PARA LOS CAMPOS --- */}
+          <Box display="flex" gap={2}>
+            <Box flex="1 1 33%">
               <TextField
                 autoFocus
                 margin="dense"
@@ -64,8 +66,8 @@ const ServicioForm = ({ open, onClose, onSave, servicio }) => {
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
               />
-            </Grid>
-            <Grid item xs={12} sm={8}>
+            </Box>
+            <Box flex="1 1 67%">
               <TextField
                 margin="dense"
                 id="detalle"
@@ -76,8 +78,9 @@ const ServicioForm = ({ open, onClose, onSave, servicio }) => {
                 value={detalle}
                 onChange={(e) => setDetalle(e.target.value)}
               />
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
+
           <FormControlLabel
             control={<Checkbox checked={aplicaITP} onChange={(e) => setAplicaITP(e.target.checked)} />}
             label="Aplica Timbre de Prensa (ITP)"

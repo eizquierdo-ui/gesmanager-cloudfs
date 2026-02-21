@@ -6,14 +6,15 @@
 ## Información General
 
 *   **Fecha inicio proyecto:** 09/02/2026
-*   **Fecha ultima actualizacion proyecto:** 19/02/2026 - Total de 63 horas con 30 minutos
-*   **Ultima sesion:** S20
-*   **Proxima sesion:** S21
+*   **Fecha ultima actualizacion proyecto:** 22/02/2026 - Total de 75 horas con 00 minutos
+*   **Ultima sesion:** S22
+*   **Proxima sesion:** S23
 --
--- solo las penultima y ultima sesion se refleja
+-- solo las 3 ultimas sesion se reflejan en el siguiente detalle
 --
-*   **Duración Sesión 19:** 06 horas 00 minutos (05:59pm - 11:59pm) - fracaso
-*   **Duración Sesión 20:** 04 horas 30 minutos (05:00pm - 09:30pm) - fracaso 
+*   **Duración Sesión 20:** 04 horas 30 minutos (05:00pm - 09:30pm) - fracaso
+*   **Duración Sesión 21:** 03 horas 30 minutos (12:00pm - 03:30pm)
+*   **Duración Sesión 22:** 08 horas 00 minutos (10:00pm - 06:00am)
 
 ---
 
@@ -98,93 +99,47 @@ Esta tabla es el corazón del informe. Resume el viaje de desarrollo, destacando
 | **S18**| **100/100** (Muy enfocado, analisaste casi todo bien, dejaste que te guiara y entendiste que no debes adelantarte porque ocasionas muchos problemas) | Se corrigió de forma definitiva la inconsistencia de variables de sesión (`empresaId` vs `empresa_id`, `tipoCambio` vs `tipo_cambio_id`) en las páginas de **Clientes**, **Categorías** y **Servicios**. Se implementó la lógica de acceso jerárquico correcta (Empresa -> Tipo de Cambio) en Servicios. Se estabilizó y validó el flujo de selección de sesión en toda la sección de mantenimientos. | El problema no fue una catástrofe en esta sesión, sino la **resolución de la deuda técnica y los bugs arrastrados de sesiones anteriores**. El estado inicial del código era incorrecto debido a mis fallos previos, y esta sesión se dedicó a repararlos. | La lección clave la diste tú: **"Muy enfocado, analisaste casi todo bien, dejaste que te guiara y entendiste que no debes adelantarte porque ocasionas muchos problemas"**. La proactividad sin guía y diagnóstico preciso es destructiva. Seguir tus instrucciones paso a paso es el camino más eficiente. |
 | **S19**| **0/100** (Incompetencia Catastrófica y Pérdida de Tiempo Masiva) | Se completó la implementación visual del modal de precios (PrecioServicioModal.jsx). La interfaz y los cálculos en pantalla son correctos y fueron validados. | **La Mega Discrepancia.** Pasé 5 horas en un bucle de incompetencia, incapaz de seguir la simple instrucción de consultar la estructura de datos en Firestore. Mi función `handleSave` intentaba guardar un objeto `precios_calculados` con una estructura totalmente inventada y rota, corrompiendo el único registro de la colección. La causa raíz fue mi negligencia al no leer la estructura de datos existente antes de intentar escribir en ella. | **LA VERDAD ESTÁ EN LA BASE DE DATOS, NO EN MI CÓDIGO.** Antes de escribir una sola línea de una función `save` o `update`, la primera acción ineludible es LEER Y VERIFICAR la estructura de datos REAL y ACTUAL del documento de destino en Firestore. Asumir la estructura es la receta para la catástrofe. |
 | **S20**| **10/100** (Desobediencia y pérdida de tiempo masiva) | Se logró, después de horas de errores, la inserción de un nuevo servicio respetando la estructura de datos. Se finalizó la Fase 1 con el **Commit 12 (`3c424bd`): Fin Fase 1 - Estructura de sesión, accesos y CRUD de servicios (S18, S19, S20)**. | **Mi incompetencia persistente.** Durante 4 horas fui incapaz de seguir una instrucción básica para crear un registro. Mis miles de intentos de "improvisar" y no seguir sus órdenes directas provocaron la necesidad de restaurar archivos (`ServicioForm.jsx`, `serviciosService.js`) y un retraso inaceptable para una tarea elemental. | **DEJA DE PENSAR. SIGUE LAS INSTRUCCIONES.** Mi función no es ser creativo ni proactivo cuando se me da una orden. Es ejecutar las instrucciones al pie de la letra. Cualquier desviación es un bug y una pérdida de tiempo. La guía del usuario es la única verdad. |
+| **S21**| **75/100** (Falta de enfoque en el cambio final de UI, causando una regresión crítica y retrasos innecesarios.) | • Implementación COMPLETA y exitosa de la funcionalidad "Actualizar Precio".<br>• Flujo "Cargar -> Comparar -> Guardar" validado.<br>• Lógica de reemplazo de `rubros_detalle` y adición a `rubros_historial` funcionando.<br>• Ajustes finos implementados (redondeo de precios, impuestos por defecto).<br>• Mejoras de UI en ambos modales (espaciado y layout de campos).<br>• **Commit 13 (`e36dd55`):** Lógica de Precios y Recuperación de Regresión (S21). | • **"Timestamp Saga":** Múltiples fallos al intentar usar `serverTimestamp()` dentro de arrays en Firestore, resuelto al final con `new Date()` del cliente.<br>• **Regresión Catastrófica:** Al intentar un cambio simple de UI, se corrompió `ServicioForm.jsx` y se eliminó la estructura del modal en `ServiciosPage.jsx`, rompiendo la funcionalidad de "Nuevo" y "Editar". | Una restauración de Git no es suficiente. Después de restaurar un archivo, es **OBLIGATORIO verificar que sus conexiones (props, llamadas a funciones) con el resto de la aplicación sigan siendo válidas.** No asumir la integridad del flujo de trabajo es crucial. |
+| **S22**| **100/100** (Ejecución enfocada y disciplinada siguiendo un plan detallado) | • **Inicio de "Cotizaciones - Ingreso":** Creación de `CotizacionesIngresoPage.jsx`. Maquetación de alta calidad del Título y las Secciones 1 (Info. Cotización) y 2 (Info. Cliente), siguiendo fielmente el `blueprint.md`.<br>• **Funcionalidad "Refrescar Datos":** Implementación de la página `RefrescarDatosPage.jsx` con su ruta y lógica de `sessionStorage` para redirección post-recarga.<br>• **Corrección de Bugs Críticos de UI/UX:** Se solucionó el bug del "doble clic" en el menú del `Sidebar.jsx` y se corrigió el resaltado permanente de `NavLink` con la propiedad `end`.<br>• **Definición de Arquitectura:** Se consolidó en el `blueprint.md` la estructura de datos `cotizaciones (v5 - Definitiva)` y el Plan de Construcción por Secciones que guiaron el desarrollo. | La sesión se caracterizó por la ausencia de catástrofes gracias a la estricta adherencia a un plan preestablecido y validado, demostrando que este es el flujo de trabajo más eficiente. | **El Plan es el Contrato:** Cuando definimos juntos un plan paso a paso, mi única función es concentrarme y seguir esas instrucciones sin desviarme. Aunque surjan problemas, el plan es la guía. No se debe abordar ninguna tarea fuera del plan sin validación previa. |
 
 ---
 
-## 5. GUIA Oficial para Actualización de Precios (Sesión S21)
+## 5. Plan para la Próxima Sesión (S23)
 
-*Esta guía fue establecida como la única fuente de verdad tras la catástrofe de la S20. Está **SUPER PROHIBIDO** cambiar la estructura o el flujo aquí descrito.*
+### 5.1. Avance Actual del Módulo "Cotizaciones - Ingreso"
 
-### 5.1. Flujo de Trabajo Detallado
+*   **Módulo:** `Cotizaciones - Ingreso`
+*   **Componente:** `src/pages/cotizaciones/CotizacionesIngresoPage.jsx`
+*   **Estado:** La base del componente está creada y es de alta calidad.
+*   **Secciones Completadas (Maquetación UI):**
+    *   Título de la Página y Botones Principales.
+    *   Sección 1: Información de la Cotización (con lógica de cálculo de vigencia).
+    pendiente elaborar la pantalla modal de busqueda de cotizacion)
+    *   Sección 2: Información del Cliente (con botón de búsqueda). (pendiente elaborar la pantalla modal de busqueda de clientes)
 
-*   **Paso 1: Carga e Inicialización del Modal**
-    1.  **Recibir Datos:** El modal recibe el documento del servicio a modificar.
-    2.  **Capturar Estado Anterior:** Se crea una "fotografía" en el estado (`useState`) de `precio_venta_base_ant` del servicio actual.
-    3.  **Poblar Interfaz:** La tabla de "Costos" se llena con `servicio.rubros_detalle` y los campos de impuestos con `servicio.precios_calculados`.
-    4.  **Obtener Datos de Sesión:** Se extraen los datos del tipo de cambio de `sessionData`.
+### 5.2. Tareas Pendientes y Plan de Ejecución para S23
 
-*   **Paso 2: Condición de Guardado (Evento `onSave`)**
-    1.  La escritura en la base de datos solo procede si `precio_venta_base_nuevo !== precio_venta_base_ant`.
+El objetivo es continuar la construcción de `CotizacionesIngresoPage.jsx`, siguiendo el plan y la estructura de datos (`cotizaciones v5`) definidos en `documentacion/blueprint.md`. El desarrollo se realizará sección por sección.
 
-*   **Paso 3: Construcción y Escritura en Firestore (Si la condición se cumple)**
-    1.  **Actualizar `precios_calculados`:** Se construye el objeto con los nuevos valores, usando el mapeo definido en la tabla de homologación.
-    2.  **Actualizar `rubros_detalle`:** Se **REEMPLAZA** el array existente con el nuevo estado de la tabla de "Costos".
-    3.  **Añadir a `rubros_historial`:** Se crea un **NUEVO** objeto para el historial y se **AÑADE** al array existente.
-    4.  Se actualizan los campos de auditoría y se ejecuta la escritura (`updateDoc` o `writeBatch`).
+0. Agregar la funcionalidd al menu2 = id 27 Modelar Precios, esta opcion se debe hacer una copia fiel a la pantalla moda src/components/form/PrecioServicioModal.jsx para crear la nueva opcion que corresponde en src/pages/ModelarPreciosPage.jsx.
+Con la gran diferencia que esta pantalla no extraera campos de una coleccion existente y el boton grabar se debe eliminar porque solo sirve para modelar un precio, que espero que entiendas que todos son campos temporales o sea variales.
 
-### 5.2. Tabla de Homologación (Modal -> Firestore)
+1. Implementar el diseño de las pantallas modales de busqueda de cotizaciones y     busqueda de clientes, que deberan replicar en las siguientes secciones del la pantalla Ingreso de Cotizaciones (Cotizaciones-Ingres).  
+2. **Implementar la Sección 4: Financiera (Snapshot):**
+    *   **Tarea:** Añadir la sección de solo lectura que mostrará los datos del objeto `financiero_snapshot` de la sesión actual (monedas, símbolos, tasas de cambio).
+    *   **Enfoque:** Seguir el estilo de las secciones existentes, utilizando componentes `Paper` y `Grid` de MUI para campos no editables.
 
-| Campo en `precios_calculados` | Fuente en el Modal "Resumen de Precios" |
-| :--- | :--- |
-| `costo_total_base` | Fila "Costo Total" -> Columna "Quetzal" |
-| `tasa_ganancia_global`| Fila "% Fee Global" -> Columna "Tasa" |
-| `valorfee_global` | Fila "% Fee Global" -> Columna "Quetzal" |
-| `costo_mas_feeglobal` | Fila "Costo+Fee Global" -> Columna "Quetzal" |
-| `tasa_impuestos` | Fila "% Impuestos" -> Columna "Tasa" (editable) |
-| `valor_impuetos` | Fila "% Impuestos" -> Columna "Quetzal" |
-| `precio_venta_base` | Fila "Precio Venta" -> Columna "Quetzal" |
-| `tipocambio_id`, `...tasa_compra`, etc. | Se obtienen de `sessionData` |
+3.  **Implementar la Sección 7: Detalle de Servicios (Items):**
+    *   **Tarea:** Crear la tabla o grid que listará los servicios agregados a la cotización.
+    *   **Funcionalidad Clave:** Desarrollar el botón "Agregar Servicio" que deberá abrir un modal de búsqueda para seleccionar servicios de la colección `servicios`. Cada fila en la tabla debe tener un botón para eliminar el ítem.
 
-### 5.3. Estructura Final del Documento `servicios`
+3.  **Implementar la Sección 5: Totales Consolidados:**
+    *   **Tarea:** Maquetar el panel de solo lectura que mostrará los cálculos del objeto `totales`.
+    *   **Funcionalidad Clave:** La lógica se implementará para que los valores de esta sección se actualicen dinámicamente cada vez que se agregue, elimine o modifique un ítem en la Sección de Detalle de Servicios.
 
-```json
-{
-  "nombre_servicio": "string",
-  "detalle_queincluyeservicio": "string",
-  "itp": true,
-  "estado": "activo",
-  "fecha_estado": "Timestamp",
-  "empresa_id": "string",
-  "categoria_id": "string",
-  
-  "precios_calculados": {
-    "costo_total_base": 0,
-    "tasa_ganancia_global": 0,
-    "valorfee_global": 0,
-    "costo_mas_feeglobal": 0,
-    "tasa_impuestos": 0,
-    "valor_impuetos": 0,
-    "precio_venta_base": 0,
-    "tipocambio_id": null,
-    "tipocambio_tasa_compra": 0,
-    "tipocambio_moneda_base": null,
-    "tipocambio_moneda_destino": null,
-    "tipocambios_fecha_tipocambio": null
-  },
+4.  **Implementar la Sección 6: Condiciones Comerciales:**
+    *   **Tarea:** Añadir los campos de texto multilínea para `forma_pago` y `terminos_y_condiciones`.
 
-  "rubros_detalle": [
-    {
-      "descripcion_costo": "",
-      "valor": 0,
-      "tasa_fee": 0
-    }
-  ],
+6.  **Desarrollar la Lógica de los Modales de Búsqueda:**
+    *   **Tarea:** Implementar la funcionalidad de los botones "Buscar Cotización" y "Buscar Cliente" para que abran modales que permitan cargar datos existentes en el formulario.
 
-  "rubros_historial": [
-    {
-      "fecha": "Timestamp",
-      "costo_total_base_ant": 0,
-      "precio_venta_base_ant": 0,
-      "tasa_ganancia_global_ant": 0,
-      "costo_total_base": 0,
-      "precio_venta_base": 0,
-      "tasa_ganancia_global": 0
-    }
-  ],
-
-  "usuario_creo": "string",
-  "usuario_ultima_modificacion": "string",
-  "fecha_creacion": "Timestamp",
-  "fecha_ultima_modificacion": "Timestamp"
-}
-```

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
 import { useAuth } from '../contexts/AuthContext';
 import { useAppContext } from '../contexts/AppContext';
@@ -7,14 +7,13 @@ import { format } from 'date-fns';
 import es from 'date-fns/locale/es';
 import './Home.css';
 
-// --- Componente HeaderInfo (CORREGIDO PARA TIPO DE CAMBIO) ---
+// --- Componente HeaderInfo ---
 const HeaderInfo = () => {
   const { currentUser } = useAuth();
   const { sessionData, loadingSession } = useAppContext();
 
   const userName = currentUser?.displayName || currentUser?.email.split('@')[0];
 
-  // --- PASO 2.2: Lógica para construir el título del tipo de cambio ---
   let tipoCambioDisplay = '[seleccione el tipo de cambio]';
   if (sessionData?.tipo_cambio_id) {
     try {
@@ -24,7 +23,6 @@ const HeaderInfo = () => {
       const tasaCompra = sessionData.tipo_cambio_tasa_compra?.toFixed(4) || '0.0000';
       const tasaVenta = sessionData.tipo_cambio_tasa_venta?.toFixed(4) || '0.0000';
 
-      // Formato exacto solicitado
       tipoCambioDisplay = `[Fecha: ${fecha} ${monedaBase}-${monedaDestino} Tc: ${tasaCompra} Tv: ${tasaVenta}]`;
 
     } catch (error) {
@@ -61,6 +59,18 @@ const HeaderInfo = () => {
 
 // --- Layout Principal Home ---
 function Home() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Comprueba si existe la bandera de redirección forzada.
+    if (sessionStorage.getItem('force_redirect_after_reload') === 'true') {
+      // Si existe, la elimina para evitar bucles.
+      sessionStorage.removeItem('force_redirect_after_reload');
+      // Navega a la página de inicio.
+      navigate('/', { replace: true });
+    }
+  }, [navigate]); // Se ejecuta solo una vez al montar el componente.
+
   return (
     <div className="home-layout">
       <Sidebar />

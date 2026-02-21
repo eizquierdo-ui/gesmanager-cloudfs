@@ -19,7 +19,9 @@ const TipoCambioPage = lazy(() => import('./pages/inicializar/TipoCambioPage.jsx
 const InicializarEmpresasPage = lazy(() => import('./pages/inicializar/InicializarEmpresasPage.jsx'));
 const ClientesPage = lazy(() => import('./pages/mantenimientos/ClientesPage.jsx'));
 const CategoriasPage = lazy(() => import('./pages/mantenimientos/CategoriasPage.jsx'));
-const ServiciosPage = lazy(() => import('./pages/mantenimientos/ServiciosPage.jsx')); // <-- NUEVA PÁGINA
+const ServiciosPage = lazy(() => import('./pages/mantenimientos/ServiciosPage.jsx'));
+const CotizacionesIngresoPage = lazy(() => import('./pages/cotizaciones/CotizacionesIngresoPage.jsx'));
+const RefrescarDatosPage = lazy(() => import('./pages/RefrescarDatosPage.jsx')); // <-- NUEVA PÁGINA
 
 // --- Componentes de Control de Rutas ---
 
@@ -73,7 +75,9 @@ function App() {
           <Route path="inicializar/empresa" element={<InicializarEmpresasPage />} />
           <Route path="mantenimientos/clientes" element={<ClientesPage />} />
           <Route path="mantenimientos/categorias" element={<CategoriasPage />} />
-          <Route path="mantenimientos/servicios" element={<ServiciosPage />} /> {/* <-- NUEVA RUTA */}
+          <Route path="mantenimientos/servicios" element={<ServiciosPage />} />
+          <Route path="cotizaciones/ingreso" element={<CotizacionesIngresoPage />} />
+          <Route path="refrescar-datos" element={<RefrescarDatosPage />} /> {/* <-- NUEVA RUTA */}
         </Route>
         
         {/* 3. Ruta de Captura: Para cualquier URL no encontrada */}

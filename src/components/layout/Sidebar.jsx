@@ -143,14 +143,9 @@ const Sidebar = () => {
     };
   }, [userData]);
 
-  // *** FUNCIÓN MODIFICADA PARA COMPORTAMIENTO DE ACORDEÓN ***
   const toggleMenu = (id) => {
     setOpenMenus(prevOpenMenus => {
-      // Comprueba si el menú que se está clickeando ya está abierto.
       const isCurrentlyOpen = prevOpenMenus[id];
-      
-      // Devuelve un objeto vacío si ya está abierto (para cerrarlo),
-      // o un objeto con solo este ID si estaba cerrado (para abrirlo y cerrar los demás).
       return isCurrentlyOpen ? {} : { [id]: true };
     });
   };
