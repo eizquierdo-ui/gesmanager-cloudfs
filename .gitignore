@@ -28,3 +28,4 @@ dist-ssr
 
 # Environment variables
 .env
+.firebase/hosting.ZGlzdA.cache

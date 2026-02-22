@@ -7,23 +7,28 @@ import { format } from 'date-fns';
 import es from 'date-fns/locale/es';
 import './Home.css';
 
-// --- Componente HeaderInfo ---
+// --- Componente HeaderInfo (CORREGIDO) ---
 const HeaderInfo = () => {
   const { currentUser } = useAuth();
   const { sessionData, loadingSession } = useAppContext();
 
   const userName = currentUser?.displayName || currentUser?.email.split('@')[0];
 
+  // Lógica de visualización del tipo de cambio CORREGIDA
   let tipoCambioDisplay = '[seleccione el tipo de cambio]';
   if (sessionData?.tipo_cambio_id) {
     try {
       const fecha = sessionData.tipo_cambio_fecha ? format(sessionData.tipo_cambio_fecha.toDate(), 'dd/MM/yyyy', { locale: es }) : '--/--/--';
-      const monedaBase = sessionData.tipo_cambio_moneda_base || '---';
-      const monedaDestino = sessionData.tipo_cambio_moneda_destino || '---';
+      
+      // USA LOS NUEVOS CAMPOS _simbolo
+      const monedaBase = sessionData.tipo_cambio_moneda_base_simbolo || '?';
+      const monedaDestino = sessionData.tipo_cambio_moneda_destino_simbolo || '?';
+      
       const tasaCompra = sessionData.tipo_cambio_tasa_compra?.toFixed(4) || '0.0000';
       const tasaVenta = sessionData.tipo_cambio_tasa_venta?.toFixed(4) || '0.0000';
 
-      tipoCambioDisplay = `[Fecha: ${fecha} ${monedaBase}-${monedaDestino} Tc: ${tasaCompra} Tv: ${tasaVenta}]`;
+      // CONSTRUYE EL TEXTO CON EL FORMATO SOLICITADO
+      tipoCambioDisplay = `Fecha: ${fecha} ${monedaBase}-${monedaDestino} Tc: ${tasaCompra} Tv: ${tasaVenta}`;
 
     } catch (error) {
       console.error("Error al formatear la información del tipo de cambio:", error);
@@ -41,10 +46,9 @@ const HeaderInfo = () => {
               {loadingSession ? 'Cargando...' : (sessionData?.empresa_nombre || '[Seleccione Empresa]')}
             </span>
           </span>
-          <span>Tipo Cambio: 
-            <span className="session-value">
-              {loadingSession ? '' : tipoCambioDisplay}
-            </span>
+          {/* ELIMINADO EL TEXTO "Tipo Cambio:" para no duplicarlo */}
+          <span className="session-value">
+            {loadingSession ? '' : `Tipo Cambio: ${tipoCambioDisplay}`}
           </span>
         </div>
       </div>

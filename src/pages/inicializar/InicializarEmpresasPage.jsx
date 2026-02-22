@@ -11,13 +11,13 @@ import {
 import { useAuth } from '../../contexts/AuthContext';
 import { useAppContext } from '../../contexts/AppContext';
 
-// --- Importación de Servicios ---
+// --- Importación de Servicios (CON deleteField) ---
 import {
   getAllEmpresas,
   createEmpresa,
   updateEmpresa,
 } from '../../services/firestore/inicializarEmpresasService';
-import { updateSession } from '../../services/sessionService';
+import { updateSession, deleteField } from '../../services/sessionService'; // <-- MODIFICADO
 
 // --- Importación de Íconos ---
 import SearchIcon from '@mui/icons-material/Search';
@@ -56,9 +56,9 @@ const InicializarEmpresasPage = () => {
   const [currentEmpresa, setCurrentEmpresa] = useState(null);
   const navigate = useNavigate();
 
-  // --- Hooks para obtener el contexto (CORREGIDO) ---
+  // --- Hooks para obtener el contexto ---
   const { currentUser } = useAuth();
-  const { sessionData } = useAppContext(); // Se elimina la llamada a la función inexistente setNombreEmpresa
+  const { sessionData } = useAppContext();
 
   useEffect(() => {
     const fetchEmpresas = async () => {
@@ -81,22 +81,28 @@ const InicializarEmpresasPage = () => {
       (empresa.nit && empresa.nit.toLowerCase().includes(searchTerm.toLowerCase()))
     ), [empresas, searchTerm]);
     
-  // --- LÓGICA DE SELECCIÓN DE SESIÓN (CORREGIDA Y FINAL) ---
   const handleSelect = async (item) => {
     if (!currentUser) return; 
 
+    // Objeto de reseteo DEFINITIVO que incluye la ORDEN DE BORRADO
     const TIPO_CAMBIO_RESET_TOTAL = {
       tipo_cambio_id: null,
       tipo_cambio_fecha: null,
-      tipo_cambio_moneda_base: null,
-      tipo_cambio_moneda_destino: null,
+      tipo_cambio_moneda_base_id: null,
+      tipo_cambio_moneda_base_simbolo: null,
+      tipo_cambio_moneda_destino_id: null,
+      tipo_cambio_moneda_destino_simbolo: null,
       tipo_cambio_tasa_compra: 0,
       tipo_cambio_tasa_venta: 0,
+      // AÑADIMOS LA ORDEN DE BORRADO PARA LOS CAMPOS ANTIGUOS
+      tipo_cambio_moneda_base: deleteField(),
+      tipo_cambio_moneda_destino: deleteField(),
     };
 
     const isSelected = sessionData?.empresa_id === item.id;
 
     if (isSelected) {
+      // Al deseleccionar, se limpia la empresa y se aplica el reseteo del tipo de cambio
       await updateSession(currentUser.uid, {
         empresa_id: null,
         empresa_nombre: null,
@@ -105,6 +111,7 @@ const InicializarEmpresasPage = () => {
       console.log('Empresa deseleccionada. La interfaz se actualizará automáticamente.');
 
     } else {
+      // Al seleccionar, se establece la nueva empresa y se aplica el reseteo del tipo de cambio
       await updateSession(currentUser.uid, { 
         empresa_id: item.id,
         empresa_nombre: item.nombre,

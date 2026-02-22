@@ -1,6 +1,10 @@
 // src/services/sessionService.js
-import { doc, getDoc, setDoc, updateDoc, onSnapshot, serverTimestamp } from 'firebase/firestore';
-import { db } from '../firebase'; // Se asume que la configuración de db está en src/firebase.js
+import { doc, getDoc, setDoc, updateDoc, onSnapshot, serverTimestamp, deleteField } from 'firebase/firestore';
+import { db } from '../firebase';
+
+// --- EXPORTACIÓN DE UTILIDADES DE FIRESTORE ---
+// Exportamos deleteField para que los componentes puedan solicitar la eliminación de campos.
+export { deleteField };
 
 /**
  * Obtiene los datos de la sesión de un usuario desde Firestore.
@@ -21,23 +25,18 @@ export const getSessionData = async (userId) => {
       console.log(`No se encontró sesión para ${userId}. Creando documento de sesión con la estructura DEFINITIVA.`);
       
       const initialData = {
-        // --- Identidad y Permisos ---
         usuario_id: userId,
         role_id: null,
-      
-        // --- Selección de Empresa ---
         empresa_id: null,
         empresa_nombre: null,
-        
-        // --- Selección de Tipo de Cambio (Estructura Corregida) ---
         tipo_cambio_id: null,
         tipo_cambio_fecha: null,
-        tipo_cambio_moneda_base: null,
-        tipo_cambio_moneda_destino: null,
+        tipo_cambio_moneda_base_id: null,
+        tipo_cambio_moneda_base_simbolo: null,
+        tipo_cambio_moneda_destino_id: null,
+        tipo_cambio_moneda_destino_simbolo: null,
         tipo_cambio_tasa_compra: 0,
         tipo_cambio_tasa_venta: 0,
-      
-        // --- Campos de Auditoría Estándar ---
         fecha_creacion: serverTimestamp(),
         usuario_creo: userId,
         fecha_ultima_actualizacion: serverTimestamp(),

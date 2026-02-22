@@ -16,7 +16,8 @@ import { useAppContext } from '../../contexts/AppContext';
 // --- Servicios ---
 import { getAllTiposCambio, createTipoCambio, updateTipoCambio, deleteTipoCambio, setTipoCambioStatus } from '../../services/firestore/tipoCambioService';
 import { getAllMonedas } from '../../services/firestore/monedasService';
-import { updateSession } from '../../services/sessionService'; 
+// MODIFICADO: Importamos deleteField junto con updateSession
+import { updateSession, deleteField } from '../../services/sessionService'; 
 
 // --- Íconos ---
 import SearchIcon from '@mui/icons-material/Search';
@@ -95,7 +96,6 @@ const TipoCambioPage = () => {
     }), 
   [tiposCambio, searchTerm, monedasMap]);
 
-  // --- PASO 2.1: LÓGICA DE SELECCIÓN CORREGIDA --- 
   const handleSelect = async (item) => {
     if (!currentUser) return;
 
@@ -104,32 +104,41 @@ const TipoCambioPage = () => {
     let sessionUpdateData;
 
     if (isSelected) {
-      // DESELECCIONAR: Poner todos los campos relevantes a null o 0
       sessionUpdateData = {
         tipo_cambio_id: null,
         tipo_cambio_fecha: null,
-        tipo_cambio_moneda_base: null,
-        tipo_cambio_moneda_destino: null,
+        tipo_cambio_moneda_base_id: null,
+        tipo_cambio_moneda_base_simbolo: null,
+        tipo_cambio_moneda_destino_id: null,
+        tipo_cambio_moneda_destino_simbolo: null,
         tipo_cambio_tasa_compra: 0,
         tipo_cambio_tasa_venta: 0,
+        // AÑADIMOS LA ORDEN DE BORRADO PARA LOS CAMPOS ANTIGUOS
+        tipo_cambio_moneda_base: deleteField(),
+        tipo_cambio_moneda_destino: deleteField(),
       };
     } else {
-      // SELECCIONAR: Construir el objeto plano con los campos existentes
+      const monedaBase = monedasMap[item.moneda_base_id];
+      const monedaDestino = monedasMap[item.moneda_destino_id];
+
       sessionUpdateData = {
         tipo_cambio_id: item.id,
-        tipo_cambio_fecha: item.fecha, // El objeto Timestamp se guarda directamente
-        tipo_cambio_moneda_base: monedasMap[item.moneda_base_id]?.moneda || '---', // Guardamos el nombre
-        tipo_cambio_moneda_destino: monedasMap[item.moneda_destino_id]?.moneda || '---', // Guardamos el nombre
+        tipo_cambio_fecha: item.fecha,
+        tipo_cambio_moneda_base_id: item.moneda_base_id,
+        tipo_cambio_moneda_base_simbolo: monedaBase?.simbolo || null,
+        tipo_cambio_moneda_destino_id: item.moneda_destino_id,
+        tipo_cambio_moneda_destino_simbolo: monedaDestino?.simbolo || null,
         tipo_cambio_tasa_compra: item.tasa_compra,
         tipo_cambio_tasa_venta: item.tasa_venta,
+        // AÑADIMOS LA ORDEN DE BORRADO PARA LOS CAMPOS ANTIGUOS
+        tipo_cambio_moneda_base: deleteField(),
+        tipo_cambio_moneda_destino: deleteField(),
       };
     }
 
-    // Actualización única en Firestore. No se usa setSession.
     await updateSession(currentUser.uid, sessionUpdateData);
   };
 
-  // ... (el resto de funciones como formatNumber, refreshData, etc., se mantienen igual) ...
   const formatNumber = (value) => {
     if (typeof value !== 'number') return '0.0000';
     return new Intl.NumberFormat('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4, useGrouping: false }).format(value);
@@ -181,7 +190,6 @@ const TipoCambioPage = () => {
   return (
     <Box sx={{ width: '100%', p: 3 }}>
       <Paper sx={{ width: '100%', mb: 2, overflow: 'hidden' }}>
-        {/* ... Toolbar sin cambios ... */}
         <Toolbar sx={{ p: 2, justifyContent: 'space-between' }}>
             <Typography variant="h6">Tipo de Cambio</Typography>
             <Box>
@@ -194,7 +202,6 @@ const TipoCambioPage = () => {
         <TableContainer>
           <Table stickyHeader>
             <TableHead>
-              {/* ... Thead sin cambios ... */}
                <TableRow>
                 <TableCell align="center" style={{ width: '50px' }}>Seleccionar</TableCell> 
                 <TableCell>Fecha</TableCell>
@@ -209,7 +216,6 @@ const TipoCambioPage = () => {
             <TableBody>
               {loading ? <TableRow><TableCell colSpan={8} align="center"><CircularProgress /></TableCell></TableRow> :
               filteredData.map((item) => {
-                // CORRECCIÓN: Comprobar contra tipo_cambio_id
                 const isSelected = sessionData?.tipo_cambio_id === item.id;
                 return (
                   <TableRow hover key={item.id} selected={isSelected}>
@@ -227,7 +233,6 @@ const TipoCambioPage = () => {
                     <TableCell align="right">{formatNumber(item.tasa_compra)}</TableCell>
                     <TableCell align="right">{formatNumber(item.tasa_venta)}</TableCell>
                     <TableCell><Chip label={item.estado} color={item.estado === 'activo' ? 'success' : 'error'} size="small" /></TableCell>
-                    {/* ... Acciones sin cambios ... */}
                     <TableCell align="center">
                       <Tooltip title={item.estado === 'activo' ? 'Inactivar' : 'Activar'}><IconButton size="small" onClick={() => handleToggleEstado(item)}>{item.estado === 'activo' ? <ToggleOnIcon color="success" /> : <ToggleOffIcon color="error"/>}</IconButton></Tooltip>
                       <Tooltip title="Editar"><IconButton size="small" color="primary" onClick={() => handleOpenModal(item)}><EditTwoToneIcon /></IconButton></Tooltip>
@@ -241,7 +246,6 @@ const TipoCambioPage = () => {
         </TableContainer>
       </Paper>
 
-      {/* ... Modal sin cambios ... */}
        <Modal open={openModal} onClose={handleCloseModal} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{ timeout: 500 }}>
         <Fade in={openModal}>
           <Box sx={style}>

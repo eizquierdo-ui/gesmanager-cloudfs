@@ -21,7 +21,8 @@ const ClientesPage = lazy(() => import('./pages/mantenimientos/ClientesPage.jsx'
 const CategoriasPage = lazy(() => import('./pages/mantenimientos/CategoriasPage.jsx'));
 const ServiciosPage = lazy(() => import('./pages/mantenimientos/ServiciosPage.jsx'));
 const CotizacionesIngresoPage = lazy(() => import('./pages/cotizaciones/CotizacionesIngresoPage.jsx'));
-const RefrescarDatosPage = lazy(() => import('./pages/RefrescarDatosPage.jsx')); // <-- NUEVA PÁGINA
+const RefrescarDatosPage = lazy(() => import('./pages/RefrescarDatosPage.jsx'));
+const ModelarPreciosPage = lazy(() => import('./pages/ModelarPreciosPage.jsx')); // <-- NUEVA PÁGINA
 
 // --- Componentes de Control de Rutas ---
 
@@ -77,7 +78,8 @@ function App() {
           <Route path="mantenimientos/categorias" element={<CategoriasPage />} />
           <Route path="mantenimientos/servicios" element={<ServiciosPage />} />
           <Route path="cotizaciones/ingreso" element={<CotizacionesIngresoPage />} />
-          <Route path="refrescar-datos" element={<RefrescarDatosPage />} /> {/* <-- NUEVA RUTA */}
+          <Route path="refrescar-datos" element={<RefrescarDatosPage />} />
+          <Route path="modelar-precios" element={<ModelarPreciosPage />} /> {/* <-- NUEVA RUTA */}
         </Route>
         
         {/* 3. Ruta de Captura: Para cualquier URL no encontrada */}
