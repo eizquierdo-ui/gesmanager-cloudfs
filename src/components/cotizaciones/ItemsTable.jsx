@@ -1,7 +1,8 @@
+
 import React from 'react';
 import {
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, 
-  Paper, TextField, IconButton, Checkbox, TextareaAutosize, Typography
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+  Paper, TextField, IconButton, Checkbox, TextareaAutosize, Typography, TableFooter
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { styled } from '@mui/system';
@@ -22,67 +23,73 @@ const StyledTextarea = styled(TextareaAutosize)(() => ({
   },
 }));
 
-const ItemsTable = ({ items, handleItemChange, handleDeleteItem, simboloMoneda }) => {
+const ItemsTable = ({ items, handleItemChange, handleDeleteItem, simboloMoneda, formatCurrency, totales }) => {
+
+  const handleInputChange = (index, field, value) => {
+    // Pasa el valor (que puede tener comas) directamente al manejador principal
+    handleItemChange(index, field, value);
+  };
 
   const renderItemRow = (item, index) => {
     return (
       <TableRow key={item.id_temporal}>
         <TableCell padding="checkbox">
-          <Checkbox 
-            checked={item.itp_servicio || false} 
+          <Checkbox
+            checked={item.itp_servicio || false}
             onChange={(e) => handleItemChange(index, 'itp_servicio', e.target.checked)}
           />
         </TableCell>
-        <TableCell>
+        <TableCell sx={{ minWidth: 300 }}>
           <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
             {item.nombre_servicio || 'Servicio sin nombre'}
           </Typography>
           <StyledTextarea
-            minRows={2}
+            minRows={1}
             value={item.detalle_queincluyeservicio}
             onChange={(e) => handleItemChange(index, 'detalle_queincluyeservicio', e.target.value)}
           />
         </TableCell>
         <TableCell align="right">
           <TextField
-            type="number"
-            name="cantidad"
+            type="text" 
             value={item.cantidad}
-            onChange={(e) => handleItemChange(index, 'cantidad', e.target.value)}
+            onChange={(e) => handleInputChange(index, 'cantidad', e.target.value)}
             size="small"
-            inputProps={{ style: { textAlign: 'right' }, min: 1 }}
+            inputProps={{ style: { textAlign: 'right' } }}
             sx={{ width: '80px' }}
           />
         </TableCell>
         <TableCell align="right">
           <TextField
-            type="number"
-            name="tasa_descuento_aplicada"
-            value={item.tasa_descuento_aplicada} 
-            onChange={(e) => handleItemChange(index, 'tasa_descuento_aplicada', e.target.value)}
+            type="text" 
+            value={item.tasa_descuento_aplicada}
+            onChange={(e) => handleInputChange(index, 'tasa_descuento_aplicada', e.target.value)}
             size="small"
-            inputProps={{ style: { textAlign: 'right' }, min: 0, max: 100, step: "0.01" }}
-             sx={{ width: '80px' }}
+            inputProps={{ style: { textAlign: 'right' } }}
+            sx={{ width: '120px' }}
           />
+        </TableCell>
+        <TableCell align="right">
+           <Typography variant="body2">
+            {formatCurrency(item.total_descuento_aplicado_linea, simboloMoneda)}
+          </Typography>
         </TableCell>
         <TableCell align="right">
           <TextField
-            type="number"
-            name="precio_venta_final_linea"
+            type="text"
             value={item.precio_venta_final_linea}
-            onChange={(e) => handleItemChange(index, 'precio_venta_final_linea', e.target.value)}
+            onChange={(e) => handleInputChange(index, 'precio_venta_final_linea', e.target.value)}
             size="small"
             InputProps={{
                 startAdornment: <span style={{ marginRight: '4px' }}>{simboloMoneda}</span>,
-                inputProps: { style: { textAlign: 'right' }, min: 0, step: "0.01" }
+                inputProps: { style: { textAlign: 'right' } }
             }}
-             sx={{ width: '120px' }}
+             sx={{ width: '180px' }}
           />
         </TableCell>
         <TableCell align="right">
-          {/* CORRECCIÓN: Aumentar tamaño y poner en negrita */}
-          <Typography variant="body1" sx={{ fontWeight: 'bold', fontSize: '14px' }}>
-            {`${simboloMoneda} ${(parseFloat(item.total_linea) || 0).toFixed(2)}`}
+          <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+            {formatCurrency(item.total_linea, simboloMoneda)}
           </Typography>
         </TableCell>
         <TableCell align="center">
@@ -98,25 +105,43 @@ const ItemsTable = ({ items, handleItemChange, handleDeleteItem, simboloMoneda }
     <TableContainer component={Paper} variant="outlined">
       <Table size="small" aria-label="detalle de cotizacion">
         <TableHead>
-          <TableRow>
-            <TableCell sx={{ fontWeight: 'bold', width: '5%' }}>ITP</TableCell>
-            <TableCell sx={{ fontWeight: 'bold', width: '40%' }}>SERVICIO + DESCRIPCIÓN</TableCell>
-            <TableCell sx={{ fontWeight: 'bold', width: '10%' }} align="right">CANTIDAD</TableCell>
-            <TableCell sx={{ fontWeight: 'bold', width: '10%' }} align="right">% DESC.</TableCell>
-            <TableCell sx={{ fontWeight: 'bold', width: '15%' }} align="right">PRECIO VENTA</TableCell>
-            <TableCell sx={{ fontWeight: 'bold', width: '10%' }} align="right">TOTAL VENTA</TableCell>
-            <TableCell sx={{ fontWeight: 'bold', width: '10%' }} align="center">Acciones</TableCell>
+          <TableRow sx={{ '& > th': { fontWeight: 'bold' } }}>
+            <TableCell sx={{ width: '5%' }}>ITP</TableCell>
+            <TableCell sx={{ width: '35%' }}>SERVICIO + DESCRIPCIÓN</TableCell>
+            <TableCell sx={{ width: '8%' }} align="right">CANTIDAD</TableCell>
+            <TableCell sx={{ width: '12%' }} align="right">% DESC.</TableCell>
+            <TableCell sx={{ width: '12%' }} align="right">MONTO DESC.</TableCell>
+            <TableCell sx={{ width: '15%' }} align="right">PRECIO VENTA</TableCell>
+            <TableCell sx={{ width: '10%' }} align="right">TOTAL VENTA</TableCell>
+            <TableCell sx={{ width: '5%' }} align="center">Acciones</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {items.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={7} align="center">No se han agregado detalles a la cotización</TableCell>
+              <TableCell colSpan={8} align="center">No se han agregado detalles a la cotización</TableCell>
             </TableRow>
           ) : (
             items.map((item, index) => renderItemRow(item, index))
           )}
         </TableBody>
+        <TableFooter>
+            <TableRow sx={{ '& > td': { fontWeight: 'bold', fontSize: '1.0rem' } }}>
+                <TableCell colSpan={4} />
+                <TableCell align="right">
+                    <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                        {formatCurrency(totales.total_descuento_aplicado, simboloMoneda)}
+                    </Typography>
+                </TableCell>
+                <TableCell />
+                <TableCell align="right">
+                    <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                        {formatCurrency(totales.total_cotizacion_final, simboloMoneda)}
+                    </Typography>
+                </TableCell>
+                <TableCell />
+            </TableRow>
+        </TableFooter>
       </Table>
     </TableContainer>
   );
