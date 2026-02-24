@@ -1,6 +1,6 @@
 # Blueprint del Proyecto: GESManager-CloudFS
 
-*Última Actualización: Sesión 27.*
+*Última Actualización: Sesión 29.*
 
 ## 1. Instrucciones de que debes hacer
 
@@ -15,5 +15,5 @@
     Última Actualizaciónes: con muchas fallas en las sesiones 04, 05, 07, 08, 11, 10, 12 y en especial las 13, 18, 19, 22 super mega desastre.*
     la sesion 27 fue el climax de la estupides por tus erores que se introdujeron en los cambios o modificacion de componenetes, debido siempre a la misma forma de actuar, no seguir las instrucciones de forma enfocado y como experto desarrollador de aplicaciones modernas como esta que estamos en proceso, se tuvo un retroceso hasta la sesion 24. 
 
-1.3 Lo que vamos a trabajar hoy esta en el documento que acabas de analizar informe-consolidado.md a partir del inciso: ## 5. Plan para la Próxima Sesión (S28) debes analizarlo y vamos a planificar cada punto de trabajo por favor.
+1.3 Lo que vamos a trabajar hoy esta en el documento que acabas de analizar informe-consolidado.md a partir del inciso: ## 5. Plan para la Próxima Sesión (S30) debes analizarlo y vamos a planificar cada punto de trabajo por favor.
 
