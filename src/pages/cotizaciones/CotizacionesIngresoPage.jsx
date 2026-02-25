@@ -43,40 +43,76 @@ const initialTotals = {
   isr_calculado: { monto_tramo_1: 0, monto_tramo_2: 0, monto_isr_total: 0, },
 };
 
-// --- COMPONENTE DE TOTALES RECONSTRUIDO PARA CLONAR LA IMAGEN ---
-const TotalsDisplay = ({ totales, formatCurrency, simboloMoneda, simboloMonedaDestino, tasaCompra }) => {
+// --- COMPONENTE DE TOTALES CORREGIDO PARA USAR EL CÓDIGO DE MONEDA EN LA ETIQUETA ---
+const TotalsDisplay = ({ 
+    totales, formatCurrency, simboloMoneda, simboloMonedaDestino, tasaCompra, 
+    monedasDisponibles, monedaDestinoId
+}) => {
     const totalEnDestino = totales.total_cotizacion_final / (tasaCompra || 1);
 
-    const TotalRow = ({ label, value, color, isHeader = false }) => (
-        <Grid container item xs={12}>
-            <Grid item xs={7}>
-                <Typography variant={isHeader ? 'h6' : 'body1'} align="left">{label}</Typography>
-            </Grid>
-            <Grid item xs={5}>
-                <Typography variant={isHeader ? 'h6' : 'body1'} align="right" color={color}>{value}</Typography>
-            </Grid>
-        </Grid>
+    // 1. Buscar la moneda de destino usando el ID.
+    const monedaDestino = monedasDisponibles?.find(m => m.id === monedaDestinoId);
+    // 2. Extraer el CÓDIGO (ej: 'USD'), no el símbolo.
+    const codigoMonedaDestino = monedaDestino?.codigo || '';
+
+    const TotalRow = ({ label, value, color, fontWeight = 'normal' }) => (
+        <Box sx={{ display: 'flex', width: '100%', py: 0.5 }}>
+            <Typography variant="body1" sx={{ fontWeight, whiteSpace: 'nowrap' }}>{label}</Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <Typography variant="body1" sx={{ fontWeight, color, whiteSpace: 'nowrap' }}>{value}</Typography>
+        </Box>
     );
 
     return (
-        <Box sx={{ maxWidth: '380px', float: 'right', mt: 2, p: 2, border: '1px solid #e0e0e0', borderRadius: '4px' }}>
-            <Grid container spacing={1}>
-                <TotalRow label="Total Cotizacion" value={formatCurrency(totales.total_cotizacion_final, simboloMoneda)} />
-                <TotalRow label={`Iva (${((totales.tasa_iva_aplicada || 0) * 100).toFixed(2)}%)`} value={formatCurrency(totales.monto_iva_total, simboloMoneda)} color="error.main" />
-                <TotalRow label="Sub Total" value={formatCurrency(totales.sub_total_sin_iva, simboloMoneda)} />
-                
-                <Grid item xs={12}><Divider sx={{ my: 1 }} /></Grid>
+        <Box sx={{ 
+            width: '380px', 
+            float: 'right', 
+            mt: 2, 
+            p: 2, 
+            border: '1px solid #e0e0e0', 
+            borderRadius: '4px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 0.5 
+        }}>
+            <TotalRow 
+                label="Total Cotizacion" 
+                value={formatCurrency(totales.total_cotizacion_final, simboloMoneda)}
+                fontWeight="bold"
+            />
+            <TotalRow 
+                label={`Iva (${((totales.tasa_iva_aplicada || 0) * 100).toFixed(2)}%)`} 
+                value={formatCurrency(totales.monto_iva_total, simboloMoneda)} 
+                color="error.main" 
+            />
+            <TotalRow 
+                label="Sub Total" 
+                value={formatCurrency(totales.sub_total_sin_iva, simboloMoneda)} 
+            />
+            
+            <Divider sx={{ my: 1 }} />
 
-                <TotalRow label="Sub Total TP" value={formatCurrency(totales.sub_total_base_tp, simboloMoneda)} />
-                <TotalRow label={`TP (${((totales.tasa_tp_aplicada || 0) * 100).toFixed(2)}%)`} value={formatCurrency(totales.monto_tp_total, simboloMoneda)} />
-                
-                <Grid item xs={12}><Divider sx={{ my: 1 }} /></Grid>
+            <TotalRow 
+                label="Sub Total TP" 
+                value={formatCurrency(totales.sub_total_base_tp, simboloMoneda)} 
+            />
+            <TotalRow 
+                label={`TP (${((totales.tasa_tp_aplicada || 0) * 100).toFixed(2)}%)`} 
+                value={formatCurrency(totales.monto_tp_total, simboloMoneda)} 
+            />
 
-                <TotalRow label={`Total en USD`} value={formatCurrency(totalEnDestino, simboloMonedaDestino)} isHeader={true} />
-            </Grid>
+            <Divider sx={{ my: 1 }} />
+            
+            {/* 3. Construir la etiqueta como "Total en [CÓDIGO]." */}
+            <TotalRow 
+                label={`Total en ${codigoMonedaDestino}.`}
+                value={formatCurrency(totalEnDestino, simboloMonedaDestino)}
+                fontWeight="bold"
+            />
         </Box>
     );
 }
+
 
 const CotizacionesIngresoPage = () => {
   const { sessionData } = useAppContext();
@@ -289,6 +325,8 @@ const CotizacionesIngresoPage = () => {
                 simboloMoneda={financieroSnapshot.simbolo_moneda_base}
                 simboloMonedaDestino={financieroSnapshot.simbolo_moneda_destino}
                 tasaCompra={financieroSnapshot.tasa_compra}
+                monedasDisponibles={monedasDisponibles}
+                monedaDestinoId={financieroSnapshot.moneda_destino_id}
             />
             <Box sx={{ clear: 'both' }} />
         </Paper>
