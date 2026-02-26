@@ -3,6 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import Home from './pages/Home'; // Importamos Home directamente ya que es el layout principal
+import RefrescarDatosPage from './pages/RefrescarDatosPage.jsx'; // <<< CAMBIO: Importación directa
 
 // --- Páginas Cargadas de Forma Perezosa (Lazy Loading) ---
 const Login = lazy(() => import('./pages/Login'));
@@ -21,8 +22,8 @@ const ClientesPage = lazy(() => import('./pages/mantenimientos/ClientesPage.jsx'
 const CategoriasPage = lazy(() => import('./pages/mantenimientos/CategoriasPage.jsx'));
 const ServiciosPage = lazy(() => import('./pages/mantenimientos/ServiciosPage.jsx'));
 const CotizacionesIngresoPage = lazy(() => import('./pages/cotizaciones/CotizacionesIngresoPage.jsx'));
-const RefrescarDatosPage = lazy(() => import('./pages/RefrescarDatosPage.jsx'));
-const ModelarPreciosPage = lazy(() => import('./pages/ModelarPreciosPage.jsx')); // <-- NUEVA PÁGINA
+// const RefrescarDatosPage = lazy(() => import('./pages/RefrescarDatosPage.jsx')); // <<< CAMBIO: Eliminada importación perezosa
+const ModelarPreciosPage = lazy(() => import('./pages/ModelarPreciosPage.jsx')); 
 
 // --- Componentes de Control de Rutas ---
 
@@ -79,7 +80,7 @@ function App() {
           <Route path="mantenimientos/servicios" element={<ServiciosPage />} />
           <Route path="cotizaciones/ingreso" element={<CotizacionesIngresoPage />} />
           <Route path="refrescar-datos" element={<RefrescarDatosPage />} />
-          <Route path="modelar-precios" element={<ModelarPreciosPage />} /> {/* <-- NUEVA RUTA */}
+          <Route path="modelar-precios" element={<ModelarPreciosPage />} /> 
         </Route>
         
         {/* 3. Ruta de Captura: Para cualquier URL no encontrada */}

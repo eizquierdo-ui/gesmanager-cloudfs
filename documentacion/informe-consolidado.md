@@ -6,26 +6,35 @@
 ## Información General
 
 *   **Fecha inicio proyecto:** 09/02/2026
-*   **Fecha ultima actualizacion proyecto:** 23-24/02/2026
-*   **Total horas acumuladas proyecto:** 131 hrs  30 min
-*   **Ultima sesion:** S31
-*   **Proxima sesion:** S32 
+*   **Fecha ultima actualizacion proyecto:** 25/02/2026
+*   **Total horas acumuladas proyecto:** 140 hrs  15 min
+*   **Ultima sesion:** S32
+*   **Proxima sesion:** S33 
 
 **Historial de avance en horas**
 ---
 **Avance sesion S1 hasta S28 -
 101 horas con 30 minutos
 
+21/02/2026
 **Avance sesion S29 -
 04:00pm - 11:00pm total de 07 horas con 00 minutos
 ---
+22/02/2026
 **Avance sesion S30 -
 08:00pm - 14:00pm total de 06 horas con 00 minutos
 ---
+23/02/2026
 **Avance sesion S31 -
 08:00pm - 16:00pm total de 08 horas con 00 minutos
 ---
-
+24/02/2026
+**Avance sesion S32 -
+16:00pm - 11:45pm total de 07 horas con 45 minutos
+--
+25/02/2026
+09:30pm - 10:30pm total de 01 horas con 00 minutos
+---
 ## 1. Propósito y Origen del Proyecto
 
 El proyecto **GESManager-CloudFS** nace como una **migración estratégica** desde un sistema monolítico tradicional (`GESManager` construido con Laravel y **MySQL**) hacia una arquitectura moderna, **100% serverless y nativa de la nube, operando enteramente dentro del ecosistema de Firebase**.
@@ -149,8 +158,8 @@ Este grupo abarca tanto funcionalidades auxiliares como el mantenimiento general
 > La deuda técnica debe gestionarse de forma controlada y segura, no con comandos masivos a ciegas. Las funcionalidades, aunque parezcan aisladas, pueden tener impactos inesperados; por lo tanto, la **verificación post-implementación** sigue siendo una regla de oro. Un diagnóstico erróneo es siempre más costoso que cualquier bug.
 
 ---
-**FINALIZADO SOLO INFORMACION**
-### **S29 Módulo 6: Mantenimiento del Repositorio (Commit Squashing)**
+**SOLO INFORMACION**
+### **ACTUALIZACIN del Repositorio (Commit Squashing)**
 
 *   **Tarea Realizada:** Consolidación del historial de Git.
 *   **Commit Resultante:** `8021fb3`
@@ -162,6 +171,17 @@ El proceso implicó el uso de `git rebase` y `git push --force` para reemplazar 
 
 **Justificación y Lección Aprendida:**
 > Aunque se pierde el registro forense detallado en Git, esta operación proporciona una claridad invaluable para el futuro del proyecto. La lección clave es que **la gestión del historial del repositorio es en sí misma una tarea de mantenimiento crucial**. Un historial limpio, aunque sea a costa de los detalles intermedios, puede ser más valioso para la mantenibilidad a largo plazo si el código base ya es estable y está bien documentado externamente (como en este mismo informe).
+
+* Se agregaron dos commit al repositorio github en la S30 y S31:
+**Commit S30**
+e552a67 feat (Commit 4): Se termina con normalizar la visualizacion de todas la secciones de la pantalla de ingreso de cotizacions - su funcionalidad queda al 100%. (S31)
+213186c feat (Commit 3): Hacer de nuevo todas la funcionalidades, procesos y visualizacion de la pantalla de ingreso de cotizaciones para vovler nuevamente funcional todas las secciones que lo componen - este problema se dio debido a una falta de super concentracion y ejecucion del SUPER EXPERTO DE IA por eso se tuvo que reprogramar por que elimino todo y por otro fallo no se pudo restaurar.
+**Commit S31**
+248ab45 feat(commit 2): Cotizaciones Implementación de todo el preceso de ingreso de servicios en la seccion de Detalle de la Cotizacion, se agrego la lógica de redondeo de alta precisión, corrección de bug de guardado y mejoras visuales en la tabla de ítems. Se ha validado la grabación exitosa de cotizaciones en Firestore y se ha identificado la necesidad de implementar cálculos de totales adicionales (fee global e ISR).
+**Commit inicial S29:**
+089d631 feat: Consolidación de Arquitectura Base y Módulos Funcionales (S01-S29)
+**Commit inicial S32:**
+089d631 feat (commit 3): Finaliza todas la funcionalides y proceso de la Opcion: Cotizaciones - Ingreso QUEDA AL 100% - (S32).
 
 ### **Módulo 6: VOLVER A PROGRAMAR EL PROCESO DE INGRESO DE COTIZACIONES DEBIDO AL ERROR DE ELIMINACION DE TODO LO AVANZADO Y ESTABA AL 100% FUNCIONAL**
 
@@ -309,23 +329,53 @@ TP (0.50%)                                5.00
 Total en Dolar                      $ 1,691.26
 
 
-### **Módulo 7: PROXIMAS ACTIVIDADES A REALIZAR** (S32)
-**Proceso de Ingreso de cotizaciones**
-**Tarea 1**
-* Agregar nueva funcionalidad al boton Refresar Datos: dete hacer la reinicializacion de campos de la misma forma que se hace cuando se ingresa por 1era vez.
+### **Módulo 7: COTIZACIONES - INGRESO** (S32)
+**puntuacion 70/100** 
+**Proceso de Ingreso de cotizaciones - FINALIZADO**
 
-**Tarea 2**
+24/02/2026
+**FINALIZADA - Tarea 0**
+* Como hacer para que al grabar una cotizacion tome el numero correcto independiente del numero de usuarios conectados y que puedan estar grabando cotizaciones y que no se queden bloqueados al momento de grabar.
+
+24/02/2026
+**FINALIZADA - Tarea 1**
+* Agregar nueva funcionalidad al boton Limpiar Formulario: dete hacer la reinicializacion de campos de la misma forma que se hace cuando se ingresa por 1era vez.
+
+24/02/2026
+**FINALIZADA Tarea 2**
 * Agregar funcionalida al boton buscar cotiazaciones para que abra la pantalla modal segun la estructura de las que ya se hicieron en este proceso, debe mostrar las lista de cotizaciones grabada con estado borrador y aceptadas en orden descendente al numero_cotizacion. Al seleccionar debe poblar toda la informacion de la pantalla de ingreso de cotizaciones en sus 5 secciones existentes.
 
-**Tarea 3**
+24/02/2026
+**FINALIZADA Tarea 3**
 * Agregar botones en la seccion de informacion de la cotizacion despues del boton buscar cotizacion:
 boton Anular     
 funcionalidad: cambiar el estado solo a anulada y actulizar el campo fecha_estado
 
+24/02/2026-25/02/2026
 **Tarea 4**
 boton Imprimir
 funcionalidad: debe abrir una pantalla modal que pida seleccionar los 3 tipos de impresion de cotizaciones en formato PDF
 Imprimir 
-check - Formato moneda Local
-check - Formato moneda Local con Descuento
-check - Formato moneda Extranjera
+Finalizado - check - Formato moneda Local
+Finalizado - check - Formato moneda Extranjera
+Finalizado - check - Formato moneda Local con Descuento
+
+Finalizado Nuevo Cambio:
+La pantalla modal hay que corregirla de forma visual esta muy sencilla y no esta acorde a las estructura de la pantalla src/pages/cotizaciones/CotizacionesIngresoPage.jsx.
+
+Finalizado Nuevo Cambio:
+Se debe agregar al formato moneda local y con descuento la otro cheque si incluye linea Moneda extranjera.
+
+Finalizado Nuevo cambio:
+Agregar los dos bloqueos para poder utilizar la opcion de ingreso de cotizaciones:  que tenga inicializarda - empresa y que tenga inicializado - tipo cambio.
+
+### **Módulo 7: PROXIMAS ACTIVIDADES A REALIZAR** (S33)
+**Proceso de Ingreso de cotizaciones**
+Desarrollar nueva opcion:
+OPCION - 
+Cotizaciones 
+    Gestion y Reportes = ID 22 Coleccion de Menu2
+    ruta = /cotizaiones/GestionyReportes
+
+*   Es necesario solicitar todas las direcctrices de esta nueva opcion como se va diseñar y todas sus funcionalidades de Iconots, botones que se deben agregar. 
+- 
