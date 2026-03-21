@@ -1,42 +1,132 @@
 
-import { db } from '../../firebase';
-import { collection, addDoc, serverTimestamp, getDocs, query, where } from 'firebase/firestore';
-
-const cotizacionesCollectionRef = collection(db, 'cotizaciones');
-const serviciosCollectionRef = collection(db, 'servicios');
+import { 
+  collection, query, where, getDocs, orderBy, doc, updateDoc, serverTimestamp, runTransaction, getDoc, setDoc 
+} from 'firebase/firestore';
+import { db } from '../../firebase'; // Asegúrate que la ruta a tu configuración de firebase sea correcta
 
 /**
- * Guarda una nueva cotización en la base de datos de Firestore.
- * @param {object} cotizacionData - El objeto completo de la cotización a guardar.
- * @returns {Promise<string>} - El ID del documento recién creado.
+ * Obtiene las cotizaciones de una empresa para ser mostradas en el tablero Kanban.
+ * @param {string} empresaId - El ID de la empresa.
+ * @param {object} filters - Objeto con los filtros a aplicar.
+ * @returns {Array} Un array de objetos de cotización.
  */
-export const addCotizacion = async (cotizacionData) => {
+export const getCotizacionesKanban = async (empresaId, filters = {}) => {
+  if (!empresaId) {
+    console.error("Error: Se requiere un ID de empresa para obtener las cotizaciones.");
+    return [];
+  }
+
   try {
-    const docRef = await addDoc(cotizacionesCollectionRef, {
-      ...cotizacionData,
-      fecha_creacion: serverTimestamp(),
-      fecha_ultima_modificacion: serverTimestamp(),
-    });
-    console.log("Cotización guardada con ID: ", docRef.id);
-    return docRef.id;
+    let q = query(collection(db, 'cotizaciones'), where('empresa_id', '==', empresaId));
+    
+    // Aplicar filtros
+    if (filters.clienteId && filters.clienteId !== 'todos') {
+      q = query(q, where('cliente_id', '==', filters.clienteId));
+    }
+    if (filters.estado && filters.estado !== 'todos') {
+      q = query(q, where('estado', '==', filters.estado));
+    }
+    if (filters.fechaDesde) {
+      q = query(q, where('fecha_emision', '>=', filters.fechaDesde));
+    }
+    if (filters.fechaHasta) {
+      const fechaHastaEnd = new Date(filters.fechaHasta);
+      fechaHastaEnd.setHours(23, 59, 59, 999); // Final del día
+      q = query(q, where('fecha_emision', '<=', fechaHastaEnd));
+    }
+
+    // Ordenamiento
+    q = query(q, orderBy('numero_cotizacion', 'desc'));
+
+    const querySnapshot = await getDocs(q);
+    const cotizaciones = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+      fecha_emision: doc.data().fecha_emision?.toDate(),
+      fecha_estado: doc.data().fecha_estado?.toDate(),
+      fecha_creacion: doc.data().fecha_creacion?.toDate(),
+      fecha_ultima_modificacion: doc.data().fecha_ultima_modificacion?.toDate(),
+    }));
+
+    return cotizaciones;
+
   } catch (error) {
-    console.error("Error al guardar la cotización: ", error);
-    throw new Error('Error al intentar guardar la cotización en Firestore.');
+    console.error("Error al obtener las cotizaciones para el Kanban:", error);
+    // Si la consola muestra un error de "query requires an index", se debe crear un nuevo índice compuesto en Firestore.
+    // El enlace para crearlo aparecerá en el mensaje de error de la consola del navegador.
+    return [];
   }
 };
 
 /**
- * Obtiene todos los servicios activos que pertenecen a una categoría específica.
- * Esta función está diseñada para ser usada en el contexto de la creación de cotizaciones.
- * @param {string} categoriaId - El ID de la categoría por la cual filtrar los servicios.
- * @returns {Promise<Array>} Un array con los documentos de los servicios que coinciden.
+ * Actualiza el estado de una cotización en Firestore.
+ * @param {string} cotizacionId - El ID del documento de la cotización a actualizar.
+ * @param {string} nuevoEstado - El nuevo estado a establecer.
  */
-export const getServiciosByCategoriaId = async (categoriaId) => {
-  const q = query(
-    serviciosCollectionRef,
-    where('categoria_id', '==', categoriaId),
-    where('estado', '==', 'activo')
-  );
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+export const updateCotizacionEstado = async (cotizacionId, nuevoEstado) => {
+  if (!cotizacionId || !nuevoEstado) {
+    throw new Error("Se requieren el ID de la cotización y el nuevo estado.");
+  }
+  
+  const cotizacionRef = doc(db, 'cotizaciones', cotizacionId);
+
+  try {
+    await updateDoc(cotizacionRef, {
+      estado: nuevoEstado,
+      fecha_estado: serverTimestamp(),
+    });
+    console.log(`Cotización ${cotizacionId} actualizada al estado: ${nuevoEstado}`);
+  } catch (error) {
+    console.error("Error al actualizar el estado de la cotización:", error);
+    throw error;
+  }
+};
+
+/**
+ * Obtiene el siguiente número de cotización correlativo para una empresa, de forma atómica.
+ * @param {string} empresaId - El ID de la empresa.
+ * @returns {Promise<number>} - El siguiente número de cotización.
+ */
+export const getSiguienteNumeroCotizacion = async (empresaId) => {
+  const correlativoRef = doc(db, 'correlativos', `cotizacion_${empresaId}`);
+
+  try {
+    const nuevoCorrelativo = await runTransaction(db, async (transaction) => {
+      const correlativoDoc = await transaction.get(correlativoRef);
+      let siguienteNumero = 1;
+
+      if (correlativoDoc.exists()) {
+        siguienteNumero = correlativoDoc.data().valor + 1;
+      }
+      
+      transaction.set(correlativoRef, { valor: siguienteNumero, actualizado: serverTimestamp() }, { merge: true });
+      
+      return siguienteNumero;
+    });
+
+    return nuevoCorrelativo;
+  } catch (error) {
+    console.error("Error generando el siguiente número de cotización:", error);
+    throw error;
+  }
+};
+
+/**
+ * Crea un nuevo documento de cotización en Firestore.
+ * @param {object} nuevaCotizacionData - El objeto con los datos de la nueva cotización.
+ * @returns {Promise<string>} - El ID del nuevo documento creado.
+ */
+export const addCotizacion = async (nuevaCotizacionData) => {
+  const nuevaCotizacionRef = doc(collection(db, 'cotizaciones'));
+  
+  try {
+    await setDoc(nuevaCotizacionRef, {
+      ...nuevaCotizacionData,
+      id: nuevaCotizacionRef.id, 
+    });
+    return nuevaCotizacionRef.id;
+  } catch (error) {
+    console.error("Error al crear la nueva cotización:", error);
+    throw error;
+  }
 };

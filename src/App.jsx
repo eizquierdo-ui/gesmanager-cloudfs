@@ -22,7 +22,7 @@ const ClientesPage = lazy(() => import('./pages/mantenimientos/ClientesPage.jsx'
 const CategoriasPage = lazy(() => import('./pages/mantenimientos/CategoriasPage.jsx'));
 const ServiciosPage = lazy(() => import('./pages/mantenimientos/ServiciosPage.jsx'));
 const CotizacionesIngresoPage = lazy(() => import('./pages/cotizaciones/CotizacionesIngresoPage.jsx'));
-// const RefrescarDatosPage = lazy(() => import('./pages/RefrescarDatosPage.jsx')); // <<< CAMBIO: Eliminada importación perezosa
+const GestionReportesPage = lazy(() => import('./pages/cotizaciones/GestionReportesPage.jsx')); // <-- NUEVA PÁGINA
 const ModelarPreciosPage = lazy(() => import('./pages/ModelarPreciosPage.jsx')); 
 
 // --- Componentes de Control de Rutas ---
@@ -79,6 +79,7 @@ function App() {
           <Route path="mantenimientos/categorias" element={<CategoriasPage />} />
           <Route path="mantenimientos/servicios" element={<ServiciosPage />} />
           <Route path="cotizaciones/ingreso" element={<CotizacionesIngresoPage />} />
+          <Route path="cotizaciones/gestion" element={<GestionReportesPage />} /> {/* <-- NUEVA RUTA */}
           <Route path="refrescar-datos" element={<RefrescarDatosPage />} />
           <Route path="modelar-precios" element={<ModelarPreciosPage />} /> 
         </Route>

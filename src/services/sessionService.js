@@ -1,9 +1,8 @@
 // src/services/sessionService.js
-import { doc, getDoc, setDoc, updateDoc, onSnapshot, serverTimestamp, deleteField } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, onSnapshot, serverTimestamp, deleteField, collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 
 // --- EXPORTACIÓN DE UTILIDADES DE FIRESTORE ---
-// Exportamos deleteField para que los componentes puedan solicitar la eliminación de campos.
 export { deleteField };
 
 /**
@@ -77,7 +76,8 @@ export const updateSession = async (userId, data) => {
 };
 
 /**
- * Proporciona una suscripción en tiempo real a los cambios en el documento de sesión de un usuario.
+ * Proporciona una suscripción en tiempo real a los cambios en el documento de sesión de un usuario,
+ * ENRIQUECIENDO los datos con la información de la empresa y sus monedas.
  * @param {string} userId - El UID del usuario.
  * @param {function} callback - La función que se ejecutará cada vez que los datos de la sesión cambien.
  * @returns {import('firebase/firestore').Unsubscribe} Una función para cancelar la suscripción.
@@ -88,13 +88,47 @@ export const onSessionChange = (userId, callback) => {
   }
 
   const sessionRef = doc(db, 'sesiones', userId);
-  
-  const unsubscribe = onSnapshot(sessionRef, (docSnap) => {
-    if (docSnap.exists()) {
-      callback(docSnap.data());
+
+  const unsubscribe = onSnapshot(sessionRef, async (sessionDoc) => {
+    let sessionData;
+
+    if (sessionDoc.exists()) {
+      sessionData = sessionDoc.data();
     } else {
-      getSessionData(userId).then(callback);
+      sessionData = await getSessionData(userId);
     }
+
+    // Si hay una empresa seleccionada, enriquecemos la sesión
+    if (sessionData && sessionData.empresa_id) {
+      try {
+        const empresaRef = doc(db, 'empresas', sessionData.empresa_id);
+        const [empresaDoc, monedasSnapshot] = await Promise.all([
+          getDoc(empresaRef),
+          getDocs(collection(empresaRef, 'monedas'))
+        ]);
+
+        if (empresaDoc.exists()) {
+          sessionData.datosEmpresa = { id: empresaDoc.id, ...empresaDoc.data() };
+        } else {
+          sessionData.datosEmpresa = null;
+        }
+
+        sessionData.monedas = monedasSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+      } catch (error) {
+        console.error("Error al enriquecer la sesión con datos de la empresa:", error);
+        sessionData.datosEmpresa = null;
+        sessionData.monedas = []; // Aseguramos que sea un array vacío en caso de error
+      }
+    } else {
+      // Si no hay empresa, nos aseguramos que los campos estén limpios
+      sessionData.datosEmpresa = null;
+      sessionData.monedas = [];
+    }
+    
+    // Llamamos al callback con la sesión (posiblemente enriquecida)
+    callback(sessionData);
+
   }, (error) => {
     console.error("Error en la suscripción en tiempo real a la sesión:", error);
   });

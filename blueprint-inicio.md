@@ -15,5 +15,6 @@
     Última Actualizaciónes: con muchas fallas en las sesiones 04, 05, 07, 08, 11, 10, 12 y en especial las 13, 18, 19, 22 super mega desastre.*
     la sesion 27 fue el climax de la estupides por tus erores que se introdujeron en los cambios o modificacion de componenetes, debido siempre a la misma forma de actuar, no seguir las instrucciones de forma enfocado y como experto desarrollador de aplicaciones modernas como esta que estamos en proceso, se tuvo un retroceso hasta la sesion 24. 
 
-1.3 Lo que vamos a trabajar hoy esta en el documento que acabas de analizar informe-consolidado.md a partir del inciso: ## 5. Plan para la Próxima Sesión (S33) debes analizarlo y vamos a planificar cada punto de trabajo por favor.
+1.3 Lo que vamos a trabajar hoy esta en el documento que acabas de analizar informe-consolidado.md a partir del inciso: ## VIII. Plan de Acción: Módulo "Gestión y Reportes de Cotizaciones" (S33),
+debes analizarlo y vamos a planificar cada punto de trabajo por favor.
 
