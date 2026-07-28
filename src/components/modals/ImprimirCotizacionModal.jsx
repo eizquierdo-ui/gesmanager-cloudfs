@@ -14,6 +14,8 @@ import {
 } from '@mui/material';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { db } from '../../firebase';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import {
   generateCotizacionHtml,
   generateCotizacionHtmlExtranjera,
@@ -47,10 +49,10 @@ const ImprimirCotizacionModal = ({ open, onClose, cotizacionData }) => {
     });
   };
 
-  const generateSinglePdf = async (generatorFunction, fileNameSuffix = '', pdfOptions = {}) => {
+  const generateSinglePdf = async (generatorFunction, dataToUse, fileNameSuffix = '', pdfOptions = {}) => {
     console.log(`Iniciando generación para sufijo: '${fileNameSuffix}'`, pdfOptions);
     
-    const htmlString = generatorFunction(cotizacionData, pdfOptions);
+    const htmlString = generatorFunction(dataToUse, pdfOptions);
     const container = document.createElement('div');
     container.style.position = 'absolute';
     container.style.left = '-9999px';
@@ -72,7 +74,10 @@ const ImprimirCotizacionModal = ({ open, onClose, cotizacionData }) => {
     const pdfHeight = pdf.internal.pageSize.getHeight();
     pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
 
-    const nombreArchivo = `Cotizacion_${cotizacionData.cotizacion.numero_cotizacion || 'SIN_NUMERO'}${fileNameSuffix}.pdf`;
+    const numeroCotizacion = cotizacionData.cotizacion.numero_cotizacion || 'SIN_NUMERO';
+    const nombreCliente = (cotizacionData.cliente?.nombre_cliente || 'SIN_CLIENTE').trim().toUpperCase();
+    const sufijo = (fileNameSuffix || '').toUpperCase();
+    const nombreArchivo = `COTIZACION-${numeroCotizacion}-${nombreCliente}${sufijo}.PDF`;
     pdf.save(nombreArchivo);
     
     console.log(`Descarga iniciada para: ${nombreArchivo}`);
@@ -91,20 +96,43 @@ const ImprimirCotizacionModal = ({ open, onClose, cotizacionData }) => {
 
     setIsGenerating(true);
 
+    let augmentedData = cotizacionData;
+    try {
+        const empresaId = cotizacionData.cotizacion.empresa_id;
+        if (empresaId) {
+            const categoriasRef = collection(db, 'categorias');
+            const qCategorias = query(categoriasRef, where("empresa_id", "==", empresaId));
+            const categoriasSnapshot = await getDocs(qCategorias);
+            const categoriasMap = {};
+            categoriasSnapshot.forEach(doc => {
+                categoriasMap[doc.id] = doc.data().nombre_categoria;
+            });
+            
+            const itemsAugmented = cotizacionData.items.map(item => ({
+                ...item,
+                nombre_categoria: item.nombre_categoria || categoriasMap[item.categoria_id] || ''
+            }));
+            
+            augmentedData = { ...cotizacionData, items: itemsAugmented };
+        }
+    } catch (err) {
+        console.error("Error al cargar categorías para el PDF:", err);
+    }
+
     const pdfOptions = {
       incluirTotalExtranjero: opciones.incluirTotalExtranjero,
     };
 
     try {
         if (formatos.local) {
-            await generateSinglePdf(generateCotizacionHtml, '', pdfOptions);
+            await generateSinglePdf(generateCotizacionHtml, augmentedData, '', pdfOptions);
         }
         if (formatos.extranjera) {
-            await generateSinglePdf(generateCotizacionHtmlExtranjera, '-extranjera', {}); // Opciones no aplican aquí
+            await generateSinglePdf(generateCotizacionHtmlExtranjera, augmentedData, '-extranjera', {}); // Opciones no aplican aquí
         }
         // 2. Conectar la nueva función
         if (formatos.localConDescuento) {
-           await generateSinglePdf(generateCotizacionHtmlConDescuento, '-con-descuento', pdfOptions);
+           await generateSinglePdf(generateCotizacionHtmlConDescuento, augmentedData, '-con-descuento', pdfOptions);
         }
 
     } catch (error) {

@@ -26,20 +26,11 @@ export const getCotizacionesKanban = async (empresaId, filters = {}) => {
     if (filters.estado && filters.estado !== 'todos') {
       q = query(q, where('estado', '==', filters.estado));
     }
-    if (filters.fechaDesde) {
-      q = query(q, where('fecha_emision', '>=', filters.fechaDesde));
-    }
-    if (filters.fechaHasta) {
-      const fechaHastaEnd = new Date(filters.fechaHasta);
-      fechaHastaEnd.setHours(23, 59, 59, 999); // Final del día
-      q = query(q, where('fecha_emision', '<=', fechaHastaEnd));
-    }
-
     // Ordenamiento
     q = query(q, orderBy('numero_cotizacion', 'desc'));
 
     const querySnapshot = await getDocs(q);
-    const cotizaciones = querySnapshot.docs.map(doc => ({
+    let cotizaciones = querySnapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
       fecha_emision: doc.data().fecha_emision?.toDate(),
@@ -47,6 +38,16 @@ export const getCotizacionesKanban = async (empresaId, filters = {}) => {
       fecha_creacion: doc.data().fecha_creacion?.toDate(),
       fecha_ultima_modificacion: doc.data().fecha_ultima_modificacion?.toDate(),
     }));
+
+    // Aplicar filtros de fecha en memoria para evitar requerimientos de índices compuestos en Firestore
+    if (filters.fechaDesde) {
+      cotizaciones = cotizaciones.filter(c => c.fecha_emision >= filters.fechaDesde);
+    }
+    if (filters.fechaHasta) {
+      const fechaHastaEnd = new Date(filters.fechaHasta);
+      fechaHastaEnd.setHours(23, 59, 59, 999); // Final del día
+      cotizaciones = cotizaciones.filter(c => c.fecha_emision <= fechaHastaEnd);
+    }
 
     return cotizaciones;
 

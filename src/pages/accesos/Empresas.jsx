@@ -69,7 +69,27 @@ const Empresas = () => {
     try {
       setLoading(true);
       const empresasData = await getAllEmpresas();
-      setEmpresas(empresasData);
+      
+      // Si no hay empresas, creamos una de prueba automáticamente
+      if (empresasData.length === 0) {
+          const empresaPrueba = {
+             nombre: 'Empresa de Pruebas S.A.',
+             nit: '12345678-9',
+             direccion: 'Ciudad Capital',
+             email: 'prueba@empresa.com',
+             telefono: '12345678',
+             contacto: 'Oscar Aguilar',
+             telefono_contacto: '87654321',
+             estado: 'activo',
+             moneda_base_id: 'GTQ',
+             config_fiscal: { tasa_iva: 0.12, tasa_itp: 0.005, isr_limite: 30000, isr_bajo: 0.05, isr_alto: 0.07 }
+          };
+          await createEmpresa(empresaPrueba);
+          const newData = await getAllEmpresas();
+          setEmpresas(newData);
+      } else {
+          setEmpresas(empresasData);
+      }
     } catch (error) {
       console.error("Error en el componente al obtener las empresas:", error);
     } finally {
@@ -138,7 +158,7 @@ const Empresas = () => {
     <Box sx={{ width: '100%' }}> {/* CORREGIDO: Se eliminó el padding p:3 */}
       <Paper sx={{ width: '100%', mb: 2, overflow: 'hidden' }}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flex: '1 1 100%', fontWeight: 'bold' }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
             Mantenimiento de Empresas
           </Typography>
 

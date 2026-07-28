@@ -44,7 +44,7 @@ export const createServicio = (servicioData, userId) => {
       valorfee_global: 0,
       costo_mas_feeglobal: 0,
       tasa_impuestos: 21,
-      valor_impuetos: 0,
+      valor_impuestos: 0,
       precio_venta_base: 0,
       tipocambio_id: null,
       tipocambio_tasa_compra: 0,

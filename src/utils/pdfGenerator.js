@@ -10,13 +10,30 @@ const nl2br = (str) => {
     return str.replace(/\n/g, '<br />');
 };
 
+const formatearFecha = (fecha) => {
+    if (!fecha) return 'N/A';
+    let dateObj;
+    if (typeof fecha.toDate === 'function') {
+        dateObj = fecha.toDate();
+    } else if (fecha.seconds) {
+        dateObj = new Date(fecha.seconds * 1000);
+    } else {
+        dateObj = new Date(fecha);
+    }
+    if (isNaN(dateObj.getTime())) return 'Fecha Inválida';
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const year = dateObj.getFullYear();
+    return `${day}/${month}/${year}`;
+};
+
 // ######### PLANTILLA 1: MONEDA LOCAL (SIMPLE) #########
 export const generateCotizacionHtml = (data, options = {}) => {
     const { cotizacion, cliente, items, totales, financiero, monedas, formaPago, terminosCondiciones } = data;
     const { incluirTotalExtranjero } = options;
 
     const monedaBase = monedas.find(m => m.id === financiero.moneda_base_id) || { simbolo: 'Q.', moneda: 'Quetzales' };
-    const fechaFormateada = new Date(cotizacion.fecha_emision.seconds * 1000).toLocaleDateString('es-GT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const fechaFormateada = formatearFecha(cotizacion.fecha_emision);
 
     const itemsHtml = items.map(item => {
         const isItp = String(item.itp_servicio).toLowerCase() === 'true';
@@ -25,6 +42,7 @@ export const generateCotizacionHtml = (data, options = {}) => {
             <td class="itp-col">${isItp ? '✔' : '&nbsp;'}</td>
             <td class="cantidad-col">${item.cantidad}</td>
             <td class="descripcion-col">
+                <strong>${item.nombre_categoria || ''}</strong><br>
                 <strong>${item.nombre_servicio || ''}</strong><br>
                 <span class="detalle-servicio">${nl2br(item.detalle_queincluyeservicio || '')}</span>
             </td>
@@ -32,8 +50,6 @@ export const generateCotizacionHtml = (data, options = {}) => {
             <td class="total-col">${formatCurrency(item.total_linea, 2)}</td>
         </tr>
     `}).join('');
-
-    const terminosConversionHtml = `<br>Tipo de cambio es de $ 1.00 por Q. ${formatCurrency(financiero.tasa_venta, 4)}`;
 
     return `
         <!DOCTYPE html><html><head><meta charset="utf-8"/><title>Cotización ${cotizacion.numero_cotizacion}</title><style>${commonStyles}
@@ -58,7 +74,7 @@ export const generateCotizacionHtml = (data, options = {}) => {
                 <tbody>${itemsHtml}<tr class="table-footer"><td colspan="4">TOTAL:</td><td class="total-col">${formatCurrency(totales.total_cotizacion_final, 2)}</td></tr></tbody>
             </table>
             ${getTotalsSection(totales, monedaBase, financiero, monedas, { incluirTotalExtranjero })}
-            ${getFooter(terminosCondiciones, terminosConversionHtml, formaPago)}
+            ${getFooter(terminosCondiciones, formaPago)}
         </div></body></html>`;
 };
 
@@ -68,7 +84,7 @@ export const generateCotizacionHtmlConDescuento = (data, options = {}) => {
     const { incluirTotalExtranjero } = options;
 
     const monedaBase = monedas.find(m => m.id === financiero.moneda_base_id) || { simbolo: 'Q.', moneda: 'Quetzales' };
-    const fechaFormateada = new Date(cotizacion.fecha_emision.seconds * 1000).toLocaleDateString('es-GT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const fechaFormateada = formatearFecha(cotizacion.fecha_emision);
 
     let sum_precio_venta_base = 0;
     const itemsHtml = items.map(item => {
@@ -79,6 +95,7 @@ export const generateCotizacionHtmlConDescuento = (data, options = {}) => {
             <td class="itp-col">${isItp ? '✔' : '&nbsp;'}</td>
             <td class="cantidad-col">${item.cantidad}</td>
             <td class="descripcion-col">
+                <strong>${item.nombre_categoria || ''}</strong><br>
                 <strong>${item.nombre_servicio || ''}</strong><br>
                 <span class="detalle-servicio">${nl2br(item.detalle_queincluyeservicio || '')}</span>
             </td>
@@ -88,8 +105,6 @@ export const generateCotizacionHtmlConDescuento = (data, options = {}) => {
         </tr>
         `
     }).join('');
-
-    const terminosConversionHtml = `<br>Tipo de cambio es de $ 1.00 por Q. ${formatCurrency(financiero.tasa_venta, 4)}`;
 
     return `
         <!DOCTYPE html><html><head><meta charset="utf-8"/><title>Cotización ${cotizacion.numero_cotizacion}</title><style>${commonStyles}
@@ -123,7 +138,7 @@ export const generateCotizacionHtmlConDescuento = (data, options = {}) => {
                 </tbody>
             </table>
             ${getTotalsSection(totales, monedaBase, financiero, monedas, { incluirTotalExtranjero, conDescuento: true, sum_precio_venta_base })}
-            ${getFooter(terminosCondiciones, terminosConversionHtml, formaPago)}
+            ${getFooter(terminosCondiciones, formaPago)}
         </div></body></html>`;
 }
 
@@ -133,7 +148,7 @@ export const generateCotizacionHtmlExtranjera = (data) => {
 
     const monedaBase = monedas.find(m => m.id === financiero.moneda_base_id) || { simbolo: 'Q.', moneda: 'Quetzales' };
     const monedaDestino = monedas.find(m => m.id === financiero.moneda_destino_id) || { simbolo: '$', moneda: 'Dólares' };
-    const fechaFormateada = new Date(cotizacion.fecha_emision.seconds * 1000).toLocaleDateString('es-GT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const fechaFormateada = formatearFecha(cotizacion.fecha_emision);
     const tasaCompra = financiero.tasa_compra || 1;
 
     const total_cotizacion_destino = (totales.total_cotizacion_final || 0) / tasaCompra;
@@ -154,6 +169,7 @@ export const generateCotizacionHtmlExtranjera = (data) => {
             <td class="itp-col">${isItp ? '✔' : '&nbsp;'}</td>
             <td class="cantidad-col">${item.cantidad}</td>
             <td class="descripcion-col">
+                <strong>${item.nombre_categoria || ''}</strong><br>
                 <strong>${item.nombre_servicio || ''}</strong><br>
                 <span class="detalle-servicio">${nl2br(item.detalle_queincluyeservicio || '')}</span>
             </td>
@@ -161,8 +177,6 @@ export const generateCotizacionHtmlExtranjera = (data) => {
             <td class="total-col">${formatCurrency(total_linea_destino, 2)}</td>
         </tr>
     `}).join('');
-
-    const terminosConversionHtml = `<br>Tipo de cambio es de $ 1.00 por Q. ${formatCurrency(financiero.tasa_venta, 4)}`;
 
     const totalsForeignRows = `
         <tr>
@@ -219,7 +233,7 @@ export const generateCotizacionHtmlExtranjera = (data) => {
                 <tbody>${itemsHtml}<tr class="table-footer"><td colspan="4">TOTAL:</td><td class="total-col">${formatCurrency(totalColumnaDestino, 2)}</td></tr></tbody>
             </table>
             <div class="totals-container"><table class="totals-box">${totalsForeignRows}</table></div>
-            ${getFooter(terminosCondiciones, terminosConversionHtml, formaPago)}
+            ${getFooter(terminosCondiciones, formaPago)}
         </div></body></html>`;
 };
 
@@ -337,10 +351,10 @@ const getTotalsSection = (totales, monedaBase, financiero, monedas, options = {}
     return `<div class="totals-container"><table class="totals-box">${rows}</table></div>`;
 }
 
-const getFooter = (terminosCondiciones, terminosConversionHtml, formaPago) => `
+const getFooter = (terminosCondiciones, formaPago) => `
     <div class="notes-payment-container">
         <p style="font-weight: bold;">Términos y Condiciones / Notas:</p>
-        <div>${nl2br(terminosCondiciones || 'El precio incluye IVA.')}${terminosConversionHtml}</div>
+        <div>${nl2br(terminosCondiciones || 'El precio incluye IVA.')}</div>
         <p style="font-weight: bold; margin-top: 10px;">Información de Pago:</p>
         <div>${nl2br(formaPago || 'Cheques a nombre de VOICE, S.A.')}</div>
     </div>

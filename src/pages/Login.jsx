@@ -99,12 +99,14 @@ function Login() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [resetMessage, setResetMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, resetPassword } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setResetMessage('');
     setLoading(true);
 
     try {
@@ -124,6 +126,27 @@ function Login() {
       }
     }
     setLoading(false);
+  };
+
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+    if (!email) {
+      setError('Por favor ingresa tu correo electrónico para restablecer tu contraseña.');
+      setResetMessage('');
+      return;
+    }
+    setError('');
+    setResetMessage('');
+    try {
+      await resetPassword(email);
+      setResetMessage('Te hemos enviado un correo para restablecer tu contraseña. Revisa tu bandeja de entrada.');
+    } catch (err) {
+      if (err.code === 'auth/user-not-found') {
+        setError('No hay ningún usuario registrado con este correo.');
+      } else {
+        setError('Error al enviar el correo. Inténtalo de nuevo.');
+      }
+    }
   };
 
   return (
@@ -171,7 +194,8 @@ function Login() {
           {error && <p style={styles.error}>{error}</p>}
         </form>
         
-        <a href="#" style={styles.forgotPassword}>¿Se te olvidó la contraseña?</a>
+        <a href="#" onClick={handleResetPassword} style={styles.forgotPassword}>¿Se te olvidó la contraseña?</a>
+        {resetMessage && <p style={{ color: 'green', marginTop: '16px', fontWeight: '500' }}>{resetMessage}</p>}
 
         <p style={styles.version}>GM-CloudFS 2.0</p>
       </div>

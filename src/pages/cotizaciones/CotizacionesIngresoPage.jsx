@@ -15,6 +15,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import PrintIcon from '@mui/icons-material/Print';
 import BusinessIcon from '@mui/icons-material/Business';
 import PriceChangeIcon from '@mui/icons-material/PriceChange';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -30,6 +31,7 @@ import BuscarTipoCambioModal from '../../components/modals/BuscarTipoCambioModal
 import BuscarServicioModal from '../../components/modals/BuscarServicioModal';
 import BuscarCotizacionModal from '../../components/modals/BuscarCotizacionModal';
 import ImprimirCotizacionModal from '../../components/modals/ImprimirCotizacionModal';
+import CopiarCotizacionModal from '../../components/modals/CopiarCotizacionModal';
 import ItemsTable from '../../components/cotizaciones/ItemsTable';
 
 const round = (value, decimals = 4) => {
@@ -94,6 +96,7 @@ const CotizacionesIngresoPage = () => {
   const [buscarServicioModalOpen, setBuscarServicioModalOpen] = useState(false);
   const [isCotizacionModalOpen, setIsCotizacionModalOpen] = useState(false);
   const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
+  const [isCopiarModalOpen, setIsCopiarModalOpen] = useState(false);
   const [items, setItems] = useState([]);
   const [monedasDisponibles, setMonedasDisponibles] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
@@ -129,6 +132,8 @@ const CotizacionesIngresoPage = () => {
     await cargarYMostrarCorrelativos();
   }, [sessionData, cargarYMostrarCorrelativos]);
 
+  const hasInitialized = React.useRef(false);
+
   useEffect(() => {
     const cargarDatosIniciales = async () => {
         await cargarYMostrarCorrelativos();
@@ -154,11 +159,12 @@ const CotizacionesIngresoPage = () => {
         }
     };
 
-    if (sessionData && !cotizacionCargada) { 
+    if (sessionData && !hasInitialized.current) { 
+        hasInitialized.current = true;
         cargarDatosIniciales();
         resetFormulario();
     }
-  }, [sessionData, cotizacionCargada, cargarYMostrarCorrelativos, resetFormulario]);
+  }, [sessionData, cargarYMostrarCorrelativos, resetFormulario]);
   
   const recalculateLine = useCallback((item, incluyeIva) => {
     const newItem = { ...item };
@@ -172,8 +178,19 @@ const CotizacionesIngresoPage = () => {
     const tp_tasa_linea = newItem.tp_tasa_linea || 0.005;
     newItem.total_descuento_aplicado_linea = round((cantidad * precio_venta_base_linea) * (tasa_descuento_aplicada / 100));
     newItem.total_linea = round(cantidad * precio_venta_final_linea, 2);
-    newItem.iva_total_linea = incluyeIva ? round(newItem.total_linea - (newItem.total_linea / (1 + iva_tasa_linea))) : 0;
-    newItem.sub_total_sin_iva_linea = round(newItem.total_linea - newItem.iva_total_linea, 2);
+    
+    if (incluyeIva) {
+      if (itpServicioBool) {
+        newItem.sub_total_sin_iva_linea = round(newItem.total_linea / (1 + iva_tasa_linea + tp_tasa_linea), 2);
+      } else {
+        newItem.sub_total_sin_iva_linea = round(newItem.total_linea / (1 + iva_tasa_linea), 2);
+      }
+      newItem.iva_total_linea = round(newItem.sub_total_sin_iva_linea * iva_tasa_linea);
+    } else {
+      newItem.sub_total_sin_iva_linea = newItem.total_linea;
+      newItem.iva_total_linea = 0;
+    }
+    
     newItem.sub_total_base_tp_linea = itpServicioBool ? newItem.sub_total_sin_iva_linea : 0;
     newItem.tp_total_linea = round(newItem.sub_total_base_tp_linea * tp_tasa_linea);
     return newItem;
@@ -233,10 +250,12 @@ const CotizacionesIngresoPage = () => {
     newTotals.total_descuento_aplicado = round(newTotals.total_descuento_aplicado, 2);
     newTotals.total_cotizacion_base = round(newTotals.total_cotizacion_final + newTotals.total_descuento_aplicado, 2);
     newTotals.monto_iva_total = round(newTotals.monto_iva_total, 2);
-    const calculatedSubTotal = newTotals.total_cotizacion_final - newTotals.monto_iva_total;
+    newTotals.monto_tp_total = round(newTotals.monto_tp_total, 2);
+    const calculatedSubTotal = financieroSnapshot.incluye_iva 
+        ? newTotals.total_cotizacion_final - newTotals.monto_iva_total - newTotals.monto_tp_total 
+        : newTotals.total_cotizacion_final;
     newTotals.sub_total_sin_iva = round(calculatedSubTotal, 2);
     newTotals.sub_total_base_tp = round(newTotals.sub_total_base_tp, 2);
-    newTotals.monto_tp_total = round(newTotals.monto_tp_total, 2);
 
     if (newTotals.total_cotizacion_final > 0) {
         newTotals.total_tasa_feeglobal_aplicada = round(100 - ((newTotals.total_costo_base / newTotals.total_cotizacion_final) * 100));
@@ -276,6 +295,20 @@ const CotizacionesIngresoPage = () => {
     const itemsRecalculados = cotizacion.items.map(item => recalculateLine(item, newFinancieroSnapshot.incluye_iva));
     setItems(itemsRecalculados);
     setIsCotizacionModalOpen(false);
+  };
+
+  const handleConfirmarCopia = async (nuevoCliente) => {
+    setClienteSeleccionado(nuevoCliente);
+    setCotizacionCargada(null); // Lo vuelve borrador
+    setFechaEmision(new Date()); // Fecha de hoy
+    
+    if (sessionData?.empresa_id) {
+        const { proxima } = await getDisplayCorrelativos(db, sessionData.empresa_id);
+        setProximaCotizacion(proxima);
+    }
+    
+    setIsCopiarModalOpen(false);
+    alert("Cotización copiada al formulario. Revise los datos y presione 'Grabar Cotización' para asignar el número y guardarla.");
   };
 
   const handleAnularCotizacion = async () => {
@@ -441,6 +474,7 @@ const CotizacionesIngresoPage = () => {
             <Typography variant="subtitle1">Sección de Información de la Cotización</Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
                 <Button variant="contained" color="primary" startIcon={<SearchIcon />} size="small" onClick={() => setIsCotizacionModalOpen(true)}>Buscar Cotización</Button>
+                <Button variant="contained" color="success" startIcon={<ContentCopyIcon />} size="small" onClick={() => setIsCopiarModalOpen(true)} disabled={!cotizacionCargada}>Copiar</Button>
                 <Button variant="contained" sx={{ backgroundColor: '#FF8C00', '&:hover': { backgroundColor: '#E67E00' } }} startIcon={<CancelIcon />} size="small" onClick={handleAnularCotizacion} disabled={!cotizacionCargada || isSaving}>Anular</Button>
                 <Button variant="contained" color="info" startIcon={<PrintIcon />} size="small" onClick={() => setIsPrintModalOpen(true)} disabled={!cotizacionCargada}>Imprimir</Button>
                 <Button variant="contained" color="error" startIcon={<ExitToAppIcon />} size="small" onClick={handleSalir}>Salir</Button>
@@ -488,6 +522,13 @@ const CotizacionesIngresoPage = () => {
             onClose={() => setIsCotizacionModalOpen(false)} 
             onSelect={handleSelectCotizacion}
             empresaId={sessionData?.empresa_id}
+        />
+        <CopiarCotizacionModal 
+            open={isCopiarModalOpen} 
+            onClose={() => setIsCopiarModalOpen(false)} 
+            onConfirmCopy={handleConfirmarCopia}
+            cotizacionActual={cotizacionCargada}
+            proximaCotizacion={proximaCotizacion}
         />
         <ImprimirCotizacionModal 
             open={isPrintModalOpen} 
