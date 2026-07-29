@@ -17,6 +17,34 @@ Este documento tiene como propósito llevar un registro histórico, estructurado
 
 ---
 
+## Nueva Funcionalidad: Módulo de Backups Automatizados
+
+- **Fecha:** 28 de Julio de 2026
+- **Módulos/Componentes:** `BackupPage.jsx`, `.github/workflows/backup-db.yml`, `scripts/backup-firestore.js`
+- **Tipo de Cambio:** ✨ Nueva Funcionalidad / 🛡️ Seguridad y Respaldo
+
+### Resumen de la Implementación
+Se construyó e integró un sistema "serverless" 100% automatizado y gratuito para el respaldo de la base de datos Firestore, emparejado con una interfaz visual administrativa en React para acceder a los archivos generados.
+
+### Detalles de los Cambios:
+
+1. **Automatización Serverless (GitHub Actions):**
+   - Se configuró un robot (`backup-db.yml`) programado mediante `cron` para ejecutarse todos los días a las 04:00 AM (hora de Guatemala) o de forma manual bajo demanda.
+   - Utiliza las capacidades de cómputo de GitHub para ejecutar un script seguro de Node.js sin necesidad de alquilar servidores adicionales.
+
+2. **Lógica de Extracción e Históricos (`backup-firestore.js`):**
+   - El script extrae el 100% de los documentos de todas las colecciones utilizando las credenciales administrativas de Firebase.
+   - **Retención Dinámica (Rotativa de 7 días):** Guarda el archivo con el nombre del día (`lunes.json`, `martes.json`, etc.) y lo sobreescribe cada semana.
+   - **Histórico Inmutable:** Si el script detecta que es el último día del mes, genera un backup permanente en la subcarpeta `/mensuales` nombrado con el formato `Año_Mes_fin_de_mes.json` (ej. `2026_07_fin_de_mes.json`).
+
+3. **Interfaz de Gestión React (`BackupPage.jsx`):**
+   - Se creó una pantalla limpia alineada al diseño de los catálogos del sistema, con tablas independientes para Backups Diarios y Mensuales.
+   - Se conecta **en tiempo real** con la API de GitHub para listar los archivos disponibles.
+   - Permite la descarga del JSON directo a la computadora local del administrador (botón azul).
+   - Se incorporó en el diseño un botón de "Restauración" (naranja), preparado y visualmente bloqueado con un mensaje de alerta, reservado metodológicamente para una Fase 2 de procesos por lotes (Batch).
+
+---
+
 ## Nueva Funcionalidad: Fechas Específicas Kanban y Exportación a Excel
 
 - **Fecha:** 28 de Julio de 2026
