@@ -1,0 +1,41 @@
+name: Automatización Backups Base de Datos
+
+on:
+  schedule:
+    # 04:00 AM hora de Guatemala (UTC-6) corresponde a las 10:00 AM UTC
+    - cron: '0 10 * * *'
+  workflow_dispatch: # Permite ejecutar el workflow manualmente desde GitHub si es necesario
+
+jobs:
+  backup-firestore:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Descargar Código del Repositorio (Checkout)
+      uses: actions/checkout@v4
+
+    - name: Configurar Entorno Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Instalar Dependencias (Firebase Admin)
+      run: npm install firebase-admin
+
+    - name: Generar Archivo de Backup JSON
+      env:
+        # El contenido de este secreto lo debes configurar en las opciones de GitHub
+        FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      run: |
+        echo "$FIREBASE_SERVICE_ACCOUNT" > serviceAccountKey.json
+        node scripts/backup-firestore.js
+        rm serviceAccountKey.json
+
+    - name: Guardar y Subir Archivos al Repositorio (Commit & Push)
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add backups/
+        # Si no hay cambios (por alguna razón), esto evita que el workflow falle
+        git commit -m "Backup automático de la Base de Datos" || echo "No changes to commit"
+        git push
