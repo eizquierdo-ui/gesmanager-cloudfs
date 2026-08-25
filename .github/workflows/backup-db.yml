@@ -10,6 +10,9 @@ jobs:
   backup-firestore:
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: write
+    
     steps:
     - name: Descargar Código del Repositorio (Checkout)
       uses: actions/checkout@v4
@@ -19,8 +22,8 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Instalar Dependencias (Firebase Admin)
-      run: npm install firebase-admin
+    - name: Instalar Dependencias
+      run: npm install
 
     - name: Generar Archivo de Backup JSON
       env:
