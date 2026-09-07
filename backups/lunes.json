@@ -162,6 +162,33 @@
     }
   },
   "clientes": {
+    "0620ud0D4XuN15PAzvPV": {
+      "nombre_razonsocial": "Integradora Tecnológica de Soluciones",
+      "nombre_cliente": "Baunovo",
+      "contacto": "Carlso Barrera",
+      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "email_cliente": "cbarrera@baunovo.com",
+      "telefono_contacto": "+(502) 2385-2576",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "estado": "activo",
+      "nit_cliente": "7029460-7 ",
+      "telefono_cliente": "+(502) 2385-2576",
+      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "direccion_cliente": "Guatemala",
+      "email_contacto": "cbarrera@baunovo.com",
+      "fecha_estado": {
+        "_seconds": 1788320221,
+        "_nanoseconds": 594000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1788320221,
+        "_nanoseconds": 594000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1788320221,
+        "_nanoseconds": 594000000
+      }
+    },
     "0LIxYDDjeixSIy2aIMTe": {
       "nombre_cliente": "Gabriela Asturias",
       "nombre_razonsocial": "Gabriela Asturias Ruiz",
@@ -889,6 +916,33 @@
       "fecha_ultima_modificacion": {
         "_seconds": 1778887287,
         "_nanoseconds": 438000000
+      }
+    },
+    "XET8L6cjjPJhyQxiaM3O": {
+      "nit_cliente": "10146853-9",
+      "telefono_cliente": "+502 5308 0319",
+      "email_cliente": "Javierlainfiesta@bocabocagt.com",
+      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "nombre_razonsocial": "Boca Boca, S.A.",
+      "estado": "activo",
+      "nombre_cliente": "Boca Boca",
+      "telefono_contacto": "+502 5308 0319",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "contacto": "Javier Lainfiesta",
+      "email_contacto": "Javierlainfiesta@bocabocagt.com",
+      "direccion_cliente": "Guatemala",
+      "fecha_estado": {
+        "_seconds": 1788217084,
+        "_nanoseconds": 462000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1788217084,
+        "_nanoseconds": 462000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1788217084,
+        "_nanoseconds": 462000000
       }
     },
     "YZ7fjj5VMCURnH6Cgd9u": {
@@ -1625,7 +1679,7 @@
     "F1bVL9YITjtNm3H4rKsS": {
       "correlativo_cotizaciones": {
         "anio": 2026,
-        "ultimo_numero": 94
+        "ultimo_numero": 98
       }
     }
   },
@@ -2014,72 +2068,72 @@
       },
       "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
       "fecha_estado": {
-        "_seconds": 1787790526,
-        "_nanoseconds": 244000000
+        "_seconds": 1788483209,
+        "_nanoseconds": 527000000
       },
       "fecha_ultima_modificacion": {
-        "_seconds": 1787790526,
-        "_nanoseconds": 244000000
+        "_seconds": 1788483209,
+        "_nanoseconds": 527000000
       },
       "items": [
         {
-          "cantidad": 1,
-          "sub_total_sin_iva_linea": 6222.22,
+          "sub_total_sin_iva_linea": 2222.22,
           "tp_tasa_linea": 0.005,
-          "iva_total_linea": 746.67,
-          "costo_total_linea": 4600,
-          "detalle_queincluyeservicio": "INCLUYE :● Reunión kick off con cliente ● Benchmark e investigación (mes1) ● Ejes de contenido y personalidad de marca (mes 1) ● Propuesta de línea gráfica (Mes 1) ● Elaboración de calendario y matriz de contenido para dos redes sociales (Facebook. IG y LinkedIn) ● Paquete base de contenido (3 publicaciones. 2 stories y 4 videos en formato vertical) ● 2 horas de grabación/toma de fotografías mensual ● Publicación de contenido ● Informe de resultados mensual",
-          "total_descuento_aplicado_linea": -1434.002,
-          "total_linea": 7000,
-          "servicio_id": "ACJf7plXFVr5Id2bknf8",
-          "iva_tasa_linea": 0.12,
-          "precio_venta_final_linea": 7000,
-          "tasa_descuento_aplicada": -25.7636,
-          "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+          "categoria_id": "YNih2li8lK8q6YT427IK",
+          "precio_venta_base_linea": 2074.29,
+          "tp_total_linea": 11.11,
           "itp_servicio": true,
-          "nombre_servicio": "Mantenimiento de dos redes sociales al mes (TIKTOK) ",
-          "precio_venta_base_linea": 5566,
-          "sub_total_base_tp_linea": 6222.22,
-          "tp_total_linea": 31.11
+          "tasa_descuento_aplicada": -20.5232,
+          "iva_total_linea": 266.67,
+          "costo_total_linea": 1200,
+          "cantidad": 1,
+          "sub_total_base_tp_linea": 2222.22,
+          "total_descuento_aplicado_linea": -425.7107,
+          "iva_tasa_linea": 0.12,
+          "nombre_servicio": "Grabación en el interior",
+          "precio_venta_final_linea": 2500,
+          "detalle_queincluyeservicio": "● Traslado de equipo de producción a Sumpango. ● Una cámara profesional. ● Micrófono de solapa ● Equipo de iluminación portátil ● Montaje y desmontaje del equipo ●Hasta dos horas de grabación por visita ● La propuesta contempla únicamente la grabación. La edición y posproducción del material se cotizan dentro del servicio mensual de mantenimiento.",
+          "total_linea": 2500,
+          "servicio_id": "7g58iRNRM2l7RTW7Llnh"
         },
         {
-          "categoria_id": "YNih2li8lK8q6YT427IK",
-          "servicio_id": "7g58iRNRM2l7RTW7Llnh",
+          "iva_total_linea": 832,
           "cantidad": 1,
-          "nombre_servicio": "Grabación en el interior",
-          "detalle_queincluyeservicio": "● Traslado de equipo de producción a Sumpango. ● Una cámara profesional. ● Micrófono de solapa ● Equipo de iluminación portátil ● Montaje y desmontaje del equipo ●Hasta dos horas de grabación por visita ● La propuesta contempla únicamente la grabación. La edición y posproducción del material se cotizan dentro del servicio mensual de mantenimiento.",
-          "itp_servicio": true,
-          "costo_total_linea": 1200,
-          "precio_venta_base_linea": 2074.29,
-          "precio_venta_final_linea": 2500,
-          "tasa_descuento_aplicada": -20.5232,
-          "iva_tasa_linea": 0.12,
+          "precio_venta_final_linea": 7800,
           "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": -425.7107,
-          "total_linea": 2500,
-          "sub_total_sin_iva_linea": 2222.22,
-          "iva_total_linea": 266.67,
-          "sub_total_base_tp_linea": 2222.22,
-          "tp_total_linea": 11.11
+          "iva_tasa_linea": 0.12,
+          "detalle_queincluyeservicio": "● Reunión kick-off con el cliente ● Definición de objetivos ● Ejes de contenido y personalidad de marca ● Desarrollo de la estrategia de comunicación digital según público ● Propuesta de línea gráfica para redes sociales ● Co-creación de calendario y matriz de contenidos para dos meses ● Producción de 3 videos institucionales de hasta 30 segundos cada uno ● 2 horas de grabación y/o toma de fotografías ● Edición de los videos a formato vertical ● Kit editable en Canva con 6 plantillas para desarrollar las publicaciones contempladas en el primer mes de la matriz de contenidos. ",
+          "nombre_servicio": "Estrategia de comunicación",
+          "sub_total_sin_iva_linea": 6933.33,
+          "total_descuento_aplicado_linea": 3256.5041,
+          "categoria_id": "RjWj7VuYTe3wGJ4xCr6S",
+          "costo_total_linea": 9137.6,
+          "precio_venta_base_linea": 11056.5,
+          "tp_total_linea": 34.67,
+          "itp_servicio": true,
+          "sub_total_base_tp_linea": 6933.33,
+          "tasa_descuento_aplicada": 29.4533,
+          "total_linea": 7800,
+          "servicio_id": "Sdui1xm7WdzL7gIdCzLM"
         }
       ],
       "totales": {
-        "total_costo_base": 5800,
-        "total_cotizacion_base": 7640.29,
-        "total_cotizacion_final": 9500,
-        "total_descuento_aplicado": -1859.71,
-        "total_tasa_feeglobal_aplicada": 38.9474,
-        "tasa_iva_aplicada": 0.12,
-        "monto_iva_total": 1013.33,
-        "sub_total_sin_iva": 8444.45,
-        "sub_total_base_tp": 8444.44,
-        "tasa_tp_aplicada": 0.005,
-        "monto_tp_total": 42.22,
+        "total_tasa_feeglobal_aplicada": -0.365,
         "isr_calculado": {
-          "monto_tramo_1": 422.22,
-          "monto_tramo_2": 0,
-          "monto_isr_total": 422.22
-        }
+          "monto_isr_total": 457.78,
+          "monto_tramo_1": 457.78,
+          "monto_tramo_2": 0
+        },
+        "sub_total_sin_iva": 9155.55,
+        "total_costo_base": 10337.6,
+        "tasa_tp_aplicada": 0.005,
+        "total_cotizacion_base": 13130.79,
+        "sub_total_base_tp": 9155.55,
+        "total_descuento_aplicado": 2830.79,
+        "tasa_iva_aplicada": 0.12,
+        "monto_tp_total": 45.78,
+        "monto_iva_total": 1098.67,
+        "total_cotizacion_final": 10300
       }
     },
     "5NDAD5BkAcXLdVpGF7kP": {
@@ -2738,6 +2792,99 @@
       "fecha_ultima_modificacion": {
         "_seconds": 1782174033,
         "_nanoseconds": 308000000
+      }
+    },
+    "DNPxPR5IHV91ZWolTkcG": {
+      "fecha_emision": {
+        "_seconds": 1788221807,
+        "_nanoseconds": 183000000
+      },
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "financiero_snapshot": {
+        "tipocambio_id": "936TIFOcN3KYjZV296dA",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1778220000,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "cliente_snapshot": {
+        "nombre_cliente": "Emelyn Barahona",
+        "direccion_cliente": "Ciudad de Guatemala",
+        "nit_cliente": "9321647-5",
+        "email_cliente": "barahonaeme@gmail.com",
+        "telefono_cliente": "+502 5693 5671",
+        "contacto_principal": {
+          "nombre": "Emelyn Barahona",
+          "telefono": "+502 5693 5671"
+        }
+      },
+      "usuario_id": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "numero_cotizacion": "2026-00096",
+      "dias_vigencia": 8,
+      "fecha_creacion": {
+        "_seconds": 1788221984,
+        "_nanoseconds": 612000000
+      },
+      "estado": "borrador",
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "cliente_id": "mFTDyH8b3Ef13qHgWN9W",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "fecha_estado": {
+        "_seconds": 1788222028,
+        "_nanoseconds": 527000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1788222028,
+        "_nanoseconds": 527000000
+      },
+      "items": [
+        {
+          "categoria_id": "IripfEKdyEDM1nA3GQqy",
+          "servicio_id": "CKq1us6Ww4ohcHFC77sl",
+          "cantidad": 1,
+          "nombre_servicio": "Taller Public Speaking ",
+          "detalle_queincluyeservicio": "Taller de vocería con los siguientes temas: Expresión oral ▪ Lenguaje corporal y presencia ▪  Manejo de Nervios ▪ Mensajes claves ▪ Estrategias en el discurso ▪ La entrevista ▪ Preguntas difíciles en la entrevista ▪ Práctica con grabación en cámara  ",
+          "itp_servicio": false,
+          "costo_total_linea": 6500,
+          "precio_venta_base_linea": 7865,
+          "precio_venta_final_linea": 5898.75,
+          "tasa_descuento_aplicada": 25,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 1966.25,
+          "total_linea": 5898.75,
+          "sub_total_sin_iva_linea": 5266.74,
+          "iva_total_linea": 632.01,
+          "sub_total_base_tp_linea": 0,
+          "tp_total_linea": 0
+        }
+      ],
+      "totales": {
+        "total_costo_base": 6500,
+        "total_cotizacion_base": 7865,
+        "total_cotizacion_final": 5898.75,
+        "total_descuento_aplicado": 1966.25,
+        "total_tasa_feeglobal_aplicada": -10.1928,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 632.01,
+        "sub_total_sin_iva": 5266.74,
+        "sub_total_base_tp": 0,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 0,
+        "isr_calculado": {
+          "monto_tramo_1": 263.34,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 263.34
+        }
       }
     },
     "GvcYesB5h17x92VzhA4s": {
@@ -6130,6 +6277,119 @@
         }
       }
     },
+    "orBHMiQT8h1JLPuCmPB3": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "numero_cotizacion": "2026-00097",
+      "cliente_id": "ORPdQtiNjlfVAvzeDwJT",
+      "usuario_id": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "cliente_snapshot": {
+        "nombre_cliente": "Telus (Transactel)",
+        "direccion_cliente": " 18 CALLE 25-86 ZONA 10 EDIFICIO TORRE PRADERA NIVEL 5, GUATEMALA.",
+        "nit_cliente": "40172252",
+        "email_cliente": "joselin.ramos01@telusdigital.com",
+        "telefono_cliente": "4149-5240",
+        "contacto_principal": {
+          "nombre": "Stefani Ramos",
+          "telefono": "4149-5240"
+        }
+      },
+      "fecha_emision": {
+        "_seconds": 1788303895,
+        "_nanoseconds": 494000000
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "RbqYpCM0FUzvx0lsAZr6",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1788242400,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "usuario_ultima_modificacion": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "estado": "borrador",
+      "usuario_creo": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "dias_vigencia": 8,
+      "fecha_creacion": {
+        "_seconds": 1788304218,
+        "_nanoseconds": 659000000
+      },
+      "fecha_estado": {
+        "_seconds": 1788307407,
+        "_nanoseconds": 508000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1788307407,
+        "_nanoseconds": 508000000
+      },
+      "items": [
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "nMCzqYavgElZG9sWtfft",
+          "cantidad": 1,
+          "nombre_servicio": "",
+          "detalle_queincluyeservicio": "Compra de stand en XelaFer.",
+          "itp_servicio": false,
+          "costo_total_linea": 0,
+          "precio_venta_base_linea": 0,
+          "precio_venta_final_linea": 1644.47,
+          "tasa_descuento_aplicada": 0,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 1644.47,
+          "sub_total_sin_iva_linea": 1468.28,
+          "iva_total_linea": 176.19,
+          "sub_total_base_tp_linea": 0,
+          "tp_total_linea": 0
+        },
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "nMCzqYavgElZG9sWtfft",
+          "cantidad": 1,
+          "nombre_servicio": "",
+          "detalle_queincluyeservicio": "Fee de agencia.",
+          "itp_servicio": false,
+          "costo_total_linea": 0,
+          "precio_venta_base_linea": 0,
+          "precio_venta_final_linea": 174.03,
+          "tasa_descuento_aplicada": 0,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 174.03,
+          "sub_total_sin_iva_linea": 155.38,
+          "iva_total_linea": 18.65,
+          "sub_total_base_tp_linea": 0,
+          "tp_total_linea": 0
+        }
+      ],
+      "totales": {
+        "total_costo_base": 0,
+        "total_cotizacion_base": 1818.5,
+        "total_cotizacion_final": 1818.5,
+        "total_descuento_aplicado": 0,
+        "total_tasa_feeglobal_aplicada": 100,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 194.84,
+        "sub_total_sin_iva": 1623.66,
+        "sub_total_base_tp": 0,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 0,
+        "isr_calculado": {
+          "monto_tramo_1": 81.18,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 81.18
+        }
+      }
+    },
     "p3X1t3M2kMYgqjlVUOMg": {
       "fecha_emision": {
         "_seconds": 1784246968,
@@ -7127,6 +7387,139 @@
         }
       }
     },
+    "xE0JKBsxShUE5aBFvU0x": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "dias_vigencia": 8,
+      "cliente_id": "0620ud0D4XuN15PAzvPV",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "estado": "borrador",
+      "fecha_creacion": {
+        "_seconds": 1788321076,
+        "_nanoseconds": 562000000
+      },
+      "cliente_snapshot": {
+        "nombre_cliente": "Baunovo",
+        "direccion_cliente": "Guatemala",
+        "nit_cliente": "7029460-7 ",
+        "email_cliente": "cbarrera@baunovo.com",
+        "telefono_cliente": "+(502) 2385-2576",
+        "contacto_principal": {
+          "nombre": "Carlso Barrera",
+          "telefono": "+(502) 2385-2576"
+        }
+      },
+      "fecha_emision": {
+        "_seconds": 1788320260,
+        "_nanoseconds": 857000000
+      },
+      "numero_cotizacion": "2026-00098",
+      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "totales": {
+        "total_costo_base": 12864.470000000001,
+        "total_cotizacion_base": 15566,
+        "total_cotizacion_final": 17000,
+        "total_descuento_aplicado": -1434,
+        "total_tasa_feeglobal_aplicada": 24.3266,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 1813.33,
+        "sub_total_sin_iva": 15111.11,
+        "sub_total_base_tp": 15111.11,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 75.56,
+        "isr_calculado": {
+          "monto_tramo_1": 755.56,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 755.56
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "936TIFOcN3KYjZV296dA",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1778220000,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "usuario_id": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "items": [
+        {
+          "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+          "servicio_id": "ACJf7plXFVr5Id2bknf8",
+          "cantidad": 1,
+          "nombre_servicio": "Mantenimiento de dos redes sociales al mes (TIKTOK) ",
+          "detalle_queincluyeservicio": "INCLUYE: • Manejo de TikTok y una plataforma adicional a elegir entre Facebook. Instagram o LinkedIn • Reunión de kick-off con el cliente • Benchmark e investigación inicial (mes 1) • Definición de ejes de contenido y personalidad de marca. incluyendo el enfoque para TikTok (mes 1) • Propuesta de línea gráfica (mes 1) • Elaboración de calendario y matriz mensual de contenido •  publicaciones gráficas o carruseles (adaptadas a cada red) • 3 historias • 4 videos verticales desarrollados con enfoque para TikTok • 3 horas mensuales de grabación y toma de fotografías en una misma ubicación • Redacción. adaptación y publicación del contenido en las dos plataformas seleccionadas • Informe mensual de resultados",
+          "itp_servicio": true,
+          "costo_total_linea": 4600,
+          "precio_venta_base_linea": 5566,
+          "precio_venta_final_linea": 7000,
+          "tasa_descuento_aplicada": -25.7636,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": -1434.002,
+          "total_linea": 7000,
+          "sub_total_sin_iva_linea": 6222.22,
+          "iva_total_linea": 746.67,
+          "sub_total_base_tp_linea": 6222.22,
+          "tp_total_linea": 31.11
+        },
+        {
+          "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+          "servicio_id": "hgfUTjcfvAtMn6TiA9Uh",
+          "cantidad": 1,
+          "nombre_servicio": "Mantenimiento de tres redes sociales al mes (TIKTOK)",
+          "detalle_queincluyeservicio": "INCLUYE: • Manejo de TikTok y dos plataformas adicionales a elegir entre Facebook. Instagram o LinkedIn • Reunión de kick-off con el cliente • Benchmark e investigación inicial (mes 1) • Definición de ejes de contenido y personalidad de marca para las tres plataformas (mes 1) • Propuesta de línea gráfica (mes 1) • Elaboración de calendario y matriz mensual de contenido • 4 publicaciones gráficas o carruseles (adaptadas a cada red) • 4 historias •  4 videos verticales desarrollados con enfoque para TikTok • 4 horas mensuales de grabación y toma de fotografías en una misma ubicación • Redacción. adaptación y publicación del contenido según la dinámica de cada plataforma • Reunión mensual de seguimiento • Informe mensual de resultados y recomendaciones",
+          "itp_servicio": true,
+          "costo_total_linea": 7438.02,
+          "precio_venta_base_linea": 9000,
+          "precio_venta_final_linea": 9000,
+          "tasa_descuento_aplicada": 0,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 9000,
+          "sub_total_sin_iva_linea": 8000,
+          "iva_total_linea": 960,
+          "sub_total_base_tp_linea": 8000,
+          "tp_total_linea": 40
+        },
+        {
+          "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+          "servicio_id": "yw49cWE2IU0sMnghv8Wk",
+          "cantidad": 1,
+          "nombre_servicio": "Paquete de pauta ",
+          "detalle_queincluyeservicio": "• Pauta directa en redes sociales • Menos 35% por fee e impuestos • Disponible para Pauta Q 650.00 (incluye informe de resultados)",
+          "itp_servicio": true,
+          "costo_total_linea": 826.45,
+          "precio_venta_base_linea": 1000,
+          "precio_venta_final_linea": 1000,
+          "tasa_descuento_aplicada": 0,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 1000,
+          "sub_total_sin_iva_linea": 888.89,
+          "iva_total_linea": 106.67,
+          "sub_total_base_tp_linea": 888.89,
+          "tp_total_linea": 4.44
+        }
+      ],
+      "fecha_estado": {
+        "_seconds": 1788376097,
+        "_nanoseconds": 880000000
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\nLos pagos se realizan los primeros 5 dias de cada mes. \nLos precios se mantienen por un contrato de 6 meses mínimo de servicio. ",
+      "fecha_ultima_modificacion": {
+        "_seconds": 1788376097,
+        "_nanoseconds": 880000000
+      }
+    },
     "xHw2V1PToa0FPgOttfYs": {
       "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
       "fecha_creacion": {
@@ -7544,6 +7937,99 @@
         "_seconds": 1781645152,
         "_nanoseconds": 405000000
       },
+      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2"
+    },
+    "xoUPzR52J78bSTGYdLea": {
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "financiero_snapshot": {
+        "tipocambio_id": "936TIFOcN3KYjZV296dA",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1778220000,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "fecha_creacion": {
+        "_seconds": 1788217291,
+        "_nanoseconds": 727000000
+      },
+      "cliente_snapshot": {
+        "nombre_cliente": "Boca Boca",
+        "direccion_cliente": "Guatemala",
+        "nit_cliente": "10146853-9",
+        "email_cliente": "Javierlainfiesta@bocabocagt.com",
+        "telefono_cliente": "+502 5308 0319",
+        "contacto_principal": {
+          "nombre": "Javier Lainfiesta",
+          "telefono": "+502 5308 0319"
+        }
+      },
+      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "fecha_estado": {
+        "_seconds": 1788217291,
+        "_nanoseconds": 17000000
+      },
+      "numero_cotizacion": "2026-00095",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "fecha_emision": {
+        "_seconds": 1788217238,
+        "_nanoseconds": 609000000
+      },
+      "usuario_id": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "dias_vigencia": 8,
+      "cliente_id": "XET8L6cjjPJhyQxiaM3O",
+      "totales": {
+        "total_costo_base": 5000,
+        "total_cotizacion_base": 7756.41,
+        "total_cotizacion_final": 7800,
+        "total_descuento_aplicado": -43.59,
+        "total_tasa_feeglobal_aplicada": 35.8974,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 832,
+        "sub_total_sin_iva": 6933.33,
+        "sub_total_base_tp": 6933.33,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 34.67,
+        "isr_calculado": {
+          "monto_tramo_1": 346.67,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 346.67
+        }
+      },
+      "estado": "borrador",
+      "fecha_ultima_modificacion": {
+        "_seconds": 1788217291,
+        "_nanoseconds": 17000000
+      },
+      "items": [
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "dhNzZmDozs8xYHPnNXtp",
+          "cantidad": 1,
+          "nombre_servicio": "Convocatoria a medios (entre agencias)",
+          "detalle_queincluyeservicio": "INCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios de forma orgánica ● Elaboración de comunicado ● Atención a medios el día del evento (1-2 ejecutiva) ● Seguimiento a medios y solicitudes ● Monitoreo digital  ● Informe final",
+          "itp_servicio": true,
+          "costo_total_linea": 5000,
+          "precio_venta_base_linea": 7756.41,
+          "precio_venta_final_linea": 7800,
+          "tasa_descuento_aplicada": -0.562,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": -43.591,
+          "total_linea": 7800,
+          "sub_total_sin_iva_linea": 6933.33,
+          "iva_total_linea": 832,
+          "sub_total_base_tp_linea": 6933.33,
+          "tp_total_linea": 34.67
+        }
+      ],
       "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2"
     },
     "xuQNkhvQ3sgukyp9Cheg": {
@@ -13366,6 +13852,83 @@
         }
       ]
     },
+    "dhNzZmDozs8xYHPnNXtp": {
+      "estado": "activo",
+      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "fecha_estado": {
+        "_seconds": 1788217152,
+        "_nanoseconds": 410000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1788217152,
+        "_nanoseconds": 410000000
+      },
+      "itp": true,
+      "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+      "detalle_queincluyeservicio": "INCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado ● Atención a medios el día del evento (1 ejecutiva) ● Seguimiento a medios y solicitudes ● Monitoreo digital  ● Informe final",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "nombre_servicio": "Convocatoria a medios (entre agencias)",
+      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "precios_calculados": {
+        "costo_total_base": 5000,
+        "tasa_ganancia_global": 22,
+        "valorfee_global": 1410.2564102564102,
+        "costo_mas_feeglobal": 6410.25641025641,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 1346.1538461538462,
+        "precio_venta_base": 7756.41,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "936TIFOcN3KYjZV296dA",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1778220000,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_base_simbolo": "Q.",
+        "tipocambio_moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_destino_simbolo": "$."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "Fee voice",
+          "valor": 5000,
+          "tasa_fee": 22
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1788217239,
+        "_nanoseconds": 844000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1788217152,
+            "_nanoseconds": 410000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 5000,
+          "precio_venta_base": 7756.41,
+          "tasa_ganancia_global": 22,
+          "fecha": {
+            "_seconds": 1788217235,
+            "_nanoseconds": 343000000
+          }
+        }
+      ]
+    },
     "gQQFo1Nmw9X7H3LG44Y7": {
       "nombre_servicio": "Gestión de mensajes y presencia digital",
       "detalle_queincluyeservicio": "INCLUYE: ● Atención y respuesta de mensajes y comentarios en cuatro redes sociales (LinkedIn, Instagram, Facebook y X) con revisión dos veces al día. ● Organización de solicitudes recibidas según prioridad, tipo de oportunidad y nivel de seguimiento requerido. ● Seguimiento con medios, equipos organizadores, aliados y contactos priorizados para solicitar información, coordinar próximos pasos y mantener ordenadas las oportunidades. ● Publicación de 4 contenidos al mes en formatos definidos (carrusel, reel, post estático o historias). * En el caso de reels, cliente enviará los videos base y VOICE apoyará con la edición, adaptación de copy y publicación. ● Informe final de acciones, seguimientos y resultados",
@@ -15119,20 +15682,20 @@
       "role_id": "administrador",
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "empresa_nombre": "Voice, S.A.",
-      "tipo_cambio_id": "wcqsCXByF5MhyagqiP3O",
       "tipo_cambio_moneda_destino_simbolo": "$.",
       "tipo_cambio_moneda_base_simbolo": "Q.",
       "tipo_cambio_tasa_venta": 7.8,
       "tipo_cambio_moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
       "tipo_cambio_tasa_compra": 7.8,
       "tipo_cambio_moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+      "tipo_cambio_id": "RbqYpCM0FUzvx0lsAZr6",
       "tipo_cambio_fecha": {
-        "_seconds": 1784181600,
+        "_seconds": 1788242400,
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1787021636,
-        "_nanoseconds": 75000000
+        "_seconds": 1788310854,
+        "_nanoseconds": 407000000
       }
     },
     "FvE99qZDTsNktMUUJTsvCQ677Kk1": {
@@ -15212,8 +15775,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1787790621,
-        "_nanoseconds": 584000000
+        "_seconds": 1788482710,
+        "_nanoseconds": 963000000
       }
     },
     "WPSAkMSrdoV0zPpe0CCyGcxoG8e2": {
@@ -15355,6 +15918,27 @@
       "fecha_ultima_modificacion": {
         "_seconds": 1780513611,
         "_nanoseconds": 235000000
+      }
+    },
+    "RbqYpCM0FUzvx0lsAZr6": {
+      "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+      "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+      "tasa_compra": 7.8,
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "fecha": {
+        "_seconds": 1788242400,
+        "_nanoseconds": 0
+      },
+      "usuario_creo": "SYSTEM_USER",
+      "tasa_venta": 7.8,
+      "estado": "activo",
+      "fecha_creacion": {
+        "_seconds": 1788303243,
+        "_nanoseconds": 44000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1788303243,
+        "_nanoseconds": 44000000
       }
     },
     "T4PBOglOkOojRZbk2lSy": {
