@@ -2068,72 +2068,72 @@
       },
       "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
       "fecha_estado": {
-        "_seconds": 1787790526,
-        "_nanoseconds": 244000000
+        "_seconds": 1788483209,
+        "_nanoseconds": 527000000
       },
       "fecha_ultima_modificacion": {
-        "_seconds": 1787790526,
-        "_nanoseconds": 244000000
+        "_seconds": 1788483209,
+        "_nanoseconds": 527000000
       },
       "items": [
         {
-          "cantidad": 1,
-          "sub_total_sin_iva_linea": 6222.22,
+          "sub_total_sin_iva_linea": 2222.22,
           "tp_tasa_linea": 0.005,
-          "iva_total_linea": 746.67,
-          "costo_total_linea": 4600,
-          "detalle_queincluyeservicio": "INCLUYE :● Reunión kick off con cliente ● Benchmark e investigación (mes1) ● Ejes de contenido y personalidad de marca (mes 1) ● Propuesta de línea gráfica (Mes 1) ● Elaboración de calendario y matriz de contenido para dos redes sociales (Facebook. IG y LinkedIn) ● Paquete base de contenido (3 publicaciones. 2 stories y 4 videos en formato vertical) ● 2 horas de grabación/toma de fotografías mensual ● Publicación de contenido ● Informe de resultados mensual",
-          "total_descuento_aplicado_linea": -1434.002,
-          "total_linea": 7000,
-          "servicio_id": "ACJf7plXFVr5Id2bknf8",
-          "iva_tasa_linea": 0.12,
-          "precio_venta_final_linea": 7000,
-          "tasa_descuento_aplicada": -25.7636,
-          "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+          "categoria_id": "YNih2li8lK8q6YT427IK",
+          "precio_venta_base_linea": 2074.29,
+          "tp_total_linea": 11.11,
           "itp_servicio": true,
-          "nombre_servicio": "Mantenimiento de dos redes sociales al mes (TIKTOK) ",
-          "precio_venta_base_linea": 5566,
-          "sub_total_base_tp_linea": 6222.22,
-          "tp_total_linea": 31.11
+          "tasa_descuento_aplicada": -20.5232,
+          "iva_total_linea": 266.67,
+          "costo_total_linea": 1200,
+          "cantidad": 1,
+          "sub_total_base_tp_linea": 2222.22,
+          "total_descuento_aplicado_linea": -425.7107,
+          "iva_tasa_linea": 0.12,
+          "nombre_servicio": "Grabación en el interior",
+          "precio_venta_final_linea": 2500,
+          "detalle_queincluyeservicio": "● Traslado de equipo de producción a Sumpango. ● Una cámara profesional. ● Micrófono de solapa ● Equipo de iluminación portátil ● Montaje y desmontaje del equipo ●Hasta dos horas de grabación por visita ● La propuesta contempla únicamente la grabación. La edición y posproducción del material se cotizan dentro del servicio mensual de mantenimiento.",
+          "total_linea": 2500,
+          "servicio_id": "7g58iRNRM2l7RTW7Llnh"
         },
         {
-          "categoria_id": "YNih2li8lK8q6YT427IK",
-          "servicio_id": "7g58iRNRM2l7RTW7Llnh",
+          "iva_total_linea": 832,
           "cantidad": 1,
-          "nombre_servicio": "Grabación en el interior",
-          "detalle_queincluyeservicio": "● Traslado de equipo de producción a Sumpango. ● Una cámara profesional. ● Micrófono de solapa ● Equipo de iluminación portátil ● Montaje y desmontaje del equipo ●Hasta dos horas de grabación por visita ● La propuesta contempla únicamente la grabación. La edición y posproducción del material se cotizan dentro del servicio mensual de mantenimiento.",
-          "itp_servicio": true,
-          "costo_total_linea": 1200,
-          "precio_venta_base_linea": 2074.29,
-          "precio_venta_final_linea": 2500,
-          "tasa_descuento_aplicada": -20.5232,
-          "iva_tasa_linea": 0.12,
+          "precio_venta_final_linea": 7800,
           "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": -425.7107,
-          "total_linea": 2500,
-          "sub_total_sin_iva_linea": 2222.22,
-          "iva_total_linea": 266.67,
-          "sub_total_base_tp_linea": 2222.22,
-          "tp_total_linea": 11.11
+          "iva_tasa_linea": 0.12,
+          "detalle_queincluyeservicio": "● Reunión kick-off con el cliente ● Definición de objetivos ● Ejes de contenido y personalidad de marca ● Desarrollo de la estrategia de comunicación digital según público ● Propuesta de línea gráfica para redes sociales ● Co-creación de calendario y matriz de contenidos para dos meses ● Producción de 3 videos institucionales de hasta 30 segundos cada uno ● 2 horas de grabación y/o toma de fotografías ● Edición de los videos a formato vertical ● Kit editable en Canva con 6 plantillas para desarrollar las publicaciones contempladas en el primer mes de la matriz de contenidos. ",
+          "nombre_servicio": "Estrategia de comunicación",
+          "sub_total_sin_iva_linea": 6933.33,
+          "total_descuento_aplicado_linea": 3256.5041,
+          "categoria_id": "RjWj7VuYTe3wGJ4xCr6S",
+          "costo_total_linea": 9137.6,
+          "precio_venta_base_linea": 11056.5,
+          "tp_total_linea": 34.67,
+          "itp_servicio": true,
+          "sub_total_base_tp_linea": 6933.33,
+          "tasa_descuento_aplicada": 29.4533,
+          "total_linea": 7800,
+          "servicio_id": "Sdui1xm7WdzL7gIdCzLM"
         }
       ],
       "totales": {
-        "total_costo_base": 5800,
-        "total_cotizacion_base": 7640.29,
-        "total_cotizacion_final": 9500,
-        "total_descuento_aplicado": -1859.71,
-        "total_tasa_feeglobal_aplicada": 38.9474,
-        "tasa_iva_aplicada": 0.12,
-        "monto_iva_total": 1013.33,
-        "sub_total_sin_iva": 8444.45,
-        "sub_total_base_tp": 8444.44,
-        "tasa_tp_aplicada": 0.005,
-        "monto_tp_total": 42.22,
+        "total_tasa_feeglobal_aplicada": -0.365,
         "isr_calculado": {
-          "monto_tramo_1": 422.22,
-          "monto_tramo_2": 0,
-          "monto_isr_total": 422.22
-        }
+          "monto_isr_total": 457.78,
+          "monto_tramo_1": 457.78,
+          "monto_tramo_2": 0
+        },
+        "sub_total_sin_iva": 9155.55,
+        "total_costo_base": 10337.6,
+        "tasa_tp_aplicada": 0.005,
+        "total_cotizacion_base": 13130.79,
+        "sub_total_base_tp": 9155.55,
+        "total_descuento_aplicado": 2830.79,
+        "tasa_iva_aplicada": 0.12,
+        "monto_tp_total": 45.78,
+        "monto_iva_total": 1098.67,
+        "total_cotizacion_final": 10300
       }
     },
     "5NDAD5BkAcXLdVpGF7kP": {
@@ -15694,8 +15694,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1788310854,
-        "_nanoseconds": 407000000
+        "_seconds": 1788978664,
+        "_nanoseconds": 977000000
       }
     },
     "FvE99qZDTsNktMUUJTsvCQ677Kk1": {
@@ -15775,8 +15775,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1788376051,
-        "_nanoseconds": 677000000
+        "_seconds": 1788482710,
+        "_nanoseconds": 963000000
       }
     },
     "WPSAkMSrdoV0zPpe0CCyGcxoG8e2": {
