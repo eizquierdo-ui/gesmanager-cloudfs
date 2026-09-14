@@ -51,7 +51,6 @@ const ServiciosPage = () => {
     if (!app?.empresa_id || !user) return;
     try {
       const categoriasList = await getAllCategorias(app.empresa_id);
-      categoriasList.sort((a, b) => (a.nombre_categoria || '').localeCompare(b.nombre_categoria || '', 'es', { sensitivity: 'base' }));
       setCategorias(categoriasList);
     } catch (error) {
       console.error("Error al obtener las categorías:", error);
@@ -69,7 +68,6 @@ const ServiciosPage = () => {
     try {
       setLoading(true);
       const serviciosList = await getServiciosByCategoria(app.empresa_id, selectedCategoria);
-      serviciosList.sort((a, b) => (a.nombre_servicio || '').localeCompare(b.nombre_servicio || '', 'es', { sensitivity: 'base' }));
       setServicios(serviciosList);
       setSelectedServicioId(null);
     } catch (error) {
@@ -88,16 +86,11 @@ const ServiciosPage = () => {
   }, [selectedCategoria, fetchServicios]);
 
 
-  const filteredServicios = useMemo(() => {
-    const term = searchTerm.trim().toLowerCase();
-    const filtered = servicios.filter(srv =>
-      (srv.nombre_servicio || '').toLowerCase().includes(term) ||
-      (srv.detalle_queincluyeservicio && srv.detalle_queincluyeservicio.toLowerCase().includes(term))
-    );
-    return filtered.sort((a, b) =>
-      (a.nombre_servicio || '').localeCompare(b.nombre_servicio || '', 'es', { sensitivity: 'base' })
-    );
-  }, [servicios, searchTerm]);
+  const filteredServicios = useMemo(() =>
+    servicios.filter(srv =>
+      srv.nombre_servicio.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (srv.detalle_queincluyeservicio && srv.detalle_queincluyeservicio.toLowerCase().includes(searchTerm.toLowerCase()))
+    ), [servicios, searchTerm]);
 
   const handleSelectServicio = (servicioId) => {
     setSelectedServicioId(prevSelected => (prevSelected === servicioId ? null : servicioId));
@@ -306,7 +299,7 @@ const ServiciosPage = () => {
             <TableHead>
               <TableRow>
                 <TableCell padding="checkbox"></TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>Nombre (A-Z)</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Nombre</TableCell>
                 <TableCell sx={{ fontWeight: 'bold' }}>Detalle Incluye</TableCell>
                 <TableCell sx={{ fontWeight: 'bold' }}>Costo</TableCell>
                 <TableCell sx={{ fontWeight: 'bold' }}>Precio Base</TableCell>

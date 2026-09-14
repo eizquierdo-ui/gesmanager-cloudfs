@@ -14,7 +14,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "Desplegando a Firebase Hosting proyecto gesmanager-cloundfs..." -ForegroundColor Cyan
-npx -y firebase-tools deploy --only hosting --project gesmanager-cloundfs
+npx firebase deploy --only hosting --project gesmanager-cloundfs
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "`n¡Despliegue completado! La nueva versión ya está disponible en la URL pública." -ForegroundColor Green

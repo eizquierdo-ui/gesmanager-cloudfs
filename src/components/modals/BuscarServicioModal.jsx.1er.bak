@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Modal, Box, Typography, Table, TableBody, TableCell, TableContainer,
   TableHead, TableRow, Paper, IconButton, CircularProgress, Button,
-  FormControl, InputLabel, Select, MenuItem, Chip, TextField, InputAdornment
+  FormControl, InputLabel, Select, MenuItem, Chip
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-import SearchIcon from '@mui/icons-material/Search';
 
 // Firebase
 import { db } from '../../firebase';
@@ -35,7 +34,6 @@ const BuscarServicioModal = ({ open, onClose, onSelectServicio, empresaId }) => 
   const [servicios, setServicios] = useState([]);
   const [selectedCategoria, setSelectedCategoria] = useState('');
   const [selectedServicio, setSelectedServicio] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
   const [loadingCategorias, setLoadingCategorias] = useState(false);
   const [loadingServicios, setLoadingServicios] = useState(false);
   const [error, setError] = useState('');
@@ -49,14 +47,13 @@ const BuscarServicioModal = ({ open, onClose, onSelectServicio, empresaId }) => 
       setServicios([]);
       setSelectedCategoria('');
       setSelectedServicio(null);
-      setSearchTerm('');
 
       try {
         const categoriasRef = collection(db, 'categorias');
         const qCategorias = query(categoriasRef, where("empresa_id", "==", empresaId));
         const categoriasSnapshot = await getDocs(qCategorias);
         const categoriasList = categoriasSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        categoriasList.sort((a,b) => (a.nombre_categoria || '').localeCompare(b.nombre_categoria || '', 'es', { sensitivity: 'base' }));
+        categoriasList.sort((a,b) => a.nombre_categoria.localeCompare(b.nombre_categoria));
         setCategorias(categoriasList);
       } catch (err) {
         console.error("Error al cargar categorías:", err);
@@ -73,14 +70,12 @@ const BuscarServicioModal = ({ open, onClose, onSelectServicio, empresaId }) => 
     const fetchServicios = async () => {
       if (!selectedCategoria) {
         setServicios([]);
-        setSearchTerm('');
         return;
       }
       setLoadingServicios(true);
       setError('');
       setServicios([]);
       setSelectedServicio(null);
-      setSearchTerm('');
 
       try {
         const serviciosRef = collection(db, 'servicios');
@@ -92,7 +87,7 @@ const BuscarServicioModal = ({ open, onClose, onSelectServicio, empresaId }) => 
         const categoriaNombre = categorias.find(c => c.id === selectedCategoria)?.nombre_categoria || 'N/A';
         const serviciosConCategoria = serviciosList.map(s => ({...s, nombre_categoria: categoriaNombre}));
 
-        serviciosConCategoria.sort((a,b) => (a.nombre_servicio || '').localeCompare(b.nombre_servicio || '', 'es', { sensitivity: 'base' }));
+        serviciosConCategoria.sort((a,b) => a.nombre_servicio.localeCompare(b.nombre_servicio));
         setServicios(serviciosConCategoria);
         
       } catch (err) {
@@ -105,21 +100,6 @@ const BuscarServicioModal = ({ open, onClose, onSelectServicio, empresaId }) => 
 
     fetchServicios();
   }, [selectedCategoria, categorias]);
-
-  const filteredAndSortedServicios = useMemo(() => {
-    const term = searchTerm.trim().toLowerCase();
-    const filtered = servicios.filter(s => {
-      if (!term) return true;
-      const nombre = (s.nombre_servicio || '').toLowerCase();
-      const detalle = (s.detalle_queincluyeservicio || '').toLowerCase();
-      const categoria = (s.nombre_categoria || '').toLowerCase();
-      return nombre.includes(term) || detalle.includes(term) || categoria.includes(term);
-    });
-
-    return filtered.sort((a, b) =>
-      (a.nombre_servicio || '').localeCompare(b.nombre_servicio || '', 'es', { sensitivity: 'base' })
-    );
-  }, [servicios, searchTerm]);
 
   const handleRowClick = (servicio) => {
     setSelectedServicio(servicio);
@@ -145,50 +125,23 @@ const BuscarServicioModal = ({ open, onClose, onSelectServicio, empresaId }) => 
             <IconButton onClick={onClose}><CloseIcon /></IconButton>
         </Box>
 
-        <Box sx={{ display: 'flex', gap: 2, mb: 1.5, flexShrink: 0, flexWrap: 'wrap' }}>
-          <FormControl sx={{ flex: '1 1 280px' }} size="small">
-            <InputLabel id="categoria-select-label">Categoría</InputLabel>
-            <Select
-              labelId="categoria-select-label"
-              value={selectedCategoria}
-              label="Categoría"
-              onChange={(e) => setSelectedCategoria(e.target.value)}
-              disabled={loadingCategorias}
-            >
-              <MenuItem value="">
-                <em>-- Seleccione una Categoría --</em>
-              </MenuItem>
-              {categorias.map((cat) => (
-                <MenuItem key={cat.id} value={cat.id}>{cat.nombre_categoria}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <TextField
-            sx={{ flex: '1 1 280px' }}
-            size="small"
-            label="Buscar Servicio"
-            placeholder="Escriba para filtrar servicios (A-Z)..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            disabled={!selectedCategoria || loadingServicios}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Box>
-
-        {selectedCategoria && !loadingServicios && (
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1, px: 0.5, flexShrink: 0 }}>
-            <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 'bold' }}>
-              Mostrando {filteredAndSortedServicios.length} de {servicios.length} servicio(s) cargados (ordenados A-Z)
-            </Typography>
-          </Box>
-        )}
+        <FormControl fullWidth size="small" sx={{ mb: 2, flexShrink: 0 }}>
+          <InputLabel id="categoria-select-label">Categoría</InputLabel>
+          <Select
+            labelId="categoria-select-label"
+            value={selectedCategoria}
+            label="Categoría"
+            onChange={(e) => setSelectedCategoria(e.target.value)}
+            disabled={loadingCategorias}
+          >
+            <MenuItem value="">
+              <em>-- Seleccione una Categoría --</em>
+            </MenuItem>
+            {categorias.map((cat) => (
+              <MenuItem key={cat.id} value={cat.id}>{cat.nombre_categoria}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
 
         <TableContainer component={Paper} sx={{ flexGrow: 1, overflowY: 'auto' }}>
             {(loadingServicios || error) && (
@@ -202,7 +155,7 @@ const BuscarServicioModal = ({ open, onClose, onSelectServicio, empresaId }) => 
                 <TableHead>
                   <TableRow>
                     <TableCell sx={{ fontWeight: 'bold' }}>Categoría</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Servicio (A-Z)</TableCell>
+                    <TableCell sx={{ fontWeight: 'bold' }}>Servicio</TableCell>
                     <TableCell sx={{ fontWeight: 'bold' }}>Qué Incluye</TableCell>
                     <TableCell sx={{ fontWeight: 'bold' }} align="center">ITP</TableCell>
                     <TableCell sx={{ fontWeight: 'bold' }} align="right">Precio Venta</TableCell>
@@ -210,7 +163,7 @@ const BuscarServicioModal = ({ open, onClose, onSelectServicio, empresaId }) => 
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {filteredAndSortedServicios.map((servicio) => (
+                  {servicios.map((servicio) => (
                     <TableRow
                       key={servicio.id}
                       hover
@@ -234,9 +187,9 @@ const BuscarServicioModal = ({ open, onClose, onSelectServicio, empresaId }) => 
                 </TableBody>
               </Table>
             )}
-            {!loadingServicios && !error && filteredAndSortedServicios.length === 0 && (
+            {!loadingServicios && !error && servicios.length === 0 && (
                 <Typography sx={{ p: 2, textAlign: 'center' }}>
-                    { selectedCategoria ? (searchTerm ? 'No se encontraron servicios que coincidan con la búsqueda.' : 'No se encontraron servicios para esta categoría.') : 'Por favor, seleccione una categoría para ver los servicios.' }
+                    { selectedCategoria ? 'No se encontraron servicios para esta categoría.' : 'Por favor, seleccione una categoría para ver los servicios.' }
                 </Typography>
             )}
         </TableContainer>

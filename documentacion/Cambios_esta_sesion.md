@@ -2,6 +2,11 @@
 
 Este documento detalla las tareas, mejoras y nuevas funcionalidades acordadas para ser desarrolladas en la próxima sesión de trabajo del proyecto GESManager.
 
+NO ES PARA EL DESARROLLO DE LOS REQUERIMIENTOS PENDIENTE - 
+PARA QUE EMPECEMOS EL ANALSIS Y CREAR LA APLEMENTACION
+
+DEBES SOLO MOSTRARME LO QUE TENEMOS PENDIENTE Y LUEGO TOMAREMOS DECISIONES
+
 ## 1. Exportación a Excel en Módulos de Accesos
 Se debe incorporar un botón verde de "Excel" en la barra de herramientas principal de todas las opciones bajo el menú de Accesos. Este botón exportará el catálogo completo visible (aplicando los filtros actuales) a un archivo `.xlsx`.
 

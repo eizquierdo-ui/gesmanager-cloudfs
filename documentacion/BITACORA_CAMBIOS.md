@@ -17,6 +17,30 @@ Este documento tiene como propósito llevar un registro histórico, estructurado
 
 ---
 
+## Estabilización: Despliegue y Automatización de Backups
+
+- **Fecha:** 25 de Agosto de 2026
+- **Módulos/Componentes:** `.github/workflows/backup-db.yml`, `despliegue.ps1`
+- **Tipo de Cambio:** 🐛 Corrección de Bugs / 🚀 Despliegue
+
+### Resumen de la Implementación
+Se estabilizó y corrigió el proceso automatizado de respaldos diarios de la base de datos y se optimizó el script de despliegue a producción en Firebase, garantizando su correcta ejecución.
+
+### Detalles de los Cambios:
+
+1. **Corrección de Permisos en GitHub Actions (`backup-db.yml`):**
+   - Se añadió la directiva explícita `permissions: contents: write` al flujo de trabajo. Esto resolvió definitivamente el error de *Forbidden* que le impedía al bot de automatización subir (push) el archivo JSON del backup de regreso al repositorio.
+   - Se simplificó el paso de instalación de dependencias cambiando `npm install firebase-admin` por un `npm install` estándar. Esto previene que el sistema modifique involuntariamente el archivo `package.json` durante el pipeline.
+
+2. **Optimización del Script de Despliegue (`despliegue.ps1`):**
+   - Se corrigió el comando de Firebase CLI, reemplazando `npx -y firebase-tools deploy` por `npx firebase deploy` para evitar que el sistema operativo lo ejecutara en un entorno temporal que provocaba el error *"Directory 'dist' for Hosting does not exist"*.
+   - Se instaló de forma local y permanente la dependencia `firebase-tools` (`npm install -D firebase-tools`) para garantizar que el entorno siempre encuentre el binario correcto en la ruta del proyecto.
+
+3. **Validación de Arquitectura de Lectura (Backups):**
+   - Se documentó y comprobó que la pantalla `BackupPage.jsx` extrae la lista de JSONs conectándose directamente a la API oficial de GitHub en tiempo real, lo que exime al sistema de requerir descargas manuales (`git pull`) o re-despliegues para ver los respaldos generados durante la madrugada.
+
+---
+
 ## Nueva Funcionalidad: Módulo de Backups Automatizados
 
 - **Fecha:** 28 de Julio de 2026
