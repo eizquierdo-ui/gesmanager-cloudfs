@@ -17,6 +17,32 @@ Este documento tiene como propósito llevar un registro histórico, estructurado
 
 ---
 
+## Nueva Funcionalidad: Ordenamiento A-Z y Búsqueda Inteligente de Servicios
+
+- **Fecha:** 14 de Septiembre de 2026 - 16:08 hrs
+- **Módulos/Componentes:** `BuscarServicioModal.jsx`, `ServiciosPage.jsx`, `CotizacionesIngresoPage.jsx`
+- **Commit:** `feat: Ordenamiento A-Z de servicios, busqueda inteligente en modal de cotizaciones y mantenimiento de servicios con respaldos .1er.bak`
+- **Tipo de Cambio:** ✨ Nueva Funcionalidad / 🔍 Búsqueda e Interfaz UI / 🛡️ Respaldos Codebase
+
+### Resumen de la Implementación
+Se implementó el ordenamiento alfabético estricto (A-Z) para la selección de servicios por categoría y la funcionalidad de filtrado en tiempo real mediante un campo inteligente de búsqueda, aplicándolo tanto al modal de selección de detalles en Cotizaciones (`+ Agregar Detalle`) como a la pantalla de Mantenimiento de Servicios. Adicionalmente, se instituyó el protocolo de respaldos locales `.1er.bak`.
+
+### Detalles de los Cambios:
+
+1. **Búsqueda Inteligente y Ordenamiento A-Z en Cotizaciones (`BuscarServicioModal.jsx`):**
+   - **Buscador Reactivo:** Se agregó un campo `TextField` de búsqueda inteligente con icono de lupa (`SearchIcon`) junto al selector de categoría. Permite al usuario filtrar dinámicamente por cualquier coincidencia en el nombre o detalle del servicio a medida que escribe.
+   - **Ordenamiento Alfabético Estricto (A-Z):** Se incorporó una función memoizada (`filteredAndSortedServicios`) utilizando `localeCompare` en español con sensibilidad base para garantizar que, tanto al cargar los servicios de una categoría como al filtrar mediante el buscador, los resultados siempre se mantengan ordenados de la A a la Z.
+   - **Indicador Visual de Registros:** Se inyectó un mensaje informativo que notifica el total de servicios visualizados en pantalla (*"Mostrando X de Y servicio(s) cargados (ordenados A-Z)"*).
+
+2. **Ordenamiento A-Z en Mantenimiento de Servicios (`ServiciosPage.jsx`):**
+   - **Listado y Filtros A-Z:** Se ajustaron las funciones `fetchCategorias`, `fetchServicios` y el `useMemo` de `filteredServicios` para forzar que la vista principal y las búsquedas por texto estén ordenadas por el nombre del servicio de forma alfabética.
+   - **Encabezado Clarificado:** Se renombró el encabezado de la columna principal a **Nombre (A-Z)**.
+
+3. **Protocolo de Respaldos de Código (`.1er.bak`):**
+   - Se crearon e integraron al repositorio las copias de seguridad locales `BuscarServicioModal.jsx.1er.bak`, `ServiciosPage.jsx.1er.bak` y `CotizacionesIngresoPage.jsx.1er.bak` como política de resguardo ante modificaciones de código.
+
+---
+
 ## Estabilización: Despliegue y Automatización de Backups
 
 - **Fecha:** 25 de Agosto de 2026
