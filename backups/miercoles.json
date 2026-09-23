@@ -1760,7 +1760,7 @@
     "F1bVL9YITjtNm3H4rKsS": {
       "correlativo_cotizaciones": {
         "anio": 2026,
-        "ultimo_numero": 100
+        "ultimo_numero": 101
       }
     }
   },
@@ -5597,17 +5597,11 @@
     "fBxOBQlelsVLpIKISQgD": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "cliente_id": "YZ7fjj5VMCURnH6Cgd9u",
-      "usuario_id": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
       "fecha_emision": {
         "_seconds": 1781648922,
         "_nanoseconds": 426000000
       },
       "dias_vigencia": 8,
-      "estado": "borrador",
-      "fecha_estado": {
-        "_seconds": 1781648971,
-        "_nanoseconds": 808000000
-      },
       "cliente_snapshot": {
         "nombre_cliente": "FUNDACION FRIEDRICH NAUMANN PARA LA LIBERTAD",
         "direccion_cliente": "Ciudad de Guatemala",
@@ -5633,12 +5627,44 @@
         },
         "incluye_iva": true
       },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "numero_cotizacion": "2026-00070",
+      "fecha_creacion": {
+        "_seconds": 1781648972,
+        "_nanoseconds": 172000000
+      },
+      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "usuario_id": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "usuario_ultima_modificacion": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "items": [
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "K3bBvw2WAgQgEu1RjszU",
+          "cantidad": 1,
+          "nombre_servicio": "Convocatoria a medios de comunicación",
+          "detalle_queincluyeservicio": "Migración \nINCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado y mensajes claves para vocero ● Confirmación con medios ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Monitoreo digital ●Clippings de TV/radio ● Informe final",
+          "itp_servicio": true,
+          "costo_total_linea": 0,
+          "precio_venta_base_linea": 0,
+          "precio_venta_final_linea": 9375.33,
+          "tasa_descuento_aplicada": 0,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 9375.33,
+          "sub_total_sin_iva_linea": 8333.63,
+          "iva_total_linea": 1000.04,
+          "sub_total_base_tp_linea": 8333.63,
+          "tp_total_linea": 41.67
+        }
+      ],
       "totales": {
-        "total_costo_base": 7500,
-        "total_cotizacion_base": 12964.29,
+        "total_costo_base": 0,
+        "total_cotizacion_base": 9375.33,
         "total_cotizacion_final": 9375.33,
-        "total_descuento_aplicado": 3588.96,
-        "total_tasa_feeglobal_aplicada": 20.0028,
+        "total_descuento_aplicado": 0,
+        "total_tasa_feeglobal_aplicada": 100,
         "tasa_iva_aplicada": 0.12,
         "monto_iva_total": 1000.04,
         "sub_total_sin_iva": 8333.62,
@@ -5651,41 +5677,112 @@
           "monto_isr_total": 416.68
         }
       },
+      "fecha_venta_facturacion": {
+        "_seconds": 1785964073,
+        "_nanoseconds": 245000000
+      },
+      "estado": "venta",
+      "fecha_estado": {
+        "_seconds": 1785964073,
+        "_nanoseconds": 245000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1789592879,
+        "_nanoseconds": 62000000
+      }
+    },
+    "fPEem1sWPK1ZIqoxArCU": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "ORPdQtiNjlfVAvzeDwJT",
+      "usuario_id": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_emision": {
+        "_seconds": 1789582759,
+        "_nanoseconds": 674000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "fecha_estado": {
+        "_seconds": 1789583977,
+        "_nanoseconds": 887000000
+      },
+      "cliente_snapshot": {
+        "nombre_cliente": "Telus (Transactel)",
+        "direccion_cliente": " 18 CALLE 25-86 ZONA 10 EDIFICIO TORRE PRADERA NIVEL 5, GUATEMALA.",
+        "nit_cliente": "40172252",
+        "email_cliente": "joselin.ramos01@telusdigital.com",
+        "telefono_cliente": "4149-5240",
+        "contacto_principal": {
+          "nombre": "Stefani Ramos",
+          "telefono": "4149-5240"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "wcqsCXByF5MhyagqiP3O",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1784181600,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "totales": {
+        "total_costo_base": 7955.52,
+        "total_cotizacion_base": 9626.18,
+        "total_cotizacion_final": 9626.18,
+        "total_descuento_aplicado": 0,
+        "total_tasa_feeglobal_aplicada": 17.3554,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 1026.79,
+        "sub_total_sin_iva": 8556.61,
+        "sub_total_base_tp": 8556.6,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 42.78,
+        "isr_calculado": {
+          "monto_tramo_1": 427.83,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 427.83
+        }
+      },
       "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
       "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
       "items": [
         {
           "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "servicio_id": "kB9D7yvS8RYGMQDxKPU4",
+          "servicio_id": "P4VPR8sUAkSibTxH6c26",
           "cantidad": 1,
-          "nombre_servicio": "Convocatoria a medios de comunicación ",
-          "detalle_queincluyeservicio": "Migración \nINCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado y mensajes claves para vocero ● Confirmación con medios ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Monitoreo digital ●Clippings de TV/radio ● Informe final",
+          "nombre_servicio": "Relaciones Públicas",
+          "detalle_queincluyeservicio": "Compra de espacio en Radio siglo 104 y Ser de Xela. Pago a creador de contenido (Mabel). ",
           "itp_servicio": true,
-          "costo_total_linea": 7500,
-          "precio_venta_base_linea": 12964.29,
-          "precio_venta_final_linea": 9375.33,
-          "tasa_descuento_aplicada": 27.6834,
+          "costo_total_linea": 7955.52,
+          "precio_venta_base_linea": 9626.18,
+          "precio_venta_final_linea": 9626.18,
+          "tasa_descuento_aplicada": 0,
           "iva_tasa_linea": 0.12,
           "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": 3588.9563,
-          "total_linea": 9375.33,
-          "sub_total_sin_iva_linea": 8333.63,
-          "iva_total_linea": 1000.04,
-          "sub_total_base_tp_linea": 8333.63,
-          "tp_total_linea": 41.67
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 9626.18,
+          "sub_total_sin_iva_linea": 8556.6,
+          "iva_total_linea": 1026.79,
+          "sub_total_base_tp_linea": 8556.6,
+          "tp_total_linea": 42.78
         }
       ],
       "fecha_ultima_modificacion": {
-        "_seconds": 1781648971,
-        "_nanoseconds": 808000000
+        "_seconds": 1789583977,
+        "_nanoseconds": 887000000
       },
-      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
-      "numero_cotizacion": "2026-00070",
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "numero_cotizacion": "2026-00101",
       "fecha_creacion": {
-        "_seconds": 1781648972,
-        "_nanoseconds": 172000000
+        "_seconds": 1789583979,
+        "_nanoseconds": 739000000
       },
-      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2"
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1"
     },
     "fSLn34oCJc18fwon8JAE": {
       "fecha_creacion": {
@@ -8693,13 +8790,11 @@
     "yqy3qwkFGY0qeAFa14x6": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "cliente_id": "YZ7fjj5VMCURnH6Cgd9u",
-      "usuario_id": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
       "fecha_emision": {
         "_seconds": 1781648846,
         "_nanoseconds": 719000000
       },
       "dias_vigencia": 8,
-      "estado": "borrador",
       "cliente_snapshot": {
         "nombre_cliente": "FUNDACION FRIEDRICH NAUMANN PARA LA LIBERTAD",
         "direccion_cliente": "Ciudad de Guatemala",
@@ -8725,12 +8820,44 @@
         },
         "incluye_iva": true
       },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "numero_cotizacion": "2026-00069",
+      "fecha_creacion": {
+        "_seconds": 1781648920,
+        "_nanoseconds": 702000000
+      },
+      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "usuario_id": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "usuario_ultima_modificacion": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "items": [
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "K3bBvw2WAgQgEu1RjszU",
+          "cantidad": 1,
+          "nombre_servicio": "Convocatoria a medios de comunicación",
+          "detalle_queincluyeservicio": "Autoritarismo y riesgos para la democracia\nINCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado y mensajes claves para vocero ● Confirmación con medios ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Monitoreo digital ●Clippings de TV/radio ● Informe final",
+          "itp_servicio": true,
+          "costo_total_linea": 0,
+          "precio_venta_base_linea": 0,
+          "precio_venta_final_linea": 9375.33,
+          "tasa_descuento_aplicada": 0,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 9375.33,
+          "sub_total_sin_iva_linea": 8333.63,
+          "iva_total_linea": 1000.04,
+          "sub_total_base_tp_linea": 8333.63,
+          "tp_total_linea": 41.67
+        }
+      ],
       "totales": {
-        "total_costo_base": 7500,
-        "total_cotizacion_base": 12964.29,
+        "total_costo_base": 0,
+        "total_cotizacion_base": 9375.33,
         "total_cotizacion_final": 9375.33,
-        "total_descuento_aplicado": 3588.96,
-        "total_tasa_feeglobal_aplicada": 20.0028,
+        "total_descuento_aplicado": 0,
+        "total_tasa_feeglobal_aplicada": 100,
         "tasa_iva_aplicada": 0.12,
         "monto_iva_total": 1000.04,
         "sub_total_sin_iva": 8333.62,
@@ -8743,45 +8870,19 @@
           "monto_isr_total": 416.68
         }
       },
-      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
-      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
-      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
-      "numero_cotizacion": "2026-00069",
-      "fecha_creacion": {
-        "_seconds": 1781648920,
-        "_nanoseconds": 702000000
+      "fecha_venta_facturacion": {
+        "_seconds": 1785964024,
+        "_nanoseconds": 500000000
       },
-      "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
+      "estado": "venta",
       "fecha_estado": {
-        "_seconds": 1781648987,
-        "_nanoseconds": 633000000
+        "_seconds": 1785964024,
+        "_nanoseconds": 500000000
       },
       "fecha_ultima_modificacion": {
-        "_seconds": 1781648987,
-        "_nanoseconds": 633000000
-      },
-      "items": [
-        {
-          "total_descuento_aplicado_linea": 3588.9563,
-          "tp_total_linea": 41.67,
-          "total_linea": 9375.33,
-          "iva_total_linea": 1000.04,
-          "nombre_servicio": "Convocatoria a medios de comunicación ",
-          "cantidad": 1,
-          "detalle_queincluyeservicio": "Autoritarismo y riesgos para la democracia\nINCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado y mensajes claves para vocero ● Confirmación con medios ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Monitoreo digital ●Clippings de TV/radio ● Informe final",
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "precio_venta_base_linea": 12964.29,
-          "sub_total_base_tp_linea": 8333.63,
-          "tp_tasa_linea": 0.005,
-          "sub_total_sin_iva_linea": 8333.63,
-          "itp_servicio": true,
-          "tasa_descuento_aplicada": 27.6834,
-          "precio_venta_final_linea": 9375.33,
-          "costo_total_linea": 7500,
-          "servicio_id": "kB9D7yvS8RYGMQDxKPU4",
-          "iva_tasa_linea": 0.12
-        }
-      ]
+        "_seconds": 1789592869,
+        "_nanoseconds": 518000000
+      }
     },
     "z1wMaBF0gYk4BhqKhnjY": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -12842,6 +12943,65 @@
         }
       ]
     },
+    "K3bBvw2WAgQgEu1RjszU": {
+      "nombre_servicio": "Convocatoria a medios de comunicación",
+      "detalle_queincluyeservicio": "Incluye: ● Reunión de kick off con el cliente ● Invitación a medios ●Elaboración de comunicado y mensajes claves ● Confirmación con medios ● Atención a medios el dia del evento ● Seguimiento a medios y solicitudes ● Monitoreo ● Clippings de TV/radio ● Informe final",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+      "fecha_estado": {
+        "_seconds": 1789592557,
+        "_nanoseconds": 789000000
+      },
+      "usuario_creo": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "fecha_creacion": {
+        "_seconds": 1789592557,
+        "_nanoseconds": 789000000
+      },
+      "usuario_ultima_modificacion": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "fecha_ultima_modificacion": {
+        "_seconds": 1789592557,
+        "_nanoseconds": 789000000
+      },
+      "precios_calculados": {
+        "costo_total_base": 0,
+        "tasa_ganancia_global": 0,
+        "valorfee_global": 0,
+        "costo_mas_feeglobal": 0,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 0,
+        "precio_venta_base": 0,
+        "tipocambio_id": null,
+        "tipocambio_tasa_compra": 0,
+        "tipocambio_moneda_base_id": null,
+        "tipocambio_moneda_base_simbolo": null,
+        "tipocambio_moneda_destino_id": null,
+        "tipocambio_moneda_destino_simbolo": null,
+        "tipocambios_fecha_tipocambio": null
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "",
+          "valor": 0,
+          "tasa_fee": 0
+        }
+      ],
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1789592557,
+            "_nanoseconds": 789000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        }
+      ]
+    },
     "L7Sn0si5Mh0HCDjR7L1g": {
       "rubros_detalle": [
         {
@@ -13391,6 +13551,83 @@
           "fecha": {
             "_seconds": 1780534454,
             "_nanoseconds": 177000000
+          }
+        }
+      ]
+    },
+    "P4VPR8sUAkSibTxH6c26": {
+      "nombre_servicio": "Relaciones Públicas",
+      "detalle_queincluyeservicio": "Compra de espacio en Radio siglo 104 y Ser de Xela. Pago a creador de contenido (Mabel). ",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_creacion": {
+        "_seconds": 1789582062,
+        "_nanoseconds": 390000000
+      },
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_estado": {
+        "_seconds": 1789582109,
+        "_nanoseconds": 323000000
+      },
+      "precios_calculados": {
+        "costo_total_base": 7955.52,
+        "tasa_ganancia_global": 0,
+        "valorfee_global": 0,
+        "costo_mas_feeglobal": 7955.52,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 1670.6592,
+        "precio_venta_base": 9626.18,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "wcqsCXByF5MhyagqiP3O",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1784181600,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_base_simbolo": "Q.",
+        "tipocambio_moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_destino_simbolo": "$."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "",
+          "valor": 7955.52,
+          "tasa_fee": 0
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1789582738,
+        "_nanoseconds": 611000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1789582062,
+            "_nanoseconds": 391000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 7955.52,
+          "precio_venta_base": 9626.18,
+          "tasa_ganancia_global": 0,
+          "fecha": {
+            "_seconds": 1789582738,
+            "_nanoseconds": 502000000
           }
         }
       ]
@@ -16459,8 +16696,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1789442892,
-        "_nanoseconds": 602000000
+        "_seconds": 1789594382,
+        "_nanoseconds": 431000000
       }
     },
     "FvE99qZDTsNktMUUJTsvCQ677Kk1": {
@@ -16486,8 +16723,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1787702959,
-        "_nanoseconds": 175000000
+        "_seconds": 1789584067,
+        "_nanoseconds": 518000000
       }
     },
     "JaTGZdLPkqVbVFIs2wySGsnjwH52": {
@@ -16540,8 +16777,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1789439282,
-        "_nanoseconds": 75000000
+        "_seconds": 1789740659,
+        "_nanoseconds": 552000000
       }
     },
     "WPSAkMSrdoV0zPpe0CCyGcxoG8e2": {
