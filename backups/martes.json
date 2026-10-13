@@ -297,6 +297,33 @@
         "_nanoseconds": 427000000
       }
     },
+    "2GDUBMo1cFy39fM8rl1P": {
+      "nombre_cliente": "EPACSA",
+      "nombre_razonsocial": "Empaques y Aislamientos, S.A.",
+      "nit_cliente": "9342138-9",
+      "direccion_cliente": "Ciudad de Guatemala",
+      "email_cliente": "anahi@bsynergy.org",
+      "telefono_cliente": "+502 5516 7397",
+      "contacto": "Anahí Guerra",
+      "telefono_contacto": "+502 5516 7397",
+      "email_contacto": "anahi@bsynergy.org",
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_estado": {
+        "_seconds": 1791327279,
+        "_nanoseconds": 992000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1791327279,
+        "_nanoseconds": 992000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791327279,
+        "_nanoseconds": 992000000
+      }
+    },
     "5fGEvhoFqkSIF0SszUoe": {
       "nombre_cliente": "VANA",
       "nombre_razonsocial": "VANA TECH, SOCIEDAD ANONIMA",
@@ -700,6 +727,33 @@
       "fecha_ultima_modificacion": {
         "_seconds": 1776902602,
         "_nanoseconds": 766000000
+      }
+    },
+    "Ig61PhMQLuixwZUPLsuw": {
+      "nombre_cliente": "Fundación Carlos F. Novella",
+      "nombre_razonsocial": "",
+      "nit_cliente": "587827-6",
+      "direccion_cliente": "Ciudad de Guatemala",
+      "email_cliente": "fundacarlosfnovella@cfnovella.org.gt",
+      "telefono_cliente": "2338 9100 Ext 6446",
+      "contacto": "Maryorie Morales",
+      "telefono_contacto": "51011887",
+      "email_contacto": "",
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_estado": {
+        "_seconds": 1791813400,
+        "_nanoseconds": 629000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1791813400,
+        "_nanoseconds": 629000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791813400,
+        "_nanoseconds": 629000000
       }
     },
     "JFVZSGppW6VfCG7m9pKY": {
@@ -1922,7 +1976,7 @@
     "F1bVL9YITjtNm3H4rKsS": {
       "correlativo_cotizaciones": {
         "anio": 2026,
-        "ultimo_numero": 119
+        "ultimo_numero": 121
       }
     }
   },
@@ -6136,11 +6190,6 @@
         "_nanoseconds": 894000000
       },
       "dias_vigencia": 8,
-      "estado": "borrador",
-      "fecha_estado": {
-        "_seconds": 1791252505,
-        "_nanoseconds": 753000000
-      },
       "cliente_snapshot": {
         "nombre_cliente": "Accountax",
         "direccion_cliente": "Ciudad de Guatemala",
@@ -6208,17 +6257,26 @@
           "tp_total_linea": 14.67
         }
       ],
-      "fecha_ultima_modificacion": {
-        "_seconds": 1791252505,
-        "_nanoseconds": 753000000
-      },
       "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
       "numero_cotizacion": "2026-00118",
       "fecha_creacion": {
         "_seconds": 1791252506,
         "_nanoseconds": 404000000
       },
-      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2"
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_aceptacion": {
+        "_seconds": 1791407366,
+        "_nanoseconds": 558000000
+      },
+      "estado": "aceptada",
+      "fecha_estado": {
+        "_seconds": 1791407366,
+        "_nanoseconds": 558000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791407367,
+        "_nanoseconds": 424000000
+      }
     },
     "YXCRsifW7zNccloWpF6o": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -8441,6 +8499,163 @@
         "_nanoseconds": 652000000
       }
     },
+    "pJfM7YSoUm4napA2HH5T": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "2GDUBMo1cFy39fM8rl1P",
+      "usuario_id": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_emision": {
+        "_seconds": 1791386060,
+        "_nanoseconds": 172000000
+      },
+      "dias_vigencia": 8,
+      "cliente_snapshot": {
+        "nombre_cliente": "EPACSA",
+        "direccion_cliente": "Ciudad de Guatemala",
+        "nit_cliente": "9342138-9",
+        "email_cliente": "anahi@bsynergy.org",
+        "telefono_cliente": "+502 5516 7397",
+        "contacto_principal": {
+          "nombre": "Anahí Guerra",
+          "telefono": "+502 5516 7397"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_base": "$.",
+        "moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_destino": "Q.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "numero_cotizacion": "2026-00120",
+      "fecha_creacion": {
+        "_seconds": 1791386716,
+        "_nanoseconds": 600000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_aceptacion": {
+        "_seconds": 1791407358,
+        "_nanoseconds": 126000000
+      },
+      "estado": "borrador",
+      "totales": {
+        "total_costo_base": 23408.92,
+        "total_cotizacion_base": 29818.29,
+        "total_cotizacion_final": 37840,
+        "total_descuento_aplicado": -8021.71,
+        "total_tasa_feeglobal_aplicada": 38.1371,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 4036.27,
+        "sub_total_sin_iva": 33635.55,
+        "sub_total_base_tp": 33635.56,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 168.18,
+        "isr_calculado": {
+          "monto_tramo_1": 1500,
+          "monto_tramo_2": 254.49,
+          "monto_isr_total": 1754.49
+        }
+      },
+      "fecha_estado": {
+        "_seconds": 1791520671,
+        "_nanoseconds": 212000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791520671,
+        "_nanoseconds": 212000000
+      },
+      "items": [
+        {
+          "tasa_descuento_aplicada": 0,
+          "cantidad": 1,
+          "precio_venta_final_linea": 13000,
+          "total_descuento_aplicado_linea": 0,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "iva_total_linea": 1386.67,
+          "total_linea": 13000,
+          "tp_total_linea": 57.78,
+          "iva_tasa_linea": 0.12,
+          "itp_servicio": true,
+          "precio_venta_base_linea": 13000,
+          "nombre_servicio": "Paquete de relaciones públicas",
+          "servicio_id": "GvNkIs5ZTwtlnYDVZ81o",
+          "detalle_queincluyeservicio": "INCLUYE: ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado y mensajes clave para vocero ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Búsqueda de 2-3 espacios de entrevista ● Monitoreo digital ● Apoyo en la organización de reuniones estratégicas con universidades, cámaras o comercios  ● Informe final",
+          "sub_total_base_tp_linea": 11555.56,
+          "tp_tasa_linea": 0.005,
+          "sub_total_sin_iva_linea": 11555.56,
+          "costo_total_linea": 10743.8
+        },
+        {
+          "itp_servicio": true,
+          "servicio_id": "8uYVXitBImlbyGgao5MA",
+          "precio_venta_final_linea": 12000,
+          "cantidad": 1,
+          "iva_total_linea": 1280,
+          "iva_tasa_linea": 0.12,
+          "tasa_descuento_aplicada": -71.4286,
+          "total_descuento_aplicado_linea": -5000.002,
+          "total_linea": 12000,
+          "costo_total_linea": 5785.12,
+          "tp_total_linea": 53.33,
+          "sub_total_sin_iva_linea": 10666.67,
+          "nombre_servicio": "Paquete de contenido",
+          "sub_total_base_tp_linea": 10666.67,
+          "tp_tasa_linea": 0.005,
+          "precio_venta_base_linea": 7000,
+          "detalle_queincluyeservicio": "● Reunión de kick off con cliente ●  Conceptualización creativa de la campaña digital “Protege lo importante” ● Co-creación de  guiones y escálela  ● Jornada de grabación de 4 horas ● Producción y edición de 4 videos tipo reel  (2 de hasta 30 segundos para redes y 2 de hasta 8 segundos para pantallas digitales) ● Producción de banco fotográfico creativo con 12 referencias de producto ● Desarrollo de 12 publicaciones a partir de las fotografías ● Calendario editorial y matriz de contenidos ● Programación y publicación de contenidos durante el período de campaña ● Una ronda de cambios sobre las piezas finales ● Informe final de resultados.\n\n* NO INCLUYE: ● Contratación de modelos. actores o talento adicional ● Alquiler de locaciones ● Props o producción especial ● Licencias o recursos extraordinarios de producción. Estos podrán cotizarse por separado de acuerdo con el concepto aprobado",
+          "categoria_id": "t5rx01uaj1jfbOFZnZdT"
+        },
+        {
+          "iva_tasa_linea": 0.12,
+          "categoria_id": "YNih2li8lK8q6YT427IK",
+          "iva_total_linea": 853.33,
+          "sub_total_sin_iva_linea": 7111.11,
+          "precio_venta_final_linea": 8000,
+          "sub_total_base_tp_linea": 7111.11,
+          "servicio_id": "O3IPI7lGeG9h5THUC3aV",
+          "precio_venta_base_linea": 4978.29,
+          "total_linea": 8000,
+          "costo_total_linea": 2880,
+          "detalle_queincluyeservicio": "INCLUYE: ● Un operador de equipo para fotografía y video (6 horas de evento) ● Toma de fotografías y cobertura del evento  ● Equipo profesional de video ●\tEstabilizadores RONIN ● De 80-100 fotos profesionales editadas en alta resolución del evento ● \tAftermovie del evento en formato vertical (1-2 minutos)  ● Uso de música con creative commons ●\tDos rondas de cambios por cliente. ● Entega de video en 1800px HD ",
+          "itp_servicio": true,
+          "cantidad": 1,
+          "nombre_servicio": "Cobertura de evento",
+          "tasa_descuento_aplicada": -60.6977,
+          "tp_total_linea": 35.56,
+          "total_descuento_aplicado_linea": -3021.7075,
+          "tp_tasa_linea": 0.005
+        },
+        {
+          "precio_venta_base_linea": 4840,
+          "iva_tasa_linea": 0.12,
+          "sub_total_base_tp_linea": 4302.22,
+          "costo_total_linea": 4000,
+          "tp_tasa_linea": 0.005,
+          "cantidad": 1,
+          "sub_total_sin_iva_linea": 4302.22,
+          "iva_total_linea": 516.27,
+          "total_linea": 4840,
+          "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+          "tasa_descuento_aplicada": 0,
+          "precio_venta_final_linea": 4840,
+          "nombre_servicio": " Livestreaming",
+          "detalle_queincluyeservicio": "INCLUYE: ● Transmisión en vivo de la conferencia de prensa de EPACSA, de 11:00 a. m. a 1:00 p. m. ● Cobertura con una cámara fija durante la transmisión ● Equipo audiovisual necesario ● Integración de audio de conferencia ● Monitoreo de transmisión durante la actividad ● Personal técnico para montaje, operación y desmontaje.",
+          "servicio_id": "4NHjc7YhpxxA4duJ2IvX",
+          "itp_servicio": true,
+          "total_descuento_aplicado_linea": 0,
+          "tp_total_linea": 21.51
+        }
+      ]
+    },
     "qjEBHQ8EEZC5liHaGrfY": {
       "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
       "financiero_snapshot": {
@@ -9901,6 +10116,99 @@
         "_seconds": 1777574886,
         "_nanoseconds": 980000000
       }
+    },
+    "xDjDhE52xsPd1fCcCWzW": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "Ig61PhMQLuixwZUPLsuw",
+      "usuario_id": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_emision": {
+        "_seconds": 1791813760,
+        "_nanoseconds": 465000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "fecha_estado": {
+        "_seconds": 1791813828,
+        "_nanoseconds": 948000000
+      },
+      "cliente_snapshot": {
+        "nombre_cliente": "Fundación Carlos F. Novella",
+        "direccion_cliente": "Ciudad de Guatemala",
+        "nit_cliente": "587827-6",
+        "email_cliente": "fundacarlosfnovella@cfnovella.org.gt",
+        "telefono_cliente": "2338 9100 Ext 6446",
+        "contacto_principal": {
+          "nombre": "Maryorie Morales",
+          "telefono": "51011887"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_base": "$.",
+        "moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_destino": "Q.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "totales": {
+        "total_costo_base": 6240,
+        "total_cotizacion_base": 7550.4,
+        "total_cotizacion_final": 7700,
+        "total_descuento_aplicado": -149.6,
+        "total_tasa_feeglobal_aplicada": 18.961,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 825,
+        "sub_total_sin_iva": 6875,
+        "sub_total_base_tp": 0,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 0,
+        "isr_calculado": {
+          "monto_tramo_1": 343.75,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 343.75
+        }
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "items": [
+        {
+          "categoria_id": "IripfEKdyEDM1nA3GQqy",
+          "servicio_id": "zkRylbhLr0QTBRcdC9BF",
+          "cantidad": 1,
+          "nombre_servicio": "Taller de entrevistas y construcción de historias de vida",
+          "detalle_queincluyeservicio": "● Taller presencial de 2 horas para 60 personas ● Identificación de historias de vida ● Técnicas para entrevistas: confianza. preguntas abiertas. repreguntas y escucha ● Ejemplos y análisis ● Construcción de historias que conectan ● Ejercicio práctico de entrevistas en parejas ● Retroalimentación y recomendaciones finales",
+          "itp_servicio": false,
+          "costo_total_linea": 6240,
+          "precio_venta_base_linea": 7550.4,
+          "precio_venta_final_linea": 7700,
+          "tasa_descuento_aplicada": -1.9814,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": -149.6036,
+          "total_linea": 7700,
+          "sub_total_sin_iva_linea": 6875,
+          "iva_total_linea": 825,
+          "sub_total_base_tp_linea": 0,
+          "tp_total_linea": 0
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791813828,
+        "_nanoseconds": 948000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "numero_cotizacion": "2026-00121",
+      "fecha_creacion": {
+        "_seconds": 1791813829,
+        "_nanoseconds": 926000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2"
     },
     "xE0JKBsxShUE5aBFvU0x": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -13448,6 +13756,83 @@
         }
       ]
     },
+    "4NHjc7YhpxxA4duJ2IvX": {
+      "nombre_servicio": " Livestreaming",
+      "detalle_queincluyeservicio": "INCLUYE: ● Transmisión en vivo de la conferencia de prensa de EPACSA, de 11:00 a. m. a 1:00 p. m. ● Cobertura con una cámara fija durante la transmisión ● Equipo audiovisual necesario ● Integración de audio de conferencia ● Monitoreo de transmisión durante la actividad ● Personal técnico para montaje, operación y desmontaje.",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_creacion": {
+        "_seconds": 1791519881,
+        "_nanoseconds": 750000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "precios_calculados": {
+        "costo_total_base": 4000,
+        "tasa_ganancia_global": 0,
+        "valorfee_global": 0,
+        "costo_mas_feeglobal": 4000,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 840,
+        "precio_venta_base": 4840,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_base_simbolo": "$.",
+        "tipocambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_destino_simbolo": "Q."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "",
+          "valor": 4000,
+          "tasa_fee": 0
+        }
+      ],
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1791519881,
+            "_nanoseconds": 750000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 4000,
+          "precio_venta_base": 4840,
+          "tasa_ganancia_global": 0,
+          "fecha": {
+            "_seconds": 1791519989,
+            "_nanoseconds": 594000000
+          }
+        }
+      ],
+      "fecha_estado": {
+        "_seconds": 1791520000,
+        "_nanoseconds": 189000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791520000,
+        "_nanoseconds": 189000000
+      }
+    },
     "4kUC18fhQCiQRadf0sUu": {
       "nombre_servicio": "Branding",
       "itp": false,
@@ -14037,6 +14422,93 @@
           "fecha": {
             "_seconds": 1778516604,
             "_nanoseconds": 51000000
+          }
+        }
+      ]
+    },
+    "8uYVXitBImlbyGgao5MA": {
+      "nombre_servicio": "Paquete de contenido",
+      "detalle_queincluyeservicio": "INCLUYE. • Conceptualización gráfica de campaña • Producción de 4 videos en formato vertical de 15-30 seg (co-creación de guiones, edición, uso de musíca y recursos creative commons) • 4 horas de grabación • Toolkit para redes sociales (6 plantillas, entre posts y stories) * No incluye contratación de talento. ",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+      "fecha_estado": {
+        "_seconds": 1791383528,
+        "_nanoseconds": 823000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_creacion": {
+        "_seconds": 1791383528,
+        "_nanoseconds": 823000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "precios_calculados": {
+        "costo_total_base": 5785.12,
+        "tasa_ganancia_global": 0,
+        "valorfee_global": 0,
+        "costo_mas_feeglobal": 5785.12,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 1214.8752,
+        "precio_venta_base": 7000,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_base_simbolo": "$.",
+        "tipocambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_destino_simbolo": "Q."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "Día de grabación",
+          "valor": 2000,
+          "tasa_fee": 0
+        },
+        {
+          "descripcion_costo": "Guiones",
+          "valor": 785.12,
+          "tasa_fee": 0
+        },
+        {
+          "descripcion_costo": "edicion 4 ideos",
+          "valor": 3000,
+          "tasa_fee": 0
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791383887,
+        "_nanoseconds": 739000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1791383528,
+            "_nanoseconds": 823000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 5785.12,
+          "precio_venta_base": 7000,
+          "tasa_ganancia_global": 0,
+          "fecha": {
+            "_seconds": 1791383887,
+            "_nanoseconds": 390000000
           }
         }
       ]
@@ -15180,6 +15652,93 @@
           "fecha": {
             "_seconds": 1785273694,
             "_nanoseconds": 874000000
+          }
+        }
+      ]
+    },
+    "GvNkIs5ZTwtlnYDVZ81o": {
+      "nombre_servicio": "Paquete de relaciones públicas",
+      "detalle_queincluyeservicio": "INCLUYE: ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado y mensajes clave para vocero ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Búsqueda de 2-3 espacios de entrevista ● Monitoreo digital ● Apoyo en la organización de reuniones estratégicas con universidades, cámaras o comercios  ● Informe final",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+      "fecha_estado": {
+        "_seconds": 1791384462,
+        "_nanoseconds": 102000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_creacion": {
+        "_seconds": 1791384462,
+        "_nanoseconds": 102000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "precios_calculados": {
+        "costo_total_base": 10743.8,
+        "tasa_ganancia_global": 0,
+        "valorfee_global": 0,
+        "costo_mas_feeglobal": 10743.8,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 2256.198,
+        "precio_venta_base": 13000,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_base_simbolo": "$.",
+        "tipocambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_destino_simbolo": "Q."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "Convocatoria a prensa",
+          "valor": 6743.8,
+          "tasa_fee": 0
+        },
+        {
+          "descripcion_costo": "Gestión de entrevistas",
+          "valor": 2000,
+          "tasa_fee": 0
+        },
+        {
+          "descripcion_costo": "Gestión de reuniones",
+          "valor": 2000,
+          "tasa_fee": 0
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791384567,
+        "_nanoseconds": 336000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1791384462,
+            "_nanoseconds": 103000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 10743.8,
+          "precio_venta_base": 13000,
+          "tasa_ganancia_global": 0,
+          "fecha": {
+            "_seconds": 1791384566,
+            "_nanoseconds": 757000000
           }
         }
       ]
@@ -16892,6 +17451,95 @@
         }
       ]
     },
+    "VfK33lA2Rkvt3BvmMa8n": {
+      "nombre_servicio": "Maestra de ceremonias",
+      "detalle_queincluyeservicio": "INCLUYE: • Contratación de conductora profesional para evento de 3 horas • Reunión de presentación y coordinación • Elaboración de guión • Llegada una hora antes al evento para prueba de sonido",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+      "fecha_estado": {
+        "_seconds": 1791384689,
+        "_nanoseconds": 77000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_creacion": {
+        "_seconds": 1791384689,
+        "_nanoseconds": 77000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "precios_calculados": {
+        "costo_total_base": 7000,
+        "tasa_ganancia_global": 9.999999999999995,
+        "valorfee_global": 777.7777777777774,
+        "costo_mas_feeglobal": 7777.777777777777,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 1633.3333333333333,
+        "precio_venta_base": 9411.11,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_base_simbolo": "$.",
+        "tipocambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_destino_simbolo": "Q."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "Rochi/Analu",
+          "valor": 7000,
+          "tasa_fee": 10
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791384955,
+        "_nanoseconds": 694000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1791384689,
+            "_nanoseconds": 77000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 5200,
+          "precio_venta_base": 7865,
+          "tasa_ganancia_global": 20,
+          "fecha": {
+            "_seconds": 1791384729,
+            "_nanoseconds": 503000000
+          }
+        },
+        {
+          "costo_total_base_ant": 5200,
+          "precio_venta_base_ant": 7865,
+          "tasa_ganancia_global_ant": 20,
+          "costo_total_base": 7000,
+          "precio_venta_base": 9411.11,
+          "tasa_ganancia_global": 9.999999999999995,
+          "fecha": {
+            "_seconds": 1791384955,
+            "_nanoseconds": 403000000
+          }
+        }
+      ]
+    },
     "W3juiuMtADG0tzm0Uo8O": {
       "nombre_servicio": "Video institucional (in house) ",
       "detalle_queincluyeservicio": "INCLUYE : 1 video en formato horizonal de 1 - 2 mins y adaptación vertical de 1-2 mins ● Pre producción: • Reunión kick off con cliente • Guion institucional • Visita a oficina para determinación de espacios a utilizar • Storyline visual ● Producción: • 3-4 horas de grabación en oficinas del cliente • 1 coordinador audiovisual • Iluminación • Equipo profesional de grabación: ( Sony FullFrame a7III, Sony APS-C a6000, Lentes: 50 mm f1.8 / 28-70 mm f3.5, 24-105 f 4.0, Estabilizador DJI Ronin, Micrófonos Hollyland Mark 2) ● Post producción: • Edición • Correción de color • Animación básica de intro/outro • Musicalización con creative commons • Entrega de video en 1080 full HD • 2 rondas de cambios. (Q500 por ronda extra de cambios).",
@@ -17666,6 +18314,88 @@
           "fecha": {
             "_seconds": 1788217235,
             "_nanoseconds": 343000000
+          }
+        }
+      ]
+    },
+    "eRClBTukPUknzszuosyO": {
+      "nombre_servicio": "Adaptación de logo ",
+      "detalle_queincluyeservicio": "INCLUYE: ● Moodboard ● 2 propuestas de adaptación para logo de 10 años ● 2 rondas de cambio ● Animación de logo en 2D (3-5 seg)",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "r0eriCEpXMKW274mbPgM",
+      "fecha_estado": {
+        "_seconds": 1791385979,
+        "_nanoseconds": 911000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_creacion": {
+        "_seconds": 1791385979,
+        "_nanoseconds": 911000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "precios_calculados": {
+        "costo_total_base": 2500,
+        "tasa_ganancia_global": 6.593423559454456,
+        "valorfee_global": 176.47058823529414,
+        "costo_mas_feeglobal": 2676.4710743801656,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 562.0589256198346,
+        "precio_venta_base": 3238.53,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_base_simbolo": "$.",
+        "tipocambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_destino_simbolo": "Q."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "Gaby",
+          "valor": 1500,
+          "tasa_fee": 0
+        },
+        {
+          "descripcion_costo": "Mandre",
+          "valor": 1000,
+          "tasa_fee": 15
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791386057,
+        "_nanoseconds": 292000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1791385979,
+            "_nanoseconds": 911000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 2500,
+          "precio_venta_base": 3238.53,
+          "tasa_ganancia_global": 6.593423559454456,
+          "fecha": {
+            "_seconds": 1791386056,
+            "_nanoseconds": 801000000
           }
         }
       ]
@@ -19635,6 +20365,83 @@
           }
         }
       ]
+    },
+    "zkRylbhLr0QTBRcdC9BF": {
+      "nombre_servicio": "Taller de entrevistas y construcción de historias de vida",
+      "detalle_queincluyeservicio": "● Taller presencial de 2 horas para 60 personas ● Identificación de historias de vida ● Técnicas para entrevistas: confianza, preguntas abiertas, repreguntas y escucha ● Construcción de historias que conectan ● Ejercicio práctico de entrevistas en parejas ● Retroalimentación y recomendaciones finales",
+      "itp": false,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "IripfEKdyEDM1nA3GQqy",
+      "fecha_estado": {
+        "_seconds": 1791813688,
+        "_nanoseconds": 749000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_creacion": {
+        "_seconds": 1791813688,
+        "_nanoseconds": 749000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "precios_calculados": {
+        "costo_total_base": 6240,
+        "tasa_ganancia_global": 0,
+        "valorfee_global": 0,
+        "costo_mas_feeglobal": 6240,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 1310.3999999999999,
+        "precio_venta_base": 7550.4,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_base_simbolo": "$.",
+        "tipocambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_destino_simbolo": "Q."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "Taller",
+          "valor": 6240,
+          "tasa_fee": 0
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1791813753,
+        "_nanoseconds": 748000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1791813688,
+            "_nanoseconds": 749000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 6240,
+          "precio_venta_base": 7550.4,
+          "tasa_ganancia_global": 0,
+          "fecha": {
+            "_seconds": 1791813753,
+            "_nanoseconds": 177000000
+          }
+        }
+      ]
     }
   },
   "sesiones": {
@@ -19661,8 +20468,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1791228403,
-        "_nanoseconds": 31000000
+        "_seconds": 1791839813,
+        "_nanoseconds": 595000000
       }
     },
     "FvE99qZDTsNktMUUJTsvCQ677Kk1": {
@@ -19823,8 +20630,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1790712440,
-        "_nanoseconds": 524000000
+        "_seconds": 1791387432,
+        "_nanoseconds": 877000000
       }
     },
     "xYHm6soUifTwmeNwDU65G6AAdwH2": {
@@ -19850,8 +20657,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1791301314,
-        "_nanoseconds": 792000000
+        "_seconds": 1791813237,
+        "_nanoseconds": 690000000
       }
     }
   },
