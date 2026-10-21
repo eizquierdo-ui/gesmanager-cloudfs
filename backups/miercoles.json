@@ -1917,6 +1917,33 @@
         "_nanoseconds": 974000000
       }
     },
+    "we41b2Rw5gfUbqBBwgrD": {
+      "nombre_cliente": "Multiverse",
+      "nombre_razonsocial": "Multiverse, Sociedad Anónima",
+      "nit_cliente": "91966167",
+      "direccion_cliente": "ciudad guatemala",
+      "email_cliente": "dr@multiverse.vc",
+      "telefono_cliente": "50426432",
+      "contacto": "Diego Ronquillo",
+      "telefono_contacto": "50426432",
+      "email_contacto": "dr@multiverse.vc",
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_estado": {
+        "_seconds": 1792025335,
+        "_nanoseconds": 453000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1792025335,
+        "_nanoseconds": 453000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1792025335,
+        "_nanoseconds": 453000000
+      }
+    },
     "wlErjxpM1UtVvUziAocU": {
       "nombre_razonsocial": "Isabel de la Vega",
       "nit_cliente": "9707368-7",
@@ -2003,7 +2030,7 @@
     "F1bVL9YITjtNm3H4rKsS": {
       "correlativo_cotizaciones": {
         "anio": 2026,
-        "ultimo_numero": 121
+        "ultimo_numero": 122
       }
     }
   },
@@ -2967,58 +2994,82 @@
         "_nanoseconds": 794000000
       },
       "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_venta_facturacion": {
+        "_seconds": 1792026050,
+        "_nanoseconds": 234000000
+      },
+      "fecha_aceptacion": {
+        "_seconds": 1792086314,
+        "_nanoseconds": 365000000
+      },
+      "estado": "borrador",
+      "fecha_estado": {
+        "_seconds": 1792086537,
+        "_nanoseconds": 371000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1792086537,
+        "_nanoseconds": 371000000
+      },
       "items": [
         {
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "servicio_id": "B2CRPuGuKSkiW2jYahf5",
           "cantidad": 1,
-          "nombre_servicio": "",
-          "detalle_queincluyeservicio": "Por convocatoria a medios Nexa",
-          "itp_servicio": true,
-          "costo_total_linea": 0,
-          "precio_venta_base_linea": 0,
-          "precio_venta_final_linea": 6750,
+          "tp_tasa_linea": 0.005,
+          "iva_total_linea": 720,
+          "total_linea": 6750,
           "tasa_descuento_aplicada": 0,
+          "precio_venta_final_linea": 6750,
+          "precio_venta_base_linea": 0,
+          "tp_total_linea": 30,
+          "itp_servicio": true,
+          "nombre_servicio": "",
+          "servicio_id": "B2CRPuGuKSkiW2jYahf5",
+          "costo_total_linea": 0,
+          "iva_tasa_linea": 0.12,
+          "detalle_queincluyeservicio": "Por convocatoria a medios Nexa",
+          "sub_total_sin_iva_linea": 6000,
+          "sub_total_base_tp_linea": 6000,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "total_descuento_aplicado_linea": 0
+        },
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "VfK33lA2Rkvt3BvmMa8n",
+          "cantidad": 1,
+          "nombre_servicio": "Maestra de ceremonias",
+          "detalle_queincluyeservicio": "INCLUYE: • Contratación de conductora para evento de 1 hora  • Llegada 30 minutos antes al evento para prueba de sonido",
+          "itp_servicio": true,
+          "costo_total_linea": 7000,
+          "precio_venta_base_linea": 9411.11,
+          "precio_venta_final_linea": 2250,
+          "tasa_descuento_aplicada": 76.0921,
           "iva_tasa_linea": 0.12,
           "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": 0,
-          "total_linea": 6750,
-          "sub_total_sin_iva_linea": 6000,
-          "iva_total_linea": 720,
-          "sub_total_base_tp_linea": 6000,
-          "tp_total_linea": 30
+          "total_descuento_aplicado_linea": 7161.1112,
+          "total_linea": 2250,
+          "sub_total_sin_iva_linea": 2000,
+          "iva_total_linea": 240,
+          "sub_total_base_tp_linea": 2000,
+          "tp_total_linea": 10
         }
       ],
       "totales": {
-        "total_costo_base": 0,
-        "total_cotizacion_base": 6750,
-        "total_cotizacion_final": 6750,
-        "total_descuento_aplicado": 0,
-        "total_tasa_feeglobal_aplicada": 100,
+        "total_costo_base": 7000,
+        "total_cotizacion_base": 16161.11,
+        "total_cotizacion_final": 9000,
+        "total_descuento_aplicado": 7161.11,
+        "total_tasa_feeglobal_aplicada": 22.2222,
         "tasa_iva_aplicada": 0.12,
-        "monto_iva_total": 720,
-        "sub_total_sin_iva": 6000,
-        "sub_total_base_tp": 6000,
+        "monto_iva_total": 960,
+        "sub_total_sin_iva": 8000,
+        "sub_total_base_tp": 8000,
         "tasa_tp_aplicada": 0.005,
-        "monto_tp_total": 30,
+        "monto_tp_total": 40,
         "isr_calculado": {
-          "monto_tramo_1": 300,
+          "monto_tramo_1": 400,
           "monto_tramo_2": 0,
-          "monto_isr_total": 300
+          "monto_isr_total": 400
         }
-      },
-      "fecha_aceptacion": {
-        "_seconds": 1790989232,
-        "_nanoseconds": 350000000
-      },
-      "estado": "aceptada",
-      "fecha_estado": {
-        "_seconds": 1790989232,
-        "_nanoseconds": 350000000
-      },
-      "fecha_ultima_modificacion": {
-        "_seconds": 1791248453,
-        "_nanoseconds": 245000000
       }
     },
     "9OOTyGWGxPPb3WqEEJSM": {
@@ -4923,7 +4974,6 @@
           "tp_total_linea": 16.44
         }
       ],
-      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
       "numero_cotizacion": "2026-00087",
       "fecha_creacion": {
         "_seconds": 1785274159,
@@ -4934,14 +4984,19 @@
         "_seconds": 1785793607,
         "_nanoseconds": 494000000
       },
-      "estado": "aceptada",
-      "fecha_estado": {
-        "_seconds": 1785793607,
-        "_nanoseconds": 494000000
+      "fecha_venta_facturacion": {
+        "_seconds": 1792026097,
+        "_nanoseconds": 512000000
       },
+      "estado": "venta",
+      "fecha_estado": {
+        "_seconds": 1792026097,
+        "_nanoseconds": 512000000
+      },
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
       "fecha_ultima_modificacion": {
-        "_seconds": 1786744019,
-        "_nanoseconds": 516000000
+        "_seconds": 1792026098,
+        "_nanoseconds": 744000000
       }
     },
     "PZeazMl4Zw2LlQMNyaMl": {
@@ -5560,14 +5615,18 @@
       },
       "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
       "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
-      "estado": "aceptada",
+      "fecha_venta_facturacion": {
+        "_seconds": 1792026101,
+        "_nanoseconds": 572000000
+      },
+      "estado": "venta",
       "fecha_estado": {
-        "_seconds": 1784933701,
-        "_nanoseconds": 146000000
+        "_seconds": 1792026101,
+        "_nanoseconds": 572000000
       },
       "fecha_ultima_modificacion": {
-        "_seconds": 1784933701,
-        "_nanoseconds": 146000000
+        "_seconds": 1792026103,
+        "_nanoseconds": 92000000
       }
     },
     "TDoCdY1sXPA75O09BAvH": {
@@ -6288,7 +6347,6 @@
           "tp_total_linea": 14.67
         }
       ],
-      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
       "numero_cotizacion": "2026-00118",
       "fecha_creacion": {
         "_seconds": 1791252506,
@@ -6299,14 +6357,19 @@
         "_seconds": 1791407366,
         "_nanoseconds": 558000000
       },
-      "estado": "aceptada",
-      "fecha_estado": {
-        "_seconds": 1791407366,
-        "_nanoseconds": 558000000
+      "fecha_venta_facturacion": {
+        "_seconds": 1792026037,
+        "_nanoseconds": 540000000
       },
+      "estado": "venta",
+      "fecha_estado": {
+        "_seconds": 1792026037,
+        "_nanoseconds": 540000000
+      },
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
       "fecha_ultima_modificacion": {
-        "_seconds": 1791407367,
-        "_nanoseconds": 424000000
+        "_seconds": 1792026039,
+        "_nanoseconds": 173000000
       }
     },
     "YXCRsifW7zNccloWpF6o": {
@@ -6760,6 +6823,119 @@
           "monto_isr_total": 1007.8
         }
       }
+    },
+    "d2FQyE2BuszpI4TmicOY": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "we41b2Rw5gfUbqBBwgrD",
+      "usuario_id": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_emision": {
+        "_seconds": 1792025554,
+        "_nanoseconds": 890000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "fecha_estado": {
+        "_seconds": 1792025926,
+        "_nanoseconds": 685000000
+      },
+      "cliente_snapshot": {
+        "nombre_cliente": "Multiverse",
+        "direccion_cliente": "ciudad guatemala",
+        "nit_cliente": "91966167",
+        "email_cliente": "dr@multiverse.vc",
+        "telefono_cliente": "50426432",
+        "contacto_principal": {
+          "nombre": "Diego Ronquillo",
+          "telefono": "50426432"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "wcqsCXByF5MhyagqiP3O",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1784181600,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "totales": {
+        "total_costo_base": 14500,
+        "total_cotizacion_base": 18956.67,
+        "total_cotizacion_final": 10000,
+        "total_descuento_aplicado": 8956.67,
+        "total_tasa_feeglobal_aplicada": -45,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 1066.67,
+        "sub_total_sin_iva": 8888.89,
+        "sub_total_base_tp": 8888.89,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 44.44,
+        "isr_calculado": {
+          "monto_tramo_1": 444.44,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 444.44
+        }
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "items": [
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "kB9D7yvS8RYGMQDxKPU4",
+          "cantidad": 1,
+          "nombre_servicio": "Convocatoria a medios de comunicación ",
+          "detalle_queincluyeservicio": "INCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado y mensajes claves para vocero ● Confirmación con medios ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Monitoreo digital ●Clippings de TV/radio ● Informe final",
+          "itp_servicio": true,
+          "costo_total_linea": 7500,
+          "precio_venta_base_linea": 9545.56,
+          "precio_venta_final_linea": 7800,
+          "tasa_descuento_aplicada": 18.2866,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 1745.5584,
+          "total_linea": 7800,
+          "sub_total_sin_iva_linea": 6933.33,
+          "iva_total_linea": 832,
+          "sub_total_base_tp_linea": 6933.33,
+          "tp_total_linea": 34.67
+        },
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "VfK33lA2Rkvt3BvmMa8n",
+          "cantidad": 1,
+          "nombre_servicio": "Maestra de ceremonias",
+          "detalle_queincluyeservicio": "INCLUYE: • Contratación de conductora para evento de 3 horas • Reunión de presentación y coordinación • Elaboración de guión • Llegada una hora antes al evento para prueba de sonido",
+          "itp_servicio": true,
+          "costo_total_linea": 7000,
+          "precio_venta_base_linea": 9411.11,
+          "precio_venta_final_linea": 2200,
+          "tasa_descuento_aplicada": 76.6234,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 7211.1125,
+          "total_linea": 2200,
+          "sub_total_sin_iva_linea": 1955.56,
+          "iva_total_linea": 234.67,
+          "sub_total_base_tp_linea": 1955.56,
+          "tp_total_linea": 9.78
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1792025926,
+        "_nanoseconds": 685000000
+      },
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "numero_cotizacion": "2026-00122",
+      "fecha_creacion": {
+        "_seconds": 1792025927,
+        "_nanoseconds": 795000000
+      },
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1"
     },
     "ec9WNYYV5zeNbF6ol5ub": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -7627,14 +7803,18 @@
         "_seconds": 1791248860,
         "_nanoseconds": 175000000
       },
-      "estado": "aceptada",
+      "fecha_venta_facturacion": {
+        "_seconds": 1792026080,
+        "_nanoseconds": 944000000
+      },
+      "estado": "venta",
       "fecha_estado": {
-        "_seconds": 1791248860,
-        "_nanoseconds": 175000000
+        "_seconds": 1792026080,
+        "_nanoseconds": 944000000
       },
       "fecha_ultima_modificacion": {
-        "_seconds": 1791248861,
-        "_nanoseconds": 939000000
+        "_seconds": 1792026082,
+        "_nanoseconds": 261000000
       }
     },
     "jNjJq9FcHytyIzSYT6Pp": {
@@ -8427,14 +8607,18 @@
         "_seconds": 1791248624,
         "_nanoseconds": 484000000
       },
-      "estado": "aceptada",
+      "fecha_venta_facturacion": {
+        "_seconds": 1792026093,
+        "_nanoseconds": 740000000
+      },
+      "estado": "venta",
       "fecha_estado": {
-        "_seconds": 1791248624,
-        "_nanoseconds": 484000000
+        "_seconds": 1792026093,
+        "_nanoseconds": 740000000
       },
       "fecha_ultima_modificacion": {
-        "_seconds": 1791248626,
-        "_nanoseconds": 195000000
+        "_seconds": 1792026094,
+        "_nanoseconds": 752000000
       }
     },
     "p3X1t3M2kMYgqjlVUOMg": {
@@ -9174,14 +9358,18 @@
         "_seconds": 1790125103,
         "_nanoseconds": 856000000
       },
-      "estado": "aceptada",
+      "estado": "rechazada",
       "fecha_estado": {
-        "_seconds": 1790125103,
-        "_nanoseconds": 856000000
+        "_seconds": 1792026071,
+        "_nanoseconds": 556000000
       },
       "fecha_ultima_modificacion": {
-        "_seconds": 1791248316,
-        "_nanoseconds": 733000000
+        "_seconds": 1792026073,
+        "_nanoseconds": 69000000
+      },
+      "fecha_rechazo": {
+        "_seconds": 1792026071,
+        "_nanoseconds": 556000000
       }
     },
     "t9kbJs3jVwMAIx3j58Ab": {
@@ -10367,15 +10555,19 @@
         "_seconds": 1790976582,
         "_nanoseconds": 919000000
       },
-      "estado": "aceptada",
+      "estado": "rechazada",
       "fecha_estado": {
-        "_seconds": 1790976582,
-        "_nanoseconds": 919000000
+        "_seconds": 1792026088,
+        "_nanoseconds": 303000000
       },
-      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
       "fecha_ultima_modificacion": {
-        "_seconds": 1790976585,
-        "_nanoseconds": 394000000
+        "_seconds": 1792026089,
+        "_nanoseconds": 633000000
+      },
+      "fecha_rechazo": {
+        "_seconds": 1792026088,
+        "_nanoseconds": 303000000
       }
     },
     "xHw2V1PToa0FPgOttfYs": {
@@ -20530,8 +20722,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1791931522,
-        "_nanoseconds": 417000000
+        "_seconds": 1792450936,
+        "_nanoseconds": 320000000
       }
     },
     "JaTGZdLPkqVbVFIs2wySGsnjwH52": {
@@ -20692,8 +20884,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1791924773,
-        "_nanoseconds": 504000000
+        "_seconds": 1792010167,
+        "_nanoseconds": 11000000
       }
     }
   },
