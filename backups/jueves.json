@@ -1188,6 +1188,33 @@
         "_nanoseconds": 437000000
       }
     },
+    "WGd8KYL0iEze6cOWp6ys": {
+      "nombre_cliente": "Kristian López",
+      "nombre_razonsocial": "Grupo Lang, SA",
+      "nit_cliente": "107975025",
+      "direccion_cliente": "Ciudad de Guatemala",
+      "email_cliente": "kristianlopez111@gmail.com",
+      "telefono_cliente": "+502 5017 0735",
+      "contacto": "Kristian López",
+      "telefono_contacto": "+502 5017 0735",
+      "email_contacto": "kristianlopez111@gmail.com",
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_estado": {
+        "_seconds": 1792628075,
+        "_nanoseconds": 268000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1792628075,
+        "_nanoseconds": 268000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1792628075,
+        "_nanoseconds": 268000000
+      }
+    },
     "WvcvMcCYuxsZcEwEciD6": {
       "nombre_cliente": "Automaq",
       "nombre_razonsocial": "Automaq Guatemala, S.A.",
@@ -2030,7 +2057,7 @@
     "F1bVL9YITjtNm3H4rKsS": {
       "correlativo_cotizaciones": {
         "anio": 2026,
-        "ultimo_numero": 122
+        "ultimo_numero": 123
       }
     }
   },
@@ -2994,62 +3021,82 @@
         "_nanoseconds": 794000000
       },
       "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
-      "items": [
-        {
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "servicio_id": "B2CRPuGuKSkiW2jYahf5",
-          "cantidad": 1,
-          "nombre_servicio": "",
-          "detalle_queincluyeservicio": "Por convocatoria a medios Nexa",
-          "itp_servicio": true,
-          "costo_total_linea": 0,
-          "precio_venta_base_linea": 0,
-          "precio_venta_final_linea": 6750,
-          "tasa_descuento_aplicada": 0,
-          "iva_tasa_linea": 0.12,
-          "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": 0,
-          "total_linea": 6750,
-          "sub_total_sin_iva_linea": 6000,
-          "iva_total_linea": 720,
-          "sub_total_base_tp_linea": 6000,
-          "tp_total_linea": 30
-        }
-      ],
-      "totales": {
-        "total_costo_base": 0,
-        "total_cotizacion_base": 6750,
-        "total_cotizacion_final": 6750,
-        "total_descuento_aplicado": 0,
-        "total_tasa_feeglobal_aplicada": 100,
-        "tasa_iva_aplicada": 0.12,
-        "monto_iva_total": 720,
-        "sub_total_sin_iva": 6000,
-        "sub_total_base_tp": 6000,
-        "tasa_tp_aplicada": 0.005,
-        "monto_tp_total": 30,
-        "isr_calculado": {
-          "monto_tramo_1": 300,
-          "monto_tramo_2": 0,
-          "monto_isr_total": 300
-        }
-      },
-      "fecha_aceptacion": {
-        "_seconds": 1790989232,
-        "_nanoseconds": 350000000
-      },
       "fecha_venta_facturacion": {
         "_seconds": 1792026050,
         "_nanoseconds": 234000000
       },
-      "estado": "venta",
+      "fecha_aceptacion": {
+        "_seconds": 1792086314,
+        "_nanoseconds": 365000000
+      },
+      "estado": "borrador",
       "fecha_estado": {
-        "_seconds": 1792026050,
-        "_nanoseconds": 234000000
+        "_seconds": 1792086537,
+        "_nanoseconds": 371000000
       },
       "fecha_ultima_modificacion": {
-        "_seconds": 1792026051,
-        "_nanoseconds": 499000000
+        "_seconds": 1792086537,
+        "_nanoseconds": 371000000
+      },
+      "items": [
+        {
+          "cantidad": 1,
+          "tp_tasa_linea": 0.005,
+          "iva_total_linea": 720,
+          "total_linea": 6750,
+          "tasa_descuento_aplicada": 0,
+          "precio_venta_final_linea": 6750,
+          "precio_venta_base_linea": 0,
+          "tp_total_linea": 30,
+          "itp_servicio": true,
+          "nombre_servicio": "",
+          "servicio_id": "B2CRPuGuKSkiW2jYahf5",
+          "costo_total_linea": 0,
+          "iva_tasa_linea": 0.12,
+          "detalle_queincluyeservicio": "Por convocatoria a medios Nexa",
+          "sub_total_sin_iva_linea": 6000,
+          "sub_total_base_tp_linea": 6000,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "total_descuento_aplicado_linea": 0
+        },
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "VfK33lA2Rkvt3BvmMa8n",
+          "cantidad": 1,
+          "nombre_servicio": "Maestra de ceremonias",
+          "detalle_queincluyeservicio": "INCLUYE: • Contratación de conductora para evento de 1 hora  • Llegada 30 minutos antes al evento para prueba de sonido",
+          "itp_servicio": true,
+          "costo_total_linea": 7000,
+          "precio_venta_base_linea": 9411.11,
+          "precio_venta_final_linea": 2250,
+          "tasa_descuento_aplicada": 76.0921,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 7161.1112,
+          "total_linea": 2250,
+          "sub_total_sin_iva_linea": 2000,
+          "iva_total_linea": 240,
+          "sub_total_base_tp_linea": 2000,
+          "tp_total_linea": 10
+        }
+      ],
+      "totales": {
+        "total_costo_base": 7000,
+        "total_cotizacion_base": 16161.11,
+        "total_cotizacion_final": 9000,
+        "total_descuento_aplicado": 7161.11,
+        "total_tasa_feeglobal_aplicada": 22.2222,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 960,
+        "sub_total_sin_iva": 8000,
+        "sub_total_base_tp": 8000,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 40,
+        "isr_calculado": {
+          "monto_tramo_1": 400,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 400
+        }
       }
     },
     "9OOTyGWGxPPb3WqEEJSM": {
@@ -9697,6 +9744,119 @@
       "fecha_rechazo": {
         "_seconds": 1791248654,
         "_nanoseconds": 922000000
+      }
+    },
+    "uSl1S2PumUTQ8KK8VNfz": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "WGd8KYL0iEze6cOWp6ys",
+      "usuario_id": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_emision": {
+        "_seconds": 1792628079,
+        "_nanoseconds": 800000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "cliente_snapshot": {
+        "nombre_cliente": "Kristian López",
+        "direccion_cliente": "Ciudad de Guatemala",
+        "nit_cliente": "107975025",
+        "email_cliente": "kristianlopez111@gmail.com",
+        "telefono_cliente": "+502 5017 0735",
+        "contacto_principal": {
+          "nombre": "Kristian López",
+          "telefono": "+502 5017 0735"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_base": "$.",
+        "moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_destino": "Q.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "numero_cotizacion": "2026-00123",
+      "fecha_creacion": {
+        "_seconds": 1792628412,
+        "_nanoseconds": 683000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_estado": {
+        "_seconds": 1792631122,
+        "_nanoseconds": 592000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1792631122,
+        "_nanoseconds": 592000000
+      },
+      "items": [
+        {
+          "servicio_id": "Drw6LfItSk8qiD95LF6H",
+          "tp_tasa_linea": 0.005,
+          "tp_total_linea": 121.33,
+          "categoria_id": "RjWj7VuYTe3wGJ4xCr6S",
+          "costo_total_linea": 30000,
+          "iva_total_linea": 2912,
+          "detalle_queincluyeservicio": "INCLUYE: • Reunión kick off • FASE 1 (semana 1-2) - DIAGNÓSTICO: Revisión de su trayectoria. causas. redes. antecedentes públicos y benchmark  • FASE 2 (semana 3-4) - IDENTIDAD Y NARRATIVA: Definición del arquetipo político/comunicacional. construcción de narrativa pública. definición de tono y personalidad • FASE 3 (semana 5-6) - APLICACIÓN ESTRATÉGICA: Mapa de públicos. construcción de mensajes clave generales. adaptación de mensajes por público. desarrollo de ejes de contenido para redes sociales. ",
+          "tasa_descuento_aplicada": 36.0744,
+          "nombre_servicio": "Estrategia perfil público ",
+          "precio_venta_final_linea": 27300,
+          "itp_servicio": true,
+          "total_descuento_aplicado_linea": 15405.89,
+          "precio_venta_base_linea": 42705.88,
+          "sub_total_sin_iva_linea": 24266.67,
+          "total_linea": 27300,
+          "sub_total_base_tp_linea": 24266.67,
+          "cantidad": 1,
+          "iva_tasa_linea": 0.12
+        },
+        {
+          "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+          "servicio_id": "d8gpzxwcM8XCi1NjMBHU",
+          "cantidad": 1,
+          "nombre_servicio": "Manejo de redes sociales públicas",
+          "detalle_queincluyeservicio": "INCLUYE: ● Coordinador de producción de contenido mensual: 6 publicaciones gráficas o carruseles. 6 stories y 8 videos verticales para redes sociales. combinando contenido planificado y material relacionado con actividades públicas y acontecimientos de actualidad.  ● Equipo de producción audiovisual: hasta 8 horas mensuales de grabación y fotografía. distribuidas en jornadas previamente coordinadas. Incluye conceptualización. grabación y edición de videos. así como edición de material audiovisual proporcionado por el equipo del precandidato.  ● Community Management: asignación de un Community Manager para la administración de 3 redes sociales. programación y publicación de contenido. seguimiento de comentarios y mensajes. informe final de resultados. ",
+          "itp_servicio": true,
+          "costo_total_linea": 12000,
+          "precio_venta_base_linea": 15284.21,
+          "precio_venta_final_linea": 15284.21,
+          "tasa_descuento_aplicada": 0,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 15284.21,
+          "sub_total_sin_iva_linea": 13585.96,
+          "iva_total_linea": 1630.32,
+          "sub_total_base_tp_linea": 13585.96,
+          "tp_total_linea": 67.93
+        }
+      ],
+      "totales": {
+        "total_costo_base": 42000,
+        "total_cotizacion_base": 57990.1,
+        "total_cotizacion_final": 42584.21,
+        "total_descuento_aplicado": 15405.89,
+        "total_tasa_feeglobal_aplicada": 1.3719,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 4542.32,
+        "sub_total_sin_iva": 37852.63,
+        "sub_total_base_tp": 37852.63,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 189.26,
+        "isr_calculado": {
+          "monto_tramo_1": 1500,
+          "monto_tramo_2": 549.68,
+          "monto_isr_total": 2049.68
+        }
       }
     },
     "ut7sZP52tWPyBtlYLyZR": {
@@ -18448,6 +18608,98 @@
         }
       ]
     },
+    "d8gpzxwcM8XCi1NjMBHU": {
+      "nombre_servicio": "Manejo de redes sociales públicas",
+      "detalle_queincluyeservicio": "INCLUYE: ● Producción de contenido mensual: 6 publicaciones gráficas o carruseles, 6 stories y 8 videos verticales para redes sociales, combinando contenido planificado y material relacionado con actividades públicas y acontecimientos de actualidad.  ● Equipo de producción audiovisual: hasta 8 horas mensuales de grabación y fotografía, distribuidas en jornadas previamente coordinadas. Incluye conceptualización, grabación y edición de videos, así como edición de material audiovisual proporcionado por el equipo del precandidato.  ● Community Management: asignación de un Community Manager para la administración de las redes sociales, programación y publicación de contenido, seguimiento de comentarios y mensajes, y coordinación de necesidades de comunicación digital con el equipo del precandidato.",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+      "fecha_estado": {
+        "_seconds": 1792630490,
+        "_nanoseconds": 298000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_creacion": {
+        "_seconds": 1792630490,
+        "_nanoseconds": 298000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "precios_calculados": {
+        "costo_total_base": 12000,
+        "tasa_ganancia_global": 5.0000000000000115,
+        "valorfee_global": 631.5789473684226,
+        "costo_mas_feeglobal": 12631.578947368424,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 2652.631578947369,
+        "precio_venta_base": 15284.21,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_base_simbolo": "$.",
+        "tipocambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_destino_simbolo": "Q."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "Audiovisual",
+          "valor": 4000,
+          "tasa_fee": 5
+        },
+        {
+          "descripcion_costo": "Diseño",
+          "valor": 2000,
+          "tasa_fee": 5
+        },
+        {
+          "descripcion_costo": "Community",
+          "valor": 2000,
+          "tasa_fee": 5
+        },
+        {
+          "descripcion_costo": "Coordindor de contenido",
+          "valor": 4000,
+          "tasa_fee": 5
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1792630577,
+        "_nanoseconds": 509000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1792630490,
+            "_nanoseconds": 298000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 12000,
+          "precio_venta_base": 15284.21,
+          "tasa_ganancia_global": 5.0000000000000115,
+          "fecha": {
+            "_seconds": 1792630576,
+            "_nanoseconds": 851000000
+          }
+        }
+      ]
+    },
     "dhNzZmDozs8xYHPnNXtp": {
       "estado": "activo",
       "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
@@ -20702,8 +20954,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1792026010,
-        "_nanoseconds": 206000000
+        "_seconds": 1792450936,
+        "_nanoseconds": 320000000
       }
     },
     "JaTGZdLPkqVbVFIs2wySGsnjwH52": {
@@ -20864,8 +21116,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1792010167,
-        "_nanoseconds": 11000000
+        "_seconds": 1792624853,
+        "_nanoseconds": 338000000
       }
     }
   },
