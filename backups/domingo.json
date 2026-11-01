@@ -1411,24 +1411,24 @@
       "direccion_cliente": "17 AVENIDA 26-75, TERCER NIVEL LOCAL 49,LAS CHARCAS ANILLO PERIFERICO ZONA 11, CENTRO COMERCIAL NOVICENTRO,",
       "email_cliente": "admin.mkt@puntonaranja.com.gt",
       "telefono_cliente": "‪+502 3484 3388‬",
-      "contacto": "Emily Menéndez",
       "telefono_contacto": "‪+502 3484 3388‬",
       "email_contacto": "admin.mkt@puntonaranja.com.gt",
       "estado": "activo",
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "usuario_creo": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
-      "usuario_ultima_modificacion": "VjB1noMEfdN5cNNzkfcIL0lnZkn2",
-      "fecha_estado": {
-        "_seconds": 1778606469,
-        "_nanoseconds": 110000000
-      },
       "fecha_creacion": {
         "_seconds": 1778606469,
         "_nanoseconds": 110000000
       },
+      "contacto": "Daniela Martínez",
+      "fecha_estado": {
+        "_seconds": 1793374892,
+        "_nanoseconds": 724000000
+      },
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
       "fecha_ultima_modificacion": {
-        "_seconds": 1778606469,
-        "_nanoseconds": 110000000
+        "_seconds": 1793374892,
+        "_nanoseconds": 724000000
       }
     },
     "fcLY48dGP4RWEK8Milbq": {
@@ -2084,7 +2084,7 @@
     "F1bVL9YITjtNm3H4rKsS": {
       "correlativo_cotizaciones": {
         "anio": 2026,
-        "ultimo_numero": 125
+        "ultimo_numero": 126
       }
     }
   },
@@ -5800,10 +5800,6 @@
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "cliente_id": "JBejuwJz8aZ1V4h2jYxV",
       "usuario_id": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
-      "fecha_emision": {
-        "_seconds": 1792709133,
-        "_nanoseconds": 244000000
-      },
       "dias_vigencia": 8,
       "estado": "borrador",
       "cliente_snapshot": {
@@ -5831,24 +5827,6 @@
         },
         "incluye_iva": true
       },
-      "totales": {
-        "total_costo_base": 17355.37,
-        "total_cotizacion_base": 21000,
-        "total_cotizacion_final": 21000,
-        "total_descuento_aplicado": 0,
-        "total_tasa_feeglobal_aplicada": 17.3554,
-        "tasa_iva_aplicada": 0.12,
-        "monto_iva_total": 2240,
-        "sub_total_sin_iva": 18666.67,
-        "sub_total_base_tp": 18666.67,
-        "tasa_tp_aplicada": 0.005,
-        "monto_tp_total": 93.33,
-        "isr_calculado": {
-          "monto_tramo_1": 933.33,
-          "monto_tramo_2": 0,
-          "monto_isr_total": 933.33
-        }
-      },
       "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
       "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
       "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
@@ -5858,36 +5836,58 @@
         "_nanoseconds": 589000000
       },
       "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
-      "fecha_estado": {
-        "_seconds": 1792714236,
-        "_nanoseconds": 259000000
-      },
-      "fecha_ultima_modificacion": {
-        "_seconds": 1792714236,
-        "_nanoseconds": 259000000
-      },
       "items": [
         {
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "servicio_id": "bGMvDvqnYZ89zYIDOA9V",
-          "cantidad": 1,
-          "nombre_servicio": "Convocatoria a medios A",
           "detalle_queincluyeservicio": "INCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Monitoreo digital  ● Informe final ● Se asegura cobertura y publicación en 3 medios Tier 1 (Ej. Prensa Libre. guatemala.com. Republica. Canal Antigua)",
-          "itp_servicio": true,
-          "costo_total_linea": 17355.37,
-          "precio_venta_base_linea": 21000,
-          "precio_venta_final_linea": 21000,
-          "tasa_descuento_aplicada": 0,
-          "iva_tasa_linea": 0.12,
           "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": 0,
-          "total_linea": 21000,
-          "sub_total_sin_iva_linea": 18666.67,
-          "iva_total_linea": 2240,
-          "sub_total_base_tp_linea": 18666.67,
-          "tp_total_linea": 93.33
+          "sub_total_base_tp_linea": 18133.33,
+          "itp_servicio": true,
+          "servicio_id": "bGMvDvqnYZ89zYIDOA9V",
+          "nombre_servicio": "Convocatoria a medios A",
+          "cantidad": 1,
+          "total_descuento_aplicado_linea": 599.991,
+          "iva_tasa_linea": 0.12,
+          "iva_total_linea": 2176,
+          "precio_venta_final_linea": 20400,
+          "tasa_descuento_aplicada": 2.8571,
+          "costo_total_linea": 17355.37,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "total_linea": 20400,
+          "tp_total_linea": 90.67,
+          "sub_total_sin_iva_linea": 18133.33,
+          "precio_venta_base_linea": 21000
         }
-      ]
+      ],
+      "totales": {
+        "total_costo_base": 17355.37,
+        "total_cotizacion_base": 20999.99,
+        "total_cotizacion_final": 20400,
+        "total_descuento_aplicado": 599.99,
+        "total_tasa_feeglobal_aplicada": 14.9247,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 2176,
+        "sub_total_sin_iva": 18133.33,
+        "sub_total_base_tp": 18133.33,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 90.67,
+        "isr_calculado": {
+          "monto_tramo_1": 906.67,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 906.67
+        }
+      },
+      "fecha_estado": {
+        "_seconds": 1793131251,
+        "_nanoseconds": 232000000
+      },
+      "fecha_emision": {
+        "_seconds": 1793141133,
+        "_nanoseconds": 244000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1793131251,
+        "_nanoseconds": 232000000
+      }
     },
     "TwvATJCm1WZiHqXfyabj": {
       "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
@@ -6518,6 +6518,119 @@
         "_seconds": 1792026039,
         "_nanoseconds": 173000000
       }
+    },
+    "YKL5sBOiRdm3gvXlGeK3": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "eaDeHEdILhqpbDzLNUkG",
+      "usuario_id": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_emision": {
+        "_seconds": 1793375189,
+        "_nanoseconds": 174000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "cliente_snapshot": {
+        "nombre_cliente": "Punto Naranja",
+        "direccion_cliente": "17 AVENIDA 26-75, TERCER NIVEL LOCAL 49,LAS CHARCAS ANILLO PERIFERICO ZONA 11, CENTRO COMERCIAL NOVICENTRO,",
+        "nit_cliente": "8611633-9",
+        "email_cliente": "admin.mkt@puntonaranja.com.gt",
+        "telefono_cliente": "‪+502 3484 3388‬",
+        "contacto_principal": {
+          "nombre": "Daniela Martínez",
+          "telefono": "‪+502 3484 3388‬"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "wcqsCXByF5MhyagqiP3O",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1784181600,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "totales": {
+        "total_costo_base": 24855.37,
+        "total_cotizacion_base": 30545.56,
+        "total_cotizacion_final": 30500,
+        "total_descuento_aplicado": 45.56,
+        "total_tasa_feeglobal_aplicada": 18.507,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 3253.33,
+        "sub_total_sin_iva": 27111.11,
+        "sub_total_base_tp": 27111.11,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 135.56,
+        "isr_calculado": {
+          "monto_tramo_1": 1355.56,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 1355.56
+        }
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "numero_cotizacion": "2026-00126",
+      "fecha_creacion": {
+        "_seconds": 1793375444,
+        "_nanoseconds": 766000000
+      },
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_estado": {
+        "_seconds": 1793376413,
+        "_nanoseconds": 336000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1793376413,
+        "_nanoseconds": 336000000
+      },
+      "items": [
+        {
+          "costo_total_linea": 7500,
+          "total_linea": 9500,
+          "precio_venta_base_linea": 9545.56,
+          "itp_servicio": true,
+          "servicio_id": "kB9D7yvS8RYGMQDxKPU4",
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "iva_tasa_linea": 0.12,
+          "nombre_servicio": "Convocatoria a medios de comunicación ",
+          "tp_tasa_linea": 0.005,
+          "tasa_descuento_aplicada": 0.4773,
+          "detalle_queincluyeservicio": "INCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas (orgánico) ● Invitación a medios ● Elaboración de comunicado y mensajes claves para vocero ● Confirmación con medios ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Monitoreo digital  ● Informe final",
+          "tp_total_linea": 42.22,
+          "iva_total_linea": 1013.33,
+          "cantidad": 1,
+          "total_descuento_aplicado_linea": 45.561,
+          "sub_total_base_tp_linea": 8444.44,
+          "sub_total_sin_iva_linea": 8444.44,
+          "precio_venta_final_linea": 9500
+        },
+        {
+          "tp_total_linea": 93.33,
+          "sub_total_base_tp_linea": 18666.67,
+          "precio_venta_final_linea": 21000,
+          "sub_total_sin_iva_linea": 18666.67,
+          "iva_total_linea": 2240,
+          "precio_venta_base_linea": 21000,
+          "nombre_servicio": "Convocatoria a medios A",
+          "tp_tasa_linea": 0.005,
+          "cantidad": 1,
+          "servicio_id": "bGMvDvqnYZ89zYIDOA9V",
+          "total_linea": 21000,
+          "total_descuento_aplicado_linea": 0,
+          "detalle_queincluyeservicio": "INCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios ● Elaboración de comunicado ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Monitoreo digital  ● Informe final ● Se aseguran 3 publicaciones en medios Tier 1 (Ej. Prensa Libre. guatemala.com. Republica. Canal Antigua)",
+          "tasa_descuento_aplicada": 0,
+          "costo_total_linea": 17355.37,
+          "iva_tasa_linea": 0.12,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "itp_servicio": true
+        }
+      ]
     },
     "YXCRsifW7zNccloWpF6o": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -20982,6 +21095,83 @@
         }
       ]
     },
+    "wgPtQIKwlY4TXo9LkpAm": {
+      "nombre_servicio": "Video Institucional (1 min)",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "YNih2li8lK8q6YT427IK",
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_creacion": {
+        "_seconds": 1793407347,
+        "_nanoseconds": 674000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_estado": {
+        "_seconds": 1793407527,
+        "_nanoseconds": 781000000
+      },
+      "detalle_queincluyeservicio": "INCLUYE : 1 video en formato horizontal de 1 ● Pre producción: • Reunión kick off con cliente • Guion institucional • Storyline visual ● Producción: • 3-4 horas de grabación en oficinas del cliente • 1 coordinador audiovisual • Iluminación • Equipo profesional de grabación: ( Sony FullFrame a7III, Sony APS-C a6000, Lentes: 50 mm f1.8 / 28-70 mm f3.5, 24-105 f 4.0, Estabilizador DJI Ronin, Micrófonos Hollyland Mark 2) ● Post producción: • Edición • Correción de color • Animación básica de intro/outro • Musicalización con creative commons • Entrega de video en 1080 full HD • 2 rondas de cambios. (Q500 por ronda extra de cambios).",
+      "precios_calculados": {
+        "costo_total_base": 3500,
+        "tasa_ganancia_global": 20,
+        "valorfee_global": 875,
+        "costo_mas_feeglobal": 4375,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 918.75,
+        "precio_venta_base": 5293.75,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "xNWuRGnE5yT1VzMOS3BA",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1790143200,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_base_simbolo": "$.",
+        "tipocambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_destino_simbolo": "Q."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "Video",
+          "valor": 3500,
+          "tasa_fee": 20
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1793407561,
+        "_nanoseconds": 682000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1793407347,
+            "_nanoseconds": 674000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 3500,
+          "precio_venta_base": 5293.75,
+          "tasa_ganancia_global": 20,
+          "fecha": {
+            "_seconds": 1793407561,
+            "_nanoseconds": 611000000
+          }
+        }
+      ]
+    },
     "yR0hq8AUOBcB3koaqrjs": {
       "nombre_servicio": "Manejo de comunicado y medios",
       "detalle_queincluyeservicio": "INCLUYE: ● Reunión Kick off con el cliente ● Elaboración de comunicado ● Envío orgánico a medios de comunicación priorizados  ● Seguimiento a publicaciones y/o solicitudes de medios ● Monitoreo digital ● Mínimo de dos publicaciones T1 (Prensa Libre, Guatemala.com, República) ● Informe final",
@@ -21217,8 +21407,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1791931688,
-        "_nanoseconds": 397000000
+        "_seconds": 1793119245,
+        "_nanoseconds": 23000000
       }
     },
     "FvE99qZDTsNktMUUJTsvCQ677Kk1": {
@@ -21244,8 +21434,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1792713852,
-        "_nanoseconds": 222000000
+        "_seconds": 1793376311,
+        "_nanoseconds": 850000000
       }
     },
     "JaTGZdLPkqVbVFIs2wySGsnjwH52": {
@@ -21406,8 +21596,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1792624853,
-        "_nanoseconds": 338000000
+        "_seconds": 1793407216,
+        "_nanoseconds": 938000000
       }
     }
   },
