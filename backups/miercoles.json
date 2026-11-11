@@ -270,6 +270,33 @@
         "_nanoseconds": 607000000
       }
     },
+    "0ePh7nTiFcF8I3IvhgiQ": {
+      "nombre_cliente": "TITANIUM",
+      "nombre_razonsocial": "TITANIUM SECURITY, SOCIEDAD ANONIMA",
+      "nit_cliente": "108175588",
+      "direccion_cliente": ".",
+      "email_cliente": "contabilidad@grupopetraseguridad.com",
+      "telefono_cliente": "xxxx",
+      "contacto": "Natalia Morales",
+      "telefono_contacto": "xxxxx",
+      "email_contacto": "nataliamorales.abril@gmail.com",
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "usuario_creo": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "usuario_ultima_modificacion": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "fecha_estado": {
+        "_seconds": 1793842910,
+        "_nanoseconds": 666000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1793842910,
+        "_nanoseconds": 666000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1793842910,
+        "_nanoseconds": 666000000
+      }
+    },
     "0kWQJm2LShhf3gUbxGr5": {
       "nombre_cliente": "Bluest Company",
       "nombre_razonsocial": "",
@@ -1404,6 +1431,33 @@
         "_nanoseconds": 850000000
       }
     },
+    "ePWPG6jckphF2mm16Vez": {
+      "nombre_cliente": "Handyman",
+      "nombre_razonsocial": "",
+      "nit_cliente": "1214394-4",
+      "direccion_cliente": "Ciudad de Guatemala",
+      "email_cliente": "christian.guate@gmail.com",
+      "telefono_cliente": "+502 3295 3454",
+      "contacto": "Christian Alvarado",
+      "telefono_contacto": "+502 3295 3454",
+      "email_contacto": "christian.guate@gmail.com",
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_estado": {
+        "_seconds": 1794320052,
+        "_nanoseconds": 569000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1794320052,
+        "_nanoseconds": 569000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1794320052,
+        "_nanoseconds": 569000000
+      }
+    },
     "eaDeHEdILhqpbDzLNUkG": {
       "nombre_cliente": "Punto Naranja",
       "nombre_razonsocial": "Disteco, S.A. ",
@@ -2084,7 +2138,7 @@
     "F1bVL9YITjtNm3H4rKsS": {
       "correlativo_cotizaciones": {
         "anio": 2026,
-        "ultimo_numero": 128
+        "ultimo_numero": 131
       }
     }
   },
@@ -5065,6 +5119,103 @@
         "_nanoseconds": 364000000
       }
     },
+    "OqRAPJZeiamKlkTYtpwS": {
+      "cliente_snapshot": {
+        "contacto_principal": {
+          "telefono": "37589033",
+          "nombre": "Heidy López"
+        },
+        "email_cliente": "heidy.lopez@manifesto.gt",
+        "nombre_cliente": "Manifiesto",
+        "direccion_cliente": "Ciudad de Guatemala",
+        "telefono_cliente": "37589033",
+        "nit_cliente": "000000"
+      },
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "items": [
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "costo_total_linea": 10000,
+          "nombre_servicio": "Convocatoria a medios de comunicación (interior del país)",
+          "iva_total_linea": 2560,
+          "total_linea": 24000,
+          "total_descuento_aplicado_linea": -9307.1334,
+          "sub_total_sin_iva_linea": 21333.33,
+          "cantidad": 1,
+          "servicio_id": "3XgrwWvpXM4HGei9JauW",
+          "tp_total_linea": 106.67,
+          "sub_total_base_tp_linea": 21333.33,
+          "precio_venta_final_linea": 24000,
+          "tasa_descuento_aplicada": -63.3446,
+          "detalle_queincluyeservicio": "INCLUYE: ● Reunión de kick off con el cliente ● Selección de medios y periodistas ● Invitación a medios locales y nacionales ● Elaboración de comunicado y mensajes claves para vocero ● Confirmación con medios ● Atención a medios el día del evento (2 ejecutivas) ● Seguimiento a medios y solicitudes ● Monitoreo digital ●Clippings de TV/radio ● Informe final ● Incluye viáticos del equipo y traslado de medios de la capital a Chiquimula. ",
+          "precio_venta_base_linea": 14692.86,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "itp_servicio": true
+        }
+      ],
+      "fecha_creacion": {
+        "_seconds": 1794321699,
+        "_nanoseconds": 191000000
+      },
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "totales": {
+        "tasa_iva_aplicada": 0.12,
+        "tasa_tp_aplicada": 0.005,
+        "total_cotizacion_base": 14692.87,
+        "sub_total_sin_iva": 21333.33,
+        "total_descuento_aplicado": -9307.13,
+        "monto_tp_total": 106.67,
+        "total_cotizacion_final": 24000,
+        "sub_total_base_tp": 21333.33,
+        "total_costo_base": 10000,
+        "monto_iva_total": 2560,
+        "total_tasa_feeglobal_aplicada": 58.3333,
+        "isr_calculado": {
+          "monto_tramo_1": 1066.67,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 1066.67
+        }
+      },
+      "fecha_emision": {
+        "_seconds": 1779467752,
+        "_nanoseconds": 446000000
+      },
+      "dias_vigencia": 8,
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "usuario_id": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "cliente_id": "lDlRVeHgWlpzyjNce8cX",
+      "financiero_snapshot": {
+        "simbolo_moneda_base": "Q.",
+        "simbolo_moneda_destino": "$.",
+        "tasa_venta": 7.8,
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "fecha_tipocambio": {
+          "_seconds": 1778220000,
+          "_nanoseconds": 0
+        },
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "incluye_iva": true,
+        "tasa_compra": 7.8,
+        "tipocambio_id": "936TIFOcN3KYjZV296dA"
+      },
+      "numero_cotizacion": "2026-00130",
+      "estado": "rechazada",
+      "fecha_estado": {
+        "_seconds": 1794321745,
+        "_nanoseconds": 586000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1794321746,
+        "_nanoseconds": 905000000
+      },
+      "fecha_rechazo": {
+        "_seconds": 1794321745,
+        "_nanoseconds": 586000000
+      }
+    },
     "Oqae6MKmRAnyl2HWRec5": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "cliente_id": "5fGEvhoFqkSIF0SszUoe",
@@ -7983,6 +8134,139 @@
           "costo_total_linea": 6000
         }
       ]
+    },
+    "gw32NDjrKjOexneZVQ7X": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "ePWPG6jckphF2mm16Vez",
+      "usuario_id": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_emision": {
+        "_seconds": 1794321931,
+        "_nanoseconds": 908000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "fecha_estado": {
+        "_seconds": 1794322674,
+        "_nanoseconds": 699000000
+      },
+      "cliente_snapshot": {
+        "nombre_cliente": "Handyman",
+        "direccion_cliente": "Ciudad de Guatemala",
+        "nit_cliente": "1214394-4",
+        "email_cliente": "christian.guate@gmail.com",
+        "telefono_cliente": "+502 3295 3454",
+        "contacto_principal": {
+          "nombre": "Christian Alvarado",
+          "telefono": "+502 3295 3454"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "Qz6LK7kDkoEdOHiw6D1p",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1793858400,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "totales": {
+        "total_costo_base": 26020,
+        "total_cotizacion_base": 38923.11,
+        "total_cotizacion_final": 43000,
+        "total_descuento_aplicado": -4076.89,
+        "total_tasa_feeglobal_aplicada": 39.4884,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 4586.67,
+        "sub_total_sin_iva": 38222.22,
+        "sub_total_base_tp": 38222.22,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 191.11,
+        "isr_calculado": {
+          "monto_tramo_1": 1500,
+          "monto_tramo_2": 575.56,
+          "monto_isr_total": 2075.56
+        }
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "items": [
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "3XgrwWvpXM4HGei9JauW",
+          "cantidad": 1,
+          "nombre_servicio": "Convocatoria a medios de comunicación (interior del país)",
+          "detalle_queincluyeservicio": "INCLUYE: • Reunión de kick off con el cliente • Selección de medios y periodistas • Invitación a medios locales • Elaboración de comunicado y mensajes claves para vocero • Confirmación con medios • Atención a medios el día del evento (2 ejecutivas) • Seguimiento a medios y solicitudes • Monitoreo digital • Clippings de TV/radio • Informe final • Incluye viáticos del equipo.",
+          "itp_servicio": true,
+          "costo_total_linea": 10000,
+          "precio_venta_base_linea": 14692.86,
+          "precio_venta_final_linea": 17000,
+          "tasa_descuento_aplicada": -15.7025,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": -2307.1463,
+          "total_linea": 17000,
+          "sub_total_sin_iva_linea": 15111.11,
+          "iva_total_linea": 1813.33,
+          "sub_total_base_tp_linea": 15111.11,
+          "tp_total_linea": 75.56
+        },
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "HQ81HrNT3ivO8dpyxStQ",
+          "cantidad": 1,
+          "nombre_servicio": "Desayuno en restaurante B para 30 personas ",
+          "detalle_queincluyeservicio": "INCLUYE: • Desayuno típico tradicional en restaurante tipo B (Cielito Grill. Palermo, Ki, etc.) • Equipo audiovisual (pantalla tipo TV y un micrófono) • Material promocional con logo a un color para 30 personas tipo vaso vinero, power bank o bocina inalámbrica.",
+          "itp_servicio": true,
+          "costo_total_linea": 9020,
+          "precio_venta_base_linea": 13642.75,
+          "precio_venta_final_linea": 15000,
+          "tasa_descuento_aplicada": -9.9485,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": -1357.249,
+          "total_linea": 15000,
+          "sub_total_sin_iva_linea": 13333.33,
+          "iva_total_linea": 1600,
+          "sub_total_base_tp_linea": 13333.33,
+          "tp_total_linea": 66.67
+        },
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "njvs3oHRMe126GortyPZ",
+          "cantidad": 1,
+          "nombre_servicio": "Desayuno en restaurante tipo C para 30 personas ",
+          "detalle_queincluyeservicio": "INCLUYE: • Desayuno típico tradicional en restaurante tipo C (Chilli's. Applebee's, etc.) • Equipo audiovisual (pantalla tipo TV y un micrófono) • Material promocional con logo a un color para 30 personas tipo vaso vinero, power bank o bocina inalámbrica.",
+          "itp_servicio": true,
+          "costo_total_linea": 7000,
+          "precio_venta_base_linea": 10587.5,
+          "precio_venta_final_linea": 11000,
+          "tasa_descuento_aplicada": -3.8961,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": -412.4996,
+          "total_linea": 11000,
+          "sub_total_sin_iva_linea": 9777.78,
+          "iva_total_linea": 1173.33,
+          "sub_total_base_tp_linea": 9777.78,
+          "tp_total_linea": 48.89
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1794322674,
+        "_nanoseconds": 699000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "numero_cotizacion": "2026-00131",
+      "fecha_creacion": {
+        "_seconds": 1794322675,
+        "_nanoseconds": 44000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2"
     },
     "htIMnBysctDsUdIG4QuM": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -12391,6 +12675,99 @@
         "_seconds": 1782174029,
         "_nanoseconds": 727000000
       }
+    },
+    "z2Z51O0mNjMzUz855Otz": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "0ePh7nTiFcF8I3IvhgiQ",
+      "usuario_id": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "fecha_emision": {
+        "_seconds": 1793843404,
+        "_nanoseconds": 642000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "fecha_estado": {
+        "_seconds": 1793843455,
+        "_nanoseconds": 848000000
+      },
+      "cliente_snapshot": {
+        "nombre_cliente": "TITANIUM",
+        "direccion_cliente": ".",
+        "nit_cliente": "108175588",
+        "email_cliente": "contabilidad@grupopetraseguridad.com",
+        "telefono_cliente": "xxxx",
+        "contacto_principal": {
+          "nombre": "Natalia Morales",
+          "telefono": "xxxxx"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "Qz6LK7kDkoEdOHiw6D1p",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1793858400,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "totales": {
+        "total_costo_base": 1900,
+        "total_cotizacion_base": 3200,
+        "total_cotizacion_final": 3200,
+        "total_descuento_aplicado": 0,
+        "total_tasa_feeglobal_aplicada": 40.625,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 341.33,
+        "sub_total_sin_iva": 2844.45,
+        "sub_total_base_tp": 2844.44,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 14.22,
+        "isr_calculado": {
+          "monto_tramo_1": 142.22,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 142.22
+        }
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "items": [
+        {
+          "categoria_id": "L1cChmW8QSONPZW9K63d",
+          "servicio_id": "CI2mkgJLSYYRv6ESZ44b",
+          "cantidad": 1,
+          "nombre_servicio": "Hosting y correos electrónicos",
+          "detalle_queincluyeservicio": "Incluye: • Servicio de hosting para sitio web y 12 cuentas de correo corporativas. • Certificado SSL • Copias de seguridad • Soporte técnico • Seguridad avanzada",
+          "itp_servicio": true,
+          "costo_total_linea": 1900,
+          "precio_venta_base_linea": 3200,
+          "precio_venta_final_linea": 3200,
+          "tasa_descuento_aplicada": 0,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 3200,
+          "sub_total_sin_iva_linea": 2844.44,
+          "iva_total_linea": 341.33,
+          "sub_total_base_tp_linea": 2844.44,
+          "tp_total_linea": 14.22
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1793843455,
+        "_nanoseconds": 848000000
+      },
+      "usuario_ultima_modificacion": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "numero_cotizacion": "2026-00129",
+      "fecha_creacion": {
+        "_seconds": 1793843456,
+        "_nanoseconds": 596000000
+      },
+      "usuario_creo": "2buDMhyhWbcJvBq6fiPkcCa8lfv2"
     }
   },
   "empresas": {
@@ -16182,6 +16559,83 @@
           "fecha": {
             "_seconds": 1782338690,
             "_nanoseconds": 479000000
+          }
+        }
+      ]
+    },
+    "CI2mkgJLSYYRv6ESZ44b": {
+      "nombre_servicio": "Hosting y correos electrónicos",
+      "detalle_queincluyeservicio": "Incluye: • Servicio de hosting para sitio web y 12 cuentas de correo corporativas. • Certificado SSL • Copias de seguridad • Soporte técnico • Seguridad avanzada",
+      "itp": true,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "L1cChmW8QSONPZW9K63d",
+      "fecha_estado": {
+        "_seconds": 1793843274,
+        "_nanoseconds": 718000000
+      },
+      "usuario_creo": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "fecha_creacion": {
+        "_seconds": 1793843274,
+        "_nanoseconds": 718000000
+      },
+      "usuario_ultima_modificacion": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "precios_calculados": {
+        "costo_total_base": 1900,
+        "tasa_ganancia_global": 28.156250000000004,
+        "valorfee_global": 814.2857142857147,
+        "costo_mas_feeglobal": 2644.628099173554,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 555.3719008264461,
+        "precio_venta_base": 3200,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "Qz6LK7kDkoEdOHiw6D1p",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1793858400,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_base_simbolo": "Q.",
+        "tipocambio_moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_destino_simbolo": "$."
+      },
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "",
+          "valor": 1900,
+          "tasa_fee": 30
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1793843391,
+        "_nanoseconds": 805000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1793843274,
+            "_nanoseconds": 718000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 1900,
+          "precio_venta_base": 3200,
+          "tasa_ganancia_global": 28.156250000000004,
+          "fecha": {
+            "_seconds": 1793843391,
+            "_nanoseconds": 135000000
           }
         }
       ]
@@ -21895,18 +22349,18 @@
       "empresa_nombre": "Voice, S.A.",
       "tipo_cambio_tasa_venta": 7.8,
       "tipo_cambio_tasa_compra": 7.8,
-      "tipo_cambio_id": "xNWuRGnE5yT1VzMOS3BA",
-      "tipo_cambio_moneda_destino_simbolo": "Q.",
-      "tipo_cambio_moneda_base_simbolo": "$.",
-      "tipo_cambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
-      "tipo_cambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
-      "tipo_cambio_fecha": {
-        "_seconds": 1790143200,
-        "_nanoseconds": 0
-      },
+      "tipo_cambio_id": "Qz6LK7kDkoEdOHiw6D1p",
       "fecha_ultima_actualizacion": {
-        "_seconds": 1793720401,
-        "_nanoseconds": 752000000
+        "_seconds": 1793843315,
+        "_nanoseconds": 395000000
+      },
+      "tipo_cambio_moneda_destino_simbolo": "$.",
+      "tipo_cambio_moneda_base_simbolo": "Q.",
+      "tipo_cambio_moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+      "tipo_cambio_moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+      "tipo_cambio_fecha": {
+        "_seconds": 1793858400,
+        "_nanoseconds": 0
       }
     },
     "FvE99qZDTsNktMUUJTsvCQ677Kk1": {
@@ -22082,20 +22536,20 @@
       "role_id": "administrador",
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "empresa_nombre": "Voice, S.A.",
-      "tipo_cambio_id": "xNWuRGnE5yT1VzMOS3BA",
-      "tipo_cambio_moneda_destino_simbolo": "Q.",
-      "tipo_cambio_moneda_base_simbolo": "$.",
       "tipo_cambio_tasa_venta": 7.8,
-      "tipo_cambio_moneda_destino_id": "DZcypXh2KQ4BtaietTgN",
       "tipo_cambio_tasa_compra": 7.8,
-      "tipo_cambio_moneda_base_id": "gdTGjaaUwZE9Bzr6LPzD",
-      "tipo_cambio_fecha": {
-        "_seconds": 1790143200,
-        "_nanoseconds": 0
-      },
+      "tipo_cambio_id": "Qz6LK7kDkoEdOHiw6D1p",
       "fecha_ultima_actualizacion": {
-        "_seconds": 1793407216,
-        "_nanoseconds": 938000000
+        "_seconds": 1794321851,
+        "_nanoseconds": 890000000
+      },
+      "tipo_cambio_moneda_destino_simbolo": "$.",
+      "tipo_cambio_moneda_base_simbolo": "Q.",
+      "tipo_cambio_moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+      "tipo_cambio_moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+      "tipo_cambio_fecha": {
+        "_seconds": 1793858400,
+        "_nanoseconds": 0
       }
     }
   },
@@ -22183,6 +22637,27 @@
       "fecha_ultima_modificacion": {
         "_seconds": 1780513611,
         "_nanoseconds": 235000000
+      }
+    },
+    "Qz6LK7kDkoEdOHiw6D1p": {
+      "fecha": {
+        "_seconds": 1793858400,
+        "_nanoseconds": 0
+      },
+      "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+      "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+      "tasa_compra": 7.8,
+      "tasa_venta": 7.8,
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "estado": "activo",
+      "usuario_creo": "SYSTEM_USER",
+      "fecha_creacion": {
+        "_seconds": 1793843294,
+        "_nanoseconds": 127000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1793843294,
+        "_nanoseconds": 127000000
       }
     },
     "RbqYpCM0FUzvx0lsAZr6": {
