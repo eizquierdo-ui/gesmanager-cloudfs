@@ -1512,6 +1512,33 @@
         "_nanoseconds": 724000000
       }
     },
+    "fCsrxHbtE7YbtpwbAMqQ": {
+      "nombre_cliente": "Avymsa",
+      "nombre_razonsocial": "ADITIVOS VITAMINAS Y MEDICAMENTOS, SOCIEDAD ANONIMA",
+      "nit_cliente": "35229187",
+      "direccion_cliente": "9A AVENIDA 6-01 ZONA 7",
+      "email_cliente": "administracion@avymsa.com.gt",
+      "telefono_cliente": "57528216",
+      "contacto": "Lucrecia Escobar ",
+      "telefono_contacto": "57528216",
+      "email_contacto": "administracion@avymsa.com.gt",
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_estado": {
+        "_seconds": 1795130503,
+        "_nanoseconds": 337000000
+      },
+      "fecha_creacion": {
+        "_seconds": 1795130503,
+        "_nanoseconds": 337000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1795130503,
+        "_nanoseconds": 337000000
+      }
+    },
     "fcLY48dGP4RWEK8Milbq": {
       "nombre_cliente": "Hospital Bella Vida ",
       "nombre_razonsocial": "",
@@ -2165,7 +2192,7 @@
     "F1bVL9YITjtNm3H4rKsS": {
       "correlativo_cotizaciones": {
         "anio": 2026,
-        "ultimo_numero": 133
+        "ultimo_numero": 136
       }
     }
   },
@@ -3986,96 +4013,6 @@
         "_nanoseconds": 858000000
       },
       "usuario_creo": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
-      "fecha_estado": {
-        "_seconds": 1794545622,
-        "_nanoseconds": 527000000
-      },
-      "fecha_ultima_modificacion": {
-        "_seconds": 1794545622,
-        "_nanoseconds": 527000000
-      },
-      "items": [
-        {
-          "costo_total_linea": 0,
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "total_linea": 29784,
-          "tp_tasa_linea": 0.005,
-          "precio_venta_final_linea": 29784,
-          "iva_total_linea": 3176.96,
-          "iva_tasa_linea": 0.12,
-          "servicio_id": "Vb41kyzn8BU42jYtaf9q",
-          "cantidad": 1,
-          "tp_total_linea": 132.37,
-          "detalle_queincluyeservicio": "Paquete de Influencers: 1 reel + 3 stories (Laura Bojorquez. Maria José Paiz. Sussan Hernández. Teffy Corner. Catherine Greg)",
-          "precio_venta_base_linea": 0,
-          "tasa_descuento_aplicada": 0,
-          "itp_servicio": true,
-          "sub_total_base_tp_linea": 26474.67,
-          "total_descuento_aplicado_linea": 0,
-          "nombre_servicio": "Influencer",
-          "sub_total_sin_iva_linea": 26474.67
-        },
-        {
-          "nombre_servicio": "Medio de comunicación",
-          "tp_tasa_linea": 0.005,
-          "costo_total_linea": 0,
-          "tp_total_linea": 75.33,
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "total_linea": 16950,
-          "cantidad": 1,
-          "precio_venta_base_linea": 0,
-          "tasa_descuento_aplicada": 0,
-          "iva_total_linea": 1808,
-          "precio_venta_final_linea": 16950,
-          "iva_tasa_linea": 0.12,
-          "total_descuento_aplicado_linea": 0,
-          "detalle_queincluyeservicio": "Radio La Mega: Medio paquete mensual VV: 3 spots + 1 mención ",
-          "sub_total_sin_iva_linea": 15066.67,
-          "servicio_id": "D7pMjJfyWvd3yQLMD6z1",
-          "itp_servicio": true,
-          "sub_total_base_tp_linea": 15066.67
-        },
-        {
-          "precio_venta_final_linea": 7500,
-          "itp_servicio": true,
-          "iva_tasa_linea": 0.12,
-          "iva_total_linea": 800,
-          "servicio_id": "D7pMjJfyWvd3yQLMD6z1",
-          "sub_total_base_tp_linea": 6666.67,
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "total_descuento_aplicado_linea": 0,
-          "sub_total_sin_iva_linea": 6666.67,
-          "tp_total_linea": 33.33,
-          "detalle_queincluyeservicio": "Soy 502: Nota digital + historia en FB e IG",
-          "nombre_servicio": "Medio de comunicación",
-          "costo_total_linea": 0,
-          "total_linea": 7500,
-          "cantidad": 1,
-          "tp_tasa_linea": 0.005,
-          "tasa_descuento_aplicada": 0,
-          "precio_venta_base_linea": 0
-        },
-        {
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "servicio_id": "D7pMjJfyWvd3yQLMD6z1",
-          "cantidad": 1,
-          "nombre_servicio": "Medio de comunicación",
-          "detalle_queincluyeservicio": "Prensa Libre: Nota digital + historia en FB e IG",
-          "itp_servicio": true,
-          "costo_total_linea": 0,
-          "precio_venta_base_linea": 0,
-          "precio_venta_final_linea": 6600,
-          "tasa_descuento_aplicada": 0,
-          "iva_tasa_linea": 0.12,
-          "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": 0,
-          "total_linea": 6600,
-          "sub_total_sin_iva_linea": 5866.67,
-          "iva_total_linea": 704,
-          "sub_total_base_tp_linea": 5866.67,
-          "tp_total_linea": 29.33
-        }
-      ],
       "totales": {
         "total_costo_base": 0,
         "total_cotizacion_base": 60834,
@@ -4093,7 +4030,97 @@
           "monto_tramo_2": 1685.23,
           "monto_isr_total": 3185.23
         }
-      }
+      },
+      "fecha_estado": {
+        "_seconds": 1795048145,
+        "_nanoseconds": 744000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1795048145,
+        "_nanoseconds": 744000000
+      },
+      "items": [
+        {
+          "tp_total_linea": 132.37,
+          "cantidad": 1,
+          "sub_total_sin_iva_linea": 26474.67,
+          "tp_tasa_linea": 0.005,
+          "precio_venta_base_linea": 0,
+          "total_linea": 29784,
+          "nombre_servicio": "Influencer",
+          "iva_tasa_linea": 0.12,
+          "itp_servicio": true,
+          "tasa_descuento_aplicada": 0,
+          "servicio_id": "Vb41kyzn8BU42jYtaf9q",
+          "precio_venta_final_linea": 29784,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "sub_total_base_tp_linea": 26474.67,
+          "iva_total_linea": 3176.96,
+          "total_descuento_aplicado_linea": 0,
+          "detalle_queincluyeservicio": "Paquete de Influencers: 1 reel + 3 stories (Laura Bojorquez. Chepito. Sussan Hernández. Teffy Corner. Catherine Greg)",
+          "costo_total_linea": 0
+        },
+        {
+          "tp_tasa_linea": 0.005,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "detalle_queincluyeservicio": "Radio La Mega: Medio paquete mensual VV: 3 spots + 1 mención ",
+          "tp_total_linea": 75.33,
+          "iva_tasa_linea": 0.12,
+          "nombre_servicio": "Medio de comunicación",
+          "tasa_descuento_aplicada": 0,
+          "total_linea": 16950,
+          "sub_total_base_tp_linea": 15066.67,
+          "costo_total_linea": 0,
+          "cantidad": 1,
+          "total_descuento_aplicado_linea": 0,
+          "precio_venta_base_linea": 0,
+          "servicio_id": "D7pMjJfyWvd3yQLMD6z1",
+          "itp_servicio": true,
+          "iva_total_linea": 1808,
+          "sub_total_sin_iva_linea": 15066.67,
+          "precio_venta_final_linea": 16950
+        },
+        {
+          "servicio_id": "D7pMjJfyWvd3yQLMD6z1",
+          "tp_total_linea": 33.33,
+          "iva_total_linea": 800,
+          "total_descuento_aplicado_linea": 0,
+          "sub_total_base_tp_linea": 6666.67,
+          "detalle_queincluyeservicio": "Soy 502: Nota digital + historia en FB e IG",
+          "iva_tasa_linea": 0.12,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "precio_venta_final_linea": 7500,
+          "tasa_descuento_aplicada": 0,
+          "costo_total_linea": 0,
+          "nombre_servicio": "Medio de comunicación",
+          "precio_venta_base_linea": 0,
+          "itp_servicio": true,
+          "tp_tasa_linea": 0.005,
+          "total_linea": 7500,
+          "sub_total_sin_iva_linea": 6666.67,
+          "cantidad": 1
+        },
+        {
+          "servicio_id": "D7pMjJfyWvd3yQLMD6z1",
+          "sub_total_sin_iva_linea": 5866.67,
+          "costo_total_linea": 0,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "detalle_queincluyeservicio": "Prensa Libre: Nota digital + historia en FB e IG",
+          "precio_venta_base_linea": 0,
+          "nombre_servicio": "Medio de comunicación",
+          "precio_venta_final_linea": 6600,
+          "sub_total_base_tp_linea": 5866.67,
+          "tasa_descuento_aplicada": 0,
+          "total_descuento_aplicado_linea": 0,
+          "itp_servicio": true,
+          "tp_tasa_linea": 0.005,
+          "iva_tasa_linea": 0.12,
+          "tp_total_linea": 29.33,
+          "total_linea": 6600,
+          "cantidad": 1,
+          "iva_total_linea": 704
+        }
+      ]
     },
     "EeVcg8VToxI5nYxVEkMZ": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -7537,11 +7564,6 @@
         "_nanoseconds": 890000000
       },
       "dias_vigencia": 8,
-      "estado": "borrador",
-      "fecha_estado": {
-        "_seconds": 1792025926,
-        "_nanoseconds": 685000000
-      },
       "cliente_snapshot": {
         "nombre_cliente": "Multiverse",
         "direccion_cliente": "ciudad guatemala",
@@ -7629,17 +7651,26 @@
           "tp_total_linea": 9.78
         }
       ],
-      "fecha_ultima_modificacion": {
-        "_seconds": 1792025926,
-        "_nanoseconds": 685000000
-      },
-      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
       "numero_cotizacion": "2026-00122",
       "fecha_creacion": {
         "_seconds": 1792025927,
         "_nanoseconds": 795000000
       },
-      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1"
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_aceptacion": {
+        "_seconds": 1793946589,
+        "_nanoseconds": 552000000
+      },
+      "estado": "aceptada",
+      "fecha_estado": {
+        "_seconds": 1793946589,
+        "_nanoseconds": 552000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_ultima_modificacion": {
+        "_seconds": 1795156192,
+        "_nanoseconds": 938000000
+      }
     },
     "ec9WNYYV5zeNbF6ol5ub": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -7844,7 +7875,6 @@
         "_nanoseconds": 748000000
       },
       "dias_vigencia": 8,
-      "estado": "borrador",
       "cliente_snapshot": {
         "nombre_cliente": "Arca",
         "direccion_cliente": "Ciudad Guatemala",
@@ -7890,21 +7920,12 @@
       },
       "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
       "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
-      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
       "numero_cotizacion": "2026-00124",
       "fecha_creacion": {
         "_seconds": 1792709092,
         "_nanoseconds": 145000000
       },
       "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
-      "fecha_estado": {
-        "_seconds": 1792709239,
-        "_nanoseconds": 251000000
-      },
-      "fecha_ultima_modificacion": {
-        "_seconds": 1792709239,
-        "_nanoseconds": 251000000
-      },
       "items": [
         {
           "iva_total_linea": 853.33,
@@ -7926,7 +7947,21 @@
           "precio_venta_final_linea": 8000,
           "nombre_servicio": "Convocatoria a medios (entre agencias)"
         }
-      ]
+      ],
+      "fecha_aceptacion": {
+        "_seconds": 1794551371,
+        "_nanoseconds": 989000000
+      },
+      "estado": "aceptada",
+      "fecha_estado": {
+        "_seconds": 1794551371,
+        "_nanoseconds": 989000000
+      },
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_ultima_modificacion": {
+        "_seconds": 1795156182,
+        "_nanoseconds": 804000000
+      }
     },
     "fPEem1sWPK1ZIqoxArCU": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -8182,6 +8217,139 @@
         "_nanoseconds": 255000000
       }
     },
+    "g4c2ees2fzDIG1lYd4D9": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "fCsrxHbtE7YbtpwbAMqQ",
+      "usuario_id": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_emision": {
+        "_seconds": 1795130505,
+        "_nanoseconds": 977000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "cliente_snapshot": {
+        "nombre_cliente": "Avymsa",
+        "direccion_cliente": "9A AVENIDA 6-01 ZONA 7",
+        "nit_cliente": "35229187",
+        "email_cliente": "administracion@avymsa.com.gt",
+        "telefono_cliente": "57528216",
+        "contacto_principal": {
+          "nombre": "Lucrecia Escobar ",
+          "telefono": "57528216"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "Qz6LK7kDkoEdOHiw6D1p",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1793858400,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "numero_cotizacion": "2026-00135",
+      "fecha_creacion": {
+        "_seconds": 1795132095,
+        "_nanoseconds": 617000000
+      },
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "fecha_estado": {
+        "_seconds": 1795132186,
+        "_nanoseconds": 243000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1795132186,
+        "_nanoseconds": 243000000
+      },
+      "items": [
+        {
+          "total_linea": 4598,
+          "precio_venta_final_linea": 4598,
+          "total_descuento_aplicado_linea": 0,
+          "itp_servicio": true,
+          "iva_tasa_linea": 0.12,
+          "servicio_id": "BqC84iFOOPEEgOsc0z3F",
+          "costo_total_linea": 3800,
+          "sub_total_base_tp_linea": 4087.11,
+          "cantidad": 1,
+          "tp_total_linea": 20.44,
+          "tp_tasa_linea": 0.005,
+          "tasa_descuento_aplicada": 0,
+          "sub_total_sin_iva_linea": 4087.11,
+          "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+          "precio_venta_base_linea": 4598,
+          "detalle_queincluyeservicio": "INCLUYE ● Reunión kick off con cliente ● Elaboración de calendario y matriz mensual de contenido para dos redes sociales a elegir entre Facebook. Instagram y LinkedIn ● Producción mensual con paquete de 9 contenidos (6 publicaciones. 2 stories y 1 videos en formato vertical ● 2 horas bi mensuales de grabación y toma de fotografías ● Programación y publicación del contenido aprobado ● Informe mensual de resultados",
+          "iva_total_linea": 490.45,
+          "nombre_servicio": "Presencia digital - 2 redes sociales "
+        },
+        {
+          "precio_venta_base_linea": 4598,
+          "servicio_id": "BqC84iFOOPEEgOsc0z3F",
+          "iva_tasa_linea": 0.12,
+          "tasa_descuento_aplicada": -18.5298,
+          "sub_total_sin_iva_linea": 4844.44,
+          "cantidad": 1,
+          "total_descuento_aplicado_linea": -852.0002,
+          "total_linea": 5450,
+          "detalle_queincluyeservicio": "INCLUYE ● Reunión kick off con cliente ● Ejes de contenido y personalidad de marca (mes 1) ● Propuesta de línea gráfica (mes 1) ● Elaboración de calendario y matriz mensual de contenido para dos redes sociales a elegir entre Facebook. Instagram y LinkedIn ● Producción mensual con paquete de 12 contenidos (7 publicaciones. 3 stories y 2 videos en formato vertical ● 2 horas mensuales de grabación y toma de fotografías ● Programación y publicación del contenido aprobado ● Informe mensual de resultados ",
+          "categoria_id": "t5rx01uaj1jfbOFZnZdT",
+          "nombre_servicio": "Presencia digital - 2 redes sociales ",
+          "itp_servicio": true,
+          "iva_total_linea": 581.33,
+          "costo_total_linea": 3800,
+          "sub_total_base_tp_linea": 4844.44,
+          "tp_total_linea": 24.22,
+          "tp_tasa_linea": 0.005,
+          "precio_venta_final_linea": 5450
+        },
+        {
+          "servicio_id": "O3IPI7lGeG9h5THUC3aV",
+          "precio_venta_final_linea": 1567.5,
+          "nombre_servicio": "Cobertura de evento",
+          "total_linea": 1567.5,
+          "tp_total_linea": 6.97,
+          "iva_total_linea": 167.2,
+          "sub_total_base_tp_linea": 1393.33,
+          "detalle_queincluyeservicio": "INCLUYE: • 2 horas de fotografía y video •\tEquipo profesional • Viáticos para 2 personas a la Antigua Guatemala ",
+          "cantidad": 1,
+          "categoria_id": "YNih2li8lK8q6YT427IK",
+          "itp_servicio": true,
+          "costo_total_linea": 2880,
+          "iva_tasa_linea": 0.12,
+          "total_descuento_aplicado_linea": 3410.7908,
+          "tp_tasa_linea": 0.005,
+          "sub_total_sin_iva_linea": 1393.33,
+          "tasa_descuento_aplicada": 68.5133,
+          "precio_venta_base_linea": 4978.29
+        }
+      ],
+      "totales": {
+        "total_costo_base": 10480,
+        "total_cotizacion_base": 14174.29,
+        "total_cotizacion_final": 11615.5,
+        "total_descuento_aplicado": 2558.79,
+        "total_tasa_feeglobal_aplicada": 9.7757,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 1238.99,
+        "sub_total_sin_iva": 10324.89,
+        "sub_total_base_tp": 10324.88,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 51.62,
+        "isr_calculado": {
+          "monto_tramo_1": 516.24,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 516.24
+        }
+      }
+    },
     "ghiMdGhKVi1uUvtjNn7S": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "cliente_id": "UrBwTj4hJuOLigejZCUr",
@@ -8318,17 +8486,11 @@
     "gw32NDjrKjOexneZVQ7X": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "cliente_id": "ePWPG6jckphF2mm16Vez",
-      "usuario_id": "xYHm6soUifTwmeNwDU65G6AAdwH2",
       "fecha_emision": {
         "_seconds": 1794321931,
         "_nanoseconds": 908000000
       },
       "dias_vigencia": 8,
-      "estado": "borrador",
-      "fecha_estado": {
-        "_seconds": 1794322674,
-        "_nanoseconds": 699000000
-      },
       "cliente_snapshot": {
         "nombre_cliente": "Handyman",
         "direccion_cliente": "Ciudad de Guatemala",
@@ -8354,99 +8516,69 @@
         },
         "incluye_iva": true
       },
-      "totales": {
-        "total_costo_base": 26020,
-        "total_cotizacion_base": 38923.11,
-        "total_cotizacion_final": 43000,
-        "total_descuento_aplicado": -4076.89,
-        "total_tasa_feeglobal_aplicada": 39.4884,
-        "tasa_iva_aplicada": 0.12,
-        "monto_iva_total": 4586.67,
-        "sub_total_sin_iva": 38222.22,
-        "sub_total_base_tp": 38222.22,
-        "tasa_tp_aplicada": 0.005,
-        "monto_tp_total": 191.11,
-        "isr_calculado": {
-          "monto_tramo_1": 1500,
-          "monto_tramo_2": 575.56,
-          "monto_isr_total": 2075.56
-        }
-      },
       "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
       "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
-      "items": [
-        {
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "servicio_id": "3XgrwWvpXM4HGei9JauW",
-          "cantidad": 1,
-          "nombre_servicio": "Convocatoria a medios de comunicación (interior del país)",
-          "detalle_queincluyeservicio": "INCLUYE: • Reunión de kick off con el cliente • Selección de medios y periodistas • Invitación a medios locales • Elaboración de comunicado y mensajes claves para vocero • Confirmación con medios • Atención a medios el día del evento (2 ejecutivas) • Seguimiento a medios y solicitudes • Monitoreo digital • Clippings de TV/radio • Informe final • Incluye viáticos del equipo.",
-          "itp_servicio": true,
-          "costo_total_linea": 10000,
-          "precio_venta_base_linea": 14692.86,
-          "precio_venta_final_linea": 17000,
-          "tasa_descuento_aplicada": -15.7025,
-          "iva_tasa_linea": 0.12,
-          "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": -2307.1463,
-          "total_linea": 17000,
-          "sub_total_sin_iva_linea": 15111.11,
-          "iva_total_linea": 1813.33,
-          "sub_total_base_tp_linea": 15111.11,
-          "tp_total_linea": 75.56
-        },
-        {
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "servicio_id": "HQ81HrNT3ivO8dpyxStQ",
-          "cantidad": 1,
-          "nombre_servicio": "Desayuno en restaurante B para 30 personas ",
-          "detalle_queincluyeservicio": "INCLUYE: • Desayuno típico tradicional en restaurante tipo B (Cielito Grill. Palermo, Ki, etc.) • Equipo audiovisual (pantalla tipo TV y un micrófono) • Material promocional con logo a un color para 30 personas tipo vaso vinero, power bank o bocina inalámbrica.",
-          "itp_servicio": true,
-          "costo_total_linea": 9020,
-          "precio_venta_base_linea": 13642.75,
-          "precio_venta_final_linea": 15000,
-          "tasa_descuento_aplicada": -9.9485,
-          "iva_tasa_linea": 0.12,
-          "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": -1357.249,
-          "total_linea": 15000,
-          "sub_total_sin_iva_linea": 13333.33,
-          "iva_total_linea": 1600,
-          "sub_total_base_tp_linea": 13333.33,
-          "tp_total_linea": 66.67
-        },
-        {
-          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
-          "servicio_id": "njvs3oHRMe126GortyPZ",
-          "cantidad": 1,
-          "nombre_servicio": "Desayuno en restaurante tipo C para 30 personas ",
-          "detalle_queincluyeservicio": "INCLUYE: • Desayuno típico tradicional en restaurante tipo C (Chilli's. Applebee's, etc.) • Equipo audiovisual (pantalla tipo TV y un micrófono) • Material promocional con logo a un color para 30 personas tipo vaso vinero, power bank o bocina inalámbrica.",
-          "itp_servicio": true,
-          "costo_total_linea": 7000,
-          "precio_venta_base_linea": 10587.5,
-          "precio_venta_final_linea": 11000,
-          "tasa_descuento_aplicada": -3.8961,
-          "iva_tasa_linea": 0.12,
-          "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": -412.4996,
-          "total_linea": 11000,
-          "sub_total_sin_iva_linea": 9777.78,
-          "iva_total_linea": 1173.33,
-          "sub_total_base_tp_linea": 9777.78,
-          "tp_total_linea": 48.89
-        }
-      ],
-      "fecha_ultima_modificacion": {
-        "_seconds": 1794322674,
-        "_nanoseconds": 699000000
-      },
-      "usuario_ultima_modificacion": "xYHm6soUifTwmeNwDU65G6AAdwH2",
       "numero_cotizacion": "2026-00131",
       "fecha_creacion": {
         "_seconds": 1794322675,
         "_nanoseconds": 44000000
       },
-      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2"
+      "usuario_creo": "xYHm6soUifTwmeNwDU65G6AAdwH2",
+      "usuario_id": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "usuario_ultima_modificacion": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
+      "items": [
+        {
+          "cantidad": 1,
+          "costo_total_linea": 10000,
+          "total_linea": 17000,
+          "tp_tasa_linea": 0.005,
+          "precio_venta_base_linea": 14692.86,
+          "total_descuento_aplicado_linea": -2307.1463,
+          "sub_total_base_tp_linea": 15111.11,
+          "nombre_servicio": "Convocatoria a medios de comunicación (interior del país)",
+          "iva_total_linea": 1813.33,
+          "tp_total_linea": 75.56,
+          "tasa_descuento_aplicada": -15.7025,
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "itp_servicio": true,
+          "iva_tasa_linea": 0.12,
+          "detalle_queincluyeservicio": "INCLUYE: • Reunión de kick off con el cliente • Selección de medios y periodistas • Invitación a medios locales • Elaboración de comunicado y mensajes claves para vocero • Confirmación con medios • Atención a medios el día del evento (2 ejecutivas) • Seguimiento a medios y solicitudes • Monitoreo digital • Clippings de TV/radio • Informe final • Incluye viáticos del equipo.",
+          "sub_total_sin_iva_linea": 15111.11,
+          "servicio_id": "3XgrwWvpXM4HGei9JauW",
+          "precio_venta_final_linea": 17000
+        }
+      ],
+      "totales": {
+        "total_costo_base": 10000,
+        "total_cotizacion_base": 14692.85,
+        "total_cotizacion_final": 17000,
+        "total_descuento_aplicado": -2307.15,
+        "total_tasa_feeglobal_aplicada": 41.1765,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 1813.33,
+        "sub_total_sin_iva": 15111.11,
+        "sub_total_base_tp": 15111.11,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 75.56,
+        "isr_calculado": {
+          "monto_tramo_1": 755.56,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 755.56
+        }
+      },
+      "fecha_aceptacion": {
+        "_seconds": 1794944204,
+        "_nanoseconds": 863000000
+      },
+      "estado": "aceptada",
+      "fecha_estado": {
+        "_seconds": 1794944204,
+        "_nanoseconds": 863000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1794944207,
+        "_nanoseconds": 593000000
+      }
     },
     "htIMnBysctDsUdIG4QuM": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -8840,6 +8972,99 @@
         "_nanoseconds": 626000000
       }
     },
+    "kLXgks2geC3z9irrRV8K": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "JFVZSGppW6VfCG7m9pKY",
+      "usuario_id": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_emision": {
+        "_seconds": 1795115328,
+        "_nanoseconds": 718000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "fecha_estado": {
+        "_seconds": 1795115425,
+        "_nanoseconds": 136000000
+      },
+      "cliente_snapshot": {
+        "nombre_cliente": "Vistage",
+        "direccion_cliente": "Ciudad",
+        "nit_cliente": "120457954",
+        "email_cliente": "julian.castro@vistage.cr",
+        "telefono_cliente": ".",
+        "contacto_principal": {
+          "nombre": "Julian Castro",
+          "telefono": "."
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "wcqsCXByF5MhyagqiP3O",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1784181600,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "totales": {
+        "total_costo_base": 0,
+        "total_cotizacion_base": 2240,
+        "total_cotizacion_final": 2240,
+        "total_descuento_aplicado": 0,
+        "total_tasa_feeglobal_aplicada": 100,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 240,
+        "sub_total_sin_iva": 2000,
+        "sub_total_base_tp": 0,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 0,
+        "isr_calculado": {
+          "monto_tramo_1": 100,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 100
+        }
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "items": [
+        {
+          "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+          "servicio_id": "egbmwFXpCqb49aXqsHUo",
+          "cantidad": 1,
+          "nombre_servicio": "Organización de evento B",
+          "detalle_queincluyeservicio": "INCLUYE: Organización de evento entre 10 a 20 personas ● Selección  de proveedores ● Coordinación de logística y comida ● Co- elaboración de agenda y guiones ● Coordinación de producción de  materiales (invitaciones, material POP, identificadores, programas, press kits, etc.)* ● Una persona para recibir invitados ● Kit de 10 fotografías institucionales sin equipo de iluminación",
+          "itp_servicio": false,
+          "costo_total_linea": 0,
+          "precio_venta_base_linea": 2240,
+          "precio_venta_final_linea": 2240,
+          "tasa_descuento_aplicada": 0,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 0,
+          "total_linea": 2240,
+          "sub_total_sin_iva_linea": 2000,
+          "iva_total_linea": 240,
+          "sub_total_base_tp_linea": 0,
+          "tp_total_linea": 0
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1795115425,
+        "_nanoseconds": 136000000
+      },
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "numero_cotizacion": "2026-00134",
+      "fecha_creacion": {
+        "_seconds": 1795115427,
+        "_nanoseconds": 937000000
+      },
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1"
+    },
     "ksXy8p8S3WreJtAYi41P": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "cliente_id": "N0X0AvfAnkFbRc4HYiQm",
@@ -9029,6 +9254,119 @@
           "monto_isr_total": 645.33
         }
       }
+    },
+    "lMYDt7hyByXJvwMALZp0": {
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "cliente_id": "5tLOpiu2fQdKhAq8FZHc",
+      "usuario_id": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_emision": {
+        "_seconds": 1795132697,
+        "_nanoseconds": 840000000
+      },
+      "dias_vigencia": 8,
+      "estado": "borrador",
+      "fecha_estado": {
+        "_seconds": 1795133233,
+        "_nanoseconds": 981000000
+      },
+      "cliente_snapshot": {
+        "nombre_cliente": "P&P",
+        "direccion_cliente": "Ciudad",
+        "nit_cliente": "106778781",
+        "email_cliente": "opinedaperez@pinedaypineda.com",
+        "telefono_cliente": ".",
+        "contacto_principal": {
+          "nombre": "Oscar Raúl Pineda Pérez",
+          "telefono": "2374-7000"
+        }
+      },
+      "financiero_snapshot": {
+        "tipocambio_id": "wcqsCXByF5MhyagqiP3O",
+        "moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "simbolo_moneda_base": "Q.",
+        "moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "simbolo_moneda_destino": "$.",
+        "tasa_compra": 7.8,
+        "tasa_venta": 7.8,
+        "fecha_tipocambio": {
+          "_seconds": 1784181600,
+          "_nanoseconds": 0
+        },
+        "incluye_iva": true
+      },
+      "totales": {
+        "total_costo_base": 5181.82,
+        "total_cotizacion_base": 7328.75,
+        "total_cotizacion_final": 5767.5,
+        "total_descuento_aplicado": 1561.25,
+        "total_tasa_feeglobal_aplicada": 10.1548,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 615.95,
+        "sub_total_sin_iva": 5132.88,
+        "sub_total_base_tp": 3733.33,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 18.67,
+        "isr_calculado": {
+          "monto_tramo_1": 256.64,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 256.64
+        }
+      },
+      "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
+      "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
+      "items": [
+        {
+          "categoria_id": "YNih2li8lK8q6YT427IK",
+          "servicio_id": "wgPtQIKwlY4TXo9LkpAm",
+          "cantidad": 1,
+          "nombre_servicio": "Video Institucional (1 min)",
+          "detalle_queincluyeservicio": "INCLUYE : 1 video en formato horizontal de 1 ● Pre producción: • Reunión kick off con cliente • Guion institucional • Storyline visual ● Producción: • 3-4 horas de grabación en oficinas del cliente • 1 coordinador audiovisual • Iluminación • Equipo profesional de grabación: ( Sony FullFrame a7III, Sony APS-C a6000, Lentes: 50 mm f1.8 / 28-70 mm f3.5, 24-105 f 4.0, Estabilizador DJI Ronin, Micrófonos Hollyland Mark 2) ● Post producción: • Edición • Correción de color • Animación básica de intro/outro • Musicalización con creative commons • Entrega de video en 1080 full HD • 2 rondas de cambios. (Q500 por ronda extra de cambios).",
+          "itp_servicio": true,
+          "costo_total_linea": 3500,
+          "precio_venta_base_linea": 5293.75,
+          "precio_venta_final_linea": 4200,
+          "tasa_descuento_aplicada": 20.6612,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 1093.7523,
+          "total_linea": 4200,
+          "sub_total_sin_iva_linea": 3733.33,
+          "iva_total_linea": 448,
+          "sub_total_base_tp_linea": 3733.33,
+          "tp_total_linea": 18.67
+        },
+        {
+          "categoria_id": "YNih2li8lK8q6YT427IK",
+          "servicio_id": "5HxtGT1Z4O41Cu1K44Gr",
+          "cantidad": 1,
+          "nombre_servicio": "Viáticos Antigua Guatemala",
+          "detalle_queincluyeservicio": "Por persona: ● Gasolina ● Alimentación para 2 personas",
+          "itp_servicio": false,
+          "costo_total_linea": 1681.82,
+          "precio_venta_base_linea": 2035,
+          "precio_venta_final_linea": 1567.5,
+          "tasa_descuento_aplicada": 22.973,
+          "iva_tasa_linea": 0.12,
+          "tp_tasa_linea": 0.005,
+          "total_descuento_aplicado_linea": 467.5006,
+          "total_linea": 1567.5,
+          "sub_total_sin_iva_linea": 1399.55,
+          "iva_total_linea": 167.95,
+          "sub_total_base_tp_linea": 0,
+          "tp_total_linea": 0
+        }
+      ],
+      "fecha_ultima_modificacion": {
+        "_seconds": 1795133233,
+        "_nanoseconds": 981000000
+      },
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "numero_cotizacion": "2026-00136",
+      "fecha_creacion": {
+        "_seconds": 1795133237,
+        "_nanoseconds": 524000000
+      },
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1"
     },
     "mJjJqGKwVM8X0f2L7O3U": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -9317,16 +9655,8 @@
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
       "cliente_id": "5tLOpiu2fQdKhAq8FZHc",
       "usuario_id": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
-      "fecha_emision": {
-        "_seconds": 1793637531,
-        "_nanoseconds": 595000000
-      },
       "dias_vigencia": 8,
       "estado": "borrador",
-      "fecha_estado": {
-        "_seconds": 1793637679,
-        "_nanoseconds": 440000000
-      },
       "cliente_snapshot": {
         "nombre_cliente": "P&P",
         "direccion_cliente": "Ciudad",
@@ -9352,79 +9682,87 @@
         },
         "incluye_iva": true
       },
-      "totales": {
-        "total_costo_base": 5181.82,
-        "total_cotizacion_base": 7328.75,
-        "total_cotizacion_final": 7328.75,
-        "total_descuento_aplicado": 0,
-        "total_tasa_feeglobal_aplicada": 29.2946,
-        "tasa_iva_aplicada": 0.12,
-        "monto_iva_total": 782.7,
-        "sub_total_sin_iva": 6522.52,
-        "sub_total_base_tp": 4705.56,
-        "tasa_tp_aplicada": 0.005,
-        "monto_tp_total": 23.53,
-        "isr_calculado": {
-          "monto_tramo_1": 326.13,
-          "monto_tramo_2": 0,
-          "monto_isr_total": 326.13
-        }
-      },
       "forma_pago": "Cheques a nombre de VOICE, S.A.\nDeposito a Cta. Monetaria en Q. No. 7500030916 del Banco BI a nombre de VOICE, S.A.\n50% de anticipo al dar por aceptada esta cotización y 50% al finalizar.",
       "terminos_y_condiciones": "Los precios ya incluyen el IVA.\nIncluye Timbre de Prensa.\nLa presente cotización tiene una vigencia de 8 días.\nCualquier servicio solicitado que no esté descrito en la cotización se cobrará extra.\nTipo de cambio es de $ 1.00 por Q. 7.8000",
-      "items": [
-        {
-          "categoria_id": "YNih2li8lK8q6YT427IK",
-          "servicio_id": "wgPtQIKwlY4TXo9LkpAm",
-          "cantidad": 1,
-          "nombre_servicio": "Video Institucional (1 min)",
-          "detalle_queincluyeservicio": "INCLUYE : 1 video en formato horizontal de 1 ● Pre producción: • Reunión kick off con cliente • Guion institucional • Storyline visual ● Producción: • 3-4 horas de grabación en oficinas del cliente • 1 coordinador audiovisual • Iluminación • Equipo profesional de grabación: ( Sony FullFrame a7III, Sony APS-C a6000, Lentes: 50 mm f1.8 / 28-70 mm f3.5, 24-105 f 4.0, Estabilizador DJI Ronin, Micrófonos Hollyland Mark 2) ● Post producción: • Edición • Correción de color • Animación básica de intro/outro • Musicalización con creative commons • Entrega de video en 1080 full HD • 2 rondas de cambios. (Q500 por ronda extra de cambios).",
-          "itp_servicio": true,
-          "costo_total_linea": 3500,
-          "precio_venta_base_linea": 5293.75,
-          "precio_venta_final_linea": 5293.75,
-          "tasa_descuento_aplicada": 0,
-          "iva_tasa_linea": 0.12,
-          "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": 0,
-          "total_linea": 5293.75,
-          "sub_total_sin_iva_linea": 4705.56,
-          "iva_total_linea": 564.67,
-          "sub_total_base_tp_linea": 4705.56,
-          "tp_total_linea": 23.53
-        },
-        {
-          "categoria_id": "YNih2li8lK8q6YT427IK",
-          "servicio_id": "5HxtGT1Z4O41Cu1K44Gr",
-          "cantidad": 1,
-          "nombre_servicio": "Viáticos Antigua Guatemala",
-          "detalle_queincluyeservicio": "Por persona: ● Gasolina ● Alimentación para 2 personas",
-          "itp_servicio": false,
-          "costo_total_linea": 1681.82,
-          "precio_venta_base_linea": 2035,
-          "precio_venta_final_linea": 2035,
-          "tasa_descuento_aplicada": 0,
-          "iva_tasa_linea": 0.12,
-          "tp_tasa_linea": 0.005,
-          "total_descuento_aplicado_linea": 0,
-          "total_linea": 2035,
-          "sub_total_sin_iva_linea": 1816.96,
-          "iva_total_linea": 218.04,
-          "sub_total_base_tp_linea": 0,
-          "tp_total_linea": 0
-        }
-      ],
-      "fecha_ultima_modificacion": {
-        "_seconds": 1793637679,
-        "_nanoseconds": 440000000
-      },
       "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
       "numero_cotizacion": "2026-00127",
       "fecha_creacion": {
         "_seconds": 1793637680,
         "_nanoseconds": 210000000
       },
-      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1"
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "items": [
+        {
+          "iva_tasa_linea": 0.12,
+          "total_linea": 4200,
+          "itp_servicio": true,
+          "nombre_servicio": "Video Institucional (1 min)",
+          "costo_total_linea": 3500,
+          "cantidad": 1,
+          "total_descuento_aplicado_linea": 1093.7523,
+          "tp_total_linea": 18.67,
+          "iva_total_linea": 448,
+          "sub_total_sin_iva_linea": 3733.33,
+          "precio_venta_base_linea": 5293.75,
+          "tasa_descuento_aplicada": 20.6612,
+          "categoria_id": "YNih2li8lK8q6YT427IK",
+          "precio_venta_final_linea": 4200,
+          "servicio_id": "wgPtQIKwlY4TXo9LkpAm",
+          "sub_total_base_tp_linea": 3733.33,
+          "detalle_queincluyeservicio": "INCLUYE : 1 video en formato horizontal de 1 ● Pre producción: • Reunión kick off con cliente • Guion institucional • Storyline visual ● Producción: • 3-4 horas de grabación en oficinas del cliente • 1 coordinador audiovisual • Iluminación • Equipo profesional de grabación: ( Sony FullFrame a7III, Sony APS-C a6000, Lentes: 50 mm f1.8 / 28-70 mm f3.5, 24-105 f 4.0, Estabilizador DJI Ronin, Micrófonos Hollyland Mark 2) ● Post producción: • Edición • Correción de color • Animación básica de intro/outro • Musicalización con creative commons • Entrega de video en 1080 full HD • 2 rondas de cambios. (Q500 por ronda extra de cambios).",
+          "tp_tasa_linea": 0.005
+        },
+        {
+          "categoria_id": "YNih2li8lK8q6YT427IK",
+          "precio_venta_final_linea": 2035,
+          "detalle_queincluyeservicio": "Por persona: ● Gasolina ● Alimentación para 2 personas",
+          "costo_total_linea": 1681.82,
+          "servicio_id": "5HxtGT1Z4O41Cu1K44Gr",
+          "sub_total_sin_iva_linea": 1816.96,
+          "total_linea": 2035,
+          "iva_total_linea": 218.04,
+          "tp_total_linea": 0,
+          "precio_venta_base_linea": 2035,
+          "total_descuento_aplicado_linea": 0,
+          "tasa_descuento_aplicada": 0,
+          "tp_tasa_linea": 0.005,
+          "itp_servicio": false,
+          "nombre_servicio": "Viáticos Antigua Guatemala",
+          "cantidad": 1,
+          "sub_total_base_tp_linea": 0,
+          "iva_tasa_linea": 0.12
+        }
+      ],
+      "totales": {
+        "total_costo_base": 5181.82,
+        "total_cotizacion_base": 7328.75,
+        "total_cotizacion_final": 6235,
+        "total_descuento_aplicado": 1093.75,
+        "total_tasa_feeglobal_aplicada": 16.8914,
+        "tasa_iva_aplicada": 0.12,
+        "monto_iva_total": 666.03,
+        "sub_total_sin_iva": 5550.3,
+        "sub_total_base_tp": 3733.33,
+        "tasa_tp_aplicada": 0.005,
+        "monto_tp_total": 18.67,
+        "isr_calculado": {
+          "monto_tramo_1": 277.52,
+          "monto_tramo_2": 0,
+          "monto_isr_total": 277.52
+        }
+      },
+      "fecha_estado": {
+        "_seconds": 1794951164,
+        "_nanoseconds": 837000000
+      },
+      "fecha_emision": {
+        "_seconds": 1794933531,
+        "_nanoseconds": 595000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1794951164,
+        "_nanoseconds": 837000000
+      }
     },
     "nC2JWSouNzw7LgNLpzVi": {
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -12958,7 +13296,6 @@
         "_nanoseconds": 642000000
       },
       "dias_vigencia": 8,
-      "estado": "borrador",
       "cliente_snapshot": {
         "nombre_cliente": "TITANIUM",
         "direccion_cliente": ".",
@@ -12993,14 +13330,6 @@
         "_nanoseconds": 596000000
       },
       "usuario_creo": "2buDMhyhWbcJvBq6fiPkcCa8lfv2",
-      "fecha_estado": {
-        "_seconds": 1794547012,
-        "_nanoseconds": 162000000
-      },
-      "fecha_ultima_modificacion": {
-        "_seconds": 1794547012,
-        "_nanoseconds": 162000000
-      },
       "items": [
         {
           "precio_venta_base_linea": 3200,
@@ -13040,6 +13369,19 @@
           "monto_tramo_2": 0,
           "monto_isr_total": 120
         }
+      },
+      "fecha_venta_facturacion": {
+        "_seconds": 1794944215,
+        "_nanoseconds": 538000000
+      },
+      "estado": "venta",
+      "fecha_estado": {
+        "_seconds": 1794944215,
+        "_nanoseconds": 538000000
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1794944221,
+        "_nanoseconds": 143000000
       }
     }
   },
@@ -20487,6 +20829,95 @@
         }
       ]
     },
+    "egbmwFXpCqb49aXqsHUo": {
+      "nombre_servicio": "Organización de evento B",
+      "detalle_queincluyeservicio": "INCLUYE: Organización de evento entre 10 a 20 personas ● Selección  de proveedores ● Coordinación de logística y comida ● Co- elaboración de agenda y guiones ● Coordinación de producción de  materiales (invitaciones, material POP, identificadores, programas, press kits, etc.)* ● Una persona para recibir invitados ● Kit de 10 fotografías institucionales sin equipo de iluminación",
+      "itp": false,
+      "estado": "activo",
+      "empresa_id": "F1bVL9YITjtNm3H4rKsS",
+      "categoria_id": "1nTQpUg8r8OYtpmNwjlV",
+      "fecha_estado": {
+        "_seconds": 1795115155,
+        "_nanoseconds": 21000000
+      },
+      "usuario_creo": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "fecha_creacion": {
+        "_seconds": 1795115155,
+        "_nanoseconds": 21000000
+      },
+      "usuario_ultima_modificacion": "FvE99qZDTsNktMUUJTsvCQ677Kk1",
+      "rubros_detalle": [
+        {
+          "descripcion_costo": "",
+          "valor": 0,
+          "tasa_fee": 0
+        }
+      ],
+      "precios_calculados": {
+        "costo_total_base": 0,
+        "tasa_ganancia_global": 100,
+        "valorfee_global": 0,
+        "costo_mas_feeglobal": 1851.2396694214876,
+        "tasa_impuestos": 21,
+        "valor_impuestos": 388.76033057851237,
+        "precio_venta_base": 2240,
+        "iva_porcentaje": 12,
+        "isr_porcentaje_manual": 7,
+        "itp_porcentaje_manual": 0.5,
+        "tipocambio_id": "wcqsCXByF5MhyagqiP3O",
+        "tipocambio_tasa_compra": 7.8,
+        "tipocambios_fecha_tipocambio": {
+          "_seconds": 1784181600,
+          "_nanoseconds": 0
+        },
+        "tipocambio_moneda_base_id": "DZcypXh2KQ4BtaietTgN",
+        "tipocambio_moneda_base_simbolo": "Q.",
+        "tipocambio_moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
+        "tipocambio_moneda_destino_simbolo": "$."
+      },
+      "fecha_ultima_modificacion": {
+        "_seconds": 1795115290,
+        "_nanoseconds": 296000000
+      },
+      "rubros_historial": [
+        {
+          "fecha": {
+            "_seconds": 1795115155,
+            "_nanoseconds": 21000000
+          },
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 0,
+          "tasa_ganancia_global": 0
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 2240,
+          "tasa_ganancia_global": 100,
+          "fecha": {
+            "_seconds": 1795115289,
+            "_nanoseconds": 571000000
+          }
+        },
+        {
+          "costo_total_base_ant": 0,
+          "precio_venta_base_ant": 0,
+          "tasa_ganancia_global_ant": 0,
+          "costo_total_base": 0,
+          "precio_venta_base": 2240,
+          "tasa_ganancia_global": 100,
+          "fecha": {
+            "_seconds": 1795115291,
+            "_nanoseconds": 875000000
+          }
+        }
+      ]
+    },
     "fmQQrhXS7D1uokOsCd7J": {
       "estado": "activo",
       "empresa_id": "F1bVL9YITjtNm3H4rKsS",
@@ -22627,13 +23058,13 @@
       "tipo_cambio_moneda_destino_id": "gdTGjaaUwZE9Bzr6LPzD",
       "tipo_cambio_moneda_base_id": "DZcypXh2KQ4BtaietTgN",
       "tipo_cambio_id": "y5eOoxOo6qwBpJNZapJo",
-      "fecha_ultima_actualizacion": {
-        "_seconds": 1794544279,
-        "_nanoseconds": 374000000
-      },
       "tipo_cambio_fecha": {
         "_seconds": 1794549600,
         "_nanoseconds": 0
+      },
+      "fecha_ultima_actualizacion": {
+        "_seconds": 1795048102,
+        "_nanoseconds": 901000000
       }
     },
     "FvE99qZDTsNktMUUJTsvCQ677Kk1": {
@@ -22659,8 +23090,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1793735670,
-        "_nanoseconds": 801000000
+        "_seconds": 1795212946,
+        "_nanoseconds": 996000000
       }
     },
     "JaTGZdLPkqVbVFIs2wySGsnjwH52": {
@@ -22821,8 +23252,8 @@
         "_nanoseconds": 0
       },
       "fecha_ultima_actualizacion": {
-        "_seconds": 1794610213,
-        "_nanoseconds": 5000000
+        "_seconds": 1795128243,
+        "_nanoseconds": 428000000
       }
     }
   },
